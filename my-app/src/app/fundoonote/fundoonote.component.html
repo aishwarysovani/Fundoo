@@ -1,0 +1,53 @@
+<mat-toolbar style="background-color:#fb0" fixedInViewport="true">
+  <mat-toolbar-row>
+    <button mat-icon-button matTooltip="main menu" (click)="sidenav.toggle()"><i class="material-icons">menu</i></button>
+    <span class="example-spacer2"></span>
+    <span>Fundoo Note App</span>
+    <span class="example-spacer"></span>
+    <i class="material-icons">search</i>
+    <div class="search-box">
+      <input class="input-search" matInput placeholder="search"></div>
+    <span class="example-spacer"></span>
+    <span class="example-spacer2"></span>
+    
+    <button mat-icon-button matTooltip="list" *ngIf="listicon" (click)="listview()">
+      <i class="material-icons">view_list</i></button>
+   
+    <button mat-icon-button matTooltip="grid" *ngIf="gridicon" (click)="gridview()">
+      <i class="material-icons">view_module</i></button>
+   
+    <span class="example-spacer"></span>
+    <button mat-icon-button matTooltip="account {{email}}" [matMenuTriggerFor]="account">
+      <i class="material-icons">account_circle</i></button>
+    </mat-toolbar-row>
+    <mat-menu #account="matMenu">
+        <button mat-fab style="margin-left:80px"><mat-icon>person_pin
+        </mat-icon>
+        </button>
+        <button mat-menu-item>{{email}}</button>
+        <button mat-raised-button color="primary" style="margin-left:40px">Google Account</button>
+        <mat-divider></mat-divider>
+        <button mat-button style="margin-right:10px">Add Account</button> <button mat-button (click)="logout()" routerLink="/login">Sign Out</button>
+    </mat-menu>
+ </mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" opened="true" class="side-nav-exp">
+    <mat-nav-list><a mat-list-item routerLink="note">
+      <img src="assets/lightbulb.svg">Notes</a>
+      <a mat-list-item><i class="material-icons">touch_app</i>Remainder</a>
+      <mat-divider></mat-divider>
+      <div class="label">Labels
+        <button mat-button class="editlabel-button">Edit</button></div>
+      <a mat-list-item><i class="material-icons">add</i>Create new label</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item><i class="material-icons">archive</i>Archive</a>
+      <a mat-list-item><i class="material-icons">delete</i>Bin</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="side-nav-exp1">
+
+<router-outlet></router-outlet>
+   
+</mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,44 @@
+<br><br><br><br>
+<mat-card class="example-card">
+  
+<mat-card-title>
+<h3>Registration</h3>
+</mat-card-title>
+
+<mat-card-content>
+    <form #f="ngForm" class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()" ng-controller="formBuilder">
+        <div class="form-group">
+        <mat-form-field class="example-full-width">
+        <input type="string" matInput placeholder="username:" formControlName="username" class="form-control" [(ngModel)]="registerForm.username" required [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+        <mat-error>user Name is required</mat-error>
+        </mat-form-field>
+        </div><br>
+
+        <div class="form-group">
+        <mat-form-field class="example-full-width">
+        <input matInput placeholder="Email-id:" formControlName="Emailid" [formControl]="email" [(ngModel)]="registerForm.emailid" required [ngClass]="{ 'is-invalid': submitted && f.Emailid.errors }">
+        <mat-error *ngIf="email.invalid">enter valid email id</mat-error>
+        </mat-form-field></div><br>
+
+        <div class="form-group">
+        <mat-form-field class="example-full-width">
+        <input matInput placeholder="Password:" [type]="hide ? 'password' : 'text'" formControlName="Password" class="form-control" [(ngModel)]="registerForm.password" required [ngClass]="{ 'is-invalid': submitted && f.Password.errors }">
+        <mat-error>Password is required</mat-error>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </mat-form-field></div><br>
+        
+        <div class="form-group">
+        <mat-form-field class="example-full-width">
+        <input  matInput placeholder="Phone-no:" type="number" class="example-right-align" class="form-control" formControlName="Phoneno" [(ngModel)]="registerForm.phoneno" required [ngClass]="{ 'is-invalid': submitted && f.Phoneno.errors }">
+        <mat-error>enter only number</mat-error>      
+        </mat-form-field></div>
+
+        <div class="form-group">
+        <button name="button" (click)="register()" mat-button type="submit" class="btn btn-primary" [disabled]="!(registerForm.username && registerForm.emailid && registerForm.password && registerForm.phoneno && registerForm.valid)">Register</button>
+       
+        <p align="left"><button  mat-button type="submit" routerLink="/login">Back</button></p>
+        </div>
+</form>
+</mat-card-content>
+</mat-card>
+<p class="msg_success">{{error}}</p> 

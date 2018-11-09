@@ -1,0 +1,112 @@
+
+  .example-spacer {
+    flex:0.3 0.5;
+  }
+
+  .example-spacer2 {
+    flex:0.05 0.05;
+  }
+
+  .input-search{
+    width:400px;
+    height:30px;
+    visibility:visible;
+  }
+
+.input-search{
+  background:transparent;
+  border:none;
+}
+  .side-nav-exp{
+      width:250px;
+      height: 560px;
+      border: 1px solid #FFF;
+  }
+
+  .side-nav-exp1{
+    width:1200px;
+    height: 560px;
+    margin-left:20px;
+}
+
+.search-box{
+  width:200px;
+  height:10px;
+  padding-bottom:24px;
+  padding-right:160px;
+}
+
+.label{
+  margin-top: 5px;
+  margin-left: 20px;
+}
+
+.editlabel-button{
+  margin-left: 60px;
+}
+
+/* .memory-card {
+  width: 500px;
+  height:5px;
+  margin-top: 30px;
+  margin-left:300px;
+}
+.text-card{
+  width:500px;
+  height: 130px;
+  margin-top: 30px;
+  margin-left:300px;
+  justify-content: space-between;
+}
+.textfield-card{
+  width:500px;
+  height: 80px;
+  justify-content: space-between;
+}
+
+
+
+
+.button{
+  position: absolute;
+    right: 10px;
+}
+
+.div-icon{
+  margin-top: -24px;
+  padding-left: 412px;
+  padding-bottom: 10px;
+  
+}
+
+.cards-div{
+  display: flex; flex-wrap: wrap;margin-left: 150px;
+  margin-right: 150px;
+}
+
+.cards-div-list{
+  margin-left: 250px;
+  margin-right: 200px;
+}
+
+.mat3-list{
+  margin-top: 40px;
+  margin-left: 50px;
+  height:150px;
+  width:500px;
+}
+
+.mat3{
+  margin-top: 20px;
+  margin-left: 20px;
+  height:150px;
+  width:200px;
+}
+
+.mat-tile{
+  column-span: all;
+}
+
+.card-icon{
+  padding-top:38px;
+} */
