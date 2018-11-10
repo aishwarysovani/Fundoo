@@ -1,0 +1,23 @@
+::ng-deep.mat-dialog-container {
+    padding: 0px;
+    height: fit-content;
+    }
+
+    .colorPalette {
+        border-radius: 100%;
+        outline: none;
+        border: none;
+        width: 0px;
+        height: 30px;
+      }
+      .colorDiv{
+        margin-bottom:5px;
+        display:flex;
+      }
+      
+      .colorCard {
+        left: 331px;
+        margin-top: -692px;
+        width: 144px;
+        padding: 3px;
+      }

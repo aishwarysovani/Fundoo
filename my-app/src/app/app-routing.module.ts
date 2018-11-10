@@ -10,6 +10,7 @@ import { ConformregiComponent } from './conformregi/conformregi.component';
 import { FundoonoteComponent } from './fundoonote/fundoonote.component';
 import { AuthGuard } from './auth.guard';
 import { NoteComponent } from './note/note.component';
+import { EditnoteComponent } from './editnote/editnote/editnote.component';
 
 
 const appRoutes: Routes =([
@@ -43,6 +44,9 @@ const appRoutes: Routes =([
     children:[{
       path:'note',component:NoteComponent,pathMatch: 'full'
     }]
+  },
+  {
+    path:'editnote',component:EditnoteComponent
   }
   
 ]);

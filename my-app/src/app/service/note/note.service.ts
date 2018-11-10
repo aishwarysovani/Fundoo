@@ -9,6 +9,9 @@ export class NoteService {
 
   private createnote='http://localhost/codeigniter/CreateNote';
   private fetchnote='http://localhost/codeigniter/Fetchnotes';
+  private updatenote='http://localhost/codeigniter/Updatenotes';
+  private Changecolor='http://localhost/codeigniter/Changecolor';
+  private Deletenote='http://localhost/codeigniter/Deletenote';
 
   constructor(private http: HttpClient) { }
 
@@ -41,5 +44,45 @@ export class NoteService {
      return this.http.post(this.fetchnote, newdata,otheroption);
     }
 
-    
+    updateNotes(item) {
+      debugger;
+      const newdata = new FormData();
+      var email1=localStorage.getItem('email');
+      // alert(email1)
+      newdata.append('email',email1);
+      newdata.append('id',item.id);
+      newdata.append('title',item.title);
+      newdata.append('note', item.note);
+      newdata.append('color',item.color);
+      const otheroption: any = {
+        'Content-Type': 'application/x-www-form-urlencoded'
+        };
+      return this.http.post(this.updatenote, newdata,otheroption);
+      }
+
+      changecolor(id,color)
+      {
+        const newdata=new FormData();
+        var email1=localStorage.getItem('email');
+        newdata.append('email',email1);
+        newdata.append('id',id);
+        newdata.append('color',color);
+        const otheroption:any={
+          'Content-Type': 'application/x-www-form-urlencoded'
+        };
+      return this.http.post(this.Changecolor, newdata,otheroption);
+      }
+
+      deletenote(id)
+      {
+        const newdata=new FormData();
+        var email1=localStorage.getItem('email');
+        newdata.append('email',email1);
+        newdata.append('id',id);
+        const otheroption:any={
+          'Content-Type': 'application/x-www-form-urlencoded'
+        };
+      return this.http.post(this.Deletenote, newdata,otheroption);
+      }
+  
 }

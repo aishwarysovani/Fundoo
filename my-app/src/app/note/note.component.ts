@@ -4,6 +4,13 @@ import { NoteService } from '../service/note/note.service';
 import { LoginService } from '../service/loginservice/login.service';
 import { ListviewService } from '../service/listview/listview.service';
 import { Subscription } from 'rxjs';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { EditnoteComponent } from '../editnote/editnote/editnote.component';
+
+
+export interface DialogData {
+ item:any;
+}
 
 
 @Component({
@@ -30,7 +37,7 @@ export class NoteComponent implements OnInit {
   getColor:any;
 
   constructor(private noteService: NoteService,private loginService: LoginService,
-    private listviewService:ListviewService) { 
+    private listviewService:ListviewService,public dialog: MatDialog) { 
       this.subscription = this.listviewService.getview().subscribe(message => { this.message = message; });
     }
 
@@ -61,14 +68,22 @@ export class NoteComponent implements OnInit {
     this.test=status;
     console.log(status);
   });
-
-  // this.loginService.logout();
 }
 
+  openDialog(item): void {
+    const dialogRef = this.dialog.open(EditnoteComponent, {
+      height: '250px',
+      width: '500px',
+      data: {item}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+  // this.loginService.logout();
 
 
-
-  takenote() {
+ takenote() {
     debugger;
     this.card1=true;
     this.card2=false;
@@ -79,7 +94,25 @@ export class NoteComponent implements OnInit {
     // debugger;
     console.log(status);
   });
-  
+  }
+
+  changecolor(id:any,color:any) {
+    debugger;
+    const obs= this.noteService.changecolor(id,color);
+    obs.subscribe(
+  (status:any)=>{
+    this.test=status;
+    console.log(status);
+  });
+  }
+
+  deletenote(id)
+  {
+    const obsD=this.noteService.deletenote(id);
+    obsD.subscribe(
+      (status:any)=>{
+        this.test=status;
+      });
   }
 
   setcolor(color: any) {

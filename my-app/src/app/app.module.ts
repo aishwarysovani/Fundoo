@@ -36,6 +36,8 @@ import {MatChipsModule} from '@angular/material/chips';
 import { NoteComponent } from './note/note.component';
 import { ListviewService } from './service/listview/listview.service';
 import { IntercepterService } from './service/jwtintercepter/intercepter.service';
+import {MatDialogModule} from '@angular/material/dialog';
+import { EditnoteComponent } from './editnote/editnote/editnote.component';
 
 
 @NgModule({
@@ -47,7 +49,8 @@ import { IntercepterService } from './service/jwtintercepter/intercepter.service
     ResetpasswordComponent,
     ConformregiComponent,
     FundoonoteComponent,
-    NoteComponent
+    NoteComponent,
+    EditnoteComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,8 @@ import { IntercepterService } from './service/jwtintercepter/intercepter.service
     MatMenuModule,
     MatNativeDateModule,
     NgxMaterialTimepickerModule.forRoot(),
-    MatChipsModule
+    MatChipsModule,
+    MatDialogModule
 
   ],
   providers: [RegisterService,

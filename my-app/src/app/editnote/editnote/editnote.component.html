@@ -1,0 +1,80 @@
+<div [ngStyle]="{'background-color':data.item.color}" style="padding:20px">
+
+  <input matInput [(ngModel)]="data.item.title" placeholder="title">
+  <mat-form-field appearance="null">
+    <input matInput type="text" [(ngModel)]="data.item.note" placeholder="note">
+  </mat-form-field>
+  <div>
+    <mat-chip-list>
+      <mat-chip>{{data.item.remind_date}}</mat-chip>
+    </mat-chip-list>
+  </div>
+  <button mat-icon-button matTooltip="remind me">
+    <i class="material-icons">touch_app</i></button>
+  <button mat-icon-button matTooltip="change color" [matMenuTriggerFor]="menuColor"><img src="assets/color_base.svg">
+    <mat-menu #menuColor="matMenu" class="colorCard">
+      <div class="colorDiv">
+          <button mat-menu-item (click)="setcolor('rgb(250, 250, 250)')" class="colorPalette"
+              style="background-color:rgb(250, 250, 250)">
+              <mat-icon></mat-icon>
+          </button>
+          <button mat-menu-item (click)="setcolor('rgb(255,240,245)')" class="colorPalette"
+              style="background-color: rgb(255,240,245)">
+              <mat-icon></mat-icon>
+          </button>
+          <button mat-menu-item (click)="setcolor(' rgb(230,230,250)')" class="colorPalette"
+              style="background-color:rgb(230,230,250)">
+              <mat-icon></mat-icon>
+          </button>
+          <button mat-menu-item (click)="setcolor(' rgb(255, 138, 128)')" class="colorPalette"
+              style="background-color:rgb(255, 138, 128)">
+              <mat-icon></mat-icon>
+          </button>
+      </div>
+      <div class="colorDiv">
+          <button mat-menu-item (click)="setcolor(' rgb(204, 255, 144)')" class="colorPalette"
+              style="background-color:rgb(204, 255, 144)">
+              <mat-icon></mat-icon>
+          </button>
+          <button mat-menu-item (click)="setcolor(' rgb(167, 255, 235)')" class="colorPalette"
+              style="background-color:rgb(167, 255, 235)">
+              <mat-icon></mat-icon>
+          </button>
+          <button mat-menu-item (click)="setcolor(' rgb(128, 216, 255)')" class="colorPalette"
+              style="background-color:rgb(128, 216, 255)">
+              <mat-icon></mat-icon>
+          </button>
+          <button mat-menu-item (click)="setcolor(' rgb(130, 177, 255)')" class="colorPalette"
+              style="background-color:rgb(130, 177, 255)">
+              <mat-icon></mat-icon>
+          </button>
+      </div>
+      <div class="colorDiv">
+          <button mat-menu-item (click)="setcolor(' rgb(179, 136, 255)')" class="colorPalette"
+              style="background-color:rgb(179, 136, 255)">
+              <mat-icon></mat-icon>
+          </button>
+          <button mat-menu-item (click)="setcolor(' rgb(248, 187, 208)')" class="colorPalette"
+              style="background-color:rgb(248, 187, 208)">
+              <mat-icon></mat-icon>
+          </button>
+          <button mat-menu-item (click)="setcolor(' rgb(215, 204, 200)')" class="colorPalette"
+              style="background-color:rgb(215, 204, 200)">
+              <mat-icon></mat-icon>
+          </button>
+          <button mat-menu-item (click)="setcolor(' rgb(207, 216, 220)')" class="colorPalette"
+              style="background-color:rgb(207, 216, 220)">
+              <mat-icon></mat-icon>
+          </button>
+      </div>
+  </mat-menu>
+  </button>
+
+  <button mat-icon-button matTooltip="more" [matMenuTriggerFor]="menuMore1"><img src="assets/baseline-more.svg"></button>
+  <mat-menu #menuMore1="matMenu">
+      <button mat-menu-item (click)="deletenote(data.item.id)">delete note</button>
+        <button mat-menu-item>add label</button>
+    </mat-menu>
+  <button mat-button [mat-dialog-close]="data.item" cdkFocusInitial (click)="onNoClick()">Close</button>
+
+</div>
