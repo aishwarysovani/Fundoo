@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 import { ListviewService } from '../service/listview/listview.service';
 import { LoginService } from '../service/loginservice/login.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { EditlabelComponent } from '../editlabel/editlabel.component';
 
+export interface DialogData {
+  label:any;
+ }
 
 @Component({
   selector: 'app-fundoonote',
@@ -13,7 +18,8 @@ export class FundoonoteComponent implements OnInit {
   listicon:boolean=true;
   gridicon:boolean=false;
   
-  constructor(private listviewService:ListviewService,private loginService:LoginService) {    
+  constructor(private listviewService:ListviewService,private loginService:LoginService,
+    public dialog: MatDialog) {    
 }
 
 listview(): void {
@@ -40,4 +46,15 @@ logout()
 this.loginService.logout();
 }
   
+
+openDialog(): void {
+  const dialogRef = this.dialog.open(EditlabelComponent, {
+    height: '300px',
+    width: '300px',
+    data: {label:"hello"}
+  });
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+  });
+}
 }

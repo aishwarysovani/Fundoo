@@ -37,9 +37,8 @@
       <img src="assets/lightbulb.svg">Notes</a>
       <a mat-list-item><i class="material-icons">touch_app</i>Remainder</a>
       <mat-divider></mat-divider>
-      <div class="label">Labels
-        <button mat-button class="editlabel-button">Edit</button></div>
-      <a mat-list-item><i class="material-icons">add</i>Create new label</a>
+      <div class="label">Labels</div>
+      <a mat-list-item (click)="openDialog()"><i class="material-icons">add</i>Create new label</a>
       <mat-divider></mat-divider>
       <a mat-list-item><i class="material-icons">archive</i>Archive</a>
       <a mat-list-item><i class="material-icons">delete</i>Bin</a>

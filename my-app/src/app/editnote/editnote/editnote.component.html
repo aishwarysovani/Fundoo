@@ -9,8 +9,31 @@
       <mat-chip>{{data.item.remind_date}}</mat-chip>
     </mat-chip-list>
   </div>
-  <button mat-icon-button matTooltip="remind me">
+  <button mat-icon-button matTooltip="remind me" [matMenuTriggerFor]="menu">
     <i class="material-icons">touch_app</i></button>
+    <mat-menu #menu="matMenu">
+        <div style="margin-left:15px">Remainder:</div>
+        <button mat-menu-item>Later today</button>
+        <button mat-menu-item>Tommarow</button>
+        <button mat-menu-item>Next week</button>
+        <button mat-menu-item [matMenuTriggerFor]="date"><i class="material-icons">access_time</i>
+          Select date and time
+        </button>
+      </mat-menu>
+
+      <mat-menu #date="matMenu">
+          <div style="margin-left:15px"><i class="material-icons">keyboard_backspace</i>
+            select date and time</div>
+            <div>
+            <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="data.item.date">
+            <mat-datepicker-toggle matSuffix [for]="picker" showTime="true"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            </div>
+            <div>
+            <input [ngxTimepicker]="picker1" [(ngModel)]="data.item.time">
+          <ngx-material-timepicker #picker1></ngx-material-timepicker></div>
+        </mat-menu>
+
   <button mat-icon-button matTooltip="change color" [matMenuTriggerFor]="menuColor"><img src="assets/color_base.svg">
     <mat-menu #menuColor="matMenu" class="colorCard">
       <div class="colorDiv">

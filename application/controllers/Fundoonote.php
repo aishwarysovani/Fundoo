@@ -30,7 +30,10 @@ class Fundoonote
             $color = $_POST['color'];
             $val = "undefined";
 
-           if ($date == $val && $time == $val) {
+            if ($title == $val || $note == $val) {
+                $msg = array("mes" => "not pass value");
+                print json_encode($msg);
+            } elseif ($date == $val && $time == $val) {
                 $date = "";
                 $time = "";
                 $sql = "INSERT INTO note (email,title,note,remind_date,color) VALUES ('$email','$title', '$note','$date','$color')";
@@ -45,7 +48,7 @@ class Fundoonote
             } else {
                 $date = str_replace("00:00:00", $time, $date);
                 $date = substr($date, 0, 24);
-                $sql = "INSERT INTO note (email,title,note,remind_date) VALUES ('$email','$title', '$note','$date')";
+                $sql = "INSERT INTO note (email,title,note,remind_date,color) VALUES ('$email','$title', '$note','$date','$color')";
                 $res = $this->connect->exec($sql);
 
                 $stmt = $this->connect->prepare("SELECT * From note where email='$email'");
@@ -203,4 +206,91 @@ class Fundoonote
         }
     }
 
+
+    public function changereminder()
+    {
+        try {
+            /**
+             * Database conncetion using PDO
+             */
+            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
+            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $this->connect->prepare("SELECT email FROM note");
+            $stmt->execute();
+            /**
+             * @var string $email
+             */
+            $email = $_POST['email'];
+            $id = $_POST['id'];
+            $date = $_POST['date'];
+            $time=$_POST['time'];
+            $val="undefined";
+            if($date!=$val && $time!=$val)
+            {
+            $date = str_replace("00:00:00", $time, $date);
+            $date = substr($date, 0, 24);
+            $result = array();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($result as $arr) {
+                if ($email == $arr['email']) {
+
+                    $sql = "UPDATE note SET remind_date='$date' WHERE id='$id'";
+                    $res = $this->connect->exec($sql);
+
+                }
+            }
+            }
+            $stmt = $this->connect->prepare("SELECT * From note where email='$email'");
+            $stmt->execute();
+
+            $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $myjson = json_encode($myArray);
+            print($myjson);
+
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
+
+    public function deletereminder()
+    {
+        try {
+            /**
+             * Database conncetion using PDO
+             */
+            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
+            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $this->connect->prepare("SELECT email FROM note");
+            $stmt->execute();
+            /**
+             * @var string $email
+             */
+            $email = $_POST['email'];
+            $id = $_POST['id'];
+            $date=$_POST['date'];
+
+            $result = array();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($result as $arr) {
+                if ($email == $arr['email']) {
+
+                    $sql = "UPDATE note SET remind_date='' WHERE id='$id'";
+                    $res = $this->connect->exec($sql);
+
+                    }
+            }
+
+            $stmt = $this->connect->prepare("SELECT * From note where email='$email'");
+            $stmt->execute();
+
+            $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $myjson = json_encode($myArray);
+            print($myjson);
+
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
 }

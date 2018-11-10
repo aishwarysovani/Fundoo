@@ -115,6 +115,26 @@ export class NoteComponent implements OnInit {
       });
   }
 
+  changereminder(id,date,time)
+  {
+   const obsD=this.noteService.changereminder(id,date,time);
+    obsD.subscribe(
+      (status:any)=>{
+        this.test=status;
+      });
+
+  }
+
+  deleteremider(id,date)
+  {
+   const obsD=this.noteService.deletereminder(id,date);
+    obsD.subscribe(
+      (status:any)=>{
+        this.test=status;
+      });
+
+  }
+
   setcolor(color: any) {
     
     this.getColor = color;

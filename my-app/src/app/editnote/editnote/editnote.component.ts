@@ -39,6 +39,7 @@ export class EditnoteComponent implements OnInit {
     const obsD=this.noteService.deletenote(id);
     obsD.subscribe(
       (status:any)=>{
+        this.data.item=status;
         console.log(status);
       });
   }

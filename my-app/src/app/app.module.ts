@@ -38,6 +38,7 @@ import { ListviewService } from './service/listview/listview.service';
 import { IntercepterService } from './service/jwtintercepter/intercepter.service';
 import {MatDialogModule} from '@angular/material/dialog';
 import { EditnoteComponent } from './editnote/editnote/editnote.component';
+import { EditlabelComponent } from './editlabel/editlabel.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { EditnoteComponent } from './editnote/editnote/editnote.component';
     ConformregiComponent,
     FundoonoteComponent,
     NoteComponent,
-    EditnoteComponent
+    EditnoteComponent,
+    EditlabelComponent
   ],
   imports: [
     BrowserModule,

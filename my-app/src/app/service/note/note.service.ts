@@ -12,6 +12,9 @@ export class NoteService {
   private updatenote='http://localhost/codeigniter/Updatenotes';
   private Changecolor='http://localhost/codeigniter/Changecolor';
   private Deletenote='http://localhost/codeigniter/Deletenote';
+  private Changereminder='http://localhost/codeigniter/Changereminder';
+  private Deletreminder='http://localhost/codeigniter/Deletereminder';
+
 
   constructor(private http: HttpClient) { }
 
@@ -83,6 +86,33 @@ export class NoteService {
           'Content-Type': 'application/x-www-form-urlencoded'
         };
       return this.http.post(this.Deletenote, newdata,otheroption);
+      }
+
+      changereminder(id,date,time)
+      {
+        const newdata=new FormData();
+        var email1=localStorage.getItem('email');
+        newdata.append('email',email1);
+        newdata.append('id',id);
+        newdata.append('date',date);
+        newdata.append('time',time);
+        const otheroption:any={
+          'Content-Type': 'application/x-www-form-urlencoded'
+        };
+      return this.http.post(this.Changereminder, newdata,otheroption);
+      }
+
+      deletereminder(id,date)
+      {
+        const newdata=new FormData();
+        var email1=localStorage.getItem('email');
+        newdata.append('email',email1);
+        newdata.append('id',id);
+        newdata.append('date',date);
+        const otheroption:any={
+          'Content-Type': 'application/x-www-form-urlencoded'
+        };
+      return this.http.post(this.Deletreminder, newdata,otheroption);
       }
   
 }
