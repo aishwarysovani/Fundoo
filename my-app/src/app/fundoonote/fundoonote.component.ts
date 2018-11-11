@@ -49,7 +49,7 @@ this.loginService.logout();
 
 openDialog(): void {
   const dialogRef = this.dialog.open(EditlabelComponent, {
-    height: '300px',
+    height: 'flex',
     width: '300px',
     data: {label:"hello"}
   });

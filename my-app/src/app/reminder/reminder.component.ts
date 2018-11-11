@@ -7,18 +7,16 @@ import { Subscription } from 'rxjs';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { EditnoteComponent } from '../editnote/editnote/editnote.component';
 
-
 export interface DialogData {
- item:any;
-}
-
+  item:any;
+ }
 
 @Component({
-  selector: 'app-note',
-  templateUrl: './note.component.html',
-  styleUrls: ['./note.component.css']
+  selector: 'app-reminder',
+  templateUrl: './reminder.component.html',
+  styleUrls: ['./reminder.component.css']
 })
-export class NoteComponent implements OnInit {
+export class ReminderComponent implements OnInit {
 
   model:any={};
   test: any;
@@ -36,17 +34,17 @@ export class NoteComponent implements OnInit {
   subscription: Subscription;
   getColor:any;
 
-  constructor(private noteService: NoteService,private loginService: LoginService,
-    private listviewService:ListviewService,public dialog: MatDialog) { 
-      this.subscription = this.listviewService.getview().subscribe(message => { this.message = message; });
-    }
 
-    ngOnDestroy() {
+  constructor(private noteService: NoteService,private loginService: LoginService,
+    private listviewService:ListviewService,public dialog: MatDialog) {
+      this.subscription = this.listviewService.getview().subscribe(message => { this.message = message; });
+     }
+
+     ngOnDestroy() {
       // unsubscribe to ensure no memory leaks
       this.subscription.unsubscribe();
   }
-  
-  ngOnInit() {
+ ngOnInit() {
     var email1=localStorage.getItem('email');
     this.email=email1;
     setInterval(()=>{
@@ -62,7 +60,7 @@ export class NoteComponent implements OnInit {
     this.card1=true;
     this.card2=false;
    debugger;
-    const obs1 = this.noteService.getNotes(this.email);
+    const obs1 = this.noteService.getreminders(this.email);
     obs1.subscribe(
   (status:any)=>{
     this.test=status;
@@ -135,15 +133,6 @@ export class NoteComponent implements OnInit {
 
   }
 
-  archive(id)
-  {
-    const obsD=this.noteService.archive(id);
-    obsD.subscribe(
-      (status:any)=>{
-        this.test=status;
-      });
-  }
-
   setcolor(color: any) {
     
     this.getColor = color;
@@ -168,5 +157,6 @@ export class NoteComponent implements OnInit {
         // }
       });
     }
+  
   
 }

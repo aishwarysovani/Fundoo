@@ -1,9 +1,15 @@
 <div>
   <b>Edit Labels</b>
   <div>
-  <mat-icon matTooltip="cancel">cancel</mat-icon>
-  <mat-form-field > <mat-label></mat-label>   
-   <input matInput placeholder="create new label"></mat-form-field>
+  <mat-icon matTooltip="cancel">clear</mat-icon>
+  <mat-form-field > <mat-label></mat-label>  
+   <input matInput placeholder="create new label" [(ngModel)]="Label1"></mat-form-field>
+   <mat-icon matTooltip="create label"><img src="assets/check.svg"></mat-icon>
   </div>
-  <div><button mat-button>Done</button></div>
+  <div *ngFor="let item of test"><mat-icon><img src="assets/delete.svg"></mat-icon>
+    <mat-form-field appearance="null">
+    <input matInput value="{{item.label}}"></mat-form-field>
+    <mat-icon><img src="assets/edit.svg"></mat-icon>
+  </div>
+  <div><button mat-button (click)="savelabel()">Done</button></div>
   </div>

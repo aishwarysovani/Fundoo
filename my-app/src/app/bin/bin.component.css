@@ -1,0 +1,14 @@
+.cards-div{
+    display: flex; 
+    flex-wrap: wrap;
+    margin-left: 150px;
+    margin-right: 150px;
+  }
+  
+  .mat3{
+    margin-top: 20px;
+    margin-left: 20px;
+    height:flex;
+    width:200px;
+    border-radius: 10px;
+  }

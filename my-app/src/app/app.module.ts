@@ -39,6 +39,9 @@ import { IntercepterService } from './service/jwtintercepter/intercepter.service
 import {MatDialogModule} from '@angular/material/dialog';
 import { EditnoteComponent } from './editnote/editnote/editnote.component';
 import { EditlabelComponent } from './editlabel/editlabel.component';
+import { ReminderComponent } from './reminder/reminder.component';
+import { BinComponent } from './bin/bin.component';
+import { ArchiveComponent } from './archive/archive.component';
 
 
 @NgModule({
@@ -52,7 +55,10 @@ import { EditlabelComponent } from './editlabel/editlabel.component';
     FundoonoteComponent,
     NoteComponent,
     EditnoteComponent,
-    EditlabelComponent
+    EditlabelComponent,
+    ReminderComponent,
+    BinComponent,
+    ArchiveComponent
   ],
   imports: [
     BrowserModule,

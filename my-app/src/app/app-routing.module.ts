@@ -12,6 +12,9 @@ import { AuthGuard } from './auth.guard';
 import { NoteComponent } from './note/note.component';
 import { EditnoteComponent } from './editnote/editnote/editnote.component';
 import { EditlabelComponent } from './editlabel/editlabel.component';
+import { ReminderComponent } from './reminder/reminder.component';
+import { BinComponent } from './bin/bin.component';
+import { ArchiveComponent } from './archive/archive.component';
 
 
 const appRoutes: Routes =([
@@ -44,7 +47,17 @@ const appRoutes: Routes =([
     path:'fundoonote',component:FundoonoteComponent,canActivate: [AuthGuard] ,
     children:[{
       path:'note',component:NoteComponent,pathMatch: 'full'
-    }]
+    },
+    {
+      path:'reminder',component:ReminderComponent
+    },
+    {
+      path:'bin',component:BinComponent
+    },
+    {
+      path:'archive',component:ArchiveComponent
+    }
+  ]
   },
   {
     path:'editnote',component:EditnoteComponent

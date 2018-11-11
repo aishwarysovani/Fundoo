@@ -62,6 +62,16 @@ $route['Changecolor'] ='/Fundoonote/changecolor';
 $route['Deletenote'] ='/Fundoonote/deletenote';
 $route['Changereminder'] ='/Fundoonote/changereminder';
 $route['Deletereminder'] ='/Fundoonote/deletereminder';
+$route['Fetchreminder'] ='/Fundoonote/allreminder';
+$route['Fetchdeletednotes'] ='/Fundoonote/alldeletednotes';
+$route['Deleteforever'] ='/Fundoonote/deleteforever';
+$route['Restore'] ='/Fundoonote/restore';
+$route['Archive'] ='/Fundoonote/archive';
+$route['Fetcharchivenote'] ='/Fundoonote/allarchivenotes';
+$route['Unarchive'] ='/Fundoonote/unarchive';
+$route['Createlabel']='/Fundoolabel/createlabel';
+$route['Showlabel']='/Fundoolabel/showlabel';
+
 //$route['Form']='/Welcome/forgot_pass';
 // $route['Get'] = '/Login/get';
 // $route['Post'] = '/Login/post'; 
