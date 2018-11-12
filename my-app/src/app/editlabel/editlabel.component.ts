@@ -27,12 +27,11 @@ export class EditlabelComponent implements OnInit {
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(this.test);
   }
 
   savelabel()
   {
-    this.dialogRef.close();
     const obs= this.noteservice.savelabel(this.Label1);
     obs.subscribe(
     (status:any)=>{
@@ -40,5 +39,26 @@ export class EditlabelComponent implements OnInit {
       console.log(status);
     });
     }
+
+    deletelabel(id)
+    {
+      const obs= this.noteservice.deletelabel(id);
+      obs.subscribe(
+      (status:any)=>{
+        this.test=status;
+        console.log(status);
+      });
+      }
+
+      editlabel(id,label)
+      {
+        debugger;
+        const obs= this.noteservice.editlabel(id,label);
+        obs.subscribe(
+        (status:any)=>{
+          this.test=status;
+          console.log(status);
+        });
+        }
 
 }

@@ -24,7 +24,7 @@
         <button mat-fab style="margin-left:80px"><mat-icon>person_pin
         </mat-icon>
         </button>
-        <button mat-menu-item>{{email}}</button>
+        <button mat-menu-item>{{email1}}</button>
         <button mat-raised-button color="primary" style="margin-left:40px">Google Account</button>
         <mat-divider></mat-divider>
         <button mat-button style="margin-right:10px">Add Account</button> <button mat-button (click)="logout()" routerLink="/login">Sign Out</button>
@@ -38,6 +38,9 @@
       <a mat-list-item routerLink="reminder"><i class="material-icons">touch_app</i>Remainder</a>
       <mat-divider></mat-divider>
       <div class="label">Labels</div>
+      <div *ngFor="let item of test">
+        <mat-list-item><mat-icon><img src="assets/label.svg"></mat-icon>{{item.label}}</mat-list-item>
+        </div>
       <a mat-list-item (click)="openDialog()"><i class="material-icons">add</i>Create new label</a>
       <mat-divider></mat-divider>
       <a mat-list-item routerLink="archive"><i class="material-icons">archive</i>Archive</a>

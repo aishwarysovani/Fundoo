@@ -17,7 +17,7 @@
     <div>{{now}}</div>
     <button mat-icon-button matTooltip="remind me" [matMenuTriggerFor]="menu"><i class="material-icons">touch_app</i>
     </button>
-   
+    <button mat-icon-button matTooltip="collaborator"><img src="assets/personadd.svg"></button>
     <button mat-icon-button matTooltip="change color" [matMenuTriggerFor]="menuColor"><img src="assets/color_base.svg"></button>
     <button mat-icon-button matTooltip="archive"><img src="assets/archive.svg"></button>
     <button mat-icon-button matTooltip="more" [matMenuTriggerFor]="menuMore"><img src="assets/baseline-more.svg"></button>
@@ -96,7 +96,10 @@
 </mat-menu>
 
 <mat-menu #menuMore="matMenu">
-  <button mat-menu-item>add label</button>
+  <button mat-menu-item (click)="alllabel()">add label</button>
+  <div *ngFor="let item of test1">
+    <mat-list-item (click)="addlabel(item.label)"><mat-icon><img src="assets/label.svg"></mat-icon>{{item.label}}</mat-list-item>
+    </div>
   </mat-menu>
 
 
@@ -110,10 +113,16 @@
    <div *ngIf="item.remind_date!='undefined'"><mat-chip-list><mat-chip>{{item.remind_date}}
     <mat-icon matTooltip="delete reminder" (click)="deleteremider(item.id,item.remind_date)">clear</mat-icon></mat-chip>
     </mat-chip-list></div>
+    <div *ngIf="item.label!='undefined'">
+        <mat-chip-list><mat-chip>{{item.label}}
+            <mat-icon matTooltip="delete label" (click)="deletenotelabel(item.id,item.label)">clear</mat-icon>
+        </mat-chip></mat-chip-list>
+    </div>
   
       <div class="menu-div">
       <button mat-icon-button matTooltip="remind me" [matMenuTriggerFor]="menu">
       <i class="material-icons">touch_app</i></button>
+      <button mat-icon-button matTooltip="collaborator"><img src="assets/personadd.svg"></button>
       <button mat-icon-button matTooltip="change color" [matMenuTriggerFor]="menuColor1"><img src="assets/color_base.svg"></button>
       <button mat-icon-button matTooltip="archive" (click)="archive(item.id)"><img src="assets/archive.svg"></button>
       <button mat-icon-button matTooltip="more" [matMenuTriggerFor]="menuMore1"><img src="assets/baseline-more.svg"></button>
@@ -191,13 +200,12 @@
 
   <mat-menu #menuMore1="matMenu">
       <button mat-menu-item (click)="deletenote(item.id)">delete note</button>
-        <button mat-menu-item [matMenuTriggerFor]="labelmenu">add label</button>
+        <button mat-menu-item (click)="alllabel()">add label</button>
+        <div *ngFor="let item1 of test1">
+            <mat-list-item (click)="addnotelabel(item.id,item1.label)"><mat-icon><img src="assets/label.svg"></mat-icon>{{item1.label}}</mat-list-item>
+            </div>
     </mat-menu>
 
-    <mat-menu #labelmenu="matMenu">
-        <div>Label note</div>
-        <input matInput placeholder="Enter label name">
-        </mat-menu>
        
     </mat-card>
 </div>
@@ -208,11 +216,13 @@
     <input matInput type="text" value="{{item.title}}" placeholder="title">
     <input matInput type="text" value="{{item.note}}" placeholder="note">
     </mat-form-field>
-    <div><mat-chip-list><mat-chip>{{item.remind_date}}</mat-chip></mat-chip-list></div>
+    <div *ngIf="item.remind_date!='undefined'"><mat-chip-list><mat-chip>{{item.remind_date}}</mat-chip></mat-chip-list></div>
+    <div>
     <button mat-icon-button matTooltip="remind me">
       <i class="material-icons">touch_app</i></button>
       <button mat-icon-button matTooltip="change color" [matMenuTriggerFor]="menuColor"><img src="assets/color_base.svg"></button>
       <button mat-icon-button matTooltip="archive"><img src="assets/archive.svg"></button>
       <button mat-icon-button matTooltip="more" [matMenuTriggerFor]="menuMore1"><img src="assets/baseline-more.svg"></button>
+    </div>
     </mat-card>
 </div>

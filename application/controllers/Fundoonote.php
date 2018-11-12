@@ -28,6 +28,7 @@ class Fundoonote
             $date = $_POST['date'];
             $time = $_POST['Time'];
             $color = $_POST['color'];
+            $label=$_POST['label'];
             $val = "undefined";
 
             if ($title == $val || $note == $val) {
@@ -37,7 +38,7 @@ class Fundoonote
             else {
                 $date = str_replace("00:00:00", $time, $date);
                 $date = substr($date, 0, 24);
-                $sql = "INSERT INTO note (email,title,note,remind_date,color) VALUES ('$email','$title', '$note','$date','$color')";
+                $sql = "INSERT INTO note (email,title,note,remind_date,color,label) VALUES ('$email','$title', '$note','$date','$color','$label')";
                 $res = $this->connect->exec($sql);
 
                 $stmt = $this->connect->prepare("SELECT * From note where email='$email' and deleted IS NULL AND archive IS NULL");
@@ -496,6 +497,87 @@ class Fundoonote
             }
 
             $stmt = $this->connect->prepare("SELECT * From note where email='$email' AND deleted IS NULL AND archive='1'");
+            $stmt->execute();
+
+            $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $myjson = json_encode($myArray);
+            print($myjson);
+
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
+
+    public function addnotelabel()
+    {
+        try {
+            /**
+             * Database conncetion using PDO
+             */
+            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
+            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $this->connect->prepare("SELECT email FROM note");
+            $stmt->execute();
+            /**
+             * @var string $email
+             */
+            $email = $_POST['email'];
+            $id = $_POST['id'];
+            $label = $_POST['label'];
+
+            $result = array();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($result as $arr) {
+                if ($email == $arr['email']) {
+
+                    $sql = "UPDATE note SET label='$label' WHERE id='$id'";
+                    $res = $this->connect->exec($sql);
+
+                }
+            }
+            $stmt = $this->connect->prepare("SELECT * From note where email='$email' and deleted IS NULL and archive IS NULL");
+            $stmt->execute();
+
+            $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $myjson = json_encode($myArray);
+            print($myjson);
+
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
+
+    public function deletenotelabel()
+    {
+        try {
+            /**
+             * Database conncetion using PDO
+             */
+            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
+            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $this->connect->prepare("SELECT email FROM note");
+            $stmt->execute();
+            /**
+             * @var string $email
+             */
+            $email = $_POST['email'];
+            $id = $_POST['id'];
+            $label=$_POST['label'];
+
+            $result = array();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($result as $arr) {
+                if ($email == $arr['email']) {
+
+                    $sql = "UPDATE note SET label='undefined' WHERE id='$id'";
+                    $res = $this->connect->exec($sql);
+
+                    }
+            }
+
+            $stmt = $this->connect->prepare("SELECT * From note where email='$email' and deleted IS NULL and archive IS NULL");
             $stmt->execute();
 
             $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -3,6 +3,8 @@ import { ListviewService } from '../service/listview/listview.service';
 import { LoginService } from '../service/loginservice/login.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { EditlabelComponent } from '../editlabel/editlabel.component';
+import { NoteService } from '../service/note/note.service';
+
 
 export interface DialogData {
   label:any;
@@ -17,9 +19,10 @@ export class FundoonoteComponent implements OnInit {
   email:string=null;
   listicon:boolean=true;
   gridicon:boolean=false;
+  test:any;
   
   constructor(private listviewService:ListviewService,private loginService:LoginService,
-    public dialog: MatDialog) {    
+    public dialog: MatDialog,private noteservice:NoteService) {    
 }
 
 listview(): void {
@@ -38,8 +41,14 @@ gridview(): void {
 
   ngOnInit() {
     var email1=localStorage.getItem('email');
-    this.email=email1;
-}
+    const obs= this.noteservice.showlabel(email1);
+    obs.subscribe(
+    (status:any)=>{
+      this.test=status;
+      console.log(status);
+    });
+  }
+
 
 logout()
 {
@@ -53,7 +62,8 @@ openDialog(): void {
     width: '300px',
     data: {label:"hello"}
   });
-  dialogRef.afterClosed().subscribe(result => {
+  dialogRef.afterClosed().subscribe((result:any) => {
+    this.test=result;
     console.log('The dialog was closed');
   });
 }

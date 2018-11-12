@@ -22,6 +22,7 @@ export class NoteComponent implements OnInit {
 
   model:any={};
   test: any;
+  test1:any;
   panelOpenState = false;
   card3:boolean=false;
   card1:boolean=true;
@@ -35,6 +36,7 @@ export class NoteComponent implements OnInit {
   message: any;
   subscription: Subscription;
   getColor:any;
+  getlabel:any;
 
   constructor(private noteService: NoteService,private loginService: LoginService,
     private listviewService:ListviewService,public dialog: MatDialog) { 
@@ -87,7 +89,7 @@ export class NoteComponent implements OnInit {
     debugger;
     this.card1=true;
     this.card2=false;
-    const obs = this.noteService.getNoteValue(this.model,this.getColor);
+    const obs = this.noteService.getNoteValue(this.model,this.getColor,this.getlabel);
     obs.subscribe(
   (status:any)=>{
     this.test=status;
@@ -142,6 +144,41 @@ export class NoteComponent implements OnInit {
       (status:any)=>{
         this.test=status;
       });
+  }
+
+  alllabel()
+  {
+    const obs= this.noteService.showlabel(this.email);
+    obs.subscribe(
+    (status:any)=>{
+      this.test1=status;
+      console.log(status);
+    });
+  }
+
+  addnotelabel(id:any,label:any) {
+    debugger;
+    const obs= this.noteService.addnotelabel(id,label);
+    obs.subscribe(
+  (status:any)=>{
+    this.test=status;
+    console.log(status);
+  });
+  }
+
+  deletenotelabel(id,label)
+  {
+   const obsD=this.noteService.deletenotelabel(id,label);
+    obsD.subscribe(
+      (status:any)=>{
+        this.test=status;
+      });
+
+  }
+
+  addlabel(label:any)
+  {
+    this.getlabel=label;
   }
 
   setcolor(color: any) {

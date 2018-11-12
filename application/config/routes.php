@@ -71,6 +71,11 @@ $route['Fetcharchivenote'] ='/Fundoonote/allarchivenotes';
 $route['Unarchive'] ='/Fundoonote/unarchive';
 $route['Createlabel']='/Fundoolabel/createlabel';
 $route['Showlabel']='/Fundoolabel/showlabel';
+$route['Deletelabel']='/Fundoolabel/deletelabel';
+$route['Editlabel']='/Fundoolabel/editlabel';
+$route['Addnotelabel']='/Fundoonote/addnotelabel';
+$route['Deletenotelabel']='/Fundoonote/deletenotelabel';
+
 
 //$route['Form']='/Welcome/forgot_pass';
 // $route['Get'] = '/Login/get';

@@ -66,6 +66,71 @@ class Fundoolabel
         }
     }
 
+    public function deletelabel()
+    {
+        try {
+            /**
+             * Database conncetion using PDO
+             */
+            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
+            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            /**
+             * @var string $email
+             */
+            $email = $_POST['email'];
+            $id=$_POST['id'];
+            
+            $sql = "DELETE FROM  label  WHERE id='$id'";
+            $res = $this->connect->exec($sql);
+            
+
+            $stmt = $this->connect->prepare("SELECT * From label where email='$email' and label!='undefined'");
+            $stmt->execute();
+
+            $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $myjson = json_encode($myArray);
+            print($myjson);
+
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
+
+    public function editlabel()
+    {
+        try {
+            /**
+             * Database conncetion using PDO
+             */
+            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
+            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            /**
+             * @var string $email
+             */
+            $email = $_POST['email'];
+            $id = $_POST['id'];
+            $label = $_POST['label'];
+            
+            $sql = "UPDATE label set label='$label' WHERE id='$id'";
+            $res = $this->connect->exec($sql);
+            
+
+            $stmt = $this->connect->prepare("SELECT * From label where email='$email' and label!='undefined'");
+            $stmt->execute();
+
+            $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $myjson = json_encode($myArray);
+            print($myjson);
+
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
+
 }
 
 

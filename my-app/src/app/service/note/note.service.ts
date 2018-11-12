@@ -23,11 +23,15 @@ export class NoteService {
   private Unarchive='http://localhost/codeigniter/Unarchive';
   private createlabel='http://localhost/codeigniter/Createlabel';
   private Showlabel='http://localhost/codeigniter/Showlabel'
+  private Deletelabel='http://localhost/codeigniter/Deletelabel'
+  private Editlabel='http://localhost/codeigniter/Editlabel'
+  private Addnotelabel='http://localhost/codeigniter/Addnotelabel';
+  private Deletenotelabel='http://localhost/codeigniter/Deletenotelabel'
 
 
   constructor(private http: HttpClient) { }
 
-  getNoteValue(noteForm,color) {
+  getNoteValue(noteForm,color,label) {
     debugger;
     const newdata = new FormData();
     var email1=localStorage.getItem('email');
@@ -38,6 +42,7 @@ export class NoteService {
     newdata.append('date',noteForm.date);
     newdata.append('Time',noteForm.time);
     newdata.append('color',color);
+    newdata.append('label',label);
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
       };
@@ -226,4 +231,54 @@ export class NoteService {
             };
           return this.http.post(this.Showlabel, newdata,otheroption);
           }
+
+          deletelabel(id) {
+            const newdata = new FormData();
+            var email1=localStorage.getItem('email');
+            newdata.append('email',email1);
+            newdata.append('id',id);
+            const otheroption: any = {
+              'Content-Type': 'application/x-www-form-urlencoded'
+              };
+            return this.http.post(this.Deletelabel, newdata,otheroption);
+            }
+
+           editlabel(id,label) {
+              const newdata = new FormData();
+              var email1=localStorage.getItem('email');
+              newdata.append('email',email1);
+              newdata.append('id',id);
+              newdata.append('label',label);
+              const otheroption: any = {
+                'Content-Type': 'application/x-www-form-urlencoded'
+                };
+              return this.http.post(this.Editlabel, newdata,otheroption);
+              }
+
+              addnotelabel(id,label)
+              {
+                const newdata=new FormData();
+                var email1=localStorage.getItem('email');
+                newdata.append('email',email1);
+                newdata.append('id',id);
+                newdata.append('label',label);
+                const otheroption:any={
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                };
+              return this.http.post(this.Addnotelabel, newdata,otheroption);
+              }
+
+              deletenotelabel(id,label) {
+                const newdata = new FormData();
+                var email1=localStorage.getItem('email');
+                newdata.append('email',email1);
+                newdata.append('id',id);
+                newdata.append('label',label);
+                const otheroption: any = {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                  };
+                return this.http.post(this.Deletenotelabel, newdata,otheroption);
+                }
+    
+        
 }

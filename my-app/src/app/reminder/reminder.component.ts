@@ -33,6 +33,7 @@ export class ReminderComponent implements OnInit {
   message: any;
   subscription: Subscription;
   getColor:any;
+  label:any;
 
 
   constructor(private noteService: NoteService,private loginService: LoginService,
@@ -85,7 +86,7 @@ export class ReminderComponent implements OnInit {
     debugger;
     this.card1=true;
     this.card2=false;
-    const obs = this.noteService.getNoteValue(this.model,this.getColor);
+    const obs = this.noteService.getNoteValue(this.model,this.getColor,this.label);
     obs.subscribe(
   (status:any)=>{
     this.test=status;

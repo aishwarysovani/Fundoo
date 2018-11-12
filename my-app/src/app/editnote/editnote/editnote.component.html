@@ -4,7 +4,7 @@
   <mat-form-field appearance="null">
     <input matInput type="text" [(ngModel)]="data.item.note" placeholder="note">
   </mat-form-field>
-  <div>
+  <div *ngIf="data.item.remind_date!='undefined'">
     <mat-chip-list>
       <mat-chip>{{data.item.remind_date}}</mat-chip>
     </mat-chip-list>
