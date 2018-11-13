@@ -62,25 +62,11 @@ class Fundooacc
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach( $result as $arr){
                 if ($email == $arr['email'] && $password == $arr['pswd']) {
-                  
-                     // set response code
-                    //  http_response_code(200);
-                  
-                     // generate jwt
                      $jwt = $jwt1->createJwtToken($email);
                      $flag=true;
                 }
             }
 
-                // else{
- 
-                //     // set response code
-                //     http_response_code(401);
-                 
-                //     // tell the user login failed
-                //     // echo json_encode(array("message" => "Login failed."));
-                // }
-            
             if ($flag == true) {
                 $msg=array(
                     "message" => "Successful login.",

@@ -118,11 +118,14 @@
             <mat-icon matTooltip="delete label" (click)="deletenotelabel(item.id,item.label)">clear</mat-icon>
         </mat-chip></mat-chip-list>
     </div>
+    <div *ngIf="item.sharemail!='undefined'">
+            <button mat-mini-fab matTooltip={{item.sharemail}} (click)="opencollabDialog(item)">C</button>
+        </div>
   
       <div class="menu-div">
       <button mat-icon-button matTooltip="remind me" [matMenuTriggerFor]="menu">
       <i class="material-icons">touch_app</i></button>
-      <button mat-icon-button matTooltip="collaborator"><img src="assets/personadd.svg"></button>
+      <button mat-icon-button matTooltip="collaborator" (click)="opencollabDialog(item)"><img src="assets/personadd.svg"></button>
       <button mat-icon-button matTooltip="change color" [matMenuTriggerFor]="menuColor1"><img src="assets/color_base.svg"></button>
       <button mat-icon-button matTooltip="archive" (click)="archive(item.id)"><img src="assets/archive.svg"></button>
       <button mat-icon-button matTooltip="more" [matMenuTriggerFor]="menuMore1"><img src="assets/baseline-more.svg"></button>

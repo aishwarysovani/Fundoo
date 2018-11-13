@@ -6,6 +6,7 @@ import { ListviewService } from '../service/listview/listview.service';
 import { Subscription } from 'rxjs';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { EditnoteComponent } from '../editnote/editnote/editnote.component';
+import { CollaboratorComponent } from '../collaborator/collaborator.component';
 
 
 export interface DialogData {
@@ -84,6 +85,20 @@ export class NoteComponent implements OnInit {
   }
   // this.loginService.logout();
 
+
+  opencollabDialog(item): void {
+    debugger;
+    const dialogRef1 = this.dialog.open(CollaboratorComponent, {
+      height: 'flex',
+      width: '500px',
+      data: {item}
+    });
+    debugger;
+    dialogRef1.afterClosed().subscribe((status:any) => {
+      this.test=status;
+      console.log('The dialog was closed');
+    });
+  }
 
  takenote() {
     debugger;

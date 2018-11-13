@@ -15,6 +15,7 @@ import { EditlabelComponent } from './editlabel/editlabel.component';
 import { ReminderComponent } from './reminder/reminder.component';
 import { BinComponent } from './bin/bin.component';
 import { ArchiveComponent } from './archive/archive.component';
+import { CollaboratorComponent } from './collaborator/collaborator.component';
 
 
 const appRoutes: Routes =([
@@ -64,6 +65,9 @@ const appRoutes: Routes =([
   },
   {
     path:'editlabel',component:EditlabelComponent
+  },
+  {
+    path:'collaborator',component:CollaboratorComponent
   }
   
 ]);

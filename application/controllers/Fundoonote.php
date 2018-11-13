@@ -589,4 +589,136 @@ class Fundoonote
             die();
         }
     }
+
+    public function addcollaborator()
+    {
+        try {
+            /**
+             * Database conncetion using PDO
+             */
+            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
+            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $this->connect->prepare("SELECT email FROM note");
+            $stmt->execute();
+            /**
+             * @var string $email
+             */
+            $flag=false;
+            $email = $_POST['email'];
+            $id = $_POST['id'];
+            $sharemail = $_POST['sharemail'];
+
+            if($sharemail=='')
+            {
+                $msg="not sharemail";
+            }
+            else{
+            $stmt1 = $this->connect->prepare("SELECT email FROM register");
+            $stmt1->execute();
+            $res=array();
+            $res=$stmt1->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($res as $arr1) {
+                if ($sharemail == $arr1['email']) {
+                    $flag=true;
+                }
+            }
+            $result = array();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($result as $arr) {
+                if ($email == $arr['email']) {
+                    if($flag){
+
+                    $sql = "UPDATE note SET sharemail='$sharemail' WHERE id='$id'";
+                    $res = $this->connect->exec($sql);
+                }
+                }
+            }
+        
+            if($flag){
+            $sql1="INSERT INTO collaborator (noteid,email,sharemail) values ('$id','$email','$sharemail')";
+            $res=$this->connect->exec($sql1);
+
+            $stmt2 = $this->connect->prepare("SELECT * FROM note where id='$id'");
+            $stmt2->execute();
+            $res=array();
+            $res=$stmt2->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($res as $arr) {
+                $sql4="INSERT INTO note (email,title,note,remind_date,color,label,sharemail) values ('$arr[sharemail]','$arr[title]','$arr[note]','$arr[remind_date]','$arr[color]','$arr[label]','$arr[email]')";
+                $res=$this->connect->exec($sql4);
+            }
+            }
+        }
+
+            $stmt = $this->connect->prepare("SELECT * From collaborator where email='$email' and noteid='$id'");
+            $stmt->execute();
+
+            $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $myjson = json_encode($myArray);
+            print($myjson);
+        }catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
+
+    public function getcollaborator()
+    {
+        $headers = apache_request_headers();
+        foreach ($headers as $header => $value) {
+            $header = $value;
+        }
+        $token = $headers['Authorization'];
+        $token = substr($token, 7);
+        $jwt1 = new JWT();
+        $val = $jwt1->verify($token);
+        if ($val) {
+            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
+            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $email = $_POST['email'];
+            $id=$_POST['id'];
+            $stmt = $this->connect->prepare("SELECT * From collaborator where email='$email' and noteid='$id'");
+            $stmt->execute();
+
+            $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $myjson = json_encode($myArray);
+            print($myjson);
+        }
+    }
+
+    public function deletecollaborator()
+    {
+        try {
+            /**
+             * Database conncetion using PDO
+             */
+            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
+            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $this->connect->prepare("SELECT email FROM note");
+            $stmt->execute();
+            /**
+             * @var string $email
+             */
+            $email = $_POST['email'];
+            $noteid = $_POST['noteid'];
+            $sharemail = $_POST['sharemail'];
+
+            $sql = "UPDATE note SET sharemail='undefined' WHERE id='$noteid'";
+            $res = $this->connect->exec($sql);
+                
+
+            $sql1="DELETE FROM collaborator WHERE noteid='$noteid' AND email='$email'";
+            $res=$this->connect->exec($sql1);
+
+            $stmt = $this->connect->prepare("SELECT * From collaborator where email='$email' and noteid='$noteid'");
+            $stmt->execute();
+
+            $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $myjson = json_encode($myArray);
+            print($myjson);
+        }catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
+
 }

@@ -42,6 +42,7 @@ import { EditlabelComponent } from './editlabel/editlabel.component';
 import { ReminderComponent } from './reminder/reminder.component';
 import { BinComponent } from './bin/bin.component';
 import { ArchiveComponent } from './archive/archive.component';
+import { CollaboratorComponent } from './collaborator/collaborator.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { ArchiveComponent } from './archive/archive.component';
     EditlabelComponent,
     ReminderComponent,
     BinComponent,
-    ArchiveComponent
+    ArchiveComponent,
+    CollaboratorComponent
   ],
   imports: [
     BrowserModule,

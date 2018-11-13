@@ -41,6 +41,7 @@ gridview(): void {
 
   ngOnInit() {
     var email1=localStorage.getItem('email');
+    this.email=email1;
     const obs= this.noteservice.showlabel(email1);
     obs.subscribe(
     (status:any)=>{

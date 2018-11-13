@@ -75,6 +75,9 @@ $route['Deletelabel']='/Fundoolabel/deletelabel';
 $route['Editlabel']='/Fundoolabel/editlabel';
 $route['Addnotelabel']='/Fundoonote/addnotelabel';
 $route['Deletenotelabel']='/Fundoonote/deletenotelabel';
+$route['Addcollaborator']='/Fundoonote/addcollaborator';
+$route['Getcollaborator']='/Fundoonote/getcollaborator';
+$route['Deletecollaborator']='/Fundoonote/deletecollaborator';
 
 
 //$route['Form']='/Welcome/forgot_pass';

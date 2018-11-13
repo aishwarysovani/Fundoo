@@ -27,6 +27,10 @@ export class NoteService {
   private Editlabel='http://localhost/codeigniter/Editlabel'
   private Addnotelabel='http://localhost/codeigniter/Addnotelabel';
   private Deletenotelabel='http://localhost/codeigniter/Deletenotelabel'
+  private Addcollaborator='http://localhost/codeigniter/Addcollaborator';
+  private Getcollaborator='http://localhost/codeigniter/Getcollaborator';
+  private Deletecollaborator='http://localhost/codeigniter/Deletecollaborator';
+
 
 
   constructor(private http: HttpClient) { }
@@ -279,6 +283,46 @@ export class NoteService {
                   };
                 return this.http.post(this.Deletenotelabel, newdata,otheroption);
                 }
+            
+                addcollaborator(id,sharemail)
+              {
+                const newdata=new FormData();
+                var email1=localStorage.getItem('email');
+                newdata.append('email',email1);
+                newdata.append('id',id);
+                newdata.append('sharemail',sharemail);
+                const otheroption:any={
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                };
+              return this.http.post(this.Addcollaborator, newdata,otheroption);
+              }
+
+
+              getcollaborator(id)
+              {
+                const newdata=new FormData();
+                var email1=localStorage.getItem('email');
+                newdata.append('email',email1);
+                newdata.append('id',id);
+                const otheroption:any={
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                };
+              return this.http.post(this.Getcollaborator, newdata,otheroption);
+              }
+
+              deletecollaborator(noteid,sharemail)
+              {
+                const newdata=new FormData();
+                var email1=localStorage.getItem('email');
+                newdata.append('email',email1);
+                newdata.append('noteid',noteid);
+                newdata.append('sharemail',sharemail);
+                const otheroption:any={
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                };
+              return this.http.post(this.Deletecollaborator, newdata,otheroption);
+              }
+
     
         
 }
