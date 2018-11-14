@@ -94,7 +94,8 @@ export class NoteComponent implements OnInit {
       data: {item}
     });
     debugger;
-    dialogRef1.afterClosed().subscribe((status:any) => {
+    dialogRef1.afterClosed().subscribe(
+      (status:any) =>{
       this.test=status;
       console.log('The dialog was closed');
     });

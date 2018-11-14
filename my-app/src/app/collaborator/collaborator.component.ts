@@ -13,7 +13,7 @@ export class CollaboratorComponent implements OnInit {
   emailid:any;
   sharemail:any
   test:any;
- res:any;
+  res:any;
 
   constructor(public dialogRef1: MatDialogRef<CollaboratorComponent>,
     @Inject(MAT_DIALOG_DATA)public data: DialogData,private noteService:NoteService) { }

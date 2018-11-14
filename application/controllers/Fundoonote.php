@@ -607,6 +607,7 @@ class Fundoonote
             $email = $_POST['email'];
             $id = $_POST['id'];
             $sharemail = $_POST['sharemail'];
+            $token = md5($email);
 
             if($sharemail=='')
             {
@@ -646,6 +647,8 @@ class Fundoonote
                 $sql4="INSERT INTO note (email,title,note,remind_date,color,label,sharemail) values ('$arr[sharemail]','$arr[title]','$arr[note]','$arr[remind_date]','$arr[color]','$arr[label]','$arr[email]')";
                 $res=$this->connect->exec($sql4);
             }
+            $ref = new MailClass();
+            $ref->sendmail2($sharemail,$token);
             }
         }
 
