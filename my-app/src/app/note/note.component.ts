@@ -88,16 +88,16 @@ export class NoteComponent implements OnInit {
 
   opencollabDialog(item): void {
     debugger;
-    const dialogRef1 = this.dialog.open(CollaboratorComponent, {
+    const dialogRef = this.dialog.open(CollaboratorComponent, {
       height: 'flex',
       width: '500px',
       data: {item}
     });
     debugger;
-    dialogRef1.afterClosed().subscribe(
+    dialogRef.afterClosed().subscribe(
       (status:any) =>{
       this.test=status;
-      console.log('The dialog was closed');
+      console.log("notes"+status);
     });
   }
 

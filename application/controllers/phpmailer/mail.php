@@ -121,13 +121,12 @@ public function sendmail1($name,$email,$token){
         $msg = array(
         "mes1" => "Message has been sent",
         );
-        print json_encode($msg);
         //echo 'Message has been sent';
         } catch (Exception $e) {
         $msg = array(
         "mes1" => 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo,
         );
-        print json_encode($msg);
+        // print json_encode($msg);
         //echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
         }
         }

@@ -41,7 +41,7 @@ class Fundoonote
                 $sql = "INSERT INTO note (email,title,note,remind_date,color,label) VALUES ('$email','$title', '$note','$date','$color','$label')";
                 $res = $this->connect->exec($sql);
 
-                $stmt = $this->connect->prepare("SELECT * From note where email='$email' and deleted IS NULL AND archive IS NULL");
+                $stmt = $this->connect->prepare("SELECT * From note where email='$email' and deleted IS NULL AND archive IS NULL or sharemail='$email'");
                 $stmt->execute();
 
                 $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -69,7 +69,7 @@ class Fundoonote
             $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
             $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $email = $_POST['email'];
-            $statement = $this->connect->prepare("SELECT * From note where email='$email' AND deleted IS NULL AND archive IS NULL");
+            $statement = $this->connect->prepare("SELECT * From note where email='$email' AND deleted IS NULL AND archive IS NULL OR sharemail='$email'");
             if ($statement->execute()) {
                 $arr = $statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -142,7 +142,7 @@ class Fundoonote
 
                 }
             }
-            $stmt = $this->connect->prepare("SELECT * From note where email='$email' and deleted IS NULL and archive IS NULL");
+            $stmt = $this->connect->prepare("SELECT * From note where email='$email' and deleted IS NULL and archive IS NULL  or sharemail='$email'");
             $stmt->execute();
 
             $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -182,7 +182,7 @@ class Fundoonote
                     }
             }
 
-            $stmt = $this->connect->prepare("SELECT * From note where email='$email' AND deleted IS NULL");
+            $stmt = $this->connect->prepare("SELECT * From note where email='$email' AND deleted IS NULL  or sharemail='$email'");
             $stmt->execute();
 
             $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -229,7 +229,7 @@ class Fundoonote
                 }
             }
             }
-            $stmt = $this->connect->prepare("SELECT * From note where email='$email' and deleted IS NULL and archive IS NULL");
+            $stmt = $this->connect->prepare("SELECT * From note where email='$email' and deleted IS NULL and archive IS NULL  or sharemail='$email'");
             $stmt->execute();
 
             $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -270,7 +270,7 @@ class Fundoonote
                     }
             }
 
-            $stmt = $this->connect->prepare("SELECT * From note where email='$email' and deleted IS NULL and archive IS NULL");
+            $stmt = $this->connect->prepare("SELECT * From note where email='$email' and deleted IS NULL and archive IS NULL  or sharemail='$email'");
             $stmt->execute();
 
             $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -434,7 +434,7 @@ class Fundoonote
                     }
             }
 
-            $stmt = $this->connect->prepare("SELECT * From note where email='$email' AND deleted IS NULL AND archive IS NULL");
+            $stmt = $this->connect->prepare("SELECT * From note where email='$email' AND deleted IS NULL AND archive IS NULL  or sharemail='$email'");
             $stmt->execute();
 
             $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -536,7 +536,7 @@ class Fundoonote
 
                 }
             }
-            $stmt = $this->connect->prepare("SELECT * From note where email='$email' and deleted IS NULL and archive IS NULL");
+            $stmt = $this->connect->prepare("SELECT * From note where email='$email' and deleted IS NULL and archive IS NULL  or sharemail='$email'");
             $stmt->execute();
 
             $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -577,7 +577,7 @@ class Fundoonote
                     }
             }
 
-            $stmt = $this->connect->prepare("SELECT * From note where email='$email' and deleted IS NULL and archive IS NULL");
+            $stmt = $this->connect->prepare("SELECT * From note where email='$email' and deleted IS NULL and archive IS NULL  or sharemail='$email'");
             $stmt->execute();
 
             $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -639,14 +639,6 @@ class Fundoonote
             $sql1="INSERT INTO collaborator (noteid,email,sharemail) values ('$id','$email','$sharemail')";
             $res=$this->connect->exec($sql1);
 
-            $stmt2 = $this->connect->prepare("SELECT * FROM note where id='$id'");
-            $stmt2->execute();
-            $res=array();
-            $res=$stmt2->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($res as $arr) {
-                $sql4="INSERT INTO note (email,title,note,remind_date,color,label,sharemail) values ('$arr[sharemail]','$arr[title]','$arr[note]','$arr[remind_date]','$arr[color]','$arr[label]','$arr[email]')";
-                $res=$this->connect->exec($sql4);
-            }
             $ref = new MailClass();
             $ref->sendmail2($sharemail,$token);
             }

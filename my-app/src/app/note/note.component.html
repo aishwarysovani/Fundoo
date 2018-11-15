@@ -118,7 +118,7 @@
             <mat-icon matTooltip="delete label" (click)="deletenotelabel(item.id,item.label)">clear</mat-icon>
         </mat-chip></mat-chip-list>
     </div>
-    <div *ngIf="item.sharemail!='undefined'">
+    <div *ngIf="!((item.sharemail=='undefined') || (item.sharemail==NULL))">
             <button mat-mini-fab matTooltip={{item.sharemail}} (click)="opencollabDialog(item)">C</button>
         </div>
   

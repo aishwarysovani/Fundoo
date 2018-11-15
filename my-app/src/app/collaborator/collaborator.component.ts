@@ -15,7 +15,7 @@ export class CollaboratorComponent implements OnInit {
   test:any;
   res:any;
 
-  constructor(public dialogRef1: MatDialogRef<CollaboratorComponent>,
+  constructor(public dialogRef: MatDialogRef<CollaboratorComponent>,
     @Inject(MAT_DIALOG_DATA)public data: DialogData,private noteService:NoteService) { }
 
   ngOnInit() {
@@ -31,13 +31,16 @@ export class CollaboratorComponent implements OnInit {
   }
 
   onNoClick(): void {
-    debugger;
+   
     const obs1 = this.noteService.getNotes(this.emailid);
     obs1.subscribe(
   (status:any)=>{
+    debugger;
     this.res=status;
+    this.dialogRef.close(this.res);
   });
-    this.dialogRef1.close(this.res);
+  
+   
   }
 
   addcollaborator()
