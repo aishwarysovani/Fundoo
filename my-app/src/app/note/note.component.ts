@@ -42,6 +42,7 @@ export class NoteComponent implements OnInit {
   constructor(private noteService: NoteService,private loginService: LoginService,
     private listviewService:ListviewService,public dialog: MatDialog) { 
       this.subscription = this.listviewService.getview().subscribe(message => { this.message = message; });
+    
     }
 
     ngOnDestroy() {

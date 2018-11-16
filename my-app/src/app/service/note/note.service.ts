@@ -30,7 +30,8 @@ export class NoteService {
   private Addcollaborator='http://localhost/codeigniter/Addcollaborator';
   private Getcollaborator='http://localhost/codeigniter/Getcollaborator';
   private Deletecollaborator='http://localhost/codeigniter/Deletecollaborator';
-
+  private Addprofile='http://localhost/codeigniter/Addprofile';
+  private Showprofile='http://localhost/codeigniter/Showprofile';
 
 
   constructor(private http: HttpClient) { }
@@ -323,6 +324,29 @@ export class NoteService {
               return this.http.post(this.Deletecollaborator, newdata,otheroption);
               }
 
+              addprofile(email,imagefile)
+              {
+                debugger;
+                const newdata=new FormData();
+                newdata.append('email',email);
+                newdata.append('file',imagefile);
+                // newdata.append('imagefile',imagefile.name);
+                // newdata.append('imageloc',imagefile.webkitRelativePath);
+                const otheroption:any={
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                };
+              return this.http.post(this.Addprofile, newdata,otheroption);
+              }
+              
+              showprofile(email)
+              {
+                const newdata=new FormData();
+                newdata.append('email',email);
+                const otheroption:any={
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                };
+              return this.http.post(this.Showprofile, newdata,otheroption);
+              }
     
         
 }

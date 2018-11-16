@@ -78,7 +78,8 @@ $route['Deletenotelabel']='/Fundoonote/deletenotelabel';
 $route['Addcollaborator']='/Fundoonote/addcollaborator';
 $route['Getcollaborator']='/Fundoonote/getcollaborator';
 $route['Deletecollaborator']='/Fundoonote/deletecollaborator';
-
+$route['Addprofile']='/Fundooacc/addprofile';
+$route['Showprofile']='/Fundooacc/showprofile';
 
 //$route['Form']='/Welcome/forgot_pass';
 // $route['Get'] = '/Login/get';

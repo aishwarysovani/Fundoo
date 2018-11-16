@@ -21,9 +21,10 @@
       <i class="material-icons">account_circle</i></button>
     </mat-toolbar-row>
     <mat-menu #account="matMenu">
-        <button mat-fab style="margin-left:80px"><mat-icon>person_pin
-        </mat-icon>
+        <button (click)="fileInput.click()" mat-icon-button style="margin-left:80px" class="account-img">
+          <img src="/var/www/html/codeigniter/my-app/src/assets/profile/{{test1.profilepic}}">
         </button>
+        <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
         <button mat-menu-item>{{email}}</button>
         <button mat-raised-button color="primary" style="margin-left:40px">Google Account</button>
         <mat-divider></mat-divider>

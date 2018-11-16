@@ -118,9 +118,9 @@
             <mat-icon matTooltip="delete label" (click)="deletenotelabel(item.id,item.label)">clear</mat-icon>
         </mat-chip></mat-chip-list>
     </div>
-    <div *ngIf="!((item.sharemail=='undefined') || (item.sharemail==NULL))">
-            <button mat-mini-fab matTooltip={{item.sharemail}} (click)="opencollabDialog(item)">C</button>
-        </div>
+    <!-- <div>
+    <button mat-mini-fab matTooltip (click)="opencollabDialog(item)">C</button>
+    </div> -->
   
       <div class="menu-div">
       <button mat-icon-button matTooltip="remind me" [matMenuTriggerFor]="menu">
@@ -229,3 +229,5 @@
     </div>
     </mat-card>
 </div>
+
+

@@ -20,9 +20,20 @@ export class FundoonoteComponent implements OnInit {
   listicon:boolean=true;
   gridicon:boolean=false;
   test:any;
+  test1:any;
+  selectedFile: File;
   
   constructor(private listviewService:ListviewService,private loginService:LoginService,
-    public dialog: MatDialog,private noteservice:NoteService) {    
+    public dialog: MatDialog,private noteservice:NoteService) { 
+      debugger;
+      var email1=localStorage.getItem('email');
+      this.email=email1;
+      const obs= this.noteservice.showprofile(this.email);
+    obs.subscribe(
+    (status:any)=>{
+      this.test1=status;
+      console.log(status);
+    });   
 }
 
 listview(): void {
@@ -50,9 +61,17 @@ gridview(): void {
     });
   }
 
-  // onFileChanged(event) {
-  //   const file = event.target.files["/assets"];
-  // }
+ 
+  onFileChanged(event) {
+    debugger;
+    this.selectedFile = event.target.files[0];
+    const obs= this.noteservice.addprofile(this.email,this.selectedFile);
+    obs.subscribe(
+    (status:any)=>{
+      this.test=status;
+      console.log(status);
+    });
+  }
 
 
 logout()

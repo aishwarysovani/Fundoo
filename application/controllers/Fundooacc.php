@@ -183,4 +183,70 @@ class Fundooacc
         }
     }
 
+
+    public function addprofile()
+    {
+        try {
+            /**
+             * Database conncetion using PDO
+             */
+            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
+            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            /**
+             * @var string $email
+             */
+            $email = $_POST['email'];
+            $file=$_FILES['file'];
+            $name=$_FILES['file']['name'];
+            // $imagefile=$_POST['imagefile'];
+            // $imageloc=$_POST['imageloc']; 
+            $fileTmpName  = $_FILES['file']['tmp_name'];
+            //Set location for image
+            // $oldfileloc=$imageloc."/".$imagefile;
+            $newfileloc='/var/www/html/codeigniter/my-app/src/assets/profile/'.$_FILES['file']['name'];
+            $upload=move_uploaded_file($fileTmpName,$newfileloc);
+
+            $sql = "UPDATE register SET profilepic='$name' WHERE email='$email'";
+            $res = $this->connect->exec($sql);
+            
+            $stmt = $this->connect->prepare("SELECT * From register where email='$email'");
+            $stmt->execute();
+
+            $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $myjson = json_encode($myArray);
+            print($myjson);
+
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
+
+    public function showprofile()
+    {
+        try {
+            /**
+             * Database conncetion using PDO
+             */
+            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
+            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            /**
+             * @var string $email
+             */
+            $email = $_POST['email'];
+            
+            $stmt = $this->connect->prepare("SELECT * From register where email='$email'");
+            $stmt->execute();
+
+            $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $myjson = json_encode($myArray);
+            print($myjson);
+
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
 }
