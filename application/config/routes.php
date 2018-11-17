@@ -80,6 +80,7 @@ $route['Getcollaborator']='/Fundoonote/getcollaborator';
 $route['Deletecollaborator']='/Fundoonote/deletecollaborator';
 $route['Addprofile']='/Fundooacc/addprofile';
 $route['Showprofile']='/Fundooacc/showprofile';
+$route['Getcollaborator1']='/Fundoonote/getcollaborator1';
 
 //$route['Form']='/Welcome/forgot_pass';
 // $route['Get'] = '/Login/get';

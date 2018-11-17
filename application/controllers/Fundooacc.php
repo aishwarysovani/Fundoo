@@ -231,10 +231,6 @@ class Fundooacc
              */
             $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
             $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            /**
-             * @var string $email
-             */
             $email = $_POST['email'];
             
             $stmt = $this->connect->prepare("SELECT * From register where email='$email'");
@@ -243,7 +239,6 @@ class Fundooacc
             $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $myjson = json_encode($myArray);
             print($myjson);
-
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();

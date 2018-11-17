@@ -17,14 +17,31 @@
       <i class="material-icons">view_module</i></button>
    
     <span class="example-spacer"></span>
+    <div *ngFor="let item of test1">
+      <div *ngIf="item.profilepic!=NULL; else showicon">
     <button mat-icon-button matTooltip="account {{email}}" [matMenuTriggerFor]="account">
-      <i class="material-icons">account_circle</i></button>
+        <img class="account-img1" src="/assets/profile/{{item.profilepic}}"></button>
+      </div></div>
+      
+      <ng-template #showicon>
+      <button mat-icon-button matTooltip="account {{email}}" [matMenuTriggerFor]="account"><img src="/assets/accountcircle.svg"></button>
+      </ng-template>
+      
     </mat-toolbar-row>
     <mat-menu #account="matMenu">
-        <button (click)="fileInput.click()" mat-icon-button style="margin-left:80px" class="account-img">
-          <img src="/var/www/html/codeigniter/my-app/src/assets/profile/{{test1.profilepic}}">
-        </button>
+      
+      <div *ngFor="let item of test1">
+        <div *ngIf="item.profilepic!=NULL; else showicon1">
+        <button (click)="fileInput.click()" mat-icon-button style="margin-left:80px">
+            <img class="account-img" src="/assets/profile/{{item.profilepic}}">
+        </button></div></div>
         <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
+        
+        <ng-template #showicon1>
+        <button mat-icon-button (click)="fileInput.click()" style="margin-left:80px">
+          <img class="account-img" src="/assets/accountcircle.svg"></button>
+        </ng-template>
+        
         <button mat-menu-item>{{email}}</button>
         <button mat-raised-button color="primary" style="margin-left:40px">Google Account</button>
         <mat-divider></mat-divider>
@@ -51,6 +68,8 @@
   <mat-sidenav-content class="side-nav-exp1">
 
 <router-outlet></router-outlet>
-   
+
+
 </mat-sidenav-content>
+
 </mat-sidenav-container>

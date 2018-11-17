@@ -685,7 +685,7 @@ class Fundoonote
             $noteid = $_POST['noteid'];
             $sharemail = $_POST['sharemail'];
 
-            $sql1="DELETE FROM collaborator WHERE noteid='$noteid' AND email='$email'";
+            $sql1="DELETE FROM collaborator WHERE noteid='$noteid' AND email='$email' AND sharemail='$sharemail'";
             $res=$this->connect->exec($sql1);
 
             $stmt = $this->connect->prepare("SELECT * From collaborator where email='$email' and noteid='$noteid'");
@@ -697,6 +697,29 @@ class Fundoonote
         }catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
+        }
+    }
+
+    public function getcollaborator1()
+    {
+        $headers = apache_request_headers();
+        foreach ($headers as $header => $value) {
+            $header = $value;
+        }
+        $token = $headers['Authorization'];
+        $token = substr($token, 7);
+        $jwt1 = new JWT();
+        $val = $jwt1->verify($token);
+        if ($val) {
+            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
+            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $email = $_POST['email'];
+            $stmt = $this->connect->prepare("SELECT * From collaborator where email='$email' or sharemail='$email'");
+            $stmt->execute();
+
+            $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $myjson = json_encode($myArray);
+            print($myjson);
         }
     }
 

@@ -32,6 +32,7 @@ export class NoteService {
   private Deletecollaborator='http://localhost/codeigniter/Deletecollaborator';
   private Addprofile='http://localhost/codeigniter/Addprofile';
   private Showprofile='http://localhost/codeigniter/Showprofile';
+  private Getcollaborator1='http://localhost/codeigniter/Getcollaborator1';
 
 
   constructor(private http: HttpClient) { }
@@ -309,6 +310,16 @@ export class NoteService {
                   'Content-Type': 'application/x-www-form-urlencoded'
                 };
               return this.http.post(this.Getcollaborator, newdata,otheroption);
+              }
+
+              getcollaboratornote(email)
+              {
+                const newdata=new FormData();
+                newdata.append('email',email);
+                const otheroption:any={
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                };
+              return this.http.post(this.Getcollaborator1, newdata,otheroption);
               }
 
               deletecollaborator(noteid,sharemail)

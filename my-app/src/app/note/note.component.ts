@@ -43,6 +43,15 @@ export class NoteComponent implements OnInit {
     private listviewService:ListviewService,public dialog: MatDialog) { 
       this.subscription = this.listviewService.getview().subscribe(message => { this.message = message; });
     
+      var email1=localStorage.getItem('email');
+      this.email=email1;
+      debugger;
+      const obs1= this.noteService.getcollaboratornote(this.email);
+      obs1.subscribe(
+      (status:any)=>{
+        this.test1=status;
+        console.log(status);
+      });
     }
 
     ngOnDestroy() {
@@ -84,7 +93,7 @@ export class NoteComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
-  // this.loginService.logout();
+  
 
 
   opencollabDialog(item): void {
@@ -99,6 +108,12 @@ export class NoteComponent implements OnInit {
       (status:any) =>{
       this.test=status;
       console.log("notes"+status);
+      const obs1= this.noteService.getcollaboratornote(this.email);
+      obs1.subscribe(
+      (status:any)=>{
+        this.test1=status;
+        console.log(status);
+      });
     });
   }
 

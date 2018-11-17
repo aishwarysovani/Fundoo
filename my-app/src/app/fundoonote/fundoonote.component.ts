@@ -22,6 +22,7 @@ export class FundoonoteComponent implements OnInit {
   test:any;
   test1:any;
   selectedFile: File;
+  image:any;
   
   constructor(private listviewService:ListviewService,private loginService:LoginService,
     public dialog: MatDialog,private noteservice:NoteService) { 
@@ -31,6 +32,7 @@ export class FundoonoteComponent implements OnInit {
       const obs= this.noteservice.showprofile(this.email);
     obs.subscribe(
     (status:any)=>{
+      debugger;
       this.test1=status;
       console.log(status);
     });   
@@ -68,7 +70,7 @@ gridview(): void {
     const obs= this.noteservice.addprofile(this.email,this.selectedFile);
     obs.subscribe(
     (status:any)=>{
-      this.test=status;
+      this.test1=status;
       console.log(status);
     });
   }
