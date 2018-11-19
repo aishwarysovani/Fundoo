@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { EditnoteComponent } from '../editnote/editnote/editnote.component';
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
+import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
 
 
 export interface DialogData {
@@ -81,6 +82,10 @@ export class NoteComponent implements OnInit {
     this.test=status;
     console.log(status);
   });
+}
+
+drop(event: CdkDragDrop<string[]>) {
+  moveItemInArray(this.test, event.previousIndex, event.currentIndex);
 }
 
   openDialog(item): void {

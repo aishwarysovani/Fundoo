@@ -11,8 +11,8 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^6.1.0",
-    "@angular/cdk": "^6.2.0",
+    "@angular/animations": "^6.1.10",
+    "@angular/cdk": "^7.0.4",
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",
     "@angular/core": "^6.1.0",
@@ -24,6 +24,7 @@
     "@angular/router": "^6.1.0",
     "angular-6-social-login-v2": "^1.0.5",
     "core-js": "^2.5.4",
+    "dateformat": "^3.0.3",
     "ngx-material-timepicker": "^2.8.1",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"

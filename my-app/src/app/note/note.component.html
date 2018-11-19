@@ -104,8 +104,8 @@
 
 
 
-<div class="cards-div" *ngIf="!message">
-  <mat-card class="mat3" *ngFor="let item of test" [ngStyle]="{'background-color':item.color}">
+<div class="cards-div" *ngIf="!message" cdkDropList (cdkDropListDropped)="drop($event)">
+  <mat-card cdkDrag class="mat3" *ngFor="let item of test" [ngStyle]="{'background-color':item.color}">
     <mat-form-field appearance="null" (click)="openDialog(item)">
     <input matInput type="text" value="{{item.title}}" placeholder="title">
     <input matInput type="text" value="{{item.note}}" placeholder="note">
@@ -120,7 +120,7 @@
     </div>
     <div *ngFor="let item1 of test1">
         <div *ngIf="item1.noteid==item.id">
-    <button mat-mini-fab matTooltip matTooltip="{{item1.sharemail}}" (click)="opencollabDialog(item)">C</button>
+    <button mat-mini-fab matTooltip matTooltip="{{item1.sharemail}}" (click)="opencollabDialog(item)">{{item1.sharemail | slice:0:1}}</button>
     </div></div>
   
       <div class="menu-div">

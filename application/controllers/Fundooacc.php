@@ -199,11 +199,8 @@ class Fundooacc
             $email = $_POST['email'];
             $file=$_FILES['file'];
             $name=$_FILES['file']['name'];
-            // $imagefile=$_POST['imagefile'];
-            // $imageloc=$_POST['imageloc']; 
             $fileTmpName  = $_FILES['file']['tmp_name'];
             //Set location for image
-            // $oldfileloc=$imageloc."/".$imagefile;
             $newfileloc='/var/www/html/codeigniter/my-app/src/assets/profile/'.$_FILES['file']['name'];
             $upload=move_uploaded_file($fileTmpName,$newfileloc);
 

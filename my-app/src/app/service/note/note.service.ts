@@ -341,8 +341,6 @@ export class NoteService {
                 const newdata=new FormData();
                 newdata.append('email',email);
                 newdata.append('file',imagefile);
-                // newdata.append('imagefile',imagefile.name);
-                // newdata.append('imageloc',imagefile.webkitRelativePath);
                 const otheroption:any={
                   'Content-Type': 'application/x-www-form-urlencoded'
                 };

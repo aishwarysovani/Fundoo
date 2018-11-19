@@ -43,6 +43,7 @@ import { ReminderComponent } from './reminder/reminder.component';
 import { BinComponent } from './bin/bin.component';
 import { ArchiveComponent } from './archive/archive.component';
 import { CollaboratorComponent } from './collaborator/collaborator.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -85,8 +86,8 @@ import { CollaboratorComponent } from './collaborator/collaborator.component';
     MatNativeDateModule,
     NgxMaterialTimepickerModule.forRoot(),
     MatChipsModule,
-    MatDialogModule
-
+    MatDialogModule,
+    DragDropModule
   ],
   providers: [RegisterService,
               LoginService,
