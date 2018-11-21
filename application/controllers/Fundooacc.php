@@ -2,10 +2,12 @@
 include "phpmailer/mail.php";
 include_once 'jwt.php';
 defined('BASEPATH') or exit('No direct script access allowed');
+ use PHPUnit\Framework\TestCase;
+ include '/var/www/html/codeigniter/application/vendor/autoload.php';
 /**
  * @var string $connect
  */
-class Fundooacc 
+class Fundooacc extends \PHPUnit_Framework_TestCase
 {
     protected $connect;
 
@@ -56,6 +58,8 @@ class Fundooacc
             $stmt->execute();
 
             $email = $_POST['loginemail'];
+            //assertEquals($email,'aishsovani1234@gmail.com');
+
             $password = $_POST['password'];
             $result=array();
             $jwt1=new JWT();
