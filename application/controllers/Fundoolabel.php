@@ -21,10 +21,9 @@ class Fundoolabel
              * @var string $email,$label
              */
             $email = $_POST['email'];
-            $label=$_POST['label'];
-            $empty="undefined";
-            if($label!=$empty)
-            {
+            $label = $_POST['label'];
+            $empty = "undefined";
+            if ($label != $empty) {
                 $sql = "INSERT INTO label (email,label) VALUES ('$email','$label')";
                 $res = $this->connect->exec($sql);
             }
@@ -86,11 +85,10 @@ class Fundoolabel
              * @var int $id
              */
             $email = $_POST['email'];
-            $id=$_POST['id'];
-            
+            $id = $_POST['id'];
+
             $sql = "DELETE FROM  label  WHERE id='$id'";
             $res = $this->connect->exec($sql);
-            
 
             $stmt = $this->connect->prepare("SELECT * From label where email='$email' and label!='undefined'");
             $stmt->execute();
@@ -121,10 +119,9 @@ class Fundoolabel
             $email = $_POST['email'];
             $id = $_POST['id'];
             $label = $_POST['label'];
-            
+
             $sql = "UPDATE label set label='$label' WHERE id='$id'";
             $res = $this->connect->exec($sql);
-            
 
             $stmt = $this->connect->prepare("SELECT * From label where email='$email' and label!='undefined'");
             $stmt->execute();
@@ -140,6 +137,3 @@ class Fundoolabel
     }
 
 }
-
-
-?>

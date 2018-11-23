@@ -1,31 +1,42 @@
 <div>
   <b>Collaborators</b>
+</div>
+<mat-divider></mat-divider>
+
+<div style="padding-top:10px">
+  <button mat-mini-fab>
+    <mat-icon>person_pin
+    </mat-icon>
+  </button>
+  {{emailid}}(Owner)
+</div>
+
+
+<div style="padding-top:10px" *ngFor="let item of test">
+  <div *ngIf="item.sharemail!='undefined'">
+    <button mat-mini-fab>
+      <mat-icon>person_pin
+      </mat-icon>
+    </button> {{item.sharemail}}
+    <mat-icon style="padding-right:30px;" matTooltip="delete" (click)="deletecollaborator(item.noteid,item.sharemail)">clear</mat-icon>
   </div>
+</div>
+
+<div style="padding-top:10px">
+  <button mat-mini-fab disabled>
+    <mat-icon style="color:white">
+      <img src="assets/personadd.svg"></mat-icon>
+  </button>
+  <mat-form-field appearance="null">
+    <mat-label></mat-label>
+    <input matInput placeholder="Person or email to share" [(ngModel)]="sharemail">
+  </mat-form-field>
+</div>
+
+<div style="padding-top:20px;">
   <mat-divider></mat-divider>
-
-  <div style="padding-top:10px">
-      <button mat-mini-fab><mat-icon>person_pin
-        </mat-icon></button>
-    {{emailid}}(Owner)
-    </div>
-
-    
-    <div style="padding-top:10px" *ngFor="let item of test">
-        <div *ngIf="item.sharemail!='undefined'">
-        <button mat-mini-fab><mat-icon>person_pin
-          </mat-icon></button> {{item.sharemail}}
-          <mat-icon style="padding-right:30px;" matTooltip="delete" (click)="deletecollaborator(item.noteid,item.sharemail)">clear</mat-icon>
-      </div></div>
-
-    <div style="padding-top:10px">
-      <button mat-mini-fab disabled><mat-icon style="color:white">
-        <img src="assets/personadd.svg"></mat-icon></button>
-        <mat-form-field appearance="null"><mat-label></mat-label>
-       <input matInput placeholder="Person or email to share" [(ngModel)]="sharemail"></mat-form-field>
-      </div>
-
-      <div style="padding-top:20px;"><mat-divider></mat-divider></div>
-      <div>
-        <button mat-button (click)="onNoClick()">Cancel</button>
-        <button mat-button (click)="addcollaborator()">Save</button> 
-      </div>
+</div>
+<div>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="addcollaborator()">Save</button>
+</div>

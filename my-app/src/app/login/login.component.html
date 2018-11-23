@@ -1,43 +1,43 @@
 <br><br><br><br>
 <mat-card class="example-card">
-  
-<mat-card-title>
-<h3>Sign in</h3>
-</mat-card-title>
 
-<mat-card-content>
+  <mat-card-title>
+    <h3>Sign in</h3>
+  </mat-card-title>
+
+  <mat-card-content>
     <form class="example-form" [formGroup]="loginForm">
-     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Email-id:" [formControl]="email" required [(ngModel)]="loginForm.email">
-      <mat-error *ngIf="email.invalid">enter valid email id</mat-error>
-  </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Email-id:" [formControl]="email" required [(ngModel)]="loginForm.email">
+        <mat-error *ngIf="email.invalid">enter valid email id</mat-error>
+      </mat-form-field>
 
-  <mat-form-field class="example-full-width">
-      <input matInput placeholder="Password:" [type]="hide ? 'password' : 'text'" [formControl]="password" required [(ngModel)]="loginForm.password">
-      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-      <mat-error *ngIf="email.invalid">enter your password</mat-error>
-    </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Password:" [type]="hide ? 'password' : 'text'" [formControl]="password" required
+          [(ngModel)]="loginForm.password">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        <mat-error *ngIf="email.invalid">enter your password</mat-error>
+      </mat-form-field>
 
 
-<p align="right"><a routerLink="/forgotpassword">Forgot password?</a></p><br>
-<p class="msg_success">{{msg}}</p> 
-<button mat-button type="submit" (click)="login()" [disabled]="!(loginForm.email && loginForm.password)">SIGN IN</button>
-</form>
-  <h5>or Sign in with</h5>
-  
-  <mat-form-field class="share-link">
-    <input matInput placeholder="" value="">
-    <a target="_blank" href="https://www.facebook.com">
-     <mat-icon svgIcon="fb"></mat-icon>
+      <p align="right"><a routerLink="/forgotpassword">Forgot password?</a></p><br>
+      <p class="msg_success">{{msg}}</p>
+      <button mat-button type="submit" (click)="login()" [disabled]="!(loginForm.email && loginForm.password)">SIGN IN</button>
+    </form>
+    <h5>or Sign in with</h5>
+
+    <mat-form-field class="share-link">
+      <input matInput placeholder="" value="">
+      <a target="_blank" href="https://www.facebook.com">
+        <mat-icon svgIcon="fb"></mat-icon>
       </a>
       &nbsp; &nbsp; &nbsp;
       <a target="_blank" href="https://www.google.com/gmail">
         <mat-icon svgIcon="g"></mat-icon>
       </a>
-  </mat-form-field>
+    </mat-form-field>
 
-  <p align="right"> <a routerLink="/register">Sign Up?</a></p>
-  <br>
-</mat-card-content>
+    <p align="right"> <a routerLink="/register">Sign Up?</a></p>
+    <br>
+  </mat-card-content>
 </mat-card>
-

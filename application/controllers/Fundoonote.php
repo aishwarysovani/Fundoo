@@ -29,13 +29,12 @@ class Fundoonote
             $date = $_POST['date'];
             $time = $_POST['Time'];
             $color = $_POST['color'];
-            $label=$_POST['label'];
+            $label = $_POST['label'];
             $val = "undefined";
 
             if ($title == $val || $note == $val) {
                 $msg = array("mes" => "not pass value");
-            } 
-            else {
+            } else {
                 $date = str_replace("00:00:00", $time, $date);
                 $date = substr($date, 0, 24);
                 $sql = "INSERT INTO note (email,title,note,remind_date,color,label) VALUES ('$email','$title', '$note','$date','$color','$label')";
@@ -52,7 +51,7 @@ class Fundoonote
             $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $myjson = json_encode($myArray);
             print($myjson);
-            
+
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
@@ -167,7 +166,6 @@ class Fundoonote
         }
     }
 
-
     public function deletenote()
     {
         try {
@@ -192,7 +190,7 @@ class Fundoonote
                     $sql = "UPDATE note SET deleted='1' WHERE id='$id'";
                     $res = $this->connect->exec($sql);
 
-                    }
+                }
             }
 
             $stmt = $this->connect->prepare("SELECT * From note where email='$email' AND deleted IS NULL");
@@ -207,7 +205,6 @@ class Fundoonote
             die();
         }
     }
-
 
     public function changereminder()
     {
@@ -226,22 +223,21 @@ class Fundoonote
             $email = $_POST['email'];
             $id = $_POST['id'];
             $date = $_POST['date'];
-            $time=$_POST['time'];
-            $val="undefined";
-            if($date!=$val && $time!=$val)
-            {
-            $date = str_replace("00:00:00", $time, $date);
-            $date = substr($date, 0, 24);
-            $result = array();
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($result as $arr) {
-                if ($email == $arr['email']) {
+            $time = $_POST['time'];
+            $val = "undefined";
+            if ($date != $val && $time != $val) {
+                $date = str_replace("00:00:00", $time, $date);
+                $date = substr($date, 0, 24);
+                $result = array();
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($result as $arr) {
+                    if ($email == $arr['email']) {
 
-                    $sql = "UPDATE note SET remind_date='$date' WHERE id='$id'";
-                    $res = $this->connect->exec($sql);
+                        $sql = "UPDATE note SET remind_date='$date' WHERE id='$id'";
+                        $res = $this->connect->exec($sql);
 
+                    }
                 }
-            }
             }
             $stmt = $this->connect->prepare("SELECT * From note where email='$email' or id in(select noteid from collaborator where sharemail='$email') and deleted IS NULL and archive IS NULL");
             $stmt->execute();
@@ -272,7 +268,7 @@ class Fundoonote
              */
             $email = $_POST['email'];
             $id = $_POST['id'];
-            $date=$_POST['date'];
+            $date = $_POST['date'];
 
             $result = array();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -282,7 +278,7 @@ class Fundoonote
                     $sql = "UPDATE note SET remind_date='undefined' WHERE id='$id'";
                     $res = $this->connect->exec($sql);
 
-                    }
+                }
             }
 
             $stmt = $this->connect->prepare("SELECT * From note where email='$email'  or id in(select noteid from collaborator where sharemail='$email') and deleted IS NULL and archive IS NULL");
@@ -323,7 +319,6 @@ class Fundoonote
             }
         }
     }
-
 
     public function alldeletednotes()
     {
@@ -372,7 +367,7 @@ class Fundoonote
                     $sql = "DELETE from note WHERE id='$id'";
                     $res = $this->connect->exec($sql);
 
-                    }
+                }
             }
 
             $stmt = $this->connect->prepare("SELECT * From note where email='$email' AND deleted='1'");
@@ -412,7 +407,7 @@ class Fundoonote
                     $sql = "UPDATE note SET deleted=NULL WHERE id='$id'";
                     $res = $this->connect->exec($sql);
 
-                    }
+                }
             }
 
             $stmt = $this->connect->prepare("SELECT * From note where email='$email' AND deleted='1'");
@@ -452,7 +447,7 @@ class Fundoonote
                     $sql = "UPDATE note SET archive='1' WHERE id='$id'";
                     $res = $this->connect->exec($sql);
 
-                    }
+                }
             }
 
             $stmt = $this->connect->prepare("SELECT * From note where email='$email' AND deleted IS NULL AND archive IS NULL");
@@ -517,7 +512,7 @@ class Fundoonote
                     $sql = "UPDATE note SET archive=NULL WHERE id='$id'";
                     $res = $this->connect->exec($sql);
 
-                    }
+                }
             }
 
             $stmt = $this->connect->prepare("SELECT * From note where email='$email' AND deleted IS NULL AND archive='1'");
@@ -589,7 +584,7 @@ class Fundoonote
              */
             $email = $_POST['email'];
             $id = $_POST['id'];
-            $label=$_POST['label'];
+            $label = $_POST['label'];
 
             $result = array();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -599,7 +594,7 @@ class Fundoonote
                     $sql = "UPDATE note SET label='undefined' WHERE id='$id'";
                     $res = $this->connect->exec($sql);
 
-                    }
+                }
             }
 
             $stmt = $this->connect->prepare("SELECT * From note where email='$email' or id in(select noteid from collaborator where sharemail='$email') and deleted IS NULL and archive IS NULL");
@@ -629,35 +624,33 @@ class Fundoonote
              * @var string $email,$sharemail
              * @var integer $id
              */
-            $flag=false;
+            $flag = false;
             $email = $_POST['email'];
             $id = $_POST['id'];
             $sharemail = $_POST['sharemail'];
             $token = md5($email);
 
-            if($sharemail=='')
-            {
-                $msg="not sharemail";
-            }
-            else{
-            $stmt1 = $this->connect->prepare("SELECT email FROM register");
-            $stmt1->execute();
-            $res=array();
-            $res=$stmt1->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($res as $arr1) {
-                if ($sharemail == $arr1['email']) {
-                    $flag=true;
+            if ($sharemail == '') {
+                $msg = "not sharemail";
+            } else {
+                $stmt1 = $this->connect->prepare("SELECT email FROM register");
+                $stmt1->execute();
+                $res = array();
+                $res = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($res as $arr1) {
+                    if ($sharemail == $arr1['email']) {
+                        $flag = true;
+                    }
+                }
+
+                if ($flag) {
+                    $sql1 = "INSERT INTO collaborator (noteid,email,sharemail) values ('$id','$email','$sharemail')";
+                    $res = $this->connect->exec($sql1);
+
+                    $ref = new MailClass();
+                    $ref->sendmail2($sharemail, $token);
                 }
             }
-        
-            if($flag){
-            $sql1="INSERT INTO collaborator (noteid,email,sharemail) values ('$id','$email','$sharemail')";
-            $res=$this->connect->exec($sql1);
-
-            $ref = new MailClass();
-            $ref->sendmail2($sharemail,$token);
-            }
-        }
 
             $stmt = $this->connect->prepare("SELECT * From collaborator where email='$email' and noteid='$id'");
             $stmt->execute();
@@ -665,7 +658,7 @@ class Fundoonote
             $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $myjson = json_encode($myArray);
             print($myjson);
-        }catch (PDOException $e) {
+        } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
         }
@@ -685,7 +678,7 @@ class Fundoonote
             $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
             $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $email = $_POST['email'];
-            $id=$_POST['id'];
+            $id = $_POST['id'];
             $stmt = $this->connect->prepare("SELECT * From collaborator where email='$email' and noteid='$id'");
             $stmt->execute();
 
@@ -713,8 +706,8 @@ class Fundoonote
             $noteid = $_POST['noteid'];
             $sharemail = $_POST['sharemail'];
 
-            $sql1="DELETE FROM collaborator WHERE noteid='$noteid' AND email='$email' AND sharemail='$sharemail'";
-            $res=$this->connect->exec($sql1);
+            $sql1 = "DELETE FROM collaborator WHERE noteid='$noteid' AND email='$email' AND sharemail='$sharemail'";
+            $res = $this->connect->exec($sql1);
 
             $stmt = $this->connect->prepare("SELECT * From collaborator where email='$email' and noteid='$noteid'");
             $stmt->execute();
@@ -722,7 +715,7 @@ class Fundoonote
             $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $myjson = json_encode($myArray);
             print($myjson);
-        }catch (PDOException $e) {
+        } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
         }

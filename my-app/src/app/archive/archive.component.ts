@@ -8,29 +8,28 @@ import { LoginService } from '../service/loginservice/login.service';
   styleUrls: ['./archive.component.css']
 })
 export class ArchiveComponent implements OnInit {
-  email:string;
-  test:any;
+  email: string;
+  test: any;
 
-  constructor(private noteService: NoteService,private loginService: LoginService) { }
+  constructor(private noteService: NoteService, private loginService: LoginService) { }
 
   ngOnInit() {
-    var email1=localStorage.getItem('email');
-    this.email=email1;
+    var email1 = localStorage.getItem('email');
+    this.email = email1;
     const obs1 = this.noteService.getarchivedNotes(this.email);
     obs1.subscribe(
-  (status:any)=>{
-    this.test=status;
-    console.log(status);
-  });
-}
+      (status: any) => {
+        this.test = status;
+        console.log(status);
+      });
+  }
 
-unarchive(id)
-{
-  const obsD=this.noteService.unarchive(id);
-  obsD.subscribe(
-    (status:any)=>{
-      this.test=status;
-    });
-}
+  unarchive(id) {
+    const obsD = this.noteService.unarchive(id);
+    obsD.subscribe(
+      (status: any) => {
+        this.test = status;
+      });
+  }
 
 }

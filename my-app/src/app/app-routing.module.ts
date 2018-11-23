@@ -18,10 +18,10 @@ import { ArchiveComponent } from './archive/archive.component';
 import { CollaboratorComponent } from './collaborator/collaborator.component';
 
 
-const appRoutes: Routes =([
+const appRoutes: Routes = ([
   {
     path: '',
-    component: LoginComponent,pathMatch: 'full'
+    component: LoginComponent, pathMatch: 'full'
   },
   {
     path: 'register',
@@ -29,59 +29,56 @@ const appRoutes: Routes =([
   },
   {
     path: 'forgotpassword',
-    component:ForgotpasswordComponent
+    component: ForgotpasswordComponent
   },
   {
     path: 'resetpassword',
-    component:ResetpasswordComponent
-  },
-  // {
-  //   path: '',redirectTo:'login',pathMatch:'full'
-  // },
-  {
-    path:'login',component:LoginComponent
+    component: ResetpasswordComponent
   },
   {
-    path:'conformregi',component:ConformregiComponent
+    path: 'login', component: LoginComponent
   },
   {
-    path:'fundoonote',component:FundoonoteComponent,canActivate: [AuthGuard] ,
-    children:[{
-      path:'note',component:NoteComponent,pathMatch: 'full'
+    path: 'conformregi', component: ConformregiComponent
+  },
+  {
+    path: 'fundoonote', component: FundoonoteComponent, canActivate: [AuthGuard],
+    children: [{
+      path: 'note', component: NoteComponent, pathMatch: 'full'
     },
     {
-      path:'reminder',component:ReminderComponent
+      path: 'reminder', component: ReminderComponent
     },
     {
-      path:'bin',component:BinComponent
+      path: 'bin', component: BinComponent
     },
     {
-      path:'archive',component:ArchiveComponent
+      path: 'archive', component: ArchiveComponent
     }
-  ]
+    ]
   },
   {
-    path:'editnote',component:EditnoteComponent
+    path: 'editnote', component: EditnoteComponent
   },
   {
-    path:'editlabel',component:EditlabelComponent
+    path: 'editlabel', component: EditlabelComponent
   },
   {
-    path:'collaborator',component:CollaboratorComponent
+    path: 'collaborator', component: CollaboratorComponent
   }
-  
+
 ]);
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule, 
+    RouterModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     )
-    
+
   ],
   declarations: []
 })

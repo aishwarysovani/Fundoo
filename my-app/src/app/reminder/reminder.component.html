@@ -1,26 +1,26 @@
 <mat-card class="memory-card" *ngIf="card1" (click)="matCard1()">
-  <mat-card-content>
-    <div>Take a note..</div>
-  </mat-card-content>
+    <mat-card-content>
+        <div>Take a note..</div>
+    </mat-card-content>
 </mat-card>
 
 <mat-card class="text-card" *ngIf="card2">
-  <mat-card-content>
-    <div><input matInput placeholder="Title" required [(ngModel)]="model.title"></div>
-    <div>
-      <mat-form-field class="textfield-card" appearance="null">
-        <input matInput maxlength="300" placeholder="Take a note.." required [(ngModel)]="model.note">
-      </mat-form-field>
-    </div>
-    <div>{{now}}</div>
-    <button mat-icon-button matTooltip="remind me" [matMenuTriggerFor]="menu"><i class="material-icons">touch_app</i>
-    </button>
-   
-    <button mat-icon-button matTooltip="change color" [matMenuTriggerFor]="menuColor"><img src="assets/color_base.svg"></button>
-    <button mat-icon-button matTooltip="archive"><img src="assets/archive.svg"></button>
-    <button mat-icon-button matTooltip="more" [matMenuTriggerFor]="menuMore"><img src="assets/baseline-more.svg"></button>
-    <button class="button" mat-button (click)="takenote()">Close</button>
-  </mat-card-content>
+    <mat-card-content>
+        <div><input matInput placeholder="Title" required [(ngModel)]="model.title"></div>
+        <div>
+            <mat-form-field class="textfield-card" appearance="null">
+                <input matInput maxlength="300" placeholder="Take a note.." required [(ngModel)]="model.note">
+            </mat-form-field>
+        </div>
+        <div>{{now}}</div>
+        <button mat-icon-button matTooltip="remind me" [matMenuTriggerFor]="menu"><i class="material-icons">touch_app</i>
+        </button>
+
+        <button mat-icon-button matTooltip="change color" [matMenuTriggerFor]="menuColor"><img src="assets/color_base.svg"></button>
+        <button mat-icon-button matTooltip="archive"><img src="assets/archive.svg"></button>
+        <button mat-icon-button matTooltip="more" [matMenuTriggerFor]="menuMore"><img src="assets/baseline-more.svg"></button>
+        <button class="button" mat-button (click)="takenote()">Close</button>
+    </mat-card-content>
 </mat-card>
 
 <mat-menu #menu="matMenu">
@@ -29,182 +29,166 @@
     <button mat-menu-item>Tommarow</button>
     <button mat-menu-item>Next week</button>
     <button mat-menu-item [matMenuTriggerFor]="date"><i class="material-icons">access_time</i>
-      Select date and time
+        Select date and time
     </button>
-  </mat-menu>
+</mat-menu>
 
-  <mat-menu #date="matMenu">
-      <div style="margin-left:15px"><i class="material-icons">keyboard_backspace</i>
+<mat-menu #date="matMenu">
+    <div style="margin-left:15px"><i class="material-icons">keyboard_backspace</i>
         select date and time</div>
-        <div>
+    <div>
         <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="model.date">
         <mat-datepicker-toggle matSuffix [for]="picker" showTime="true"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-        </div>
-        <div>
-        <input [ngxTimepicker]="picker1" [(ngModel)]="model.time">
-      <ngx-material-timepicker #picker1></ngx-material-timepicker>
-      <button mat-menu-item>save</button>
     </div>
-    </mat-menu>
+    <div>
+        <input [ngxTimepicker]="picker1" [(ngModel)]="model.time">
+        <ngx-material-timepicker #picker1></ngx-material-timepicker>
+        <button mat-menu-item>save</button>
+    </div>
+</mat-menu>
 
 <mat-menu #menuColor="matMenu" class="colorCard">
-  <div class="colorDiv">
-      <button mat-menu-item (click)="setcolor('rgb(250, 250, 250)')" class="colorPalette"
-          style="background-color:rgb(250, 250, 250)">
-      </button>
-      <button mat-menu-item (click)="setcolor('rgb(255,240,245)')" class="colorPalette"
-          style="background-color: rgb(255,240,245)">
-      </button>
-      <button mat-menu-item (click)="setcolor(' rgb(230,230,250)')" class="colorPalette"
-          style="background-color:rgb(230,230,250)">
-      </button>
-      <button mat-menu-item (click)="setcolor(' rgb(255, 138, 128)')" class="colorPalette"
-          style="background-color:rgb(255, 138, 128)">
-      </button>
-  </div>
-  <div class="colorDiv">
-      <button mat-menu-item (click)="setcolor(' rgb(204, 255, 144)')" class="colorPalette"
-          style="background-color:rgb(204, 255, 144)">
-      </button>
-      <button mat-menu-item (click)="setcolor(' rgb(167, 255, 235)')" class="colorPalette"
-          style="background-color:rgb(167, 255, 235)">
-      </button>
-      <button mat-menu-item (click)="setcolor(' rgb(128, 216, 255)')" class="colorPalette"
-          style="background-color:rgb(128, 216, 255)">
-      </button>
-      <button mat-menu-item (click)="setcolor(' rgb(130, 177, 255)')" class="colorPalette"
-          style="background-color:rgb(130, 177, 255)">
-      </button>
-  </div>
-  <div class="colorDiv">
-      <button mat-menu-item (click)="setcolor(' rgb(179, 136, 255)')" class="colorPalette"
-          style="background-color:rgb(179, 136, 255)">
-      </button>
-      <button mat-menu-item (click)="setcolor(' rgb(248, 187, 208)')" class="colorPalette"
-          style="background-color:rgb(248, 187, 208)">
-      </button>
-      <button mat-menu-item (click)="setcolor(' rgb(215, 204, 200)')" class="colorPalette"
-          style="background-color:rgb(215, 204, 200)">
-      </button>
-      <button mat-menu-item (click)="setcolor(' rgb(207, 216, 220)')" class="colorPalette"
-          style="background-color:rgb(207, 216, 220)">
-      </button>
-  </div>
+    <div class="colorDiv">
+        <button mat-menu-item (click)="setcolor('rgb(250, 250, 250)')" class="colorPalette" style="background-color:rgb(250, 250, 250)">
+        </button>
+        <button mat-menu-item (click)="setcolor('rgb(255,240,245)')" class="colorPalette" style="background-color: rgb(255,240,245)">
+        </button>
+        <button mat-menu-item (click)="setcolor(' rgb(230,230,250)')" class="colorPalette" style="background-color:rgb(230,230,250)">
+        </button>
+        <button mat-menu-item (click)="setcolor(' rgb(255, 138, 128)')" class="colorPalette" style="background-color:rgb(255, 138, 128)">
+        </button>
+    </div>
+    <div class="colorDiv">
+        <button mat-menu-item (click)="setcolor(' rgb(204, 255, 144)')" class="colorPalette" style="background-color:rgb(204, 255, 144)">
+        </button>
+        <button mat-menu-item (click)="setcolor(' rgb(167, 255, 235)')" class="colorPalette" style="background-color:rgb(167, 255, 235)">
+        </button>
+        <button mat-menu-item (click)="setcolor(' rgb(128, 216, 255)')" class="colorPalette" style="background-color:rgb(128, 216, 255)">
+        </button>
+        <button mat-menu-item (click)="setcolor(' rgb(130, 177, 255)')" class="colorPalette" style="background-color:rgb(130, 177, 255)">
+        </button>
+    </div>
+    <div class="colorDiv">
+        <button mat-menu-item (click)="setcolor(' rgb(179, 136, 255)')" class="colorPalette" style="background-color:rgb(179, 136, 255)">
+        </button>
+        <button mat-menu-item (click)="setcolor(' rgb(248, 187, 208)')" class="colorPalette" style="background-color:rgb(248, 187, 208)">
+        </button>
+        <button mat-menu-item (click)="setcolor(' rgb(215, 204, 200)')" class="colorPalette" style="background-color:rgb(215, 204, 200)">
+        </button>
+        <button mat-menu-item (click)="setcolor(' rgb(207, 216, 220)')" class="colorPalette" style="background-color:rgb(207, 216, 220)">
+        </button>
+    </div>
 </mat-menu>
 
 <mat-menu #menuMore="matMenu">
-  <button mat-menu-item>add label</button>
-  </mat-menu>
+    <button mat-menu-item>add label</button>
+</mat-menu>
 
 
 
 <div class="cards-div" *ngIf="!message">
-  <mat-card class="mat3" *ngFor="let item of test" [ngStyle]="{'background-color':item.color}">
-    <mat-form-field appearance="null" (click)="openDialog(item)">
-    <input matInput type="text" value="{{item.title}}" placeholder="title">
-    <input matInput type="text" value="{{item.note}}" placeholder="note">
-  </mat-form-field>
-   <div *ngIf="item.remind_date!='undefined'"><mat-chip-list><mat-chip>{{item.remind_date}}
-    <mat-icon matTooltip="delete reminder" (click)="deleteremider(item.id,item.remind_date)">clear</mat-icon></mat-chip>
-    </mat-chip-list></div>
-  
-      <div class="menu-div">
-      <button mat-icon-button matTooltip="remind me" [matMenuTriggerFor]="menu">
-      <i class="material-icons">touch_app</i></button>
-      <button mat-icon-button matTooltip="change color" [matMenuTriggerFor]="menuColor1"><img src="assets/color_base.svg"></button>
-      <button mat-icon-button matTooltip="archive"><img src="assets/archive.svg"></button>
-      <button mat-icon-button matTooltip="more" [matMenuTriggerFor]="menuMore1"><img src="assets/baseline-more.svg"></button>
-      </div>
-<mat-menu #menuColor1="matMenu" class="colorCard">
-    <div class="colorDiv">
-        <button mat-menu-item (click)="changecolor(item.id,'rgb(250,250,250)')" class="colorPalette"
-            style="background-color:rgb(250, 250, 250)">
-        </button>
-        <button mat-menu-item (click)="changecolor(item.id,'rgb(255,240,245)')" class="colorPalette"
-            style="background-color: rgb(255,240,245)">
-        </button>
-        <button mat-menu-item (click)="changecolor(item.id,'rgb(230,230,250)')" class="colorPalette"
-            style="background-color:rgb(230,230,250)">
-        </button>
-        <button mat-menu-item (click)="changecolor(item.id,'rgb(255, 138, 128)')" class="colorPalette"
-            style="background-color:rgb(255, 138, 128)">
-        </button>
-    </div>
-    <div class="colorDiv">
-        <button mat-menu-item (click)="changecolor(item.id,'rgb(204, 255, 144)')" class="colorPalette"
-            style="background-color:rgb(204, 255, 144)">
-        </button>
-        <button mat-menu-item (click)="changecolor(item.id,'rgb(230,230,250)')" class="colorPalette"
-            style="background-color:rgb(167, 255, 235)">
-        </button>
-        <button mat-menu-item (click)="changecolor(item.id,'rgb(128, 216, 255)')" class="colorPalette"
-            style="background-color:rgb(128, 216, 255)">
-        </button>
-        <button mat-menu-item (click)="changecolor(item.id,'rgb(130, 177, 255)')" class="colorPalette"
-            style="background-color:rgb(130, 177, 255)">
-        </button>
-    </div>
-    <div class="colorDiv">
-        <button mat-menu-item (click)="changecolor(item.id,'rgb(179, 136, 255)')" class="colorPalette"
-            style="background-color:rgb(179, 136, 255)">
-        </button>
-        <button mat-menu-item (click)="changecolor(item.id,'rgb(248, 187, 208)')" class="colorPalette"
-            style="background-color:rgb(248, 187, 208)">
-        </button>
-        <button mat-menu-item (click)="changecolor(item.id,'rgb(215, 204, 200)')" class="colorPalette"
-            style="background-color:rgb(215, 204, 200)">
-        </button>
-        <button mat-menu-item (click)="changecolor(item.id,'rgb(207, 216, 220)')" class="colorPalette"
-            style="background-color:rgb(207, 216, 220)">
-        </button>
-    </div>
-  </mat-menu>
+    <mat-card class="mat3" *ngFor="let item of test" [ngStyle]="{'background-color':item.color}">
+        <mat-form-field appearance="null" (click)="openDialog(item)">
+            <input matInput type="text" value="{{item.title}}" placeholder="title">
+            <input matInput type="text" value="{{item.note}}" placeholder="note">
+        </mat-form-field>
+        <div *ngIf="item.remind_date!='undefined'">
+            <mat-chip-list>
+                <mat-chip>{{item.remind_date}}
+                    <mat-icon matTooltip="delete reminder" (click)="deleteremider(item.id,item.remind_date)">clear</mat-icon>
+                </mat-chip>
+            </mat-chip-list>
+        </div>
+
+        <div class="menu-div">
+            <button mat-icon-button matTooltip="remind me" [matMenuTriggerFor]="menu">
+                <i class="material-icons">touch_app</i></button>
+            <button mat-icon-button matTooltip="change color" [matMenuTriggerFor]="menuColor1"><img src="assets/color_base.svg"></button>
+            <button mat-icon-button matTooltip="archive"><img src="assets/archive.svg"></button>
+            <button mat-icon-button matTooltip="more" [matMenuTriggerFor]="menuMore1"><img src="assets/baseline-more.svg"></button>
+        </div>
+        <mat-menu #menuColor1="matMenu" class="colorCard">
+            <div class="colorDiv">
+                <button mat-menu-item (click)="changecolor(item.id,'rgb(250,250,250)')" class="colorPalette" style="background-color:rgb(250, 250, 250)">
+                </button>
+                <button mat-menu-item (click)="changecolor(item.id,'rgb(255,240,245)')" class="colorPalette" style="background-color: rgb(255,240,245)">
+                </button>
+                <button mat-menu-item (click)="changecolor(item.id,'rgb(230,230,250)')" class="colorPalette" style="background-color:rgb(230,230,250)">
+                </button>
+                <button mat-menu-item (click)="changecolor(item.id,'rgb(255, 138, 128)')" class="colorPalette" style="background-color:rgb(255, 138, 128)">
+                </button>
+            </div>
+            <div class="colorDiv">
+                <button mat-menu-item (click)="changecolor(item.id,'rgb(204, 255, 144)')" class="colorPalette" style="background-color:rgb(204, 255, 144)">
+                </button>
+                <button mat-menu-item (click)="changecolor(item.id,'rgb(230,230,250)')" class="colorPalette" style="background-color:rgb(167, 255, 235)">
+                </button>
+                <button mat-menu-item (click)="changecolor(item.id,'rgb(128, 216, 255)')" class="colorPalette" style="background-color:rgb(128, 216, 255)">
+                </button>
+                <button mat-menu-item (click)="changecolor(item.id,'rgb(130, 177, 255)')" class="colorPalette" style="background-color:rgb(130, 177, 255)">
+                </button>
+            </div>
+            <div class="colorDiv">
+                <button mat-menu-item (click)="changecolor(item.id,'rgb(179, 136, 255)')" class="colorPalette" style="background-color:rgb(179, 136, 255)">
+                </button>
+                <button mat-menu-item (click)="changecolor(item.id,'rgb(248, 187, 208)')" class="colorPalette" style="background-color:rgb(248, 187, 208)">
+                </button>
+                <button mat-menu-item (click)="changecolor(item.id,'rgb(215, 204, 200)')" class="colorPalette" style="background-color:rgb(215, 204, 200)">
+                </button>
+                <button mat-menu-item (click)="changecolor(item.id,'rgb(207, 216, 220)')" class="colorPalette" style="background-color:rgb(207, 216, 220)">
+                </button>
+            </div>
+        </mat-menu>
 
 
-  <mat-menu #menu="matMenu">
-      <div style="margin-left:15px">Remainder:</div>
-      <button mat-menu-item>Later today</button>
-      <button mat-menu-item>Tommarow</button>
-      <button mat-menu-item>Next week</button>
-      <button mat-menu-item [matMenuTriggerFor]="date"><i class="material-icons">access_time</i>
-        Select date and time
-      </button>
-    </mat-menu>
-  
-    <mat-menu #date="matMenu">
-        <div style="margin-left:15px"><i class="material-icons">keyboard_backspace</i>
-          select date and time</div>
-          <div>
-          <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="model.date">
-          <mat-datepicker-toggle matSuffix [for]="picker" showTime="true"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-          </div>
-          <div>
-          <input [ngxTimepicker]="picker1" [(ngModel)]="model.time">
-        <ngx-material-timepicker #picker1></ngx-material-timepicker>
-        <button mat-menu-item (click)="changereminder(item.id,model.date,model.time)">save</button>
-      </div>
-      </mat-menu>
+        <mat-menu #menu="matMenu">
+            <div style="margin-left:15px">Remainder:</div>
+            <button mat-menu-item>Later today</button>
+            <button mat-menu-item>Tommarow</button>
+            <button mat-menu-item>Next week</button>
+            <button mat-menu-item [matMenuTriggerFor]="date"><i class="material-icons">access_time</i>
+                Select date and time
+            </button>
+        </mat-menu>
 
-  <mat-menu #menuMore1="matMenu">
-      <button mat-menu-item (click)="deletenote(item.id)">delete note</button>
-        <button mat-menu-item>add label</button>
-    </mat-menu>
-</mat-card>
+        <mat-menu #date="matMenu">
+            <div style="margin-left:15px"><i class="material-icons">keyboard_backspace</i>
+                select date and time</div>
+            <div>
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="model.date">
+                <mat-datepicker-toggle matSuffix [for]="picker" showTime="true"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </div>
+            <div>
+                <input [ngxTimepicker]="picker1" [(ngModel)]="model.time">
+                <ngx-material-timepicker #picker1></ngx-material-timepicker>
+                <button mat-menu-item (click)="changereminder(item.id,model.date,model.time)">save</button>
+            </div>
+        </mat-menu>
+
+        <mat-menu #menuMore1="matMenu">
+            <button mat-menu-item (click)="deletenote(item.id)">delete note</button>
+            <button mat-menu-item>add label</button>
+        </mat-menu>
+    </mat-card>
 </div>
 
 <div class="cards-div-list" *ngIf="message">
-  <mat-card class="mat3-list" *ngFor="let item of test" [ngStyle]="{'background-color':item.color}">
-    <mat-form-field appearance="null" (click)="openDialog(item)">
-    <input matInput type="text" value="{{item.title}}" placeholder="title">
-    <input matInput type="text" value="{{item.note}}" placeholder="note">
-    </mat-form-field>
-    <div><mat-chip-list><mat-chip>{{item.remind_date}}</mat-chip></mat-chip-list></div>
-    <button mat-icon-button matTooltip="remind me">
-      <i class="material-icons">touch_app</i></button>
-      <button mat-icon-button matTooltip="change color" [matMenuTriggerFor]="menuColor"><img src="assets/color_base.svg"></button>
-      <button mat-icon-button matTooltip="archive"><img src="assets/archive.svg"></button>
-      <button mat-icon-button matTooltip="more" [matMenuTriggerFor]="menuMore1"><img src="assets/baseline-more.svg"></button>
+    <mat-card class="mat3-list" *ngFor="let item of test" [ngStyle]="{'background-color':item.color}">
+        <mat-form-field appearance="null" (click)="openDialog(item)">
+            <input matInput type="text" value="{{item.title}}" placeholder="title">
+            <input matInput type="text" value="{{item.note}}" placeholder="note">
+        </mat-form-field>
+        <div>
+            <mat-chip-list>
+                <mat-chip>{{item.remind_date}}</mat-chip>
+            </mat-chip-list>
+        </div>
+        <button mat-icon-button matTooltip="remind me">
+            <i class="material-icons">touch_app</i></button>
+        <button mat-icon-button matTooltip="change color" [matMenuTriggerFor]="menuColor"><img src="assets/color_base.svg"></button>
+        <button mat-icon-button matTooltip="archive"><img src="assets/archive.svg"></button>
+        <button mat-icon-button matTooltip="more" [matMenuTriggerFor]="menuMore1"><img src="assets/baseline-more.svg"></button>
     </mat-card>
 </div>

@@ -2,8 +2,8 @@
 include "phpmailer/mail.php";
 include_once 'jwt.php';
 defined('BASEPATH') or exit('No direct script access allowed');
- use PHPUnit\Framework\TestCase;
- include '/var/www/html/codeigniter/application/vendor/autoload.php';
+
+include '/var/www/html/codeigniter/application/vendor/autoload.php';
 /**
  * @var string $connect
  */
@@ -34,8 +34,8 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
             // use exec() because no results are returned
             $res = $this->connect->exec($sql);
             $ref = new MailClass();
-           
-            $ref->sendmail1($name, $email,$token);
+
+            $ref->sendmail1($name, $email, $token);
             json_encode($res);
             echo "New record created successfully";
             $connect = null;
@@ -61,24 +61,24 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
             //assertEquals($email,'aishsovani1234@gmail.com');
 
             $password = $_POST['password'];
-            $result=array();
-            $jwt1=new JWT();
+            $result = array();
+            $jwt1 = new JWT();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            foreach( $result as $arr){
+            foreach ($result as $arr) {
                 if ($email == $arr['email'] && $password == $arr['pswd']) {
-                     $jwt = $jwt1->createJwtToken($email);
-                     $flag=true;
+                    $jwt = $jwt1->createJwtToken($email);
+                    $flag = true;
                 }
             }
 
             if ($flag == true) {
-                $msg=array(
+                $msg = array(
                     "message" => "Successful login.",
-                    "jwt" => $jwt
+                    "jwt" => $jwt,
                 );
                 print json_encode($msg);
             } else {
-                $msg=array("message" => "Login failed.");
+                $msg = array("message" => "Login failed.");
                 print json_encode($msg);
             }
         } catch (PDOException $e) {
@@ -133,18 +133,18 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
              */
             $email = $_POST['resetemail'];
             $password = $_POST['resetpassword'];
-            $token=$_POST['token'];
+            $token = $_POST['token'];
             $stmt = $this->connect->prepare("SELECT token FROM register");
             $stmt->execute();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 if ($token == $result['token']) {
-            //echo $name .$email.$password.$number ;
-            $sql = "UPDATE register SET pswd='$password',token=null WHERE email='$email'";
-            // use exec() because no results are returned
-            $res = $this->connect->exec($sql);
-            json_encode($res);
-            echo "Record updated successfully";
-            $connect = null;
+                    //echo $name .$email.$password.$number ;
+                    $sql = "UPDATE register SET pswd='$password',token=null WHERE email='$email'";
+                    // use exec() because no results are returned
+                    $res = $this->connect->exec($sql);
+                    json_encode($res);
+                    echo "Record updated successfully";
+                    $connect = null;
                 }
             }
         } catch (PDOException $e) {
@@ -152,7 +152,6 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
             die();
         }
     }
-
 
     public function getconformValue()
     {
@@ -166,18 +165,18 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
             /**
              * @var string $token
              */
-            $token=$_POST['token1'];
-            $status1='1';
+            $token = $_POST['token1'];
+            $status1 = '1';
             $stmt = $this->connect->prepare("SELECT token FROM register");
             $stmt->execute();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 if ($token == $result['token']) {
-            $sql = "UPDATE register SET isSet='$status1',token=null WHERE token='$token'";
-            // use exec() because no results are returned
-            $res = $this->connect->exec($sql);
-            json_encode($res);
-            echo "Record updated successfully";
-            $connect = null;
+                    $sql = "UPDATE register SET isSet='$status1',token=null WHERE token='$token'";
+                    // use exec() because no results are returned
+                    $res = $this->connect->exec($sql);
+                    json_encode($res);
+                    echo "Record updated successfully";
+                    $connect = null;
                 }
             }
         } catch (PDOException $e) {
@@ -185,7 +184,6 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
             die();
         }
     }
-
 
     public function addprofile()
     {
@@ -200,16 +198,16 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
              * @var string $email,$file,$name
              */
             $email = $_POST['email'];
-            $file=$_FILES['file'];
-            $name=$_FILES['file']['name'];
-            $fileTmpName  = $_FILES['file']['tmp_name'];
+            $file = $_FILES['file'];
+            $name = $_FILES['file']['name'];
+            $fileTmpName = $_FILES['file']['tmp_name'];
             //Set location for image
-            $newfileloc='/var/www/html/codeigniter/my-app/src/assets/profile/'.$_FILES['file']['name'];
-            $upload=move_uploaded_file($fileTmpName,$newfileloc);
+            $newfileloc = '/var/www/html/codeigniter/my-app/src/assets/profile/' . $_FILES['file']['name'];
+            $upload = move_uploaded_file($fileTmpName, $newfileloc);
 
             $sql = "UPDATE register SET profilepic='$name' WHERE email='$email'";
             $res = $this->connect->exec($sql);
-            
+
             $stmt = $this->connect->prepare("SELECT * From register where email='$email'");
             $stmt->execute();
 
@@ -235,7 +233,7 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
              * @var string $email
              */
             $email = $_POST['email'];
-            
+
             $stmt = $this->connect->prepare("SELECT * From register where email='$email'");
             $stmt->execute();
 
