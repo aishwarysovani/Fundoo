@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+/**
+ * @var string $connect
+ */
 class Fundoolabel
 {
     protected $connect;
@@ -15,7 +18,7 @@ class Fundoolabel
             $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             /**
-             * @var string $email
+             * @var string $email,$label
              */
             $email = $_POST['email'];
             $label=$_POST['label'];
@@ -53,6 +56,9 @@ class Fundoolabel
              */
             $email = $_POST['email'];
 
+            /**
+             * Query to perfom selection operation from database table
+             */
             $stmt = $this->connect->prepare("SELECT * From label where email='$email' and label!='undefined'");
             $stmt->execute();
 
@@ -77,6 +83,7 @@ class Fundoolabel
 
             /**
              * @var string $email
+             * @var int $id
              */
             $email = $_POST['email'];
             $id=$_POST['id'];
@@ -108,7 +115,8 @@ class Fundoolabel
             $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             /**
-             * @var string $email
+             * @var string $email,$label
+             * @var integer $id
              */
             $email = $_POST['email'];
             $id = $_POST['id'];

@@ -20,7 +20,8 @@ class Fundoonote
             $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             /**
-             * @var string $email
+             * @var string $email,$title,$note,$label,$color
+             * @var integer $date,$time
              */
             $email = $_POST['email'];
             $title = $_POST['title'];
@@ -42,6 +43,9 @@ class Fundoonote
 
             }
 
+            /**
+             * $stmt perform query execuction to selection from database
+             */
             $stmt = $this->connect->prepare("SELECT * From note where email='$email' or id in(select noteid from collaborator where sharemail='$email') and deleted IS NULL AND archive IS NULL");
             $stmt->execute();
 
@@ -57,10 +61,16 @@ class Fundoonote
 
     public function allnotes()
     {
+        /**
+         * fetch header section from from end service
+         */
         $headers = apache_request_headers();
         foreach ($headers as $header => $value) {
             $header = $value;
         }
+        /**
+         * @var string $token
+         */
         $token = $headers['Authorization'];
         $token = substr($token, 7);
         $jwt1 = new JWT();
@@ -91,7 +101,8 @@ class Fundoonote
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
             /**
-             * @var string $email
+             * @var string $email,$title,$note,$color
+             * @var integer $id
              */
             $email = $_POST['email'];
             $id = $_POST['id'];
@@ -126,7 +137,8 @@ class Fundoonote
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
             /**
-             * @var string $email
+             * @var string $email,$color
+             * @var integer $id
              */
             $email = $_POST['email'];
             $id = $_POST['id'];
@@ -168,6 +180,7 @@ class Fundoonote
             $stmt->execute();
             /**
              * @var string $email
+             * @var integer $id
              */
             $email = $_POST['email'];
             $id = $_POST['id'];
@@ -208,6 +221,7 @@ class Fundoonote
             $stmt->execute();
             /**
              * @var string $email
+             * @var integer $id,$date,$time
              */
             $email = $_POST['email'];
             $id = $_POST['id'];
@@ -254,6 +268,7 @@ class Fundoonote
             $stmt->execute();
             /**
              * @var string $email
+             * @var integer $id,$date
              */
             $email = $_POST['email'];
             $id = $_POST['id'];
@@ -289,6 +304,9 @@ class Fundoonote
         foreach ($headers as $header => $value) {
             $header = $value;
         }
+        /**
+         * @var string $token
+         */
         $token = $headers['Authorization'];
         $token = substr($token, 7);
         $jwt1 = new JWT();
@@ -342,6 +360,7 @@ class Fundoonote
             $stmt->execute();
             /**
              * @var string $email
+             * @var integer $id
              */
             $email = $_POST['email'];
             $id = $_POST['id'];
@@ -381,6 +400,7 @@ class Fundoonote
             $stmt->execute();
             /**
              * @var string $email
+             * @var integer $id
              */
             $email = $_POST['email'];
             $id = $_POST['id'];
@@ -420,6 +440,7 @@ class Fundoonote
             $stmt->execute();
             /**
              * @var string $email
+             * @var integer $id
              */
             $email = $_POST['email'];
             $id = $_POST['id'];
@@ -453,6 +474,9 @@ class Fundoonote
         foreach ($headers as $header => $value) {
             $header = $value;
         }
+        /**
+         * @var string $token
+         */
         $token = $headers['Authorization'];
         $token = substr($token, 7);
         $jwt1 = new JWT();
@@ -520,7 +544,7 @@ class Fundoonote
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
             /**
-             * @var string $email
+             * @var string $email,$label
              */
             $email = $_POST['email'];
             $id = $_POST['id'];
@@ -560,7 +584,8 @@ class Fundoonote
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
             /**
-             * @var string $email
+             * @var string $email,$label
+             * @var integer $id
              */
             $email = $_POST['email'];
             $id = $_POST['id'];
@@ -601,7 +626,8 @@ class Fundoonote
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
             /**
-             * @var string $email
+             * @var string $email,$sharemail
+             * @var integer $id
              */
             $flag=false;
             $email = $_POST['email'];
@@ -680,7 +706,8 @@ class Fundoonote
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
             /**
-             * @var string $email
+             * @var string $email,$sharemail
+             * @var integer $noteid
              */
             $email = $_POST['email'];
             $noteid = $_POST['noteid'];
@@ -707,6 +734,9 @@ class Fundoonote
         foreach ($headers as $header => $value) {
             $header = $value;
         }
+        /**
+         * @var string $token
+         */
         $token = $headers['Authorization'];
         $token = substr($token, 7);
         $jwt1 = new JWT();

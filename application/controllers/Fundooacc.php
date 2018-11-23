@@ -232,6 +232,9 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
              */
             $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
             $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            /**
+             * @var string $email
+             */
             $email = $_POST['email'];
             
             $stmt = $this->connect->prepare("SELECT * From register where email='$email'");
