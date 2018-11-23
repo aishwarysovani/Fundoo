@@ -12,6 +12,11 @@ import { Observable, throwError } from 'rxjs';
     styleUrls: ['./register.component.css'],
     providers: [RegisterService]
 })
+
+/**
+ * @var error
+ * @var hide
+ */
 export class RegisterComponent implements OnInit {
     email = new FormControl('', [Validators.required, Validators.email]);
     hide = true;
@@ -41,6 +46,9 @@ export class RegisterComponent implements OnInit {
         alert('SUCCESS!! :-)')
     }
 
+    /**
+     * function call service to register perticular user values
+     */
     register() {
         const obs = this.registerService.getRegisterValue(this.registerForm);
         obs.subscribe(

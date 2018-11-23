@@ -7,12 +7,20 @@ import { LoginService } from '../service/loginservice/login.service';
   templateUrl: './bin.component.html',
   styleUrls: ['./bin.component.css']
 })
+/**
+ * @var email
+ * @var test
+ */
 export class BinComponent implements OnInit {
   email: string;
   test: any;
 
   constructor(private noteService: NoteService, private loginService: LoginService) { }
 
+  /**
+   * service call to get deleted notes
+   * @param email
+   */
   ngOnInit() {
     var email1 = localStorage.getItem('email');
     this.email = email1;
@@ -24,6 +32,10 @@ export class BinComponent implements OnInit {
       });
   }
 
+  /**
+   * service to delete permantly
+   * @param id  
+   */
   deleteforever(id) {
     const obsD = this.noteService.deleteforever(id);
     obsD.subscribe(
@@ -32,6 +44,10 @@ export class BinComponent implements OnInit {
       });
   }
 
+  /**
+   * service to restore note
+   * @param id 
+   */
   restore(id) {
     const obsD = this.noteService.restore(id);
     obsD.subscribe(

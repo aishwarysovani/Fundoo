@@ -9,6 +9,10 @@ import { NoteService } from '../../service/note/note.service';
   templateUrl: './editnote.component.html',
   styleUrls: ['./editnote.component.css']
 })
+
+/**
+ * @var getColor
+ */
 export class EditnoteComponent implements OnInit {
   getColor: any;
 
@@ -20,6 +24,10 @@ export class EditnoteComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * update note with title and note
+   * @param
+   */
   onNoClick(): void {
     const obs1 = this.noteService.updateNotes(this.data.item);
     obs1.subscribe(
@@ -34,6 +42,10 @@ export class EditnoteComponent implements OnInit {
     this.data.item.color = color;
   }
 
+  /**
+   * service to delete note
+   * @param id 
+   */
   deletenote(id) {
     const obsD = this.noteService.deletenote(id);
     obsD.subscribe(

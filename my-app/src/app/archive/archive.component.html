@@ -1,9 +1,12 @@
+<!-- card shows which are archived -->
 <div class="cards-div" *ngIf="!message">
   <mat-card class="mat3" *ngFor="let item of test" [ngStyle]="{'background-color':item.color}">
     <mat-form-field appearance="null" (click)="openDialog(item)">
       <input matInput type="text" value="{{item.title}}" placeholder="title">
       <input matInput type="text" value="{{item.note}}" placeholder="note">
     </mat-form-field>
+
+    <!-- shows only dates which set as reminder -->
     <div *ngIf="item.remind_date!='undefined'">
       <mat-chip-list>
         <mat-chip>{{item.remind_date}}
@@ -12,6 +15,7 @@
       </mat-chip-list>
     </div>
 
+    <!-- after click unarchive note will display in all notes -->
     <div>
       <button mat-icon-button matTooltip="unarchive" (click)="unarchive(item.id)"><img src="assets/unarchive.svg"></button>
     </div>

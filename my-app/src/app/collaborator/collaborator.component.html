@@ -3,6 +3,7 @@
 </div>
 <mat-divider></mat-divider>
 
+<!-- shows Owner email id -->
 <div style="padding-top:10px">
   <button mat-mini-fab>
     <mat-icon>person_pin
@@ -11,7 +12,7 @@
   {{emailid}}(Owner)
 </div>
 
-
+<!-- all sharemail related with Owner email id -->
 <div style="padding-top:10px" *ngFor="let item of test">
   <div *ngIf="item.sharemail!='undefined'">
     <button mat-mini-fab>
@@ -22,6 +23,7 @@
   </div>
 </div>
 
+<!-- add new email to share note -->
 <div style="padding-top:10px">
   <button mat-mini-fab disabled>
     <mat-icon style="color:white">
@@ -36,6 +38,9 @@
 <div style="padding-top:20px;">
   <mat-divider></mat-divider>
 </div>
+
+<!-- cancel click to return fundoo
+save click to add new email in collaborator -->
 <div>
   <button mat-button (click)="onNoClick()">Cancel</button>
   <button mat-button (click)="addcollaborator()">Save</button>

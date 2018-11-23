@@ -1,9 +1,11 @@
+<!-- main card -->
 <mat-card class="memory-card" *ngIf="card1" (click)="matCard1()">
     <mat-card-content>
         <div>Take a note..</div>
     </mat-card-content>
 </mat-card>
 
+<!-- expanded card -->
 <mat-card class="text-card" *ngIf="card2">
     <mat-card-content>
         <div><input matInput placeholder="Title" required [(ngModel)]="model.title"></div>
@@ -19,10 +21,14 @@
         <button mat-icon-button matTooltip="change color" [matMenuTriggerFor]="menuColor"><img src="assets/color_base.svg"></button>
         <button mat-icon-button matTooltip="archive"><img src="assets/archive.svg"></button>
         <button mat-icon-button matTooltip="more" [matMenuTriggerFor]="menuMore"><img src="assets/baseline-more.svg"></button>
+       
+        <!-- after close note will save to database with seted all features 
+        for perticular note like color,reminder etc.  -->
         <button class="button" mat-button (click)="takenote()">Close</button>
     </mat-card-content>
 </mat-card>
 
+<!-- menu to set reminder to note -->
 <mat-menu #menu="matMenu">
     <div style="margin-left:15px">Remainder:</div>
     <button mat-menu-item>Later today</button>
@@ -48,6 +54,7 @@
     </div>
 </mat-menu>
 
+<!-- menu to set color to note -->
 <mat-menu #menuColor="matMenu" class="colorCard">
     <div class="colorDiv">
         <button mat-menu-item (click)="setcolor('rgb(250, 250, 250)')" class="colorPalette" style="background-color:rgb(250, 250, 250)">
@@ -81,6 +88,7 @@
     </div>
 </mat-menu>
 
+<!-- menu to add label to note -->
 <mat-menu #menuMore="matMenu">
     <button mat-menu-item (click)="alllabel()">add label</button>
     <div *ngFor="let item of test1">
@@ -91,13 +99,16 @@
 </mat-menu>
 
 
-
+<!-- shows all notes of logged user with all features
+with provide drag n drop facility to note -->
 <div class="cards-div" *ngIf="!message" cdkDropList (cdkDropListDropped)="drop($event)">
     <mat-card cdkDrag class="mat3" *ngFor="let item of test" [ngStyle]="{'background-color':item.color}">
         <mat-form-field appearance="null" (click)="openDialog(item)">
             <input matInput type="text" value="{{item.title}}" placeholder="title">
             <input matInput type="text" value="{{item.note}}" placeholder="note">
         </mat-form-field>
+
+        <!-- shows if reminder is set -->
         <div *ngIf="item.remind_date!='undefined'">
             <mat-chip-list>
                 <mat-chip>{{item.remind_date}}
@@ -105,6 +116,8 @@
                 </mat-chip>
             </mat-chip-list>
         </div>
+
+        <!-- shows if label is set -->
         <div *ngIf="item.label!='undefined'">
             <mat-chip-list>
                 <mat-chip>{{item.label}}
@@ -112,13 +125,16 @@
                 </mat-chip>
             </mat-chip-list>
         </div>
+
+        <!-- shows all collaborator of owner  -->
         <div *ngFor="let item1 of test1">
             <div *ngIf="item1.noteid==item.id">
                 <button mat-mini-fab matTooltip matTooltip="{{item1.sharemail}}" (click)="opencollabDialog(item)">{{item1.sharemail
                     | slice:0:1}}</button>
             </div>
         </div>
-
+        
+        <!-- all option like reminder,color,archive etc. -->
         <div class="menu-div">
             <button mat-icon-button matTooltip="remind me" [matMenuTriggerFor]="menu">
                 <i class="material-icons">touch_app</i></button>
@@ -127,6 +143,8 @@
             <button mat-icon-button matTooltip="archive" (click)="archive(item.id)"><img src="assets/archive.svg"></button>
             <button mat-icon-button matTooltip="more" [matMenuTriggerFor]="menuMore1"><img src="assets/baseline-more.svg"></button>
         </div>
+
+        <!-- set color -->
         <mat-menu #menuColor1="matMenu" class="colorCard">
             <div class="colorDiv">
                 <button mat-menu-item (click)="changecolor(item.id,'rgb(250,250,250)')" class="colorPalette" style="background-color:rgb(250, 250, 250)">
@@ -160,7 +178,7 @@
             </div>
         </mat-menu>
 
-
+        <!-- set reminder -->
         <mat-menu #menu="matMenu">
             <div style="margin-left:15px">Remainder:</div>
             <button mat-menu-item>Later today</button>
@@ -186,6 +204,7 @@
             </div>
         </mat-menu>
 
+        <!-- set label to note -->
         <mat-menu #menuMore1="matMenu">
             <button mat-menu-item (click)="deletenote(item.id)">delete note</button>
             <button mat-menu-item (click)="alllabel()">add label</button>
@@ -198,7 +217,7 @@
     </mat-card>
 </div>
 
-
+<!-- used to shows notes in grid view  -->
 <div class="cards-div-list" *ngIf="message">
     <mat-card class="mat3-list" *ngFor="let item of test" [ngStyle]="{'background-color':item.color}">
         <mat-form-field appearance="null" (click)="openDialog(item)">

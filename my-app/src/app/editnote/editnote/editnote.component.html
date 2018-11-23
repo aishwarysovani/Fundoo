@@ -1,3 +1,6 @@
+<!-- show note content
+provide function of edit to title and note
+used ngModel to two way data binding -->
 <div [ngStyle]="{'background-color':data.item.color}" style="padding:20px">
 
     <input matInput [(ngModel)]="data.item.title" placeholder="title">
@@ -35,6 +38,7 @@
         </div>
     </mat-menu>
 
+    <!-- menus privide colors to perticular note -->
     <button mat-icon-button matTooltip="change color" [matMenuTriggerFor]="menuColor"><img src="assets/color_base.svg">
         <mat-menu #menuColor="matMenu" class="colorCard">
             <div class="colorDiv">

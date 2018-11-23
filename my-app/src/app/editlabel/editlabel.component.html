@@ -1,18 +1,26 @@
+<!-- label to dialogbox -->
 <div>
   <b>Edit Labels</b>
   <div>
 
+    <!-- used for create new label
+    and save that label in label database -->
     <mat-form-field>
       <mat-label></mat-label>
       <input matInput placeholder="create new label" [(ngModel)]="Label1">
     </mat-form-field>
     <mat-icon matTooltip="create label" (click)="savelabel()"><img src="assets/check.svg"></mat-icon>
   </div>
+
+  <!-- shows all label with edit functionality
+  provide delete operation to label -->
   <div *ngFor="let item of test">
     <mat-icon (click)="deletelabel(item.id)"><img src="assets/delete.svg"></mat-icon>
     <mat-form-field appearance="null">
       <input matInput [(ngModel)]="item.label"></mat-form-field>
     <mat-icon (click)="editlabel(item.id,item.label)"><img src="assets/check.svg"></mat-icon>
   </div>
+
+  <!-- return to original app page -->
   <div><button mat-button (click)="onNoClick()">Done</button></div>
 </div>

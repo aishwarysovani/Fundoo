@@ -12,6 +12,11 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./login.component.css'],
   providers: [LoginService]
 })
+
+/**
+ * @var flag,@var hide,@var msgform 
+ * form control to valid email id
+ */
 export class LoginComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
@@ -46,11 +51,13 @@ export class LoginComponent implements OnInit {
 
   login() {
     debugger;
+    /**
+     * service to login with valid emailid and password
+     */
     const obs = this.loginService.getLoginValue(this.loginForm);
     obs.subscribe(
       (s: any) => {
         alert(s.message);
-        // console.log('got response');
         if (s.message == "Successful login.") {
           localStorage.setItem('currentUser', s.jwt);
           this.router.navigate([this.returnUrl]);

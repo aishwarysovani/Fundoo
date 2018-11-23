@@ -15,6 +15,12 @@ export interface DialogData {
   templateUrl: './fundoonote.component.html',
   styleUrls: ['./fundoonote.component.css']
 })
+
+/**
+ * @var email,@var listicon,@var gridicon
+ * @var test,@var test1,@var image
+ * @var selectedFile
+ */
 export class FundoonoteComponent implements OnInit {
   email: string = null;
   listicon: boolean = true;
@@ -29,6 +35,11 @@ export class FundoonoteComponent implements OnInit {
     debugger;
     var email1 = localStorage.getItem('email');
     this.email = email1;
+
+    /**
+     * service to show profile pic
+     * @param email
+     */
     const obs = this.noteservice.showprofile(this.email);
     obs.subscribe(
       (status: any) => {
@@ -64,9 +75,18 @@ export class FundoonoteComponent implements OnInit {
   }
 
 
+  /**
+   * event call to access file
+   * @param event 
+   */
   onFileChanged(event) {
     debugger;
     this.selectedFile = event.target.files[0];
+
+    /**
+     * service call to update profile pic
+     * @param email,@param selectedFile
+     */
     const obs = this.noteservice.addprofile(this.email, this.selectedFile);
     obs.subscribe(
       (status: any) => {
@@ -75,12 +95,16 @@ export class FundoonoteComponent implements OnInit {
       });
   }
 
-
+  /**
+   * call logout service
+   */
   logout() {
     this.loginService.logout();
   }
 
-
+  /**
+   * open dialog of edit label with all functionality
+   */
   openDialog(): void {
     const dialogRef = this.dialog.open(EditlabelComponent, {
       height: 'flex',

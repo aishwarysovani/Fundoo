@@ -8,6 +8,10 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   templateUrl: './resetpassword.component.html',
   styleUrls: ['./resetpassword.component.css']
 })
+
+/**
+ * @var hide,@var token
+ */
 export class ResetpasswordComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl("", [Validators.required]);
@@ -22,12 +26,19 @@ export class ResetpasswordComponent implements OnInit {
       password: ['', Validators.required]
     });
 
+    /**
+     * fetch token from activated route
+     */
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       this.token = params['token'];
     });
 
   }
 
+  /**
+   * function call service to reset password value
+   * @param form ,@param token
+   */
   reset() {
     const obs = this.resetService.getResetValue(this.resetForm, this.token);
     obs.subscribe(

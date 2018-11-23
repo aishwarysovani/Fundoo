@@ -10,6 +10,11 @@ import { ForpassserviceService } from '../service/forpassservice/forpassservice.
   styleUrls: ['./forgotpassword.component.css'],
   providers: [ForpassserviceService]
 })
+
+/**
+ * @var msg
+ * form control to required valid email id
+ */
 export class ForgotpasswordComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   form: FormGroup;
@@ -23,6 +28,10 @@ export class ForgotpasswordComponent implements OnInit {
     });
   }
 
+  /**
+   * service to forgot password
+   * @param emailid
+   */
   forgot() {
     const obs = this.forpassserviceService.getforgotValue(this.form);
     obs.subscribe(

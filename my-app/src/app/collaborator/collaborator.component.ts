@@ -9,12 +9,24 @@ import { NoteService } from '../service/note/note.service';
   styleUrls: ['./collaborator.component.css']
 })
 
+/**
+ * @var emailid
+ * @var sharemail
+ * @var test
+ * @var res
+ */
 export class CollaboratorComponent implements OnInit {
   emailid: any;
   sharemail: any
   test: any;
   res: any;
 
+  /**
+   * constructor with all parameters
+   * @param dialogRef 
+   * @param data 
+   * @param noteService 
+   */
   constructor(public dialogRef: MatDialogRef<CollaboratorComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData, private noteService: NoteService) { }
 
@@ -22,6 +34,9 @@ export class CollaboratorComponent implements OnInit {
     var email = localStorage.getItem('email');
     this.emailid = email;
     debugger;
+    /**
+     * display all collaborator
+     */
     const obs1 = this.noteService.getcollaborator(this.data.item.id);
     obs1.subscribe(
       (status: any) => {
@@ -43,6 +58,9 @@ export class CollaboratorComponent implements OnInit {
 
   }
 
+  /**
+   * add new collaborator
+   */
   addcollaborator() {
     debugger;
     const obs = this.noteService.addcollaborator(this.data.item.id, this.sharemail);
@@ -53,6 +71,11 @@ export class CollaboratorComponent implements OnInit {
       });
   }
 
+  /**
+   * delete collaborator service
+   * @param noteid 
+   * @param sharemail 
+   */
   deletecollaborator(noteid, sharemail) {
     debugger;
     const obs = this.noteService.deletecollaborator(noteid, sharemail);

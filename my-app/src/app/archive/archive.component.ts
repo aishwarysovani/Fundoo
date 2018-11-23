@@ -7,6 +7,11 @@ import { LoginService } from '../service/loginservice/login.service';
   templateUrl: './archive.component.html',
   styleUrls: ['./archive.component.css']
 })
+
+/**
+ * @var string email,
+ * @var test 
+*/
 export class ArchiveComponent implements OnInit {
   email: string;
   test: any;
@@ -16,6 +21,11 @@ export class ArchiveComponent implements OnInit {
   ngOnInit() {
     var email1 = localStorage.getItem('email');
     this.email = email1;
+
+    /**
+     * service to show archive notes
+     * @param email
+     */
     const obs1 = this.noteService.getarchivedNotes(this.email);
     obs1.subscribe(
       (status: any) => {
@@ -24,6 +34,10 @@ export class ArchiveComponent implements OnInit {
       });
   }
 
+  /**
+   * service call to shows unarchived notes
+   * @param id 
+   */
   unarchive(id) {
     const obsD = this.noteService.unarchive(id);
     obsD.subscribe(

@@ -1,3 +1,4 @@
+<!-- card shows which are deleted -->
 <div class="cards-div" *ngIf="!message">
   <mat-card class="mat3" *ngFor="let item of test" [ngStyle]="{'background-color':item.color}">
     <mat-form-field appearance="null" (click)="openDialog(item)">
@@ -12,11 +13,12 @@
       </mat-chip-list>
     </div>
 
+    <!-- give option to user restore or permantly delete -->
     <div>
       <button mat-icon-button matTooltip="more" [matMenuTriggerFor]="menuMore1"><img src="assets/baseline-more.svg"></button>
     </div>
 
-
+    <!-- click apply for restore and delete operation -->
     <mat-menu #menuMore1="matMenu">
       <button mat-menu-item (click)="deleteforever(item.id)">delete forever</button>
       <button mat-menu-item (click)="restore(item.id)">restore</button>

@@ -20,6 +20,10 @@ export interface DialogData {
   templateUrl: './note.component.html',
   styleUrls: ['./note.component.css']
 })
+
+/**
+ * @var test,@var test1,@var message etc.
+ */
 export class NoteComponent implements OnInit {
 
   model: any = {};
@@ -47,6 +51,11 @@ export class NoteComponent implements OnInit {
     var email1 = localStorage.getItem('email');
     this.email = email1;
     debugger;
+
+    /**
+     * service to call collaborators
+     * @param email
+     */
     const obs1 = this.noteService.getcollaboratornote(this.email);
     obs1.subscribe(
       (status: any) => {
@@ -61,6 +70,10 @@ export class NoteComponent implements OnInit {
   }
 
   ngOnInit() {
+    /**
+     * get item stored at local storage
+     * @var email
+     */
     var email1 = localStorage.getItem('email');
     this.email = email1;
     setInterval(() => {
@@ -84,10 +97,18 @@ export class NoteComponent implements OnInit {
       });
   }
 
+  /**
+   * event call to drag and drop
+   * @param event 
+   */
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.test, event.previousIndex, event.currentIndex);
   }
 
+  /**
+   * open dialog for edit note
+   * @param item 
+   */
   openDialog(item): void {
     const dialogRef = this.dialog.open(EditnoteComponent, {
       height: '250px',
@@ -100,7 +121,10 @@ export class NoteComponent implements OnInit {
   }
 
 
-
+  /**
+   * open dialog to collaborator
+   * @param item 
+   */
   opencollabDialog(item): void {
     debugger;
     const dialogRef = this.dialog.open(CollaboratorComponent, {
@@ -113,6 +137,11 @@ export class NoteComponent implements OnInit {
       (status: any) => {
         this.test = status;
         console.log("notes" + status);
+
+        /**
+         * shows collaborator on perticular note
+         * @param email
+         */
         const obs1 = this.noteService.getcollaboratornote(this.email);
         obs1.subscribe(
           (status: any) => {
@@ -126,6 +155,10 @@ export class NoteComponent implements OnInit {
     debugger;
     this.card1 = true;
     this.card2 = false;
+
+    /**
+     * service to show note in app
+     */
     const obs = this.noteService.getNoteValue(this.model, this.getColor, this.getlabel);
     obs.subscribe(
       (status: any) => {
@@ -135,6 +168,11 @@ export class NoteComponent implements OnInit {
       });
   }
 
+  /**
+   * function to change color
+   * @param id 
+   * @param color 
+   */
   changecolor(id: any, color: any) {
     debugger;
     const obs = this.noteService.changecolor(id, color);
@@ -146,6 +184,10 @@ export class NoteComponent implements OnInit {
   }
 
   deletenote(id) {
+    /**
+     * service to delete note 
+     * @param id
+     */
     const obsD = this.noteService.deletenote(id);
     obsD.subscribe(
       (status: any) => {
@@ -154,6 +196,10 @@ export class NoteComponent implements OnInit {
   }
 
   changereminder(id, date, time) {
+    /**
+     * change reminder service
+     * @param id,@param date,@param time
+     */
     const obsD = this.noteService.changereminder(id, date, time);
     obsD.subscribe(
       (status: any) => {
@@ -162,6 +208,11 @@ export class NoteComponent implements OnInit {
 
   }
 
+  /**
+   * function to call service to delete reminder
+   * @param id 
+   * @param date 
+   */
   deleteremider(id, date) {
     const obsD = this.noteService.deletereminder(id, date);
     obsD.subscribe(
@@ -171,6 +222,10 @@ export class NoteComponent implements OnInit {
 
   }
 
+  /**
+   * service to call archive note
+   * @param id 
+   */
   archive(id) {
     const obsD = this.noteService.archive(id);
     obsD.subscribe(
@@ -179,6 +234,10 @@ export class NoteComponent implements OnInit {
       });
   }
 
+  /**
+   * function call service to shows all label of email id
+   * @var email
+   */
   alllabel() {
     const obs = this.noteService.showlabel(this.email);
     obs.subscribe(
@@ -188,6 +247,11 @@ export class NoteComponent implements OnInit {
       });
   }
 
+  /**
+   * function call service to add label to note
+   * @param id 
+   * @param label 
+   */
   addnotelabel(id: any, label: any) {
     debugger;
     const obs = this.noteService.addnotelabel(id, label);
@@ -198,6 +262,11 @@ export class NoteComponent implements OnInit {
       });
   }
 
+  /**
+   * function call service to delete label of note
+   * @param id 
+   * @param label 
+   */
   deletenotelabel(id, label) {
     const obsD = this.noteService.deletenotelabel(id, label);
     obsD.subscribe(
@@ -222,6 +291,9 @@ export class NoteComponent implements OnInit {
     this.card3 = true;
   }
 
+  /**
+   * function to set reminder
+   */
   remindfunction() {
     this.test.forEach(element => {
       let now = new Date();

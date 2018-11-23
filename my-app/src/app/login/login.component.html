@@ -5,6 +5,8 @@
     <h3>Sign in</h3>
   </mat-card-title>
 
+  <!-- emailid and password for login to app 
+  validation to email and hide function provide to password-->
   <mat-card-content>
     <form class="example-form" [formGroup]="loginForm">
       <mat-form-field class="example-full-width">
@@ -19,7 +21,7 @@
         <mat-error *ngIf="email.invalid">enter your password</mat-error>
       </mat-form-field>
 
-
+      <!-- if user forgot password  -->
       <p align="right"><a routerLink="/forgotpassword">Forgot password?</a></p><br>
       <p class="msg_success">{{msg}}</p>
       <button mat-button type="submit" (click)="login()" [disabled]="!(loginForm.email && loginForm.password)">SIGN IN</button>
@@ -37,6 +39,7 @@
       </a>
     </mat-form-field>
 
+    <!-- sign up for new registration to app -->
     <p align="right"> <a routerLink="/register">Sign Up?</a></p>
     <br>
   </mat-card-content>
