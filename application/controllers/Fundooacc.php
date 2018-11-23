@@ -29,7 +29,7 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
             $password = $_POST['pswd'];
             $number = $_POST['num'];
             $token = md5($email);
-            //echo $name .$email.$password.$number ;
+
             $sql = "INSERT INTO register (uname, email, pswd, num,token) VALUES ('$name', '$email', '$password', '$number','$token')";
             // use exec() because no results are returned
             $res = $this->connect->exec($sql);
@@ -138,7 +138,7 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
             $stmt->execute();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 if ($token == $result['token']) {
-                    //echo $name .$email.$password.$number ;
+
                     $sql = "UPDATE register SET pswd='$password',token=null WHERE email='$email'";
                     // use exec() because no results are returned
                     $res = $this->connect->exec($sql);
