@@ -172,7 +172,6 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
             $stmt->execute();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 if ($token == $result['token']) {
-            //echo $name .$email.$password.$number ;
             $sql = "UPDATE register SET isSet='$status1',token=null WHERE token='$token'";
             // use exec() because no results are returned
             $res = $this->connect->exec($sql);
@@ -198,7 +197,7 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
             $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             /**
-             * @var string $email
+             * @var string $email,$file,$name
              */
             $email = $_POST['email'];
             $file=$_FILES['file'];
