@@ -4,6 +4,11 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
+/**
+ * @var forgotpass
+ * service used to call api for forgot password
+ */
 export class ForpassserviceService {
 
   private forgotpass = 'http://localhost/codeigniter/Forgotpass';

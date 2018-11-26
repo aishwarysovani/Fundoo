@@ -6,6 +6,11 @@ import { Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
+
+/**
+ * @var currentUser used to get item from localstorage
+ * intecepter used to set header field of token
+ */
 export class IntercepterService implements HttpInterceptor {
 
     constructor() { }

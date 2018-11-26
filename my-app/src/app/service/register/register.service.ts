@@ -7,6 +7,12 @@ import { catchError, retry } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+
+/**
+ * @var register
+ * @var registerForm
+ * registration api call by using this class
+ */
 export class RegisterService {
   private register = 'http://localhost/codeigniter/Register';
   registerForm: any = {};

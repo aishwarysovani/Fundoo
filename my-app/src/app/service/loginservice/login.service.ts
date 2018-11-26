@@ -5,6 +5,11 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
+/**
+ * @var login
+ * service used to call api for login
+ */
 export class LoginService {
 
 

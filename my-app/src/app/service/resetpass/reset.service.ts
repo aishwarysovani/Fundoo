@@ -5,6 +5,13 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
+/**
+ * @var resetpass
+ * @var conformregi
+ * for registration conform and reset password 
+ * api calls by using this class 
+ */
 export class ResetService {
 
   private resetpass = 'http://localhost/codeigniter/resetpass';

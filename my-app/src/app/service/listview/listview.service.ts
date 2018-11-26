@@ -5,6 +5,12 @@ import { Observable, Subject } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
+
+/**
+ * service to used to call list view and 
+ * grid view
+ * @object subject used as observable
+ */
 export class ListviewService {
 
     constructor() { }

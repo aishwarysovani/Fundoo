@@ -5,6 +5,12 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
+/**
+ * @var createnote
+ * @var fetchnote,etc
+ * all function used to call api related to note services
+ */
 export class NoteService {
 
   private createnote = 'http://localhost/codeigniter/CreateNote';
@@ -37,6 +43,12 @@ export class NoteService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * add note api call 
+   * @param noteForm 
+   * @param color 
+   * @param label 
+   */
   getNoteValue(noteForm, color, label) {
     debugger;
     const newdata = new FormData();
@@ -56,6 +68,10 @@ export class NoteService {
   }
 
 
+  /**
+   * fetches notes api call
+   * @param email 
+   */
   getNotes(email) {
     debugger;
     const newdata = new FormData();
@@ -67,6 +83,10 @@ export class NoteService {
     return this.http.post(this.fetchnote, newdata, otheroption);
   }
 
+  /**
+   * update note values api call
+   * @param item 
+   */
   updateNotes(item) {
     debugger;
     const newdata = new FormData();
@@ -83,6 +103,11 @@ export class NoteService {
     return this.http.post(this.updatenote, newdata, otheroption);
   }
 
+  /**
+   * change color api call
+   * @param id 
+   * @param color 
+   */
   changecolor(id, color) {
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
@@ -95,6 +120,10 @@ export class NoteService {
     return this.http.post(this.Changecolor, newdata, otheroption);
   }
 
+  /**
+   * delete note api call
+   * @param id 
+   */
   deletenote(id) {
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
@@ -106,6 +135,12 @@ export class NoteService {
     return this.http.post(this.Deletenote, newdata, otheroption);
   }
 
+  /**
+   * change reminder api call
+   * @param id 
+   * @param date 
+   * @param time 
+   */
   changereminder(id, date, time) {
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
@@ -119,6 +154,11 @@ export class NoteService {
     return this.http.post(this.Changereminder, newdata, otheroption);
   }
 
+  /**
+   * delete reminder api call
+   * @param id 
+   * @param date 
+   */
   deletereminder(id, date) {
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
@@ -131,6 +171,10 @@ export class NoteService {
     return this.http.post(this.Deletreminder, newdata, otheroption);
   }
 
+  /**
+   * fetch all reminders api call
+   * @param email 
+   */
   getreminders(email) {
     debugger;
     const newdata = new FormData();
@@ -142,6 +186,11 @@ export class NoteService {
     return this.http.post(this.fetchreminder, newdata, otheroption);
   }
 
+  /**
+   * fetch all deleted note api call
+   * and delete function related api calls
+   * @param email 
+   */
   getdeletedNotes(email) {
     debugger;
     const newdata = new FormData();
@@ -175,6 +224,10 @@ export class NoteService {
     return this.http.post(this.Restore, newdata, otheroption);
   }
 
+  /**
+   * archive function related api calls
+   * @param id 
+   */
   archive(id) {
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
@@ -209,6 +262,10 @@ export class NoteService {
     return this.http.post(this.Unarchive, newdata, otheroption);
   }
 
+  /**
+   * label related api calls
+   * @param model 
+   */
   savelabel(model) {
     debugger;
     const newdata = new FormData();
@@ -277,6 +334,11 @@ export class NoteService {
     return this.http.post(this.Deletenotelabel, newdata, otheroption);
   }
 
+  /**
+   * collaborator related api calls
+   * @param id 
+   * @param sharemail 
+   */
   addcollaborator(id, sharemail) {
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
@@ -322,6 +384,11 @@ export class NoteService {
     return this.http.post(this.Deletecollaborator, newdata, otheroption);
   }
 
+  /**
+   * profile related api calls
+   * @param email 
+   * @param imagefile 
+   */
   addprofile(email, imagefile) {
     debugger;
     const newdata = new FormData();

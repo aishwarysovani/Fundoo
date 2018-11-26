@@ -16,6 +16,10 @@ export interface DialogData {
   templateUrl: './reminder.component.html',
   styleUrls: ['./reminder.component.css']
 })
+
+/**
+ * @var test,@var card1,@var email etc.
+ */
 export class ReminderComponent implements OnInit {
 
   model: any = {};
@@ -46,6 +50,11 @@ export class ReminderComponent implements OnInit {
     this.subscription.unsubscribe();
   }
   ngOnInit() {
+
+    /**
+     * fetech item from localstorage
+     * @var email
+     */
     var email1 = localStorage.getItem('email');
     this.email = email1;
     setInterval(() => {
@@ -61,6 +70,10 @@ export class ReminderComponent implements OnInit {
     this.card1 = true;
     this.card2 = false;
     debugger;
+
+    /**
+     * service to call all reminders 
+     */
     const obs1 = this.noteService.getreminders(this.email);
     obs1.subscribe(
       (status: any) => {
@@ -69,6 +82,10 @@ export class ReminderComponent implements OnInit {
       });
   }
 
+  /**
+   * dialog box open to edit note
+   * @param item 
+   */
   openDialog(item): void {
     const dialogRef = this.dialog.open(EditnoteComponent, {
       height: '250px',
@@ -82,6 +99,10 @@ export class ReminderComponent implements OnInit {
   // this.loginService.logout();
 
 
+  /**
+   * function to call note values service
+   * @param getColor,@param label
+   */
   takenote() {
     debugger;
     this.card1 = true;
@@ -95,6 +116,11 @@ export class ReminderComponent implements OnInit {
       });
   }
 
+  /**
+   * function to call change color service
+   * @param id 
+   * @param color 
+   */
   changecolor(id: any, color: any) {
     debugger;
     const obs = this.noteService.changecolor(id, color);
@@ -105,6 +131,10 @@ export class ReminderComponent implements OnInit {
       });
   }
 
+  /**
+   * function to call service to delete note
+   * @param id 
+   */
   deletenote(id) {
     const obsD = this.noteService.deletenote(id);
     obsD.subscribe(
@@ -113,6 +143,12 @@ export class ReminderComponent implements OnInit {
       });
   }
 
+  /**
+   * function to call service change reminder of note
+   * @param id 
+   * @param date 
+   * @param time 
+   */
   changereminder(id, date, time) {
     const obsD = this.noteService.changereminder(id, date, time);
     obsD.subscribe(
@@ -131,6 +167,10 @@ export class ReminderComponent implements OnInit {
 
   }
 
+  /**
+   * function to set background color
+   * @param color 
+   */
   setcolor(color: any) {
 
     this.getColor = color;
@@ -142,6 +182,9 @@ export class ReminderComponent implements OnInit {
     this.card3 = true;
   }
 
+  /**
+   * function to set reminder to note
+   */
   remindfunction() {
     this.test.forEach(element => {
       let now = new Date();
