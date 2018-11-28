@@ -629,6 +629,11 @@ class Fundoonote
         }
     }
 
+
+     /**
+     * @method deletenotelabel() delete label to perticular note
+     * @return void
+     */
     public function deletenotelabel()
     {
         try {
@@ -671,6 +676,10 @@ class Fundoonote
         }
     }
 
+    /**
+     * @method addcollaborator() add collaborator
+     * @return void
+     */
     public function addcollaborator()
     {
         try {
@@ -725,6 +734,10 @@ class Fundoonote
         }
     }
 
+    /**
+     * @method getcollaborator()fetch all collaborator
+     * @return void
+     */
     public function getcollaborator()
     {
         $headers = apache_request_headers();
@@ -749,6 +762,10 @@ class Fundoonote
         }
     }
 
+     /**
+     * @method deletecollaborator()delete collaborator for note
+     * @return void
+     */
     public function deletecollaborator()
     {
         try {
@@ -782,6 +799,10 @@ class Fundoonote
         }
     }
 
+    /**
+     * @method getcollaborator1()fetch collaboraror from collaborator table
+     * @return void
+     */
     public function getcollaborator1()
     {
         $headers = apache_request_headers();
@@ -808,6 +829,10 @@ class Fundoonote
         }
     }
 
+     /**
+     * @method addimage()add image to perticular note
+     * @return void
+     */
     public function addimage()
     {
         try {
