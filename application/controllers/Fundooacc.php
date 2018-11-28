@@ -11,6 +11,10 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
 {
     protected $connect;
 
+    /**
+     * @method getRegisterValue() add the registration details
+     * @return void
+     */
     public function getRegisterValue()
     {
         try {
@@ -45,6 +49,10 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
         }
     }
 
+     /**
+     * @method getLoginValue() check the login values for login to app
+     * @return void
+     */
     public function getLoginValue()
     {
         $flag = false;
@@ -87,6 +95,10 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
         $this->connect = null;
     }
 
+    /**
+     * @method getforgotValue() send the email to reset password
+     * @return void
+     */
     public function getforgotValue()
     {
         $flag = false;
@@ -119,6 +131,10 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
         $this->connect = null;
     }
 
+     /**
+     * @method getResetValue() update value for forgot password
+     * @return void
+     */
     public function getResetValue()
     {
         try {
@@ -153,6 +169,10 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
         }
     }
 
+    /**
+     * @method getconformValue() set token for conform registration
+     * @return void
+     */
     public function getconformValue()
     {
         try {
@@ -185,6 +205,10 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
         }
     }
 
+    /**
+     * @method addprofile() 
+     * @return void
+     */
     public function addprofile()
     {
         try {
@@ -246,5 +270,4 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
         }
     }
 
-   
 }
