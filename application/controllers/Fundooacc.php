@@ -206,7 +206,7 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @method addprofile() 
+     * @method addprofile() function to add profile pic to user
      * @return void
      */
     public function addprofile()
@@ -245,6 +245,10 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
         }
     }
 
+    /**
+     * @method showprofile() function to fetch profile pic of currentuser
+     * @return void
+     */
     public function showprofile()
     {
         try {

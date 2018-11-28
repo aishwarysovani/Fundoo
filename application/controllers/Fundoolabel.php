@@ -8,6 +8,10 @@ class Fundoolabel
 {
     protected $connect;
 
+    /**
+     * @method createlabel() function to add new entry to label table
+     * @return void
+     */
     public function createlabel()
     {
         try {
@@ -41,6 +45,10 @@ class Fundoolabel
         }
     }
 
+    /**
+     * @method showlabel() function to fetch all labels from table
+     * @return void
+     */
     public function showlabel()
     {
         try {
@@ -71,6 +79,12 @@ class Fundoolabel
         }
     }
 
+
+
+    /**
+     * @method deletelabel() delete label from table
+     * @return void
+     */
     public function deletelabel()
     {
         try {
@@ -103,6 +117,10 @@ class Fundoolabel
         }
     }
 
+    /**
+     * @method editlabel() edit label from table
+     * @return void
+     */
     public function editlabel()
     {
         try {

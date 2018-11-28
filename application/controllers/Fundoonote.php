@@ -10,6 +10,10 @@ class Fundoonote
 {
     protected $connect;
 
+    /**
+     * @method getNoteValue() add note entry to note database
+     * @return void
+     */
     public function getNoteValue()
     {
         try {
@@ -58,6 +62,10 @@ class Fundoonote
         }
     }
 
+     /**
+     * @method allnotes() fetch all notes from database
+     * @return void
+     */
     public function allnotes()
     {
         /**
@@ -89,6 +97,10 @@ class Fundoonote
 
     }
 
+    /**
+     * @method updatenotes() update note and title notes from database
+     * @return void
+     */
     public function updatenotes()
     {
         try {
@@ -125,6 +137,10 @@ class Fundoonote
         }
     }
 
+     /**
+     * @method changecolor() change background color of note
+     * @return void
+     */
     public function changecolor()
     {
         try {
@@ -166,6 +182,10 @@ class Fundoonote
         }
     }
 
+    /**
+     * @method deletenote() delete note from note 
+     * @return void
+     */
     public function deletenote()
     {
         try {
@@ -206,6 +226,10 @@ class Fundoonote
         }
     }
 
+    /**
+     * @method changereminder() change reminder of note 
+     * @return void
+     */
     public function changereminder()
     {
         try {
@@ -252,6 +276,10 @@ class Fundoonote
         }
     }
 
+     /**
+     * @method deletereminder() delete reminder of note 
+     * @return void
+     */
     public function deletereminder()
     {
         try {
@@ -294,6 +322,10 @@ class Fundoonote
         }
     }
 
+     /**
+     * @method allreminder()fetch all reminders of all notes 
+     * @return void
+     */
     public function allreminder()
     {
         $headers = apache_request_headers();
@@ -320,6 +352,10 @@ class Fundoonote
         }
     }
 
+    /**
+     * @method alldeletednotes()fetch all deleted notes 
+     * @return void
+     */
     public function alldeletednotes()
     {
         $headers = apache_request_headers();
@@ -343,6 +379,10 @@ class Fundoonote
         }
     }
 
+    /**
+     * @method deleteforever()deleted note permantly 
+     * @return void
+     */
     public function deleteforever()
     {
         try {
@@ -383,6 +423,10 @@ class Fundoonote
         }
     }
 
+    /**
+     * @method restore() restore note 
+     * @return void
+     */
     public function restore()
     {
         try {
@@ -423,6 +467,10 @@ class Fundoonote
         }
     }
 
+     /**
+     * @method archive() archive note 
+     * @return void
+     */
     public function archive()
     {
         try {
@@ -463,6 +511,10 @@ class Fundoonote
         }
     }
 
+    /**
+     * @method allarchivenotes() fetch all archive note 
+     * @return void
+     */
     public function allarchivenotes()
     {
         $headers = apache_request_headers();
@@ -489,6 +541,11 @@ class Fundoonote
         }
     }
 
+
+    /**
+     * @method unarchive() unarchive note with perticular id
+     * @return void
+     */
     public function unarchive()
     {
         try {
@@ -528,6 +585,10 @@ class Fundoonote
         }
     }
 
+     /**
+     * @method addnotelabel() add label to perticular note
+     * @return void
+     */
     public function addnotelabel()
     {
         try {
