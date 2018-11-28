@@ -43,6 +43,10 @@ export class NoteComponent implements OnInit {
   subscription: Subscription;
   getColor: any;
   getlabel: any;
+  selectedFile: any;
+  imageid: any;
+  searchSubscription: Subscription;
+  searchItem: any;
 
   constructor(private noteService: NoteService, private loginService: LoginService,
     private listviewService: ListviewService, public dialog: MatDialog) {
@@ -61,6 +65,13 @@ export class NoteComponent implements OnInit {
       (status: any) => {
         this.test1 = status;
         console.log(status);
+      });
+
+    this.searchSubscription = this.listviewService
+      .getsearchItem()
+      .subscribe(message => {
+       
+        this.searchItem = message;
       });
   }
 
@@ -102,7 +113,32 @@ export class NoteComponent implements OnInit {
    * @param event 
    */
   drop(event: CdkDragDrop<string[]>) {
+    debugger;
     moveItemInArray(this.test, event.previousIndex, event.currentIndex);
+  }
+
+  imageadd(id) {
+    this.imageid = id;
+  }
+
+  /**
+   * event call to access file
+   * @param event 
+   */
+  onFileChanged(event) {
+    debugger;
+    this.selectedFile = event.target.files[0];
+
+    /**
+     * service call to update profile pic
+     * @param email,@param selectedFile
+     */
+    const obs = this.noteService.addimage(this.imageid, this.selectedFile);
+    obs.subscribe(
+      (status: any) => {
+        this.test1 = status;
+        console.log(status);
+      });
   }
 
   /**

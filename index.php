@@ -305,6 +305,9 @@ switch (ENVIRONMENT)
 
 	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
 
+
+	require_once APPPATH. 'libraries/lib_redis/autoload.php';
+	Predis\Autoloader::register();
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
@@ -315,4 +318,6 @@ switch (ENVIRONMENT)
 require_once BASEPATH.'core/CodeIgniter.php';
 //require APPPATH . 'libraries/REST_Controller.php';
 //require APPPATH . 'libraries/Format.php';
+
+
 ?>

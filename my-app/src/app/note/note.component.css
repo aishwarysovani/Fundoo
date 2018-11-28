@@ -51,6 +51,16 @@
     margin-right: 150px;
   }
   
+  .menu-div
+  {
+    margin-left: -10px;
+  }
+
+  .image-div
+  {
+    height: 100px;
+    width: 200px;
+  }
 
   .cards-div-list{
     margin-left: 250px;

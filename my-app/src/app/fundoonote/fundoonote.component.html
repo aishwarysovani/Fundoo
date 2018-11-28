@@ -8,7 +8,10 @@ like sidenav,logout etc. -->
     <span class="example-spacer"></span>
     <i class="material-icons">search</i>
     <div class="search-box">
-      <input class="input-search" matInput placeholder="search"></div>
+        <input class="search" type="text"
+        [(ngModel)]="searchItem"
+        (keyup)="search(searchItem, $event)"
+      /></div>
     <span class="example-spacer"></span>
     <span class="example-spacer2"></span>
 

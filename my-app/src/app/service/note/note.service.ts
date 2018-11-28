@@ -39,6 +39,7 @@ export class NoteService {
   private Addprofile = 'http://localhost/codeigniter/Addprofile';
   private Showprofile = 'http://localhost/codeigniter/Showprofile';
   private Getcollaborator1 = 'http://localhost/codeigniter/Getcollaborator1';
+  private Addimage = 'http://localhost/codeigniter/Addimage';
 
 
   constructor(private http: HttpClient) { }
@@ -333,6 +334,20 @@ export class NoteService {
     };
     return this.http.post(this.Deletenotelabel, newdata, otheroption);
   }
+
+  addimage(id, imagefile) {
+    debugger;
+    const newdata = new FormData();
+    var email1 = localStorage.getItem('email');
+    newdata.append('email', email1);
+    newdata.append('id',id);
+    newdata.append('file', imagefile);
+    const otheroption: any = {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    };
+    return this.http.post(this.Addimage, newdata, otheroption);
+  }
+
 
   /**
    * collaborator related api calls

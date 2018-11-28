@@ -102,7 +102,7 @@
 <!-- shows all notes of logged user with all features
 with provide drag n drop facility to note -->
 <div class="cards-div" *ngIf="!message" cdkDropList (cdkDropListDropped)="drop($event)">
-    <mat-card cdkDrag class="mat3" *ngFor="let item of test" [ngStyle]="{'background-color':item.color}">
+    <mat-card cdkDrag class="mat3" *ngFor="let item of test | notefilter:searchItem" [ngStyle]="{'background-color':item.color}">
         <mat-form-field appearance="null" (click)="openDialog(item)">
             <input matInput type="text" value="{{item.title}}" placeholder="title">
             <input matInput type="text" value="{{item.note}}" placeholder="note">
@@ -133,15 +133,22 @@ with provide drag n drop facility to note -->
                     | slice:0:1}}</button>
             </div>
         </div>
+
+        <div *ngIf="item.image!=NULL">
+            <div><img src="assets/profile/{{item.image}}" class="image-div"></div>
+        </div>
         
         <!-- all option like reminder,color,archive etc. -->
-        <div class="menu-div">
+        <div>
             <button mat-icon-button matTooltip="remind me" [matMenuTriggerFor]="menu">
                 <i class="material-icons">touch_app</i></button>
-            <button mat-icon-button matTooltip="collaborator" (click)="opencollabDialog(item)"><img src="assets/personadd.svg"></button>
-            <button mat-icon-button matTooltip="change color" [matMenuTriggerFor]="menuColor1"><img src="assets/color_base.svg"></button>
-            <button mat-icon-button matTooltip="archive" (click)="archive(item.id)"><img src="assets/archive.svg"></button>
-            <button mat-icon-button matTooltip="more" [matMenuTriggerFor]="menuMore1"><img src="assets/baseline-more.svg"></button>
+            <button class="menu-div" mat-icon-button matTooltip="collaborator" (click)="opencollabDialog(item)"><img src="assets/personadd.svg"></button>
+            <button class="menu-div" mat-icon-button matTooltip="change color" [matMenuTriggerFor]="menuColor1"><img src="assets/color_base.svg"></button>
+            <button class="menu-div" mat-icon-button matTooltip="archive" (click)="archive(item.id)"><img src="assets/archive.svg"></button>
+            <button class="menu-div" mat-icon-button matTooltip="add image" (click)="fileInput.click()" (click)="imageadd(item.id)"><img src="assets/insertphoto.svg"></button>
+            <button class="menu-div" mat-icon-button matTooltip="more" [matMenuTriggerFor]="menuMore1"><img src="assets/baseline-more.svg"></button>
+       
+            <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
         </div>
 
         <!-- set color -->

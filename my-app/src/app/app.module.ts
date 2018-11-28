@@ -44,6 +44,7 @@ import { BinComponent } from './bin/bin.component';
 import { ArchiveComponent } from './archive/archive.component';
 import { CollaboratorComponent } from './collaborator/collaborator.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { NotefilterPipe } from './note/notefilter.pipe';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     ReminderComponent,
     BinComponent,
     ArchiveComponent,
-    CollaboratorComponent
+    CollaboratorComponent,
+    NotefilterPipe
   ],
   imports: [
     BrowserModule,

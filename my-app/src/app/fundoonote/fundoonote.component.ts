@@ -49,6 +49,10 @@ export class FundoonoteComponent implements OnInit {
       });
   }
 
+  search(searchItem) {
+    this.listviewService.searchItem(searchItem);
+  }
+
   listview(): void {
     // send message to subscribers via observable subject
     this.listviewService.listview('Message from Home Component to App Component!');
