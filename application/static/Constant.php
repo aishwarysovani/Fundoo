@@ -6,5 +6,9 @@ class Constant
    public $dbname="php";
    public $user= "root";
    public $password= "bridgeit";
+   public $fileUploadPath="/var/www/html/codeigniter/my-app/src/assets/profile/";
+  
 }
+
+
 ?>

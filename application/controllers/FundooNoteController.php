@@ -340,11 +340,8 @@ class FundooNoteController
             $file = $_FILES['file'];
             $name = $_FILES['file']['name'];
             $fileTmpName = $_FILES['file']['tmp_name'];
-            //Set location for image
-            $newfileloc = '/var/www/html/codeigniter/my-app/src/assets/profile/' . $_FILES['file']['name'];
-            $upload = move_uploaded_file($fileTmpName, $newfileloc);
 
-            $this->ref->addImage($email,$id,$name);
+            $this->ref->addImage($email,$id,$name,$fileTmpName);
 
     }
 

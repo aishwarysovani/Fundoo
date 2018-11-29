@@ -1,6 +1,8 @@
 <?php
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
+include "/var/www/html/codeigniter/application/static/EmailConstant.php";
+
 
 //Load Composer's autoloader
 require 'vendor/autoload.php';
@@ -8,19 +10,21 @@ class MailClass
 {
     public function sendmail($name, $email, $token)
     {
-        $mail = new PHPMailer(true); // Passing `true` enables exceptions
+        $mail = new PHPMailer(true);
+        $data =new EmailConstant();
+        // Passing `true` enables exceptions
         try {
 //Server settings
             $mail->SMTPDebug = 0; // Enable verbose debug output
             $mail->isSMTP(); // Set mailer to use SMTP
             $mail->Host = 'smtp.gmail.com'; // Specify main and backup SMTP servers
             $mail->SMTPAuth = true; // Enable SMTP authentication
-            $mail->Username = 'aishsovani1234@gmail.com'; // SMTP username
-            $mail->Password = 'aish@1234'; // SMTP password
+            $mail->Username = $data->email; // SMTP username
+            $mail->Password = $data->emailPassword; // SMTP password
             $mail->SMTPSecure = 'tls'; // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 587; // TCP port to connect to
             //Recipients
-            $mail->setFrom('aishsovani1234@gmail.com', 'mailer');
+            $mail->setFrom($data->email, 'mailer');
             $mail->addAddress($email, $name); // Add a recipient
             define("PROJECT_HOME", "http://localhost:4200/resetpassword");
             $mail->isHTML(true); // Set email format to HTML
@@ -51,6 +55,7 @@ class MailClass
 
     public function sendmail1($name, $email, $token)
     {
+        $data =new EmailConstant();
         $mail = new PHPMailer(true); // Passing `true` enables exceptions
         try {
             //Server settings
@@ -58,12 +63,12 @@ class MailClass
             $mail->isSMTP(); // Set mailer to use SMTP
             $mail->Host = 'smtp.gmail.com'; // Specify main and backup SMTP servers
             $mail->SMTPAuth = true; // Enable SMTP authentication
-            $mail->Username = 'aishsovani1234@gmail.com'; // SMTP username
-            $mail->Password = 'aish@1234'; // SMTP password
+            $mail->Username = $data->email; // SMTP username
+            $mail->Password = $data->emailPassword; // SMTP password
             $mail->SMTPSecure = 'tls'; // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 587; // TCP port to connect to
             //Recipients
-            $mail->setFrom('aishsovani1234@gmail.com', 'mailer');
+            $mail->setFrom($data->email, 'mailer');
             $mail->addAddress($email, $name); // Add a recipient
             define("PROJECT_HOME", "http://localhost:4200/conformregi");
             $mail->isHTML(true); // Set email format to HTML
@@ -94,6 +99,7 @@ class MailClass
 
     public function sendmail2($email, $token)
     {
+        $data =new EmailConstant();
         $mail = new PHPMailer(true); // Passing `true` enables exceptions
         try {
             //Server settings
@@ -101,12 +107,12 @@ class MailClass
             $mail->isSMTP(); // Set mailer to use SMTP
             $mail->Host = 'smtp.gmail.com'; // Specify main and backup SMTP servers
             $mail->SMTPAuth = true; // Enable SMTP authentication
-            $mail->Username = 'aishsovani1234@gmail.com'; // SMTP username
-            $mail->Password = 'aish@1234'; // SMTP password
+            $mail->Username = $data->email; // SMTP username
+            $mail->Password = $data->emailPassword; // SMTP password
             $mail->SMTPSecure = 'tls'; // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 587; // TCP port to connect to
             //Recipients
-            $mail->setFrom('aishsovani1234@gmail.com', 'mailer');
+            $mail->setFrom($data->email, 'mailer');
             $mail->addAddress($email); // Add a recipient
             define("PROJECT_HOME", "http://localhost:4200/fundoonote");
             $mail->isHTML(true); // Set email format to HTML

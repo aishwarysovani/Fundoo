@@ -1,12 +1,12 @@
 <!-- main card -->
-<mat-card class="memory-card" *ngIf="maincard" (click)="matMaincard()">
+<mat-card class="memory-card" *ngIf="mainCard" (click)="matMaincard()">
     <mat-card-content>
         <div>Take a note..</div>
     </mat-card-content>
 </mat-card>
 
 <!-- expanded card -->
-<mat-card class="text-card" *ngIf="expandedcard">
+<mat-card class="text-card" *ngIf="expandedCard">
     <mat-card-content>
         <div><input matInput placeholder="Title" required [(ngModel)]="model.title"></div>
         <div>
@@ -127,7 +127,7 @@ with provide drag n drop facility to note -->
         </div>
 
         <!-- shows all collaborator of owner  -->
-        <div *ngFor="let item1 of test1">
+        <div *ngFor="let item1 of testT">
             <div *ngIf="item1.noteid==item.id">
                 <button mat-mini-fab matTooltip matTooltip="{{item1.sharemail}}" (click)="opencollabDialog(item)">{{item1.sharemail
                     | slice:0:1}}</button>

@@ -1,8 +1,8 @@
 <?php
-// include "config/constant.php";
 defined('BASEPATH') or exit('No direct script access allowed');
 include "/var/www/html/codeigniter/application/service/FundooAccountService.php";
 include '/var/www/html/codeigniter/application/vendor/autoload.php';
+
 /**
  * @var string $connect
  */
@@ -89,7 +89,7 @@ class FundooAccountController extends \PHPUnit_Framework_TestCase
         /**
          * @var string $token
          */
-        $token = $_POST['token1'];
+        $token = $_POST['token'];
         $this->ref->getConformValue($token);
 
     }
@@ -107,10 +107,8 @@ class FundooAccountController extends \PHPUnit_Framework_TestCase
         $file = $_FILES['file'];
         $name = $_FILES['file']['name'];
         $fileTmpName = $_FILES['file']['tmp_name'];
-        //Set location for image
-        $newfileloc = '/var/www/html/codeigniter/my-app/src/assets/profile/' . $_FILES['file']['name'];
-        $upload = move_uploaded_file($fileTmpName, $newfileloc);
-        $this->ref->addProfile($email, $name);
+    
+        $this->ref->addProfile($email, $name, $fileTmpName);
 
     }
 

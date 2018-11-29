@@ -28,9 +28,9 @@ export class ResetService {
     return this.http.post(this.resetpass, newdata);
   }
 
-  getConformValue(resetForm, token1) {
+  getConformValue(resetForm, token) {
     const newdata = new FormData();
-    newdata.append('token1', token1);
+    newdata.append('token', token);
     // alert(token1)
     return this.http.post(this.conformregi, newdata);
   }

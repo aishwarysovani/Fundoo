@@ -661,9 +661,13 @@ class FundooNoteService
      * @method addimage()add image to perticular note
      * @return void
      */
-    public function addImage($email, $id, $name)
+    public function addImage($email, $id, $name,$fileTmpName)
     {
         try {
+            $dataD=new Constant();
+            $newfileloc = $dataD->fileUploadPath . $name;
+            $upload = move_uploaded_file($fileTmpName, $newfileloc);
+
             $sql = "UPDATE note SET image='$name' WHERE email='$email' and id='$id'";
             $res = $this->connect->exec($sql);
 

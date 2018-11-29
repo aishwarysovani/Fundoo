@@ -16,16 +16,16 @@ like sidenav,logout etc. -->
     <span class="example-spacer2"></span>
 
     <!-- button to display cards in list view or grid view -->
-    <button mat-icon-button matTooltip="list" *ngIf="listicon" (click)="listview()">
+    <button mat-icon-button matTooltip="list" *ngIf="listIcon" (click)="listview()">
       <i class="material-icons">view_list</i></button>
 
-    <button mat-icon-button matTooltip="grid" *ngIf="gridicon" (click)="gridview()">
+    <button mat-icon-button matTooltip="grid" *ngIf="gridIcon" (click)="gridview()">
       <i class="material-icons">view_module</i></button>
 
     <!-- shows account info with signout and profile pic
     shows current user email id  -->
     <span class="example-spacer"></span>
-    <div *ngFor="let item of test1">
+    <div *ngFor="let item of testT">
       <div *ngIf="item.profilepic!=NULL; else showicon">
         <button mat-icon-button matTooltip="account {{email}}" [matMenuTriggerFor]="account">
           <img class="account-img1" src="/assets/profile/{{item.profilepic}}"></button>
@@ -40,7 +40,7 @@ like sidenav,logout etc. -->
   </mat-toolbar-row>
   <mat-menu #account="matMenu">
 
-    <div *ngFor="let item of test1">
+    <div *ngFor="let item of testT">
       <div *ngIf="item.profilepic!=NULL; else showicon1">
         <button (click)="fileInput.click()" mat-icon-button style="margin-left:80px">
           <img class="account-img" src="/assets/profile/{{item.profilepic}}">

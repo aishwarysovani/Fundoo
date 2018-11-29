@@ -10,13 +10,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class FundooAccountService
 {
     protected $connect;
-   
+
     public function __construct()
     {
         /**
          * Database conncetion using PDO
          */
-        $data=new Constant();
+        $data = new Constant();
         $this->connect = new PDO("$data->database:host=$data->host;dbname=$data->dbname", "$data->user", "$data->password");
         $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -169,9 +169,12 @@ class FundooAccountService
      * @method addprofile() function to add profile pic to user
      * @return void
      */
-    public function addProfile($email, $name)
+    public function addProfile($email, $name,$fileTmpName)
     {
         try {
+            $dataD=new Constant();
+            $newfileloc = $dataD->fileUploadPath . $name;
+            $upload = move_uploaded_file($fileTmpName, $newfileloc);
 
             $sql = "UPDATE register SET profilepic='$name' WHERE email='$email'";
             $res = $this->connect->exec($sql);
