@@ -15,19 +15,19 @@ import { NoteService } from '../service/note/note.service';
  * @var test
  */
 export class EditlabelComponent implements OnInit {
-  Label1: any;
+  Label: any;
   test: any;
 
   constructor(public dialogRef: MatDialogRef<EditlabelComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData, private noteservice: NoteService) { }
 
   ngOnInit() {
-    var email1 = localStorage.getItem('email');
+    var emailE = localStorage.getItem('email');
     
     /**
      * service to show label
      */
-    const obs = this.noteservice.showLabel(email1);
+    const obs = this.noteservice.showLabel(emailE);
     obs.subscribe(
       (status: any) => {
         this.test = status;
@@ -47,7 +47,7 @@ export class EditlabelComponent implements OnInit {
    * service to save label
    */
   savelabel() {
-    const obs = this.noteservice.saveLabel(this.Label1);
+    const obs = this.noteservice.saveLabel(this.Label);
     obs.subscribe(
       (status: any) => {
         this.test = status;

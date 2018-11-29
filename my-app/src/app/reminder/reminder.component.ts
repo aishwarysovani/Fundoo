@@ -25,14 +25,14 @@ export class ReminderComponent implements OnInit {
   model: any = {};
   test: any;
   panelOpenState = false;
-  card3: boolean = false;
-  card1: boolean = true;
-  card2: boolean = false;
+  dialogCard: boolean = false;
+  mainCard: boolean = true;
+  expandedCard: boolean = false;
   email: string = null;
-  gridview: boolean = true;
-  listview: boolean = false;
-  listicon: boolean = true;
-  gridicon: boolean = false;
+  gridView: boolean = true;
+  listView: boolean = false;
+  listIcon: boolean = true;
+  gridIcon: boolean = false;
   public now: Date = new Date();
   message: any;
   subscription: Subscription;
@@ -63,12 +63,12 @@ export class ReminderComponent implements OnInit {
       // console.log(this.now);
     }, 1);
 
-    this.gridview = true;
-    this.listview = false;
-    this.listicon = true;
-    this.gridicon = false;
-    this.card1 = true;
-    this.card2 = false;
+    this.gridView = true;
+    this.listView = false;
+    this.listIcon = true;
+    this.gridIcon = false;
+    this.mainCard = true;
+    this.expandedCard = false;
     debugger;
 
     /**
@@ -105,8 +105,8 @@ export class ReminderComponent implements OnInit {
    */
   takenote() {
     debugger;
-    this.card1 = true;
-    this.card2 = false;
+    this.mainCard = true;
+    this.expandedCard = false;
     const obs = this.noteService.getNoteValue(this.model, this.getColor, this.label);
     obs.subscribe(
       (status: any) => {
@@ -177,9 +177,9 @@ export class ReminderComponent implements OnInit {
   }
 
   matCard1() {
-    this.card1 = false;
-    this.card2 = true;
-    this.card3 = true;
+    this.mainCard = false;
+    this.expandedCard = true;
+    this.dialogCard = true;
   }
 
   /**

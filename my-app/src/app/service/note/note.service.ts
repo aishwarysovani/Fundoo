@@ -38,7 +38,7 @@ export class NoteService {
   private Deletecollaborator = 'http://localhost/codeigniter/Deletecollaborator';
   private Addprofile = 'http://localhost/codeigniter/Addprofile';
   private Showprofile = 'http://localhost/codeigniter/Showprofile';
-  private Getcollaborator1 = 'http://localhost/codeigniter/Getcollaborator1';
+  private Getcollaborator1 = 'http://localhost/codeigniter/getAllCollaborator';
   private Addimage = 'http://localhost/codeigniter/Addimage';
 
 

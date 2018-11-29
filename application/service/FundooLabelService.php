@@ -1,4 +1,5 @@
 <?php
+include "/var/www/html/codeigniter/application/static/Constant.php";
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
@@ -8,13 +9,14 @@ class FundooLabelService
 {
     protected $connect;
 
-    function __construct()
+    public function __construct()
     {
         /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+         * Database conncetion using PDO
+         */
+        $data = new Constant();
+        $this->connect = new PDO("$data->database:host=$data->host;dbname=$data->dbname", "$data->user", "$data->password");
+        $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     }
 
@@ -22,14 +24,9 @@ class FundooLabelService
      * @method createlabel() function to add new entry to label table
      * @return void
      */
-    public function createLabel()
+    public function createLabel($email, $label)
     {
         try {
-             /**
-             * @var string $email,$label
-             */
-            $email = $_POST['email'];
-            $label = $_POST['label'];
             $empty = "undefined";
             if ($label != $empty) {
                 $sql = "INSERT INTO label (email,label) VALUES ('$email','$label')";
@@ -53,14 +50,9 @@ class FundooLabelService
      * @method showlabel() function to fetch all labels from table
      * @return void
      */
-    public function showLabel()
+    public function showLabel($email)
     {
         try {
-            /**
-             * @var string $email
-             */
-            $email = $_POST['email'];
-
             /**
              * Query to perfom selection operation from database table
              */
@@ -77,21 +69,13 @@ class FundooLabelService
         }
     }
 
-
-
     /**
      * @method deletelabel() delete label from table
      * @return void
      */
-    public function deleteLabel()
+    public function deleteLabel($email, $id)
     {
-        try{
-            /**
-             * @var string $email
-             * @var int $id
-             */
-            $email = $_POST['email'];
-            $id = $_POST['id'];
+        try {
 
             $sql = "DELETE FROM  label  WHERE id='$id'";
             $res = $this->connect->exec($sql);
@@ -113,16 +97,9 @@ class FundooLabelService
      * @method editlabel() edit label from table
      * @return void
      */
-    public function editLabel()
+    public function editLabel($email, $id, $label)
     {
         try {
-            /**
-             * @var string $email,$label
-             * @var integer $id
-             */
-            $email = $_POST['email'];
-            $id = $_POST['id'];
-            $label = $_POST['label'];
 
             $sql = "UPDATE label set label='$label' WHERE id='$id'";
             $res = $this->connect->exec($sql);

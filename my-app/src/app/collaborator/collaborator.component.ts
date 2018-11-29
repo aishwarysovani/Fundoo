@@ -10,14 +10,14 @@ import { NoteService } from '../service/note/note.service';
 })
 
 /**
- * @var emailid
- * @var sharemail
+ * @var emailId
+ * @var shareMail
  * @var test
  * @var res
  */
 export class CollaboratorComponent implements OnInit {
-  emailid: any;
-  sharemail: any
+  emailId: any;
+  shareMail: any
   test: any;
   res: any;
 
@@ -32,13 +32,13 @@ export class CollaboratorComponent implements OnInit {
 
   ngOnInit() {
     var email = localStorage.getItem('email');
-    this.emailid = email;
+    this.emailId = email;
     debugger;
     /**
      * display all collaborator
      */
-    const obs1 = this.noteService.getCollaborator(this.data.item.id);
-    obs1.subscribe(
+    const obs = this.noteService.getCollaborator(this.data.item.id);
+    obs.subscribe(
       (status: any) => {
         this.test = status;
         console.log(status);
@@ -47,8 +47,8 @@ export class CollaboratorComponent implements OnInit {
 
   onNoClick(): void {
 
-    const obs1 = this.noteService.getNotes(this.emailid);
-    obs1.subscribe(
+    const obs = this.noteService.getNotes(this.emailId);
+    obs.subscribe(
       (status: any) => {
         debugger;
         this.res = status;
@@ -63,7 +63,7 @@ export class CollaboratorComponent implements OnInit {
    */
   addcollaborator() {
     debugger;
-    const obs = this.noteService.addCollaborator(this.data.item.id, this.sharemail);
+    const obs = this.noteService.addCollaborator(this.data.item.id, this.shareMail);
     obs.subscribe(
       (status: any) => {
         this.test = status;
@@ -76,9 +76,9 @@ export class CollaboratorComponent implements OnInit {
    * @param noteid 
    * @param sharemail 
    */
-  deletecollaborator(noteid, sharemail) {
+  deletecollaborator(noteId, shareMail) {
     debugger;
-    const obs = this.noteService.deleteCollaborator(noteid, sharemail);
+    const obs = this.noteService.deleteCollaborator(noteId, shareMail);
     obs.subscribe(
       (status: any) => {
         this.test = status;

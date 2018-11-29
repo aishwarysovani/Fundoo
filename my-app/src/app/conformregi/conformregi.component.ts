@@ -12,11 +12,11 @@ import { HttpClient } from '@angular/common/http';
 })
 
 /**
- * @var token1
+ * @var token
  */
 export class ConformregiComponent implements OnInit {
 
-  token1: string = null;
+  token: string = null;
   resetForm: FormGroup;
   constructor(private formBuilder: FormBuilder, private resetService: ResetService, private activatedRoute: ActivatedRoute) { }
 
@@ -26,7 +26,7 @@ export class ConformregiComponent implements OnInit {
      * fetch token from activated route
      */
     this.activatedRoute.queryParams.subscribe((params: Params) => {
-      this.token1 = params['token'];
+      this.token = params['token'];
 
     });
 
@@ -36,7 +36,7 @@ export class ConformregiComponent implements OnInit {
    * service to conform registration
    */
   conform() {
-    const obs = this.resetService.getConformValue(this.resetForm, this.token1);
+    const obs = this.resetService.getConformValue(this.resetForm, this.token);
     obs.subscribe(
       (s: any) => {
         console.log('got response');

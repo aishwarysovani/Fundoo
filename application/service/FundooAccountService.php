@@ -1,23 +1,24 @@
 <?php
 include "/var/www/html/codeigniter/application/controllers/phpmailer/mail.php";
 include_once '/var/www/html/codeigniter/application/controllers/jwt.php';
+include "/var/www/html/codeigniter/application/static/Constant.php";
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
  * @var string $connect
  */
-class FundooAccountService 
+class FundooAccountService
 {
     protected $connect;
-
-    function __construct()
+   
+    public function __construct()
     {
         /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-       
+         * Database conncetion using PDO
+         */
+        $data=new Constant();
+        $this->connect = new PDO("$data->database:host=$data->host;dbname=$data->dbname", "$data->user", "$data->password");
+        $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     }
 
@@ -25,7 +26,7 @@ class FundooAccountService
      * @method getRegisterValue() add the registration details
      * @return void
      */
-    public function getRegisterValue($name,$email,$password,$number)
+    public function getRegisterValue($name, $email, $password, $number)
     {
         try {
             $token = md5($email);
@@ -45,11 +46,11 @@ class FundooAccountService
         }
     }
 
-     /**
+    /**
      * @method getLoginValue() check the login values for login to app
      * @return void
      */
-    public function getLoginValue($email,$password)
+    public function getLoginValue($email, $password)
     {
         $flag = false;
         try {
@@ -91,7 +92,7 @@ class FundooAccountService
         try {
             $stmt = $this->connect->prepare("SELECT uname,email FROM register");
             $stmt->execute();
-           
+
             // set the resulting array to associative
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 if ($email == $result['email']) {
@@ -111,11 +112,11 @@ class FundooAccountService
         }
     }
 
-     /**
+    /**
      * @method getResetValue() update value for forgot password
      * @return void
      */
-    public function getResetValue($email, $password,$token)
+    public function getResetValue($email, $password, $token)
     {
         try {
             $stmt = $this->connect->prepare("SELECT token FROM register");
@@ -137,14 +138,14 @@ class FundooAccountService
         }
     }
 
-     /**
+    /**
      * @method getconformValue() set token for conform registration
      * @return void
      */
     public function getConformValue($token)
     {
         try {
-            
+
             $status1 = '1';
             $stmt = $this->connect->prepare("SELECT token FROM register");
             $stmt->execute();
@@ -168,7 +169,7 @@ class FundooAccountService
      * @method addprofile() function to add profile pic to user
      * @return void
      */
-    public function addProfile($email,$name)
+    public function addProfile($email, $name)
     {
         try {
 
@@ -188,7 +189,7 @@ class FundooAccountService
         }
     }
 
-     /**
+    /**
      * @method showprofile() function to fetch profile pic of currentuser
      * @return void
      */

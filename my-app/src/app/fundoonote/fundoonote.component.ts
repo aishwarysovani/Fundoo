@@ -23,10 +23,10 @@ export interface DialogData {
  */
 export class FundoonoteComponent implements OnInit {
   email: string = null;
-  listicon: boolean = true;
-  gridicon: boolean = false;
+  listIcon: boolean = true;
+  gridIcon: boolean = false;
   test: any;
-  test1: any;
+  testT: any;
   selectedFile: File;
   image: any;
 
@@ -44,7 +44,7 @@ export class FundoonoteComponent implements OnInit {
     obs.subscribe(
       (status: any) => {
         debugger;
-        this.test1 = status;
+        this.testT = status;
         console.log(status);
       });
   }
@@ -56,15 +56,15 @@ export class FundoonoteComponent implements OnInit {
   listview(): void {
     // send message to subscribers via observable subject
     this.listviewService.listview('Message from Home Component to App Component!');
-    this.listicon = false;
-    this.gridicon = true;
+    this.listIcon = false;
+    this.gridIcon = true;
   }
 
   gridview(): void {
     // clear message
     this.listviewService.gridview();
-    this.listicon = true;
-    this.gridicon = false;
+    this.listIcon = true;
+    this.gridIcon = false;
   }
 
   ngOnInit() {
@@ -94,7 +94,7 @@ export class FundoonoteComponent implements OnInit {
     const obs = this.noteservice.addProfile(this.email, this.selectedFile);
     obs.subscribe(
       (status: any) => {
-        this.test1 = status;
+        this.testT = status;
         console.log(status);
       });
   }

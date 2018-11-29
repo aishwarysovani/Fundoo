@@ -1,23 +1,24 @@
 <?php
-include "phpmailer/mail.php";
-include_once 'jwt.php';
+include "/var/www/html/codeigniter/application/controllers/phpmailer/mail.php";
+include_once '/var/www/html/codeigniter/application/controllers/jwt.php';
+include "/var/www/html/codeigniter/application/static/Constant.php";
 
 defined('BASEPATH') or exit('No direct script access allowed');
 /**
  * @var string $connect
  */
-class FundooNote
+class FundooNoteService
 {
     protected $connect;
 
-
-    function __construct()
+    public function __construct()
     {
         /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+         * Database conncetion using PDO
+         */
+        $data = new Constant();
+        $this->connect = new PDO("$data->database:host=$data->host;dbname=$data->dbname", "$data->user", "$data->password");
+        $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     }
 
@@ -25,20 +26,9 @@ class FundooNote
      * @method getNoteValue() add note entry to note database
      * @return void
      */
-    public function getNoteValue()
+    public function getNoteValue($email, $title, $note, $label, $color, $date, $time)
     {
         try {
-            /**
-             * @var string $email,$title,$note,$label,$color
-             * @var integer $date,$time
-             */
-            $email = $_POST['email'];
-            $title = $_POST['title'];
-            $note = $_POST['note'];
-            $date = $_POST['date'];
-            $time = $_POST['Time'];
-            $color = $_POST['color'];
-            $label = $_POST['label'];
             $val = "undefined";
 
             if ($title == $val || $note == $val) {
@@ -67,11 +57,11 @@ class FundooNote
         }
     }
 
-     /**
+    /**
      * @method allnotes() fetch all notes from database
      * @return void
      */
-    public function allNotes()
+    public function allNotes($email)
     {
         /**
          * fetch header section from from end service
@@ -88,7 +78,6 @@ class FundooNote
         $jwt1 = new JWT();
         $val = $jwt1->verify($token);
         if ($val) {
-            $email = $_POST['email'];
 
             $statement = $this->connect->prepare("SELECT * From note where email='$email' AND deleted IS NULL AND archive IS NULL or id in(select noteid from collaborator where sharemail='$email')");
             if ($statement->execute()) {
@@ -104,20 +93,11 @@ class FundooNote
      * @method updatenotes() update note and title notes from database
      * @return void
      */
-    public function updateNotes()
+    public function updateNotes($email, $id, $title, $note, $color)
     {
         try {
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
-            /**
-             * @var string $email,$title,$note,$color
-             * @var integer $id
-             */
-            $email = $_POST['email'];
-            $id = $_POST['id'];
-            $title = $_POST['title'];
-            $note = $_POST['note'];
-            $color = $_POST['color'];
 
             $result = array();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -135,22 +115,15 @@ class FundooNote
         }
     }
 
-     /**
+    /**
      * @method changecolor() change background color of note
      * @return void
      */
-    public function changeColor()
+    public function changeColor($email, $id, $color)
     {
         try {
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
-            /**
-             * @var string $email,$color
-             * @var integer $id
-             */
-            $email = $_POST['email'];
-            $id = $_POST['id'];
-            $color = $_POST['color'];
 
             $result = array();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -176,20 +149,15 @@ class FundooNote
     }
 
     /**
-     * @method deletenote() delete note from note 
+     * @method deletenote() delete note from note
      * @return void
      */
-    public function deleteNote()
+    public function deleteNote($email, $id)
     {
         try {
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
-            /**
-             * @var string $email
-             * @var integer $id
-             */
-            $email = $_POST['email'];
-            $id = $_POST['id'];
+
             $result = array();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($result as $arr) {
@@ -215,22 +183,15 @@ class FundooNote
     }
 
     /**
-     * @method changereminder() change reminder of note 
+     * @method changereminder() change reminder of note
      * @return void
      */
-    public function changeReminder()
+    public function changeReminder($email, $id, $date, $time)
     {
         try {
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
-            /**
-             * @var string $email
-             * @var integer $id,$date,$time
-             */
-            $email = $_POST['email'];
-            $id = $_POST['id'];
-            $date = $_POST['date'];
-            $time = $_POST['time'];
+
             $val = "undefined";
             if ($date != $val && $time != $val) {
                 $date = str_replace("00:00:00", $time, $date);
@@ -259,22 +220,15 @@ class FundooNote
         }
     }
 
-     /**
-     * @method deletereminder() delete reminder of note 
+    /**
+     * @method deletereminder() delete reminder of note
      * @return void
      */
-    public function deleteReminder()
+    public function deleteReminder($email, $id, $date)
     {
         try {
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
-            /**
-             * @var string $email
-             * @var integer $id,$date
-             */
-            $email = $_POST['email'];
-            $id = $_POST['id'];
-            $date = $_POST['date'];
 
             $result = array();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -300,11 +254,11 @@ class FundooNote
         }
     }
 
-     /**
-     * @method allreminder()fetch all reminders of all notes 
+    /**
+     * @method allreminder()fetch all reminders of all notes
      * @return void
      */
-    public function allReminder()
+    public function allReminder($email)
     {
         $headers = apache_request_headers();
         foreach ($headers as $header => $value) {
@@ -318,7 +272,6 @@ class FundooNote
         $jwt1 = new JWT();
         $val = $jwt1->verify($token);
         if ($val) {
-            $email = $_POST['email'];
             $statement = $this->connect->prepare("SELECT * From note where email='$email' AND deleted IS NULL and remind_date !='undefined'");
             if ($statement->execute()) {
                 $arr = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -329,10 +282,10 @@ class FundooNote
     }
 
     /**
-     * @method alldeletednotes()fetch all deleted notes 
+     * @method alldeletednotes()fetch all deleted notes
      * @return void
      */
-    public function allDeletedNotes()
+    public function allDeletedNotes($email)
     {
         $headers = apache_request_headers();
         foreach ($headers as $header => $value) {
@@ -343,7 +296,6 @@ class FundooNote
         $jwt1 = new JWT();
         $val = $jwt1->verify($token);
         if ($val) {
-            $email = $_POST['email'];
             $statement = $this->connect->prepare("SELECT * From note where email='$email' AND deleted='1'");
             if ($statement->execute()) {
                 $arr = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -354,20 +306,15 @@ class FundooNote
     }
 
     /**
-     * @method deleteforever()deleted note permantly 
+     * @method deleteforever()deleted note permantly
      * @return void
      */
-    public function deleteForever()
+    public function deleteForever($email, $id)
     {
         try {
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
-            /**
-             * @var string $email
-             * @var integer $id
-             */
-            $email = $_POST['email'];
-            $id = $_POST['id'];
+
             $result = array();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($result as $arr) {
@@ -393,20 +340,15 @@ class FundooNote
     }
 
     /**
-     * @method restore() restore note 
+     * @method restore() restore note
      * @return void
      */
-    public function restore()
+    public function restore($email, $id)
     {
         try {
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
-            /**
-             * @var string $email
-             * @var integer $id
-             */
-            $email = $_POST['email'];
-            $id = $_POST['id'];
+
             $result = array();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($result as $arr) {
@@ -431,21 +373,16 @@ class FundooNote
         }
     }
 
-     /**
-     * @method archive() archive note 
+    /**
+     * @method archive() archive note
      * @return void
      */
-    public function archive()
+    public function archive($email, $id)
     {
         try {
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
-            /**
-             * @var string $email
-             * @var integer $id
-             */
-            $email = $_POST['email'];
-            $id = $_POST['id'];
+
             $result = array();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($result as $arr) {
@@ -471,10 +408,10 @@ class FundooNote
     }
 
     /**
-     * @method allarchivenotes() fetch all archive note 
+     * @method allarchivenotes() fetch all archive note
      * @return void
      */
-    public function allArchiveNotes()
+    public function allArchiveNotes($email)
     {
         $headers = apache_request_headers();
         foreach ($headers as $header => $value) {
@@ -488,9 +425,6 @@ class FundooNote
         $jwt1 = new JWT();
         $val = $jwt1->verify($token);
         if ($val) {
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $email = $_POST['email'];
             $statement = $this->connect->prepare("SELECT * From note where email='$email' AND archive='1'");
             if ($statement->execute()) {
                 $arr = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -500,21 +434,16 @@ class FundooNote
         }
     }
 
-
     /**
      * @method unarchive() unarchive note with perticular id
      * @return void
      */
-    public function unarchive()
+    public function unarchive($email, $id)
     {
         try {
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
-            /**
-             * @var string $email
-             */
-            $email = $_POST['email'];
-            $id = $_POST['id'];
+
             $result = array();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($result as $arr) {
@@ -539,21 +468,15 @@ class FundooNote
         }
     }
 
-     /**
+    /**
      * @method addnotelabel() add label to perticular note
      * @return void
      */
-    public function addNoteLabel()
+    public function addNoteLabel($email, $id, $label)
     {
         try {
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
-            /**
-             * @var string $email,$label
-             */
-            $email = $_POST['email'];
-            $id = $_POST['id'];
-            $label = $_POST['label'];
 
             $result = array();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -578,23 +501,15 @@ class FundooNote
         }
     }
 
-
-     /**
+    /**
      * @method deletenotelabel() delete label to perticular note
      * @return void
      */
-    public function deleteNoteLabel()
+    public function deleteNoteLabel($email, $id, $label)
     {
         try {
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
-            /**
-             * @var string $email,$label
-             * @var integer $id
-             */
-            $email = $_POST['email'];
-            $id = $_POST['id'];
-            $label = $_POST['label'];
 
             $result = array();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -624,19 +539,12 @@ class FundooNote
      * @method addcollaborator() add collaborator
      * @return void
      */
-    public function addCollaborator()
+    public function addCollaborator($flag, $email, $id, $sharemail)
     {
         try {
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
-            /**
-             * @var string $email,$sharemail
-             * @var integer $id
-             */
-            $flag = false;
-            $email = $_POST['email'];
-            $id = $_POST['id'];
-            $sharemail = $_POST['sharemail'];
+
             $token = md5($email);
 
             if ($sharemail == '') {
@@ -677,7 +585,7 @@ class FundooNote
      * @method getcollaborator()fetch all collaborator
      * @return void
      */
-    public function getCollaborator()
+    public function getCollaborator($email, $id)
     {
         $headers = apache_request_headers();
         foreach ($headers as $header => $value) {
@@ -688,8 +596,6 @@ class FundooNote
         $jwt1 = new JWT();
         $val = $jwt1->verify($token);
         if ($val) {
-            $email = $_POST['email'];
-            $id = $_POST['id'];
             $stmt = $this->connect->prepare("SELECT * From collaborator where email='$email' and noteid='$id'");
             $stmt->execute();
 
@@ -699,22 +605,15 @@ class FundooNote
         }
     }
 
-     /**
+    /**
      * @method deletecollaborator()delete collaborator for note
      * @return void
      */
-    public function deleteCollaborator()
+    public function deleteCollaborator($email, $id, $sharemail)
     {
         try {
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
-            /**
-             * @var string $email,$sharemail
-             * @var integer $noteid
-             */
-            $email = $_POST['email'];
-            $noteid = $_POST['noteid'];
-            $sharemail = $_POST['sharemail'];
 
             $sql1 = "DELETE FROM collaborator WHERE noteid='$noteid' AND email='$email' AND sharemail='$sharemail'";
             $res = $this->connect->exec($sql1);
@@ -732,10 +631,10 @@ class FundooNote
     }
 
     /**
-     * @method getcollaborator1()fetch collaboraror from collaborator table
+     * @method getAllCollaborator()fetch collaboraror from collaborator table
      * @return void
      */
-    public function getAllCollaborator()
+    public function getAllCollaborator($email)
     {
         $headers = apache_request_headers();
         foreach ($headers as $header => $value) {
@@ -749,7 +648,6 @@ class FundooNote
         $jwt1 = new JWT();
         $val = $jwt1->verify($token);
         if ($val) {
-            $email = $_POST['email'];
             $stmt = $this->connect->prepare("SELECT * From collaborator where email='$email' or sharemail='$email'");
             $stmt->execute();
 
@@ -759,25 +657,13 @@ class FundooNote
         }
     }
 
-     /**
+    /**
      * @method addimage()add image to perticular note
      * @return void
      */
-    public function addImage()
+    public function addImage($email, $id, $name)
     {
         try {
-            /**
-             * @var string $email,$file,$name
-             */
-            $email = $_POST['email'];
-            $id=$_POST['id'];
-            $file = $_FILES['file'];
-            $name = $_FILES['file']['name'];
-            $fileTmpName = $_FILES['file']['tmp_name'];
-            //Set location for image
-            $newfileloc = '/var/www/html/codeigniter/my-app/src/assets/profile/' . $_FILES['file']['name'];
-            $upload = move_uploaded_file($fileTmpName, $newfileloc);
-
             $sql = "UPDATE note SET image='$name' WHERE email='$email' and id='$id'";
             $res = $this->connect->exec($sql);
 

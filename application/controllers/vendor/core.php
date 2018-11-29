@@ -2,7 +2,7 @@
 class value
 {
 
-  public  $key = "fundoo";
+  public $key = "fundoo";
   public $iss =11;
   public $aud = 30;
   public $iat = 1356999524;

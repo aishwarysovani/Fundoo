@@ -28,23 +28,23 @@ export class NoteComponent implements OnInit {
 
   model: any = {};
   test: any;
-  test1: any;
+  testT: any;
   panelOpenState = false;
-  dialogcard: boolean = false;
-  maincard: boolean = true;
-  expandedcard: boolean = false;
+  dialogCard: boolean = false;
+  mainCard: boolean = true;
+  expandedCard: boolean = false;
   email: string = null;
-  gridview: boolean = true;
-  listview: boolean = false;
-  listicon: boolean = true;
-  gridicon: boolean = false;
+  gridView: boolean = true;
+  listView: boolean = false;
+  listIcon: boolean = true;
+  gridIcon: boolean = false;
   public now: Date = new Date();
   message: any;
   subscription: Subscription;
   getColor: any;
-  getlabel: any;
+  getLabel: any;
   selectedFile: any;
-  imageid: any;
+  imageId: any;
   searchSubscription: Subscription;
   searchItem: any;
 
@@ -63,7 +63,7 @@ export class NoteComponent implements OnInit {
     const obs1 = this.noteService.getCollaboratorNote(this.email);
     obs1.subscribe(
       (status: any) => {
-        this.test1 = status;
+        this.testT = status;
         console.log(status);
       });
 
@@ -92,12 +92,12 @@ export class NoteComponent implements OnInit {
       // console.log(this.now);
     }, 1);
 
-    this.gridview = true;
-    this.listview = false;
-    this.listicon = true;
-    this.gridicon = false;
-    this.maincard = true;
-    this.expandedcard = false;
+    this.gridView = true;
+    this.listView = false;
+    this.listIcon = true;
+    this.gridIcon = false;
+    this.mainCard = true;
+    this.expandedCard = false;
     debugger;
     const obs1 = this.noteService.getNotes(this.email);
     obs1.subscribe(
@@ -117,7 +117,7 @@ export class NoteComponent implements OnInit {
   }
 
   imageadd(id) {
-    this.imageid = id;
+    this.imageId = id;
   }
 
   /**
@@ -132,10 +132,10 @@ export class NoteComponent implements OnInit {
      * service call to update profile pic
      * @param email,@param selectedFile
      */
-    const obs = this.noteService.addImage(this.imageid, this.selectedFile);
+    const obs = this.noteService.addImage(this.imageId, this.selectedFile);
     obs.subscribe(
       (status: any) => {
-        this.test1 = status;
+        this.testT = status;
         console.log(status);
       });
   }
@@ -180,7 +180,7 @@ export class NoteComponent implements OnInit {
         const obs1 = this.noteService.getCollaboratorNote(this.email);
         obs1.subscribe(
           (status: any) => {
-            this.test1 = status;
+            this.testT = status;
             console.log(status);
           });
       });
@@ -188,13 +188,13 @@ export class NoteComponent implements OnInit {
 
   takenote() {
     debugger;
-    this.maincard = true;
-    this.expandedcard = false;
+    this.mainCard = true;
+    this.expandedCard = false;
 
     /**
      * service to show note in app
      */
-    const obs = this.noteService.getNoteValue(this.model, this.getColor, this.getlabel);
+    const obs = this.noteService.getNoteValue(this.model, this.getColor, this.getLabel);
     obs.subscribe(
       (status: any) => {
         this.test = status;
@@ -277,7 +277,7 @@ export class NoteComponent implements OnInit {
     const obs = this.noteService.showLabel(this.email);
     obs.subscribe(
       (status: any) => {
-        this.test1 = status;
+        this.testT = status;
         console.log(status);
       });
   }
@@ -312,7 +312,7 @@ export class NoteComponent implements OnInit {
   }
 
   addlabel(label: any) {
-    this.getlabel = label;
+    this.getLabel = label;
   }
 
   setcolor(color: any) {
@@ -321,9 +321,9 @@ export class NoteComponent implements OnInit {
   }
 
   matMaincard() {
-    this.maincard = false;
-    this.expandedcard = true;
-    this.dialogcard = true;
+    this.mainCard = false;
+    this.expandedCard = true;
+    this.dialogCard = true;
   }
 
   /**

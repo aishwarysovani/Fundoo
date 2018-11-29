@@ -6,7 +6,7 @@ include '/var/www/html/codeigniter/application/vendor/autoload.php';
 /**
  * @var string $connect
  */
-class FundooAccount extends \PHPUnit_Framework_TestCase
+class FundooAccountController extends \PHPUnit_Framework_TestCase
 {
     // protected $connect;
     public $ref;

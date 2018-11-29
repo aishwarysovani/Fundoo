@@ -22,8 +22,8 @@ export class BinComponent implements OnInit {
    * @param email
    */
   ngOnInit() {
-    var email1 = localStorage.getItem('email');
-    this.email = email1;
+    var emailE = localStorage.getItem('email');
+    this.email = emailE;
     const obs1 = this.noteService.getDeletedNotes(this.email);
     obs1.subscribe(
       (status: any) => {

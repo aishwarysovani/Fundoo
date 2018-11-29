@@ -19,8 +19,8 @@ export class ArchiveComponent implements OnInit {
   constructor(private noteService: NoteService, private loginService: LoginService) { }
 
   ngOnInit() {
-    var email1 = localStorage.getItem('email');
-    this.email = email1;
+    var emailE = localStorage.getItem('email');
+    this.email = emailE;
 
     /**
      * service to show archive notes
