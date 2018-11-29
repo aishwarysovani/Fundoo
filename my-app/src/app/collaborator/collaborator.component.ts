@@ -37,7 +37,7 @@ export class CollaboratorComponent implements OnInit {
     /**
      * display all collaborator
      */
-    const obs1 = this.noteService.getcollaborator(this.data.item.id);
+    const obs1 = this.noteService.getCollaborator(this.data.item.id);
     obs1.subscribe(
       (status: any) => {
         this.test = status;
@@ -63,7 +63,7 @@ export class CollaboratorComponent implements OnInit {
    */
   addcollaborator() {
     debugger;
-    const obs = this.noteService.addcollaborator(this.data.item.id, this.sharemail);
+    const obs = this.noteService.addCollaborator(this.data.item.id, this.sharemail);
     obs.subscribe(
       (status: any) => {
         this.test = status;
@@ -78,7 +78,7 @@ export class CollaboratorComponent implements OnInit {
    */
   deletecollaborator(noteid, sharemail) {
     debugger;
-    const obs = this.noteService.deletecollaborator(noteid, sharemail);
+    const obs = this.noteService.deleteCollaborator(noteid, sharemail);
     obs.subscribe(
       (status: any) => {
         this.test = status;

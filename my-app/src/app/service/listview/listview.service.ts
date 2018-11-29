@@ -14,7 +14,7 @@ import { Observable, Subject } from 'rxjs';
 export class ListviewService {
 
     constructor() { }
-    private subjectforSearch=new Subject<any>();
+    private subjectforSearch = new Subject<any>();
     private subject = new Subject<any>();
 
     listview(message: string) {
@@ -31,8 +31,8 @@ export class ListviewService {
 
     searchItem(searchItem: any): any {
         this.subjectforSearch.next(searchItem);
-      }
-      getsearchItem(): Observable<any> {
+    }
+    getsearchItem(): Observable<any> {
         return this.subjectforSearch.asObservable();
-      }
+    }
 }

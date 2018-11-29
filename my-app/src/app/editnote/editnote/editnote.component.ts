@@ -47,7 +47,7 @@ export class EditnoteComponent implements OnInit {
    * @param id 
    */
   deletenote(id) {
-    const obsD = this.noteService.deletenote(id);
+    const obsD = this.noteService.deleteNote(id);
     obsD.subscribe(
       (status: any) => {
         this.data.item = status;

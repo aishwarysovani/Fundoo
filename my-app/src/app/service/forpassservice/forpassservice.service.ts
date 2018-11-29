@@ -15,7 +15,7 @@ export class ForpassserviceService {
   registerForm: any = {};
   constructor(private http: HttpClient) { }
 
-  getforgotValue(form) {
+  getForgotValue(form) {
     debugger
     const newdata = new FormData();
     newdata.append('forgotemail', form.email);

@@ -27,7 +27,7 @@ export class EditlabelComponent implements OnInit {
     /**
      * service to show label
      */
-    const obs = this.noteservice.showlabel(email1);
+    const obs = this.noteservice.showLabel(email1);
     obs.subscribe(
       (status: any) => {
         this.test = status;
@@ -47,7 +47,7 @@ export class EditlabelComponent implements OnInit {
    * service to save label
    */
   savelabel() {
-    const obs = this.noteservice.savelabel(this.Label1);
+    const obs = this.noteservice.saveLabel(this.Label1);
     obs.subscribe(
       (status: any) => {
         this.test = status;
@@ -60,7 +60,7 @@ export class EditlabelComponent implements OnInit {
    * @param id 
    */
   deletelabel(id) {
-    const obs = this.noteservice.deletelabel(id);
+    const obs = this.noteservice.deleteLabel(id);
     obs.subscribe(
       (status: any) => {
         this.test = status;
@@ -75,7 +75,7 @@ export class EditlabelComponent implements OnInit {
    */
   editlabel(id, label) {
     debugger;
-    const obs = this.noteservice.editlabel(id, label);
+    const obs = this.noteservice.editLabel(id, label);
     obs.subscribe(
       (status: any) => {
         this.test = status;

@@ -40,7 +40,7 @@ export class FundoonoteComponent implements OnInit {
      * service to show profile pic
      * @param email
      */
-    const obs = this.noteservice.showprofile(this.email);
+    const obs = this.noteservice.showProfile(this.email);
     obs.subscribe(
       (status: any) => {
         debugger;
@@ -70,7 +70,7 @@ export class FundoonoteComponent implements OnInit {
   ngOnInit() {
     var email1 = localStorage.getItem('email');
     this.email = email1;
-    const obs = this.noteservice.showlabel(email1);
+    const obs = this.noteservice.showLabel(email1);
     obs.subscribe(
       (status: any) => {
         this.test = status;
@@ -91,7 +91,7 @@ export class FundoonoteComponent implements OnInit {
      * service call to update profile pic
      * @param email,@param selectedFile
      */
-    const obs = this.noteservice.addprofile(this.email, this.selectedFile);
+    const obs = this.noteservice.addProfile(this.email, this.selectedFile);
     obs.subscribe(
       (status: any) => {
         this.test1 = status;

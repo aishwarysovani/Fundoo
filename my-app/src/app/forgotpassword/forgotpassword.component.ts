@@ -33,7 +33,7 @@ export class ForgotpasswordComponent implements OnInit {
    * @param emailid
    */
   forgot() {
-    const obs = this.forpassserviceService.getforgotValue(this.form);
+    const obs = this.forpassserviceService.getForgotValue(this.form);
     obs.subscribe(
       (s: any) => {
         console.log('got response');

@@ -36,7 +36,7 @@ export class ConformregiComponent implements OnInit {
    * service to conform registration
    */
   conform() {
-    const obs = this.resetService.getconformValue(this.resetForm, this.token1);
+    const obs = this.resetService.getConformValue(this.resetForm, this.token1);
     obs.subscribe(
       (s: any) => {
         console.log('got response');

@@ -109,7 +109,7 @@ export class NoteService {
    * @param id 
    * @param color 
    */
-  changecolor(id, color) {
+  changeColor(id, color) {
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
     newdata.append('email', email1);
@@ -125,7 +125,7 @@ export class NoteService {
    * delete note api call
    * @param id 
    */
-  deletenote(id) {
+  deleteNote(id) {
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
     newdata.append('email', email1);
@@ -142,7 +142,7 @@ export class NoteService {
    * @param date 
    * @param time 
    */
-  changereminder(id, date, time) {
+  changeReminder(id, date, time) {
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
     newdata.append('email', email1);
@@ -160,7 +160,7 @@ export class NoteService {
    * @param id 
    * @param date 
    */
-  deletereminder(id, date) {
+  deleteReminder(id, date) {
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
     newdata.append('email', email1);
@@ -176,7 +176,7 @@ export class NoteService {
    * fetch all reminders api call
    * @param email 
    */
-  getreminders(email) {
+  getReminders(email) {
     debugger;
     const newdata = new FormData();
     var token = localStorage.getItem('currentUser');
@@ -192,7 +192,7 @@ export class NoteService {
    * and delete function related api calls
    * @param email 
    */
-  getdeletedNotes(email) {
+  getDeletedNotes(email) {
     debugger;
     const newdata = new FormData();
     var token = localStorage.getItem('currentUser');
@@ -203,7 +203,7 @@ export class NoteService {
     return this.http.post(this.fetchdeletednote, newdata, otheroption);
   }
 
-  deleteforever(id) {
+  deleteForever(id) {
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
     newdata.append('email', email1);
@@ -241,7 +241,7 @@ export class NoteService {
   }
 
 
-  getarchivedNotes(email) {
+  getArchivedNotes(email) {
     debugger;
     const newdata = new FormData();
     var token = localStorage.getItem('currentUser');
@@ -267,7 +267,7 @@ export class NoteService {
    * label related api calls
    * @param model 
    */
-  savelabel(model) {
+  saveLabel(model) {
     debugger;
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
@@ -279,7 +279,7 @@ export class NoteService {
     return this.http.post(this.createlabel, newdata, otheroption);
   }
 
-  showlabel(email) {
+  showLabel(email) {
     const newdata = new FormData();
     newdata.append('email', email);
     const otheroption: any = {
@@ -288,7 +288,7 @@ export class NoteService {
     return this.http.post(this.Showlabel, newdata, otheroption);
   }
 
-  deletelabel(id) {
+  deleteLabel(id) {
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
     newdata.append('email', email1);
@@ -299,7 +299,7 @@ export class NoteService {
     return this.http.post(this.Deletelabel, newdata, otheroption);
   }
 
-  editlabel(id, label) {
+  editLabel(id, label) {
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
     newdata.append('email', email1);
@@ -311,7 +311,7 @@ export class NoteService {
     return this.http.post(this.Editlabel, newdata, otheroption);
   }
 
-  addnotelabel(id, label) {
+  addNoteLabel(id, label) {
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
     newdata.append('email', email1);
@@ -323,7 +323,7 @@ export class NoteService {
     return this.http.post(this.Addnotelabel, newdata, otheroption);
   }
 
-  deletenotelabel(id, label) {
+  deleteNoteLabel(id, label) {
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
     newdata.append('email', email1);
@@ -335,7 +335,7 @@ export class NoteService {
     return this.http.post(this.Deletenotelabel, newdata, otheroption);
   }
 
-  addimage(id, imagefile) {
+  addImage(id, imagefile) {
     debugger;
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
@@ -354,7 +354,7 @@ export class NoteService {
    * @param id 
    * @param sharemail 
    */
-  addcollaborator(id, sharemail) {
+  addCollaborator(id, sharemail) {
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
     newdata.append('email', email1);
@@ -367,7 +367,7 @@ export class NoteService {
   }
 
 
-  getcollaborator(id) {
+  getCollaborator(id) {
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
     newdata.append('email', email1);
@@ -378,7 +378,7 @@ export class NoteService {
     return this.http.post(this.Getcollaborator, newdata, otheroption);
   }
 
-  getcollaboratornote(email) {
+  getCollaboratorNote(email) {
     const newdata = new FormData();
     newdata.append('email', email);
     const otheroption: any = {
@@ -387,7 +387,7 @@ export class NoteService {
     return this.http.post(this.Getcollaborator1, newdata, otheroption);
   }
 
-  deletecollaborator(noteid, sharemail) {
+  deleteCollaborator(noteid, sharemail) {
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
     newdata.append('email', email1);
@@ -404,7 +404,7 @@ export class NoteService {
    * @param email 
    * @param imagefile 
    */
-  addprofile(email, imagefile) {
+  addProfile(email, imagefile) {
     debugger;
     const newdata = new FormData();
     newdata.append('email', email);
@@ -415,7 +415,7 @@ export class NoteService {
     return this.http.post(this.Addprofile, newdata, otheroption);
   }
 
-  showprofile(email) {
+  showProfile(email) {
     const newdata = new FormData();
     newdata.append('email', email);
     const otheroption: any = {

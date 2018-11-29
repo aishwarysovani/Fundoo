@@ -26,7 +26,7 @@ export class ArchiveComponent implements OnInit {
      * service to show archive notes
      * @param email
      */
-    const obs1 = this.noteService.getarchivedNotes(this.email);
+    const obs1 = this.noteService.getArchivedNotes(this.email);
     obs1.subscribe(
       (status: any) => {
         this.test = status;

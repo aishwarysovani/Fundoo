@@ -30,9 +30,9 @@ export class NoteComponent implements OnInit {
   test: any;
   test1: any;
   panelOpenState = false;
-  card3: boolean = false;
-  card1: boolean = true;
-  card2: boolean = false;
+  dialogcard: boolean = false;
+  maincard: boolean = true;
+  expandedcard: boolean = false;
   email: string = null;
   gridview: boolean = true;
   listview: boolean = false;
@@ -60,7 +60,7 @@ export class NoteComponent implements OnInit {
      * service to call collaborators
      * @param email
      */
-    const obs1 = this.noteService.getcollaboratornote(this.email);
+    const obs1 = this.noteService.getCollaboratorNote(this.email);
     obs1.subscribe(
       (status: any) => {
         this.test1 = status;
@@ -70,8 +70,7 @@ export class NoteComponent implements OnInit {
     this.searchSubscription = this.listviewService
       .getsearchItem()
       .subscribe(message => {
-       
-        this.searchItem = message;
+       this.searchItem = message;
       });
   }
 
@@ -97,8 +96,8 @@ export class NoteComponent implements OnInit {
     this.listview = false;
     this.listicon = true;
     this.gridicon = false;
-    this.card1 = true;
-    this.card2 = false;
+    this.maincard = true;
+    this.expandedcard = false;
     debugger;
     const obs1 = this.noteService.getNotes(this.email);
     obs1.subscribe(
@@ -133,7 +132,7 @@ export class NoteComponent implements OnInit {
      * service call to update profile pic
      * @param email,@param selectedFile
      */
-    const obs = this.noteService.addimage(this.imageid, this.selectedFile);
+    const obs = this.noteService.addImage(this.imageid, this.selectedFile);
     obs.subscribe(
       (status: any) => {
         this.test1 = status;
@@ -178,7 +177,7 @@ export class NoteComponent implements OnInit {
          * shows collaborator on perticular note
          * @param email
          */
-        const obs1 = this.noteService.getcollaboratornote(this.email);
+        const obs1 = this.noteService.getCollaboratorNote(this.email);
         obs1.subscribe(
           (status: any) => {
             this.test1 = status;
@@ -189,8 +188,8 @@ export class NoteComponent implements OnInit {
 
   takenote() {
     debugger;
-    this.card1 = true;
-    this.card2 = false;
+    this.maincard = true;
+    this.expandedcard = false;
 
     /**
      * service to show note in app
@@ -211,7 +210,7 @@ export class NoteComponent implements OnInit {
    */
   changecolor(id: any, color: any) {
     debugger;
-    const obs = this.noteService.changecolor(id, color);
+    const obs = this.noteService.changeColor(id, color);
     obs.subscribe(
       (status: any) => {
         this.test = status;
@@ -224,7 +223,7 @@ export class NoteComponent implements OnInit {
      * service to delete note 
      * @param id
      */
-    const obsD = this.noteService.deletenote(id);
+    const obsD = this.noteService.deleteNote(id);
     obsD.subscribe(
       (status: any) => {
         this.test = status;
@@ -236,7 +235,7 @@ export class NoteComponent implements OnInit {
      * change reminder service
      * @param id,@param date,@param time
      */
-    const obsD = this.noteService.changereminder(id, date, time);
+    const obsD = this.noteService.changeReminder(id, date, time);
     obsD.subscribe(
       (status: any) => {
         this.test = status;
@@ -250,7 +249,7 @@ export class NoteComponent implements OnInit {
    * @param date 
    */
   deleteremider(id, date) {
-    const obsD = this.noteService.deletereminder(id, date);
+    const obsD = this.noteService.deleteReminder(id, date);
     obsD.subscribe(
       (status: any) => {
         this.test = status;
@@ -275,7 +274,7 @@ export class NoteComponent implements OnInit {
    * @var email
    */
   alllabel() {
-    const obs = this.noteService.showlabel(this.email);
+    const obs = this.noteService.showLabel(this.email);
     obs.subscribe(
       (status: any) => {
         this.test1 = status;
@@ -290,7 +289,7 @@ export class NoteComponent implements OnInit {
    */
   addnotelabel(id: any, label: any) {
     debugger;
-    const obs = this.noteService.addnotelabel(id, label);
+    const obs = this.noteService.addNoteLabel(id, label);
     obs.subscribe(
       (status: any) => {
         this.test = status;
@@ -304,7 +303,7 @@ export class NoteComponent implements OnInit {
    * @param label 
    */
   deletenotelabel(id, label) {
-    const obsD = this.noteService.deletenotelabel(id, label);
+    const obsD = this.noteService.deleteNoteLabel(id, label);
     obsD.subscribe(
       (status: any) => {
         this.test = status;
@@ -321,10 +320,10 @@ export class NoteComponent implements OnInit {
     this.getColor = color;
   }
 
-  matCard1() {
-    this.card1 = false;
-    this.card2 = true;
-    this.card3 = true;
+  matMaincard() {
+    this.maincard = false;
+    this.expandedcard = true;
+    this.dialogcard = true;
   }
 
   /**

@@ -4,24 +4,28 @@ defined('BASEPATH') or exit('No direct script access allowed');
 /**
  * @var string $connect
  */
-class Fundoolabel
+class FundooLabel
 {
     protected $connect;
 
-    /**
-     * @method createlabel() function to add new entry to label table
-     * @return void
-     */
-    public function createlabel()
+    function __construct()
     {
-        try {
-            /**
+        /**
              * Database conncetion using PDO
              */
             $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
             $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            /**
+    }
+
+    /**
+     * @method createlabel() function to add new entry to label table
+     * @return void
+     */
+    public function createLabel()
+    {
+        try {
+             /**
              * @var string $email,$label
              */
             $email = $_POST['email'];
@@ -49,15 +53,9 @@ class Fundoolabel
      * @method showlabel() function to fetch all labels from table
      * @return void
      */
-    public function showlabel()
+    public function showLabel()
     {
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
             /**
              * @var string $email
              */
@@ -85,15 +83,9 @@ class Fundoolabel
      * @method deletelabel() delete label from table
      * @return void
      */
-    public function deletelabel()
+    public function deleteLabel()
     {
-        try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+        try{
             /**
              * @var string $email
              * @var int $id
@@ -121,15 +113,9 @@ class Fundoolabel
      * @method editlabel() edit label from table
      * @return void
      */
-    public function editlabel()
+    public function editLabel()
     {
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
             /**
              * @var string $email,$label
              * @var integer $id

@@ -1,15 +1,24 @@
 <?php
 include "phpmailer/mail.php";
 include_once 'jwt.php';
+include "config/constant.php";
 defined('BASEPATH') or exit('No direct script access allowed');
-
+include "/var/www/html/codeigniter/application/service/FundooAccountService.php";
 include '/var/www/html/codeigniter/application/vendor/autoload.php';
 /**
  * @var string $connect
  */
-class Fundooacc extends \PHPUnit_Framework_TestCase
+class FundooAccount extends \PHPUnit_Framework_TestCase
 {
-    protected $connect;
+    // protected $connect;
+    public $ref;
+
+    function __construct()
+    {
+
+        $this->ref=new FundooAccountService();
+
+    }
 
     /**
      * @method getRegisterValue() add the registration details
@@ -17,12 +26,6 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
      */
     public function getRegisterValue()
     {
-        try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             /**
              * @var string $name,$email,$password
@@ -32,21 +35,9 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
             $email = $_POST['email'];
             $password = $_POST['pswd'];
             $number = $_POST['num'];
-            $token = md5($email);
 
-            $sql = "INSERT INTO register (uname, email, pswd, num,token) VALUES ('$name', '$email', '$password', '$number','$token')";
-            // use exec() because no results are returned
-            $res = $this->connect->exec($sql);
-            $ref = new MailClass();
-
-            $ref->sendmail1($name, $email, $token);
-            json_encode($res);
-            echo "New record created successfully";
-            $connect = null;
-        } catch (PDOException $e) {
-            print "Error!: " . $e->getMessage() . "<br/>";
-            die();
-        }
+            $this->ref->getRegisterValue($name,$email,$password,$number);
+            
     }
 
      /**
@@ -57,11 +48,6 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
     {
         $flag = false;
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $this->connect->prepare("SELECT email,pswd FROM register");
             $stmt->execute();
 
@@ -99,15 +85,10 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
      * @method getforgotValue() send the email to reset password
      * @return void
      */
-    public function getforgotValue()
+    public function getForgotValue()
     {
         $flag = false;
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $this->connect->prepare("SELECT uname,email FROM register");
             $stmt->execute();
             $email = $_POST['forgotemail'];
@@ -139,12 +120,6 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
     {
         try {
             /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            /**
              * @var string $email,$password
              */
             $email = $_POST['resetemail'];
@@ -173,15 +148,9 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
      * @method getconformValue() set token for conform registration
      * @return void
      */
-    public function getconformValue()
+    public function getConformValue()
     {
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
             /**
              * @var string $token
              */
@@ -209,15 +178,9 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
      * @method addprofile() function to add profile pic to user
      * @return void
      */
-    public function addprofile()
+    public function addProfile()
     {
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
             /**
              * @var string $email,$file,$name
              */
@@ -249,14 +212,9 @@ class Fundooacc extends \PHPUnit_Framework_TestCase
      * @method showprofile() function to fetch profile pic of currentuser
      * @return void
      */
-    public function showprofile()
+    public function showProfile()
     {
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             /**
              * @var string $email
              */

@@ -1,12 +1,12 @@
 <!-- main card -->
-<mat-card class="memory-card" *ngIf="card1" (click)="matCard1()">
+<mat-card class="memory-card" *ngIf="maincard" (click)="matMaincard()">
     <mat-card-content>
         <div>Take a note..</div>
     </mat-card-content>
 </mat-card>
 
 <!-- expanded card -->
-<mat-card class="text-card" *ngIf="card2">
+<mat-card class="text-card" *ngIf="expandedcard">
     <mat-card-content>
         <div><input matInput placeholder="Title" required [(ngModel)]="model.title"></div>
         <div>

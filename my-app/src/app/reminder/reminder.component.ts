@@ -74,7 +74,7 @@ export class ReminderComponent implements OnInit {
     /**
      * service to call all reminders 
      */
-    const obs1 = this.noteService.getreminders(this.email);
+    const obs1 = this.noteService.getReminders(this.email);
     obs1.subscribe(
       (status: any) => {
         this.test = status;
@@ -123,7 +123,7 @@ export class ReminderComponent implements OnInit {
    */
   changecolor(id: any, color: any) {
     debugger;
-    const obs = this.noteService.changecolor(id, color);
+    const obs = this.noteService.changeColor(id, color);
     obs.subscribe(
       (status: any) => {
         this.test = status;
@@ -136,7 +136,7 @@ export class ReminderComponent implements OnInit {
    * @param id 
    */
   deletenote(id) {
-    const obsD = this.noteService.deletenote(id);
+    const obsD = this.noteService.deleteNote(id);
     obsD.subscribe(
       (status: any) => {
         this.test = status;
@@ -150,7 +150,7 @@ export class ReminderComponent implements OnInit {
    * @param time 
    */
   changereminder(id, date, time) {
-    const obsD = this.noteService.changereminder(id, date, time);
+    const obsD = this.noteService.changeReminder(id, date, time);
     obsD.subscribe(
       (status: any) => {
         this.test = status;
@@ -159,7 +159,7 @@ export class ReminderComponent implements OnInit {
   }
 
   deleteremider(id, date) {
-    const obsD = this.noteService.deletereminder(id, date);
+    const obsD = this.noteService.deleteReminder(id, date);
     obsD.subscribe(
       (status: any) => {
         this.test = status;

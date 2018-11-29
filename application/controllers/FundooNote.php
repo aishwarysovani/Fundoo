@@ -6,9 +6,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
 /**
  * @var string $connect
  */
-class Fundoonote
+class FundooNote
 {
     protected $connect;
+
+
+    function __construct()
+    {
+        /**
+             * Database conncetion using PDO
+             */
+            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
+            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    }
 
     /**
      * @method getNoteValue() add note entry to note database
@@ -17,12 +28,6 @@ class Fundoonote
     public function getNoteValue()
     {
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
             /**
              * @var string $email,$title,$note,$label,$color
              * @var integer $date,$time
@@ -66,7 +71,7 @@ class Fundoonote
      * @method allnotes() fetch all notes from database
      * @return void
      */
-    public function allnotes()
+    public function allNotes()
     {
         /**
          * fetch header section from from end service
@@ -83,8 +88,6 @@ class Fundoonote
         $jwt1 = new JWT();
         $val = $jwt1->verify($token);
         if ($val) {
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $email = $_POST['email'];
 
             $statement = $this->connect->prepare("SELECT * From note where email='$email' AND deleted IS NULL AND archive IS NULL or id in(select noteid from collaborator where sharemail='$email')");
@@ -101,14 +104,9 @@ class Fundoonote
      * @method updatenotes() update note and title notes from database
      * @return void
      */
-    public function updatenotes()
+    public function updateNotes()
     {
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
             /**
@@ -141,14 +139,9 @@ class Fundoonote
      * @method changecolor() change background color of note
      * @return void
      */
-    public function changecolor()
+    public function changeColor()
     {
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
             /**
@@ -186,14 +179,9 @@ class Fundoonote
      * @method deletenote() delete note from note 
      * @return void
      */
-    public function deletenote()
+    public function deleteNote()
     {
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
             /**
@@ -230,14 +218,9 @@ class Fundoonote
      * @method changereminder() change reminder of note 
      * @return void
      */
-    public function changereminder()
+    public function changeReminder()
     {
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
             /**
@@ -280,14 +263,9 @@ class Fundoonote
      * @method deletereminder() delete reminder of note 
      * @return void
      */
-    public function deletereminder()
+    public function deleteReminder()
     {
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
             /**
@@ -326,7 +304,7 @@ class Fundoonote
      * @method allreminder()fetch all reminders of all notes 
      * @return void
      */
-    public function allreminder()
+    public function allReminder()
     {
         $headers = apache_request_headers();
         foreach ($headers as $header => $value) {
@@ -340,8 +318,6 @@ class Fundoonote
         $jwt1 = new JWT();
         $val = $jwt1->verify($token);
         if ($val) {
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $email = $_POST['email'];
             $statement = $this->connect->prepare("SELECT * From note where email='$email' AND deleted IS NULL and remind_date !='undefined'");
             if ($statement->execute()) {
@@ -356,7 +332,7 @@ class Fundoonote
      * @method alldeletednotes()fetch all deleted notes 
      * @return void
      */
-    public function alldeletednotes()
+    public function allDeletedNotes()
     {
         $headers = apache_request_headers();
         foreach ($headers as $header => $value) {
@@ -367,8 +343,6 @@ class Fundoonote
         $jwt1 = new JWT();
         $val = $jwt1->verify($token);
         if ($val) {
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $email = $_POST['email'];
             $statement = $this->connect->prepare("SELECT * From note where email='$email' AND deleted='1'");
             if ($statement->execute()) {
@@ -383,14 +357,9 @@ class Fundoonote
      * @method deleteforever()deleted note permantly 
      * @return void
      */
-    public function deleteforever()
+    public function deleteForever()
     {
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
             /**
@@ -430,11 +399,6 @@ class Fundoonote
     public function restore()
     {
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
             /**
@@ -474,11 +438,6 @@ class Fundoonote
     public function archive()
     {
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
             /**
@@ -515,7 +474,7 @@ class Fundoonote
      * @method allarchivenotes() fetch all archive note 
      * @return void
      */
-    public function allarchivenotes()
+    public function allArchiveNotes()
     {
         $headers = apache_request_headers();
         foreach ($headers as $header => $value) {
@@ -549,11 +508,6 @@ class Fundoonote
     public function unarchive()
     {
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
             /**
@@ -589,14 +543,9 @@ class Fundoonote
      * @method addnotelabel() add label to perticular note
      * @return void
      */
-    public function addnotelabel()
+    public function addNoteLabel()
     {
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
             /**
@@ -634,14 +583,9 @@ class Fundoonote
      * @method deletenotelabel() delete label to perticular note
      * @return void
      */
-    public function deletenotelabel()
+    public function deleteNoteLabel()
     {
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
             /**
@@ -680,14 +624,9 @@ class Fundoonote
      * @method addcollaborator() add collaborator
      * @return void
      */
-    public function addcollaborator()
+    public function addCollaborator()
     {
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
             /**
@@ -738,7 +677,7 @@ class Fundoonote
      * @method getcollaborator()fetch all collaborator
      * @return void
      */
-    public function getcollaborator()
+    public function getCollaborator()
     {
         $headers = apache_request_headers();
         foreach ($headers as $header => $value) {
@@ -749,8 +688,6 @@ class Fundoonote
         $jwt1 = new JWT();
         $val = $jwt1->verify($token);
         if ($val) {
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $email = $_POST['email'];
             $id = $_POST['id'];
             $stmt = $this->connect->prepare("SELECT * From collaborator where email='$email' and noteid='$id'");
@@ -766,14 +703,9 @@ class Fundoonote
      * @method deletecollaborator()delete collaborator for note
      * @return void
      */
-    public function deletecollaborator()
+    public function deleteCollaborator()
     {
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $this->connect->prepare("SELECT email FROM note");
             $stmt->execute();
             /**
@@ -803,7 +735,7 @@ class Fundoonote
      * @method getcollaborator1()fetch collaboraror from collaborator table
      * @return void
      */
-    public function getcollaborator1()
+    public function getAllCollaborator()
     {
         $headers = apache_request_headers();
         foreach ($headers as $header => $value) {
@@ -817,8 +749,6 @@ class Fundoonote
         $jwt1 = new JWT();
         $val = $jwt1->verify($token);
         if ($val) {
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $email = $_POST['email'];
             $stmt = $this->connect->prepare("SELECT * From collaborator where email='$email' or sharemail='$email'");
             $stmt->execute();
@@ -833,15 +763,9 @@ class Fundoonote
      * @method addimage()add image to perticular note
      * @return void
      */
-    public function addimage()
+    public function addImage()
     {
         try {
-            /**
-             * Database conncetion using PDO
-             */
-            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
-            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
             /**
              * @var string $email,$file,$name
              */
