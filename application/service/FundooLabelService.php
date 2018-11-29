@@ -1,17 +1,20 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-include "/var/www/html/codeigniter/application/service/FundooLabelService.php";
+
 /**
  * @var string $connect
  */
-class FundooLabel
+class FundooLabelService
 {
-    public $ref;
+    protected $connect;
 
-    public function __construct()
+    function __construct()
     {
-
-        $this->ref = new FundooAccountService();
+        /**
+             * Database conncetion using PDO
+             */
+            $this->connect = new PDO("mysql:host=localhost;dbname=php", "root", "bridgeit");
+            $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     }
 
