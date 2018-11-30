@@ -211,7 +211,7 @@ class JWT
  *
  * @param string $msg The original message (header and body)
  * @param string $signature The original signature
-@param string|resource $key For HS, a string key works. for RS*, must be a resource of an openssl public key
+ * @param string|resource $key For HS, a string key works. for RS*, must be a resource of an openssl public key
  * @param string $alg The algorithm
  *
  * @return bool
