@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { serviceUrl } from '../../serviceUrl/serviceUrl';
 
 
 @Injectable({
@@ -13,36 +14,7 @@ import { HttpClient } from '@angular/common/http';
  */
 export class NoteService {
 
-  private createnote = 'http://localhost/codeigniter/CreateNote';
-  private fetchnote = 'http://localhost/codeigniter/Fetchnotes';
-  private updatenote = 'http://localhost/codeigniter/Updatenotes';
-  private Changecolor = 'http://localhost/codeigniter/Changecolor';
-  private Deletenote = 'http://localhost/codeigniter/Deletenote';
-  private Changereminder = 'http://localhost/codeigniter/Changereminder';
-  private Deletreminder = 'http://localhost/codeigniter/Deletereminder';
-  private fetchreminder = 'http://localhost/codeigniter/Fetchreminder';
-  private fetchdeletednote = 'http://localhost/codeigniter/Fetchdeletednotes';
-  private Deleteforever = 'http://localhost/codeigniter/Deleteforever';
-  private Restore = 'http://localhost/codeigniter/Restore';
-  private Archive = 'http://localhost/codeigniter/Archive';
-  private fetcharchivenote = 'http://localhost/codeigniter/Fetcharchivenote';
-  private Unarchive = 'http://localhost/codeigniter/Unarchive';
-  private createlabel = 'http://localhost/codeigniter/Createlabel';
-  private Showlabel = 'http://localhost/codeigniter/Showlabel'
-  private Deletelabel = 'http://localhost/codeigniter/Deletelabel'
-  private Editlabel = 'http://localhost/codeigniter/Editlabel'
-  private Addnotelabel = 'http://localhost/codeigniter/Addnotelabel';
-  private Deletenotelabel = 'http://localhost/codeigniter/Deletenotelabel'
-  private Addcollaborator = 'http://localhost/codeigniter/Addcollaborator';
-  private Getcollaborator = 'http://localhost/codeigniter/Getcollaborator';
-  private Deletecollaborator = 'http://localhost/codeigniter/Deletecollaborator';
-  private Addprofile = 'http://localhost/codeigniter/Addprofile';
-  private Showprofile = 'http://localhost/codeigniter/Showprofile';
-  private Getcollaborator1 = 'http://localhost/codeigniter/getAllCollaborator';
-  private Addimage = 'http://localhost/codeigniter/Addimage';
-
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private serviceurl:serviceUrl) { }
 
   /**
    * add note api call 
@@ -65,7 +37,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.createnote, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.createnote, newdata, otheroption);
   }
 
 
@@ -81,7 +53,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.fetchnote, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.fetchnote, newdata, otheroption);
   }
 
   /**
@@ -101,7 +73,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.updatenote, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.updatenote, newdata, otheroption);
   }
 
   /**
@@ -118,7 +90,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.Changecolor, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.Changecolor, newdata, otheroption);
   }
 
   /**
@@ -133,7 +105,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.Deletenote, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.Deletenote, newdata, otheroption);
   }
 
   /**
@@ -152,7 +124,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.Changereminder, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.Changereminder, newdata, otheroption);
   }
 
   /**
@@ -169,7 +141,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.Deletreminder, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.Deletreminder, newdata, otheroption);
   }
 
   /**
@@ -184,7 +156,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.fetchreminder, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.fetchreminder, newdata, otheroption);
   }
 
   /**
@@ -200,7 +172,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.fetchdeletednote, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.fetchdeletednote, newdata, otheroption);
   }
 
   deleteForever(id) {
@@ -211,7 +183,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.Deleteforever, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.Deleteforever, newdata, otheroption);
   }
 
   restore(id) {
@@ -222,7 +194,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.Restore, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.Restore, newdata, otheroption);
   }
 
   /**
@@ -237,7 +209,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.Archive, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.Archive, newdata, otheroption);
   }
 
 
@@ -249,7 +221,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.fetcharchivenote, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.fetcharchivenote, newdata, otheroption);
   }
 
   unarchive(id) {
@@ -260,7 +232,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.Unarchive, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.Unarchive, newdata, otheroption);
   }
 
   /**
@@ -276,7 +248,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.createlabel, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.createlabel, newdata, otheroption);
   }
 
   showLabel(email) {
@@ -285,7 +257,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.Showlabel, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.Showlabel, newdata, otheroption);
   }
 
   deleteLabel(id) {
@@ -296,7 +268,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.Deletelabel, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.Deletelabel, newdata, otheroption);
   }
 
   editLabel(id, label) {
@@ -308,7 +280,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.Editlabel, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.Editlabel, newdata, otheroption);
   }
 
   addNoteLabel(id, label) {
@@ -320,7 +292,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.Addnotelabel, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.Addnotelabel, newdata, otheroption);
   }
 
   deleteNoteLabel(id, label) {
@@ -332,7 +304,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.Deletenotelabel, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.Deletenotelabel, newdata, otheroption);
   }
 
   addImage(id, imagefile) {
@@ -345,7 +317,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.Addimage, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.Addimage, newdata, otheroption);
   }
 
 
@@ -363,7 +335,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.Addcollaborator, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.Addcollaborator, newdata, otheroption);
   }
 
 
@@ -375,7 +347,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.Getcollaborator, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.Getcollaborator, newdata, otheroption);
   }
 
   getCollaboratorNote(email) {
@@ -384,7 +356,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.Getcollaborator1, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.Getcollaborator1, newdata, otheroption);
   }
 
   deleteCollaborator(noteid, sharemail) {
@@ -396,7 +368,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.Deletecollaborator, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.Deletecollaborator, newdata, otheroption);
   }
 
   /**
@@ -412,7 +384,7 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.Addprofile, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.Addprofile, newdata, otheroption);
   }
 
   showProfile(email) {
@@ -421,8 +393,16 @@ export class NoteService {
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
-    return this.http.post(this.Showprofile, newdata, otheroption);
+    return this.http.post(this.serviceurl.host + this.serviceurl.Showprofile, newdata, otheroption);
   }
 
-
+  dragnotes(email: any, id: any, loops: any, direction: any): any {
+    const data = new FormData();
+    debugger;
+    data.append("email", email);
+    data.append("id", id);
+    data.append("loop", loops);
+    data.append("direction", direction);
+    return this.http.post(this.serviceurl.host + this.serviceurl.DragDrop_url, data);
+  }
 }

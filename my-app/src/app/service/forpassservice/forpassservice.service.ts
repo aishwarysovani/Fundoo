@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { serviceUrl } from '../../serviceUrl/serviceUrl';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,14 +11,13 @@ import { HttpClient } from '@angular/common/http';
  */
 export class ForpassserviceService {
 
-  private forgotpass = 'http://localhost/codeigniter/Forgotpass';
   registerForm: any = {};
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private serviceurl:serviceUrl) { }
 
   getForgotValue(form) {
     debugger
     const newdata = new FormData();
     newdata.append('forgotemail', form.email);
-    return this.http.post(this.forgotpass, newdata);
+    return this.http.post(this.serviceurl.host + this.serviceurl.forgotpass, newdata);
   }
 }

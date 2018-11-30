@@ -101,7 +101,9 @@
 
 <!-- shows all notes of logged user with all features
 with provide drag n drop facility to note -->
-<div class="cards-div" *ngIf="!message" cdkDropList (cdkDropListDropped)="drop($event)">
+<div class="cards-div" *ngIf="!message" cdkDropList
+(cdkDropListDropped)="drop($event)"
+>
     <mat-card cdkDrag class="mat3" *ngFor="let item of test | notefilter:searchItem" [ngStyle]="{'background-color':item.color}">
         <mat-form-field appearance="null" (click)="openDialog(item)">
             <input matInput type="text" value="{{item.title}}" placeholder="title">

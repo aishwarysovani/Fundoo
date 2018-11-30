@@ -47,6 +47,8 @@ export class NoteComponent implements OnInit {
   imageId: any;
   searchSubscription: Subscription;
   searchItem: any;
+  iserror: boolean;
+  errorMessage: any;
 
   constructor(private noteService: NoteService, private loginService: LoginService,
     private listviewService: ListviewService, public dialog: MatDialog) {
@@ -111,10 +113,10 @@ export class NoteComponent implements OnInit {
    * event call to drag and drop
    * @param event 
    */
-  drop(event: CdkDragDrop<string[]>) {
-    debugger;
-    moveItemInArray(this.test, event.previousIndex, event.currentIndex);
-  }
+  // drop(event: CdkDragDrop<string[]>) {
+  //   debugger;
+  //   moveItemInArray(this.test, event.previousIndex, event.currentIndex);
+  // }
 
   imageadd(id) {
     this.imageId = id;
@@ -339,6 +341,39 @@ export class NoteComponent implements OnInit {
       // alert(element.title);
       // }
     });
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.test, event.previousIndex, event.currentIndex);
+    let diff: any;
+    let direction: any;
+
+    if (event.currentIndex > event.previousIndex) {
+      direction = "upward";
+      diff = event.currentIndex - event.previousIndex;
+    } else {
+      diff = event.previousIndex - event.currentIndex;
+      direction = "downward";
+    }
+
+    let email =this.email;
+    debugger;
+    let obs = this.noteService.dragnotes(
+      email,
+      this.test[event.currentIndex].DragAndDropID,
+      diff,
+      direction
+    );
+    obs.subscribe(
+      (notes: any) => {
+        // this.all_notes = notes;
+        debugger;
+      },
+      error => {
+        this.iserror = true;
+        this.errorMessage = error.message;
+      }
+    );
   }
 
 }

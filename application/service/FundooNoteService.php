@@ -28,7 +28,8 @@ class FundooNoteService
      */
     public function getNoteValue($email, $title, $note, $label, $color, $date, $time)
     {
-        try {
+
+         try {
             $val = "undefined";
 
             if ($title == $val || $note == $val) {
@@ -39,7 +40,22 @@ class FundooNoteService
                 $sql = "INSERT INTO note (email,title,note,remind_date,color,label) VALUES ('$email','$title', '$note','$date','$color','$label')";
                 $res = $this->connect->exec($sql);
 
+                if ($res) {
+                    $sql    = "select max(id) as id from note where email = '$email'";
+                    $stmt   = $this->connect->prepare($sql);
+                    $var    = $stmt->execute();
+                    $noteid = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $noteid = $noteid['id'];
+                    /**
+                     * To update ID for Drag and drop.
+                     */
+                    $sqlquerry         = "UPDATE note set DragAndDropID = $noteid where id = '$noteid'";
+                    $statementofQuerry = $this->connect->prepare($sqlquerry);
+                    $var               = $statementofQuerry->execute();
+        
+
             }
+        }
 
             /**
              * $stmt perform query execuction to selection from database
@@ -79,7 +95,9 @@ class FundooNoteService
         $val = $jwt1->verify($token);
         if ($val) {
 
-            $statement = $this->connect->prepare("SELECT * From note where email='$email' AND deleted IS NULL AND archive IS NULL or id in(select noteid from collaborator where sharemail='$email')");
+            $statement = $this->connect->prepare("SELECT * From note where email='$email' AND deleted IS NULL AND archive IS NULL order by DragAndDropID DESC ");
+            // $statement = $this->connect->prepare("SELECT * From note where email='$email' AND deleted IS NULL AND archive IS NULL  or id in(select noteid from collaborator where sharemail='$email')");
+
             if ($statement->execute()) {
                 $arr = $statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -684,4 +702,37 @@ class FundooNoteService
         }
     }
 
+    public function  DragAndDrop($email,$id,$loop,$direction){
+
+        for ($i = 0; $i < $loop; $i++) {
+            /**
+             * If direction is upward get the note id which is less than current id
+             */
+            if ($direction == "upward") {
+                $querry = "SELECT max(DragAndDropID) as nextid from note where DragAndDropID < '$id' and email='$email'";
+            }
+            /**
+             * If direction is not upward get the note id which is greater than current id
+             */
+            else {
+                $querry = "SELECT min(DragAndDropID) as nextid from note where DragAndDropID > '$id' and email='$email'";
+            }
+            $stmt   = $this->connect->prepare($querry);
+            $var    = $stmt->execute();
+            $noteid = $stmt->fetch(PDO::FETCH_ASSOC);
+            $noteid = $noteid['nextid'];
+            /**
+             * Querry to Swap the notes.
+             */
+            $querry = "UPDATE note a inner join note b on a.DragAndDropID <> b.DragAndDropID  set
+			a.DragAndDropID =b.DragAndDropID  where a.DragAndDropID in('$noteid','$id') and b.DragAndDropID in('$noteid','$id')";
+            $stmt = $this->connect->prepare($querry);
+            $var  = $stmt->execute();
+            /**
+             * Swap the id's
+             */
+            $id = $noteid;
+        }
+    
+    }
 }

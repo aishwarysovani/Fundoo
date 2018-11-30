@@ -345,4 +345,18 @@ class FundooNoteController
 
     }
 
+    public function DragAndDrop()
+    {
+
+
+        $email     = $_POST["email"];
+        $id        = $_POST["id"];
+        $loop      = $_POST["loop"];
+        $direction = $_POST["direction"];
+
+         $this->ref->DragAndDrop($email,$id,$loop,$direction);
+
+      
+    }
+
 }

@@ -45,6 +45,7 @@ import { ArchiveComponent } from './archive/archive.component';
 import { CollaboratorComponent } from './collaborator/collaborator.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NotefilterPipe } from './note/notefilter.pipe';
+import { serviceUrl } from './serviceUrl/serviceUrl';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { NotefilterPipe } from './note/notefilter.pipe';
     ArchiveComponent,
     CollaboratorComponent,
     NotefilterPipe
+
   ],
   imports: [
     BrowserModule,
@@ -98,7 +100,9 @@ import { NotefilterPipe } from './note/notefilter.pipe';
     NoteService,
     ListviewService,
     MatDatepickerModule,
-    { provide: HTTP_INTERCEPTORS, useClass: IntercepterService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: IntercepterService, multi: true },
+    serviceUrl
+
   ],
 
   bootstrap: [AppComponent]

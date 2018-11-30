@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { serviceUrl } from '../../serviceUrl/serviceUrl';
 
 
 @Injectable({
@@ -14,9 +15,8 @@ import { catchError, retry } from 'rxjs/operators';
  * registration api call by using this class
  */
 export class RegisterService {
-  private register = 'http://localhost/codeigniter/Register';
   registerForm: any = {};
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private serviceurl:serviceUrl) { }
 
   public serror;
   getRegisterValue(registerForm) {
@@ -25,7 +25,7 @@ export class RegisterService {
     newdata.append('email', registerForm.emailid);
     newdata.append('pswd', registerForm.password);
     newdata.append('num', registerForm.phoneno);
-    return this.http.post(this.register, newdata);
+    return this.http.post(this.serviceurl.host + this.serviceurl.register, newdata);
   }
 
   handleError(error: HttpErrorResponse) {

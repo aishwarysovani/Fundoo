@@ -2,6 +2,7 @@
 include "/var/www/html/codeigniter/application/controllers/phpmailer/mail.php";
 include_once '/var/www/html/codeigniter/application/controllers/jwt.php';
 include "/var/www/html/codeigniter/application/static/Constant.php";
+include "/var/www/html/codeigniter/application/RabbitMQ/send.php";
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
@@ -98,12 +99,15 @@ class FundooAccountService
                 if ($email == $result['email']) {
                     $name = $result['uname'];
                     $flag = 1;
-                    $ref = new MailClass();
+                    // $ref = new MailClass();
+                    $ref=new SendMail();
                     $token = md5($email);
                     $query = "UPDATE register SET token='$token' WHERE email='$email'";
                     $statement = $this->connect->prepare($query);
                     $statement->execute();
-                    $ref->sendmail($name, $email, $token);
+                    $subject="Forgot Password Recovery";
+                    $body="Click this link to recover your password http://localhost:4200/resetpassword?token=" . $token;
+                    $ref->sendEmail($email,$subject,$body);
                     break;
                 }
             }

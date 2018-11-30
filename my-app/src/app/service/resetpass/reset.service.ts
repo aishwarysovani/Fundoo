@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { serviceUrl } from '../../serviceUrl/serviceUrl';
 
 
 @Injectable({
@@ -14,10 +15,8 @@ import { HttpClient } from '@angular/common/http';
  */
 export class ResetService {
 
-  private resetpass = 'http://localhost/codeigniter/resetpass';
-  private conformregi = 'http://localhost/codeigniter/conformregi';
   registerForm: any = {};
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private serviceurl:serviceUrl) { }
 
   getResetValue(resetForm, token) {
     const newdata = new FormData();
@@ -25,13 +24,12 @@ export class ResetService {
     newdata.append('resetpassword', resetForm.password);
     newdata.append('token', token);
     alert('password updated')
-    return this.http.post(this.resetpass, newdata);
+    return this.http.post(this.serviceurl.host + this.serviceurl.resetpass, newdata);
   }
 
   getConformValue(resetForm, token) {
     const newdata = new FormData();
     newdata.append('token', token);
-    // alert(token1)
-    return this.http.post(this.conformregi, newdata);
+    return this.http.post(this.serviceurl.host + this.serviceurl.conformregi, newdata);
   }
 }

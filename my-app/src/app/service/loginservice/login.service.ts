@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { serviceUrl } from '../../serviceUrl/serviceUrl';
 
 
 @Injectable({
@@ -12,19 +13,15 @@ import { HttpClient } from '@angular/common/http';
  */
 export class LoginService {
 
-
-  private login = 'http://localhost/codeigniter/Login';
-
   registerForm: any = {};
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private serviceurl:serviceUrl) { }
 
   getLoginValue(loginForm) {
     const newdata = new FormData();
     newdata.append('loginemail', loginForm.email);
     localStorage.setItem('email', loginForm.email);
-    // alert(localStorage.getItem('email'));
     newdata.append('password', loginForm.password);
-    return this.http.post(this.login, newdata);
+    return this.http.post(this.serviceurl.host+this.serviceurl.login, newdata);
   }
 
   logout() {

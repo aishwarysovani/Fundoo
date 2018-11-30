@@ -60,6 +60,7 @@ class FundooAccountController extends \PHPUnit_Framework_TestCase
     public function getForgotValue()
     {
         $email = $_POST['forgotemail'];
+        
         $this->ref->getForgotValue($email);
 
     }
