@@ -680,23 +680,25 @@ class FundooNoteService
      * @method addimage()add image to perticular note
      * @return void
      */
-    public function addImage($email, $id, $name,$fileTmpName)
+    public function addImage($email,$id, $filePath)
     {
         try {
-            $dataD=new Constant();
-            $newfileloc = $dataD->fileUploadPath . $name;
-            $upload = move_uploaded_file($fileTmpName, $newfileloc);
+            $stmt = $this->connect->prepare("UPDATE note SET `image` = :filePath where `email`= :email and `id`=:id ");
 
-            $sql = "UPDATE note SET image='$name' WHERE email='$email' and id='$id'";
-            $res = $this->connect->exec($sql);
-
-            $stmt = $this->connect->prepare("SELECT * From note where email='$email' or id in(select noteid from collaborator where sharemail='$email') and deleted IS NULL and archive IS NULL");
+            $stmt->execute(array(
+            ':filePath' => $filePath,
+            ':email' => $email,
+            ':id'=>$id
+            ));
+            $stmt = $this->connect->prepare("SELECT image From note where email='$email'");
             $stmt->execute();
 
-            $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $myjson = json_encode($myArray);
-            print($myjson);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+            $res = $row['image'];
+
+            $ref=json_encode(base64_encode($res));
+            print $ref;
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();

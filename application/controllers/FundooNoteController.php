@@ -337,11 +337,9 @@ class FundooNoteController
              */
             $email = $_POST['email'];
             $id = $_POST['id'];
-            $file = $_FILES['file'];
-            $name = $_FILES['file']['name'];
-            $fileTmpName = $_FILES['file']['tmp_name'];
+            $filePath = base64_decode($_POST['fileKey']);
 
-            $this->ref->addImage($email,$id,$name,$fileTmpName);
+            $this->ref->addImage($email,$id, $filePath);
 
     }
 

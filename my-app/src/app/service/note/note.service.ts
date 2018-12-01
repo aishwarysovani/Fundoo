@@ -307,19 +307,32 @@ export class NoteService {
     return this.http.post(this.serviceurl.host + this.serviceurl.Deletenotelabel, newdata, otheroption);
   }
 
-  addImage(id, imagefile) {
-    debugger;
-    const newdata = new FormData();
-    var email1 = localStorage.getItem('email');
-    newdata.append('email', email1);
-    newdata.append('id', id);
-    newdata.append('file', imagefile);
-    const otheroption: any = {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    };
-    return this.http.post(this.serviceurl.host + this.serviceurl.Addimage, newdata, otheroption);
-  }
+  // addImage(id, imagefile) {
+  //   debugger;
+  //   const newdata = new FormData();
+  //   var email1 = localStorage.getItem('email');
+  //   newdata.append('email', email1);
+  //   newdata.append('id', id);
+  //   newdata.append('file', imagefile);
+  //   const otheroption: any = {
+  //     'Content-Type': 'application/x-www-form-urlencoded'
+  //   };
+  //   return this.http.post(this.serviceurl.host + this.serviceurl.Addimage, newdata, otheroption);
+  // }
 
+  uploadNoteImage(base64string, id) {
+    let otheroption: any = {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+    debugger;
+    const params = new FormData();
+    var email1 = localStorage.getItem('email');
+    params.append('email', email1);
+    params.append("fileKey", base64string);
+    params.append("id", id);
+
+    return this.http.post(this.serviceurl.host + this.serviceurl.Addimage, params, otheroption);
+  }
 
   /**
    * collaborator related api calls
