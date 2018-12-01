@@ -60,7 +60,8 @@ class FundooNoteService
             /**
              * $stmt perform query execuction to selection from database
              */
-            $stmt = $this->connect->prepare("SELECT * From note where email='$email' or id in(select noteid from collaborator where sharemail='$email') and deleted IS NULL AND archive IS NULL");
+            $stmt = $this->connect->prepare("SELECT * From note where email='$email' AND deleted IS NULL AND archive IS NULL order by DragAndDropID DESC ");
+            //$stmt = $this->connect->prepare("SELECT * From note where email='$email' or id in(select noteid from collaborator where sharemail='$email') and deleted IS NULL AND archive IS NULL");
             $stmt->execute();
 
             $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);

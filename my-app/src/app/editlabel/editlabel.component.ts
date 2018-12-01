@@ -17,6 +17,7 @@ import { NoteService } from '../service/note/note.service';
 export class EditlabelComponent implements OnInit {
   Label: any;
   test: any;
+  obs:any;
 
   constructor(public dialogRef: MatDialogRef<EditlabelComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData, private noteservice: NoteService) { }
@@ -27,12 +28,17 @@ export class EditlabelComponent implements OnInit {
     /**
      * service to show label
      */
-    const obs = this.noteservice.showLabel(emailE);
-    obs.subscribe(
+    this.obs = this.noteservice.showLabel(emailE);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
         console.log(status);
       });
+    
+  }
+
+  ngOnDestory() {
+    this.obs.unsubscribe();
   }
 
   /**
@@ -47,8 +53,8 @@ export class EditlabelComponent implements OnInit {
    * service to save label
    */
   savelabel() {
-    const obs = this.noteservice.saveLabel(this.Label);
-    obs.subscribe(
+    this.obs = this.noteservice.saveLabel(this.Label);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
         console.log(status);
@@ -60,8 +66,8 @@ export class EditlabelComponent implements OnInit {
    * @param id 
    */
   deletelabel(id) {
-    const obs = this.noteservice.deleteLabel(id);
-    obs.subscribe(
+    this.obs = this.noteservice.deleteLabel(id);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
         console.log(status);
@@ -75,8 +81,8 @@ export class EditlabelComponent implements OnInit {
    */
   editlabel(id, label) {
     debugger;
-    const obs = this.noteservice.editLabel(id, label);
-    obs.subscribe(
+    this.obs = this.noteservice.editLabel(id, label);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
         console.log(status);

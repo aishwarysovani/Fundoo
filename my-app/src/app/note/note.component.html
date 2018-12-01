@@ -217,9 +217,9 @@ with provide drag n drop facility to note -->
         <mat-menu #menuMore1="matMenu">
             <button mat-menu-item (click)="deletenote(item.id)">delete note</button>
             <button mat-menu-item (click)="alllabel()">add label</button>
-            <div *ngFor="let item1 of test1">
-                <mat-list-item (click)="addnotelabel(item.id,item1.label)">
-                    <mat-icon><img src="assets/label.svg"></mat-icon>{{item1.label}}
+            <div *ngFor="let itemI of testT">
+                <mat-list-item (click)="addnotelabel(item.id,itemI.label)">
+                    <mat-icon><img src="assets/label.svg"></mat-icon>{{itemI.label}}
                 </mat-list-item>
             </div>
         </mat-menu>

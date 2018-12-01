@@ -15,6 +15,7 @@ import { LoginService } from '../service/loginservice/login.service';
 export class ArchiveComponent implements OnInit {
   email: string;
   test: any;
+  obs:any;
 
   constructor(private noteService: NoteService, private loginService: LoginService) { }
 
@@ -26,12 +27,17 @@ export class ArchiveComponent implements OnInit {
      * service to show archive notes
      * @param email
      */
-    const obs1 = this.noteService.getArchivedNotes(this.email);
-    obs1.subscribe(
+    this.obs = this.noteService.getArchivedNotes(this.email);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
         console.log(status);
       });
+  }
+
+  ngOnDestory()
+  {
+    this.obs.unsubscribe();
   }
 
   /**
@@ -39,8 +45,8 @@ export class ArchiveComponent implements OnInit {
    * @param id 
    */
   unarchive(id) {
-    const obsD = this.noteService.unarchive(id);
-    obsD.subscribe(
+    let obs = this.noteService.unarchive(id);
+    obs.subscribe(
       (status: any) => {
         this.test = status;
       });

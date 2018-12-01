@@ -18,6 +18,8 @@ export class ResetpasswordComponent implements OnInit {
   hide = true;
   token = null;
   resetForm: FormGroup;
+  obs:any;
+
   constructor(private formBuilder: FormBuilder, private resetService: ResetService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -35,17 +37,21 @@ export class ResetpasswordComponent implements OnInit {
 
   }
 
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+      this.obs.unsubscribe();
+      this.activatedRoute.queryParams.unsubscribe();
+  }  
+
   /**
    * function call service to reset password value
    * @param form ,@param token
    */
   reset() {
-    const obs = this.resetService.getResetValue(this.resetForm, this.token);
-    obs.subscribe(
+    this.obs = this.resetService.getResetValue(this.resetForm, this.token);
+    this.obs.subscribe(
       (s: any) => {
         console.log('got response');
       });
-
-
   }
 }

@@ -18,6 +18,8 @@ export class ConformregiComponent implements OnInit {
 
   token: string = null;
   resetForm: FormGroup;
+  obs:any;
+
   constructor(private formBuilder: FormBuilder, private resetService: ResetService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -32,16 +34,21 @@ export class ConformregiComponent implements OnInit {
 
   }
 
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.activatedRoute.queryParams.unsubscribe();
+    this.obs.unsubscribe();
+  }
+
   /**
    * service to conform registration
    */
   conform() {
-    const obs = this.resetService.getConformValue(this.resetForm, this.token);
-    obs.subscribe(
+   this.obs = this.resetService.getConformValue(this.resetForm, this.token);
+    this.obs.subscribe(
       (s: any) => {
         console.log('got response');
       });
-
   }
 
 }

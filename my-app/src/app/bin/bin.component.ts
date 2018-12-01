@@ -14,6 +14,7 @@ import { LoginService } from '../service/loginservice/login.service';
 export class BinComponent implements OnInit {
   email: string;
   test: any;
+  obs:any;
 
   constructor(private noteService: NoteService, private loginService: LoginService) { }
 
@@ -24,12 +25,17 @@ export class BinComponent implements OnInit {
   ngOnInit() {
     var emailE = localStorage.getItem('email');
     this.email = emailE;
-    const obs1 = this.noteService.getDeletedNotes(this.email);
-    obs1.subscribe(
+    this.obs = this.noteService.getDeletedNotes(this.email);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
         console.log(status);
       });
+  }
+
+  ngOnDestory()
+  {
+    this.obs.unsubscribe();
   }
 
   /**
@@ -37,11 +43,12 @@ export class BinComponent implements OnInit {
    * @param id  
    */
   deleteforever(id) {
-    const obsD = this.noteService.deleteForever(id);
-    obsD.subscribe(
+    this.obs = this.noteService.deleteForever(id);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
       });
+
   }
 
   /**
@@ -49,8 +56,8 @@ export class BinComponent implements OnInit {
    * @param id 
    */
   restore(id) {
-    const obsD = this.noteService.restore(id);
-    obsD.subscribe(
+    this.obs = this.noteService.restore(id);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
       });

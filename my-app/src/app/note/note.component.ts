@@ -1,5 +1,5 @@
 declare let require: any;
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { NoteService } from '../service/note/note.service';
 import { LoginService } from '../service/loginservice/login.service';
 import { ListviewService } from '../service/listview/listview.service';
@@ -22,7 +22,7 @@ export interface DialogData {
 })
 
 /**
- * @var test,@var test1,@var message etc.
+ * @var test,@var testT,@var message etc.
  */
 export class NoteComponent implements OnInit {
 
@@ -49,45 +49,33 @@ export class NoteComponent implements OnInit {
   searchItem: any;
   iserror: boolean;
   errorMessage: any;
+  obs:any;
+  obsC:any;
+  obsV:any;
 
   constructor(private noteService: NoteService, private loginService: LoginService,
     private listviewService: ListviewService, public dialog: MatDialog) {
     this.subscription = this.listviewService.getview().subscribe(message => { this.message = message; });
 
-    var email1 = localStorage.getItem('email');
-    this.email = email1;
+    var emailE = localStorage.getItem('email');
+    this.email = emailE;
     debugger;
-
-    /**
-     * service to call collaborators
-     * @param email
-     */
-    const obs1 = this.noteService.getCollaboratorNote(this.email);
-    obs1.subscribe(
-      (status: any) => {
-        this.testT = status;
-        console.log(status);
-      });
-
+    
     this.searchSubscription = this.listviewService
       .getsearchItem()
       .subscribe(message => {
        this.searchItem = message;
       });
-  }
+}
 
-  ngOnDestroy() {
-    // unsubscribe to ensure no memory leaks
-    this.subscription.unsubscribe();
-  }
-
+ 
   ngOnInit() {
     /**
      * get item stored at local storage
      * @var email
      */
-    var email1 = localStorage.getItem('email');
-    this.email = email1;
+    var emailE = localStorage.getItem('email');
+    this.email = emailE;
     setInterval(() => {
       this.now = new Date();
       // this.remindfunction();
@@ -101,22 +89,35 @@ export class NoteComponent implements OnInit {
     this.mainCard = true;
     this.expandedCard = false;
     debugger;
-    const obs1 = this.noteService.getNotes(this.email);
-    obs1.subscribe(
+   this.obsV = this.noteService.getNotes(this.email);
+    this.obsV.subscribe(
       (status: any) => {
         this.test = status;
         console.log(status);
       });
+
+      /**
+     * service to call collaborators
+     * @param email
+     */
+    this.obsC = this.noteService.getCollaboratorNote(this.email);
+    this.obsC.subscribe(
+      (status: any) => {
+        this.testT = status;
+        console.log(status);
+      });
   }
 
-  /**
-   * event call to drag and drop
-   * @param event 
-   */
-  // drop(event: CdkDragDrop<string[]>) {
-  //   debugger;
-  //   moveItemInArray(this.test, event.previousIndex, event.currentIndex);
-  // }
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+
+    this.subscription.unsubscribe();
+    this.searchSubscription.unsubscribe();
+    // this.obsV.unsubscribe();
+    // this.obsC.unsubscribe();
+    //this.obs.unsubscribe();
+  }
+
 
   imageadd(id) {
     this.imageId = id;
@@ -134,8 +135,8 @@ export class NoteComponent implements OnInit {
      * service call to update profile pic
      * @param email,@param selectedFile
      */
-    const obs = this.noteService.addImage(this.imageId, this.selectedFile);
-    obs.subscribe(
+    this.obs = this.noteService.addImage(this.imageId, this.selectedFile);
+    this.obs.subscribe(
       (status: any) => {
         this.testT = status;
         console.log(status);
@@ -147,7 +148,7 @@ export class NoteComponent implements OnInit {
    * @param item 
    */
   openDialog(item): void {
-    const dialogRef = this.dialog.open(EditnoteComponent, {
+    let dialogRef = this.dialog.open(EditnoteComponent, {
       height: '250px',
       width: '500px',
       data: { item }
@@ -155,6 +156,7 @@ export class NoteComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+   dialogRef.afterClosed().unsubscribe();
   }
 
 
@@ -164,7 +166,7 @@ export class NoteComponent implements OnInit {
    */
   opencollabDialog(item): void {
     debugger;
-    const dialogRef = this.dialog.open(CollaboratorComponent, {
+    let dialogRef = this.dialog.open(CollaboratorComponent, {
       height: 'flex',
       width: '500px',
       data: { item }
@@ -179,13 +181,15 @@ export class NoteComponent implements OnInit {
          * shows collaborator on perticular note
          * @param email
          */
-        const obs1 = this.noteService.getCollaboratorNote(this.email);
-        obs1.subscribe(
+        let obsC = this.noteService.getCollaboratorNote(this.email);
+        obsC.subscribe(
           (status: any) => {
             this.testT = status;
             console.log(status);
           });
+        obsC.unsubscribe();
       });
+      dialogRef.afterClosed().unsubscribe();
   }
 
   takenote() {
@@ -196,8 +200,8 @@ export class NoteComponent implements OnInit {
     /**
      * service to show note in app
      */
-    const obs = this.noteService.getNoteValue(this.model, this.getColor, this.getLabel);
-    obs.subscribe(
+   this.obs = this.noteService.getNoteValue(this.model, this.getColor, this.getLabel);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
         // debugger;
@@ -212,8 +216,8 @@ export class NoteComponent implements OnInit {
    */
   changecolor(id: any, color: any) {
     debugger;
-    const obs = this.noteService.changeColor(id, color);
-    obs.subscribe(
+    this.obs = this.noteService.changeColor(id, color);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
         console.log(status);
@@ -225,8 +229,8 @@ export class NoteComponent implements OnInit {
      * service to delete note 
      * @param id
      */
-    const obsD = this.noteService.deleteNote(id);
-    obsD.subscribe(
+    this.obs = this.noteService.deleteNote(id);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
       });
@@ -237,12 +241,11 @@ export class NoteComponent implements OnInit {
      * change reminder service
      * @param id,@param date,@param time
      */
-    const obsD = this.noteService.changeReminder(id, date, time);
-    obsD.subscribe(
+    this.obs = this.noteService.changeReminder(id, date, time);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
       });
-
   }
 
   /**
@@ -251,12 +254,11 @@ export class NoteComponent implements OnInit {
    * @param date 
    */
   deleteremider(id, date) {
-    const obsD = this.noteService.deleteReminder(id, date);
-    obsD.subscribe(
+    this.obs = this.noteService.deleteReminder(id, date);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
       });
-
   }
 
   /**
@@ -264,8 +266,8 @@ export class NoteComponent implements OnInit {
    * @param id 
    */
   archive(id) {
-    const obsD = this.noteService.archive(id);
-    obsD.subscribe(
+    this.obs = this.noteService.archive(id);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
       });
@@ -276,8 +278,8 @@ export class NoteComponent implements OnInit {
    * @var email
    */
   alllabel() {
-    const obs = this.noteService.showLabel(this.email);
-    obs.subscribe(
+    this.obs = this.noteService.showLabel(this.email);
+    this.obs.subscribe(
       (status: any) => {
         this.testT = status;
         console.log(status);
@@ -291,8 +293,8 @@ export class NoteComponent implements OnInit {
    */
   addnotelabel(id: any, label: any) {
     debugger;
-    const obs = this.noteService.addNoteLabel(id, label);
-    obs.subscribe(
+    this.obs = this.noteService.addNoteLabel(id, label);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
         console.log(status);
@@ -305,12 +307,11 @@ export class NoteComponent implements OnInit {
    * @param label 
    */
   deletenotelabel(id, label) {
-    const obsD = this.noteService.deleteNoteLabel(id, label);
-    obsD.subscribe(
+    this.obs = this.noteService.deleteNoteLabel(id, label);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
       });
-
   }
 
   addlabel(label: any) {
@@ -318,7 +319,6 @@ export class NoteComponent implements OnInit {
   }
 
   setcolor(color: any) {
-
     this.getColor = color;
   }
 
@@ -358,13 +358,13 @@ export class NoteComponent implements OnInit {
 
     let email =this.email;
     debugger;
-    let obs = this.noteService.dragnotes(
+    this.obs = this.noteService.dragnotes(
       email,
       this.test[event.currentIndex].DragAndDropID,
       diff,
       direction
     );
-    obs.subscribe(
+    this.obs.subscribe(
       (notes: any) => {
         // this.all_notes = notes;
         debugger;

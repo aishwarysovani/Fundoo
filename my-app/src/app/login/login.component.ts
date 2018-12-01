@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   status: any;
   returnUrl: string;
+  obs:any;
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private formBuilder: FormBuilder,
     private loginService: LoginService, private route: ActivatedRoute,
@@ -48,14 +49,17 @@ export class LoginComponent implements OnInit {
     // get return url from route parameters or default to '/'
   }
 
+  ngOnDestory() {
+    this.obs.unsubscribe();
+  }
 
   login() {
     debugger;
     /**
      * service to login with valid emailid and password
      */
-    const obs = this.loginService.getLoginValue(this.loginForm);
-    obs.subscribe(
+    this.obs = this.loginService.getLoginValue(this.loginForm);
+    this.obs.subscribe(
       (s: any) => {
         alert(s.message);
         if (s.message == "Successful login.") {
@@ -67,8 +71,6 @@ export class LoginComponent implements OnInit {
         }
 
       });
-
-
   }
 
 }

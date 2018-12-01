@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ListviewService } from '../service/listview/listview.service';
 import { LoginService } from '../service/loginservice/login.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -29,6 +29,7 @@ export class FundoonoteComponent implements OnInit {
   testT: any;
   selectedFile: File;
   image: any;
+  obs:any;
 
   constructor(private listviewService: ListviewService, private loginService: LoginService,
     public dialog: MatDialog, private noteservice: NoteService) {
@@ -40,8 +41,8 @@ export class FundoonoteComponent implements OnInit {
      * service to show profile pic
      * @param email
      */
-    const obs = this.noteservice.showProfile(this.email);
-    obs.subscribe(
+    this.obs = this.noteservice.showProfile(this.email);
+    this.obs.subscribe(
       (status: any) => {
         debugger;
         this.testT = status;
@@ -68,17 +69,19 @@ export class FundoonoteComponent implements OnInit {
   }
 
   ngOnInit() {
-    var email1 = localStorage.getItem('email');
-    this.email = email1;
-    const obs = this.noteservice.showLabel(email1);
-    obs.subscribe(
+    var emailE = localStorage.getItem('email');
+    this.email = emailE;
+    this.obs = this.noteservice.showLabel(emailE);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
         console.log(status);
       });
   }
 
-
+  ngOnDestory() {
+    this.obs.unsubscribe();
+  }
   /**
    * event call to access file
    * @param event 
@@ -91,8 +94,8 @@ export class FundoonoteComponent implements OnInit {
      * service call to update profile pic
      * @param email,@param selectedFile
      */
-    const obs = this.noteservice.addProfile(this.email, this.selectedFile);
-    obs.subscribe(
+    this.obs = this.noteservice.addProfile(this.email, this.selectedFile);
+    this.obs.subscribe(
       (status: any) => {
         this.testT = status;
         console.log(status);
@@ -110,7 +113,7 @@ export class FundoonoteComponent implements OnInit {
    * open dialog of edit label with all functionality
    */
   openDialog(): void {
-    const dialogRef = this.dialog.open(EditlabelComponent, {
+    let dialogRef = this.dialog.open(EditlabelComponent, {
       height: 'flex',
       width: '300px',
       data: { label: "hello" }
@@ -119,5 +122,6 @@ export class FundoonoteComponent implements OnInit {
       this.test = result;
       console.log('The dialog was closed');
     });
+    dialogRef.afterClosed().unsubscribe();
   }
 }

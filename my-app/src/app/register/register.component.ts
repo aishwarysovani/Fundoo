@@ -23,6 +23,8 @@ export class RegisterComponent implements OnInit {
     public error;
     registerForm: FormGroup;
     submitted = false;
+    obs:any;
+
     constructor(private formBuilder: FormBuilder, private registerService: RegisterService) { }
 
     ngOnInit() {
@@ -34,6 +36,11 @@ export class RegisterComponent implements OnInit {
 
         });
     }
+
+    ngOnDestory() {
+        this.obs.unsubscribe();
+    }
+
     get f() { return this.registerForm.controls; }
 
     onSubmit() {
@@ -50,8 +57,8 @@ export class RegisterComponent implements OnInit {
      * function call service to register perticular user values
      */
     register() {
-        const obs = this.registerService.getRegisterValue(this.registerForm);
-        obs.subscribe(
+        this.obs = this.registerService.getRegisterValue(this.registerForm);
+        this.obs.subscribe(
             (s: any) => {
                 console.log('got response');
             },

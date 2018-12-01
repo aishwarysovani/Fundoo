@@ -1,5 +1,5 @@
 declare let require: any;
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { NoteService } from '../service/note/note.service';
 import { LoginService } from '../service/loginservice/login.service';
 import { ListviewService } from '../service/listview/listview.service';
@@ -20,7 +20,7 @@ export interface DialogData {
 /**
  * @var test,@var card1,@var email etc.
  */
-export class ReminderComponent implements OnInit {
+export class ReminderComponent implements OnInit,OnDestroy {
 
   model: any = {};
   test: any;
@@ -38,25 +38,22 @@ export class ReminderComponent implements OnInit {
   subscription: Subscription;
   getColor: any;
   label: any;
-
+  obs:any;
 
   constructor(private noteService: NoteService, private loginService: LoginService,
     private listviewService: ListviewService, public dialog: MatDialog) {
     this.subscription = this.listviewService.getview().subscribe(message => { this.message = message; });
   }
 
-  ngOnDestroy() {
-    // unsubscribe to ensure no memory leaks
-    this.subscription.unsubscribe();
-  }
+  
   ngOnInit() {
 
     /**
      * fetech item from localstorage
      * @var email
      */
-    var email1 = localStorage.getItem('email');
-    this.email = email1;
+    var emailE = localStorage.getItem('email');
+    this.email = emailE;
     setInterval(() => {
       this.now = new Date();
       // this.remindfunction();
@@ -74,12 +71,18 @@ export class ReminderComponent implements OnInit {
     /**
      * service to call all reminders 
      */
-    const obs1 = this.noteService.getReminders(this.email);
-    obs1.subscribe(
+    this.obs = this.noteService.getReminders(this.email);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
         console.log(status);
       });
+  }
+
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
+    //this.obs.unsubscribe();
   }
 
   /**
@@ -87,7 +90,7 @@ export class ReminderComponent implements OnInit {
    * @param item 
    */
   openDialog(item): void {
-    const dialogRef = this.dialog.open(EditnoteComponent, {
+   let dialogRef = this.dialog.open(EditnoteComponent, {
       height: '250px',
       width: '500px',
       data: { item }
@@ -95,8 +98,8 @@ export class ReminderComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+    dialogRef.afterClosed().unsubscribe();
   }
-  // this.loginService.logout();
 
 
   /**
@@ -107,8 +110,8 @@ export class ReminderComponent implements OnInit {
     debugger;
     this.mainCard = true;
     this.expandedCard = false;
-    const obs = this.noteService.getNoteValue(this.model, this.getColor, this.label);
-    obs.subscribe(
+    this.obs = this.noteService.getNoteValue(this.model, this.getColor, this.label);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
         // debugger;
@@ -123,8 +126,8 @@ export class ReminderComponent implements OnInit {
    */
   changecolor(id: any, color: any) {
     debugger;
-    const obs = this.noteService.changeColor(id, color);
-    obs.subscribe(
+    this.obs = this.noteService.changeColor(id, color);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
         console.log(status);
@@ -136,8 +139,8 @@ export class ReminderComponent implements OnInit {
    * @param id 
    */
   deletenote(id) {
-    const obsD = this.noteService.deleteNote(id);
-    obsD.subscribe(
+    this.obs = this.noteService.deleteNote(id);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
       });
@@ -150,8 +153,8 @@ export class ReminderComponent implements OnInit {
    * @param time 
    */
   changereminder(id, date, time) {
-    const obsD = this.noteService.changeReminder(id, date, time);
-    obsD.subscribe(
+    this.obs = this.noteService.changeReminder(id, date, time);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
       });
@@ -159,8 +162,8 @@ export class ReminderComponent implements OnInit {
   }
 
   deleteremider(id, date) {
-    const obsD = this.noteService.deleteReminder(id, date);
-    obsD.subscribe(
+    this.obs = this.noteService.deleteReminder(id, date);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
       });

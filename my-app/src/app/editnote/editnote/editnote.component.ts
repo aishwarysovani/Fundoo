@@ -15,6 +15,7 @@ import { NoteService } from '../../service/note/note.service';
  */
 export class EditnoteComponent implements OnInit {
   getColor: any;
+  obs:any;
 
   constructor(
     public dialogRef: MatDialogRef<EditnoteComponent>,
@@ -24,13 +25,18 @@ export class EditnoteComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnDestory() {
+    this.obs.unsubscribe();
+  }
+
+
   /**
    * update note with title and note
    * @param
    */
   onNoClick(): void {
-    const obs1 = this.noteService.updateNotes(this.data.item);
-    obs1.subscribe(
+    this.obs = this.noteService.updateNotes(this.data.item);
+    this.obs.subscribe(
       (status: any) => {
         console.log(status);
       });
@@ -47,8 +53,8 @@ export class EditnoteComponent implements OnInit {
    * @param id 
    */
   deletenote(id) {
-    const obsD = this.noteService.deleteNote(id);
-    obsD.subscribe(
+    this.obs = this.noteService.deleteNote(id);
+    this.obs.subscribe(
       (status: any) => {
         this.data.item = status;
         console.log(status);

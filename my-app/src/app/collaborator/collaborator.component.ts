@@ -20,6 +20,7 @@ export class CollaboratorComponent implements OnInit {
   shareMail: any
   test: any;
   res: any;
+  obs: any;
 
   /**
    * constructor with all parameters
@@ -37,24 +38,27 @@ export class CollaboratorComponent implements OnInit {
     /**
      * display all collaborator
      */
-    const obs = this.noteService.getCollaborator(this.data.item.id);
-    obs.subscribe(
+    this.obs = this.noteService.getCollaborator(this.data.item.id);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
         console.log(status);
       });
   }
 
+  ngOnDestory() {
+    this.obs.unsubscribe();
+  }
+
   onNoClick(): void {
 
-    const obs = this.noteService.getNotes(this.emailId);
-    obs.subscribe(
+    this.obs = this.noteService.getNotes(this.emailId);
+    this.obs.subscribe(
       (status: any) => {
         debugger;
         this.res = status;
         this.dialogRef.close(this.res);
       });
-
 
   }
 
@@ -63,8 +67,8 @@ export class CollaboratorComponent implements OnInit {
    */
   addcollaborator() {
     debugger;
-    const obs = this.noteService.addCollaborator(this.data.item.id, this.shareMail);
-    obs.subscribe(
+    this.obs = this.noteService.addCollaborator(this.data.item.id, this.shareMail);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
         console.log(status);
@@ -78,8 +82,8 @@ export class CollaboratorComponent implements OnInit {
    */
   deletecollaborator(noteId, shareMail) {
     debugger;
-    const obs = this.noteService.deleteCollaborator(noteId, shareMail);
-    obs.subscribe(
+    this.obs = this.noteService.deleteCollaborator(noteId, shareMail);
+    this.obs.subscribe(
       (status: any) => {
         this.test = status;
         console.log(status);
