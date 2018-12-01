@@ -2,6 +2,7 @@
 include "/var/www/html/codeigniter/application/controllers/phpmailer/mail.php";
 include_once '/var/www/html/codeigniter/application/controllers/jwt.php';
 include "/var/www/html/codeigniter/application/static/Constant.php";
+//include "/var/www/html/codeigniter/application/static/EmailConstant.php";
 include "/var/www/html/codeigniter/application/RabbitMQ/send.php";
 defined('BASEPATH') or exit('No direct script access allowed');
 
@@ -173,23 +174,26 @@ class FundooAccountService
      * @method addprofile() function to add profile pic to user
      * @return void
      */
-    public function addProfile($email, $name,$fileTmpName)
+    public function addProfile($email, $filePath)
     {
         try {
-            $dataD=new Constant();
-            $newfileloc = $dataD->fileUploadPath . $name;
-            $upload = move_uploaded_file($fileTmpName, $newfileloc);
+            
+            $stmt = $this->connect->prepare("UPDATE register SET `profilepic` = :filePath where `email`= :email ");
 
-            $sql = "UPDATE register SET profilepic='$name' WHERE email='$email'";
-            $res = $this->connect->exec($sql);
-
-            $stmt = $this->connect->prepare("SELECT * From register where email='$email'");
+            $stmt->execute(array(
+            ':filePath' => $filePath,
+            ':email' => $email
+            ));
+            $stmt = $this->connect->prepare("SELECT profilepic From register where email='$email'");
             $stmt->execute();
 
-            $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $myjson = json_encode($myArray);
-            print($myjson);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+            $res = $row['profilepic'];
+
+            $ref=json_encode(base64_encode($res));
+            print $ref;
+        
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();

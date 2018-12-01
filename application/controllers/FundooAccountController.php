@@ -95,22 +95,33 @@ class FundooAccountController extends \PHPUnit_Framework_TestCase
 
     }
 
-    /**
-     * @method addprofile() function to add profile pic to user
-     * @return void
-     */
+    // /**
+    //  * @method addprofile() function to add profile pic to user
+    //  * @return void
+    //  */
+    // public function addProfile()
+    // {
+    //     /**
+    //      * @var string $email,$file,$name
+    //      */
+    //     $email = $_POST['email'];
+    //     $file = $_FILES['file'];
+    //     $name = $_FILES['file']['name'];
+    //     $fileTmpName = $_FILES['file']['tmp_name'];
+    
+    //     $this->ref->addProfile($email, $name, $fileTmpName);
+
+    // }
+
     public function addProfile()
     {
-        /**
-         * @var string $email,$file,$name
-         */
-        $email = $_POST['email'];
-        $file = $_FILES['file'];
-        $name = $_FILES['file']['name'];
-        $fileTmpName = $_FILES['file']['tmp_name'];
-    
-        $this->ref->addProfile($email, $name, $fileTmpName);
 
+        $email = $_POST['email'];
+        $filePath = base64_decode($_POST['fileKey']);
+
+        $this->ref->addProfile($email, $filePath);
+        
+        
     }
 
     /**

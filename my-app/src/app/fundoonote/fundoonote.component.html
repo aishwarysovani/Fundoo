@@ -25,10 +25,10 @@ like sidenav,logout etc. -->
     <!-- shows account info with signout and profile pic
     shows current user email id  -->
     <span class="example-spacer"></span>
-    <div *ngFor="let item of testT">
-      <div *ngIf="item.profilepic!=NULL; else showicon">
+    <div>
+      <div *ngIf="url!=NULL; else showicon">
         <button mat-icon-button matTooltip="account {{email}}" [matMenuTriggerFor]="account">
-          <img class="account-img1" src="/assets/profile/{{item.profilepic}}"></button>
+          <img class="account-img1" src="{{url}}"></button>
       </div>
     </div>
 
@@ -40,10 +40,10 @@ like sidenav,logout etc. -->
   </mat-toolbar-row>
   <mat-menu #account="matMenu">
 
-    <div *ngFor="let item of testT">
-      <div *ngIf="item.profilepic!=NULL; else showicon1">
+    <div>
+      <div *ngIf="url!=NULL; else showicon1">
         <button (click)="fileInput.click()" mat-icon-button style="margin-left:80px">
-          <img class="account-img" src="/assets/profile/{{item.profilepic}}">
+          <img class="account-img" src="{{url}}">
         </button></div>
     </div>
     <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>

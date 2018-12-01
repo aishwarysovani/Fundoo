@@ -14,7 +14,7 @@ import { serviceUrl } from '../../serviceUrl/serviceUrl';
  */
 export class NoteService {
 
-  constructor(private http: HttpClient,private serviceurl:serviceUrl) { }
+  constructor(private http: HttpClient, private serviceurl: serviceUrl) { }
 
   /**
    * add note api call 
@@ -312,7 +312,7 @@ export class NoteService {
     const newdata = new FormData();
     var email1 = localStorage.getItem('email');
     newdata.append('email', email1);
-    newdata.append('id',id);
+    newdata.append('id', id);
     newdata.append('file', imagefile);
     const otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -371,20 +371,38 @@ export class NoteService {
     return this.http.post(this.serviceurl.host + this.serviceurl.Deletecollaborator, newdata, otheroption);
   }
 
+  // /**
+  //  * profile related api calls
+  //  * @param email 
+  //  * @param imagefile 
+  //  */
+  // addProfile(email, imagefile) {
+  //   debugger;
+  //   const newdata = new FormData();
+  //   newdata.append('email', email);
+  //   newdata.append('file', imagefile);
+  //   const otheroption: any = {
+  //     'Content-Type': 'application/x-www-form-urlencoded'
+  //   };
+  //   return this.http.post(this.serviceurl.host + this.serviceurl.Addprofile, newdata, otheroption);
+  // }
+
   /**
-   * profile related api calls
-   * @param email 
-   * @param imagefile 
-   */
-  addProfile(email, imagefile) {
-    debugger;
-    const newdata = new FormData();
-    newdata.append('email', email);
-    newdata.append('file', imagefile);
-    const otheroption: any = {
+* to upload the image for the profile picture
+* @param fileToUpload image file to be stored in db
+* @param email email of particular 
+* @return Observables
+*/
+  uploadImage(base64string, email) {
+    let otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
-    };
-    return this.http.post(this.serviceurl.host + this.serviceurl.Addprofile, newdata, otheroption);
+    }
+    debugger;
+    const params = new FormData();
+    params.append("fileKey", base64string);
+    params.append("email", email);
+
+    return this.http.post(this.serviceurl.host + this.serviceurl.Addprofile, params, otheroption);
   }
 
   showProfile(email) {

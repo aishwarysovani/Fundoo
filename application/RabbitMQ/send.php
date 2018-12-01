@@ -2,7 +2,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
-
+include_once "/var/www/html/codeigniter/application/static/EmailConstant.php";
 include "/var/www/html/codeigniter/application/RabbitMQ/receive.php";
 class SendMail
 {
@@ -14,8 +14,8 @@ class SendMail
     public function sendEmail($toEmail, $subject, $body)
     {
 
-
-        $connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
+        $data=new EmailConstantE();
+        $connection = new AMQPStreamConnection($data->host, $data->port, $data->hHost, $data->hPassword);
         $channel = $connection->channel();
         /*
             name: hello

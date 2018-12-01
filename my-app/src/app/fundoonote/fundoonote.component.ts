@@ -30,6 +30,8 @@ export class FundoonoteComponent implements OnInit {
   selectedFile: File;
   image: any;
   obs:any;
+  base64textString: string;
+  url: string;
 
   constructor(private listviewService: ListviewService, private loginService: LoginService,
     public dialog: MatDialog, private noteservice: NoteService) {
@@ -86,21 +88,52 @@ export class FundoonoteComponent implements OnInit {
    * event call to access file
    * @param event 
    */
-  onFileChanged(event) {
-    debugger;
-    this.selectedFile = event.target.files[0];
+  // onFileChanged(event) {
+  //   debugger;
+  //   this.selectedFile = event.target.files[0];
 
-    /**
-     * service call to update profile pic
-     * @param email,@param selectedFile
-     */
-    this.obs = this.noteservice.addProfile(this.email, this.selectedFile);
-    this.obs.subscribe(
-      (status: any) => {
-        this.testT = status;
-        console.log(status);
-      });
-  }
+  //   /**
+  //    * service call to update profile pic
+  //    * @param email,@param selectedFile
+  //    */
+  //   this.obs = this.noteservice.addProfile(this.email, this.selectedFile);
+  //   this.obs.subscribe(
+  //     (status: any) => {
+  //       this.testT = status;
+  //       console.log(status);
+  //     });
+  // }
+
+  onFileChanged(event)  {
+    debugger;
+    var files = event.target.files;
+    var file = files[0];
+    if (files && file) {
+    var reader = new FileReader();
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsBinaryString(file);
+    }
+    }
+    
+    _handleReaderLoaded(readerEvt) {
+    var binaryString = readerEvt.target.result;
+    this.base64textString = btoa(binaryString);
+    console.log(btoa(binaryString));
+    debugger;
+    this.noteservice.uploadImage(this.base64textString, this.email )
+    .subscribe(
+    (status: any) => {
+    console.log("darshuuuu");
+    
+    
+    console.log(status);
+    
+    this.url = "data:image/jpeg;base64," + status;
+    }, error => {
+    console.log(error);
+    alert(error.error.text)
+    });
+    }
 
   /**
    * call logout service
