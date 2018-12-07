@@ -1,4 +1,6 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: Authorization");
 defined('BASEPATH') or exit('No direct script access allowed');
 include "/var/www/html/codeigniter/application/service/FundooAccountService.php";
 include '/var/www/html/codeigniter/application/vendor/autoload.php';
@@ -136,6 +138,13 @@ class FundooAccountController extends \PHPUnit_Framework_TestCase
         $email = $_POST['email'];
         $this->ref->showProfile($email);
 
+    }
+
+    public function socialLogin(){
+        $email = $_POST['email'];
+        $profilepic = $_POST['profilepic'];
+        $username = $_POST['username'];
+        $this->ref->socialLogin($email, $username, $profilepic);
     }
 
 }

@@ -1,6 +1,8 @@
+import { environment } from 'src/environments/environment';
+
 export class serviceUrl
 {
-    public host="http://localhost/codeigniter/";
+    public host = environment.baseUrl;
     public forgotpass="Forgotpass";
     public login="Login";
     public createnote="CreateNote";
@@ -34,5 +36,6 @@ export class serviceUrl
     public register = "Register";
     public resetpass = "resetpass";
     public conformregi = "conformregi";
-
+    public fetchUserData="FetchUserData";
+    public socialLogin="socialLogin";
 }

@@ -304,10 +304,9 @@ switch (ENVIRONMENT)
 	}
 
 	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
-
-
-	require_once APPPATH. 'libraries/lib_redis/autoload.php';
-	Predis\Autoloader::register();
+// Prepend a base path if Predis is not available in your "include_path".
+	include 'application/predis/autoload.php';
+    Predis\Autoloader::register();
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE

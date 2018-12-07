@@ -1,0 +1,22 @@
+[{
+        "email": "vidyapvdp@gmail.com",
+        "username": "vidya",
+        "password": "121111",
+        "mobilenumber": "1111111111",
+        "expected": "203"
+    },
+    {
+        "email": "vidyapvdp@gmail.com",
+        "username": "darshan",
+        "password": "121111",
+        "mobilenumber": "1111111123",
+        "expected": "201"
+    },
+    {
+        "email": "vidyafgadhar@gmail.com",
+        "username": "darshan",
+        "password": "121111",
+        "mobilenumber": "bksdfssdfj",
+        "expected": "304"
+    }
+]

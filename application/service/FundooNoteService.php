@@ -1,4 +1,6 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: Authorization");
 include "/var/www/html/codeigniter/application/controllers/phpmailer/mail.php";
 include_once '/var/www/html/codeigniter/application/controllers/jwt.php';
 include "/var/www/html/codeigniter/application/static/Constant.php";
@@ -7,7 +9,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 /**
  * @var string $connect
  */
-class FundooNoteService
+class FundooNoteService extends CI_Controller
 {
     protected $connect;
 
@@ -16,6 +18,7 @@ class FundooNoteService
         /**
          * Database conncetion using PDO
          */
+        parent::__construct();
         $data = new Constant();
         $this->connect = new PDO("$data->database:host=$data->host;dbname=$data->dbname", "$data->user", "$data->password");
         $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -102,6 +105,10 @@ class FundooNoteService
             if ($statement->execute()) {
                 $arr = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+                for ($i = 0; $i < count($arr); $i++) {
+                
+                $arr[$i]['image'] = "data:image/jpeg;base64,".base64_encode($arr[$i]['image']);
+                }
                 print json_encode($arr);
             }
         }
@@ -690,15 +697,7 @@ class FundooNoteService
             ':email' => $email,
             ':id'=>$id
             ));
-            $stmt = $this->connect->prepare("SELECT image From note where email='$email'");
-            $stmt->execute();
 
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            $res = $row['image'];
-
-            $ref=json_encode(base64_encode($res));
-            print $ref;
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
@@ -737,5 +736,20 @@ class FundooNoteService
             $id = $noteid;
         }
     
+    }
+
+    public function fetchUserInfo()
+    {
+        /**
+        *Get data from Redis
+        */
+        $this->load->library('Redis');
+        $redis = $this->redis->config();
+        $email = $redis->get('email');
+        $data = array(
+            "email" => $email,
+        );
+        print json_encode($data);
+
     }
 }

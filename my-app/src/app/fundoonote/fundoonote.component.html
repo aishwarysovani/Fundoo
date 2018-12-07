@@ -27,14 +27,14 @@ like sidenav,logout etc. -->
     <span class="example-spacer"></span>
     <div>
       <div *ngIf="url!=NULL; else showicon">
-        <button mat-icon-button matTooltip="account {{email}}" [matMenuTriggerFor]="account">
+        <button mat-icon-button matTooltip="account {{useremail}}" [matMenuTriggerFor]="account">
           <img class="account-img1" src="{{url}}"></button>
       </div>
     </div>
 
     <!-- used to display default profile pic -->
     <ng-template #showicon>
-      <button mat-icon-button matTooltip="account {{email}}" [matMenuTriggerFor]="account"><img src="/assets/accountcircle.svg"></button>
+      <button mat-icon-button matTooltip="account {{useremail}}" [matMenuTriggerFor]="account"><img src="/assets/accountcircle.svg"></button>
     </ng-template>
 
   </mat-toolbar-row>

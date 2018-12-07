@@ -1,4 +1,6 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: Authorization");
 defined('BASEPATH') or exit('No direct script access allowed');
 include "/var/www/html/codeigniter/application/service/FundooNoteService.php";
 
@@ -332,29 +334,32 @@ class FundooNoteController
      */
     public function addImage()
     {
-            /**
-             * @var string $email,$file,$name
-             */
-            $email = $_POST['email'];
-            $id = $_POST['id'];
-            $filePath = base64_decode($_POST['fileKey']);
+        /**
+         * @var string $email,$file,$name
+         */
+        $email = $_POST['email'];
+        $id = $_POST['id'];
+        $filePath = base64_decode($_POST['fileKey']);
 
-            $this->ref->addImage($email,$id, $filePath);
+        $this->ref->addImage($email, $id, $filePath);
 
     }
 
     public function DragAndDrop()
     {
 
-
-        $email     = $_POST["email"];
-        $id        = $_POST["id"];
-        $loop      = $_POST["loop"];
+        $email = $_POST["email"];
+        $id = $_POST["id"];
+        $loop = $_POST["loop"];
         $direction = $_POST["direction"];
 
-         $this->ref->DragAndDrop($email,$id,$loop,$direction);
+        $this->ref->DragAndDrop($email, $id, $loop, $direction);
 
-      
+    }
+
+    public function fetchUserData(){
+        $this->fundooNoteService->fetchUserInfo();
+        
     }
 
 }

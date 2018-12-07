@@ -46,7 +46,10 @@ import { CollaboratorComponent } from './collaborator/collaborator.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NotefilterPipe } from './note/notefilter.pipe';
 import { serviceUrl } from './serviceUrl/serviceUrl';
-
+import { LoggerService } from './service/logger/logger.service';
+import { SocialLoginModule, AuthServiceConfig } from 'angular-6-social-login-v2';
+import { getAuthServiceConfigs } from './socialLogin';
+import { AuthService, GoogleLoginProvider, FacebookLoginProvider } from 'angular-6-social-login-v2';
 
 @NgModule({
   declarations: [
@@ -100,6 +103,12 @@ import { serviceUrl } from './serviceUrl/serviceUrl';
     NoteService,
     ListviewService,
     MatDatepickerModule,
+    LoggerService,
+    AuthService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    },
     { provide: HTTP_INTERCEPTORS, useClass: IntercepterService, multi: true },
     serviceUrl
 

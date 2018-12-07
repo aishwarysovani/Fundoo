@@ -83,8 +83,8 @@ $route['Showprofile']='/FundooAccountController/showProfile';
 $route['getAllCollaborator']='/FundooNoteController/getAllCollaborator';
 $route['Addimage']='/FundooNoteController/addImage';
 $route['DragAndDrop']='/FundooNoteController/DragAndDrop';
-
-$route['Testredis']='/Testredis1/testRedis';
+$route['FetchUserData']='/FundooNoteController/fetchUserData';
+$route['socialLogin']='/FundooAccountController/socialLogin';
 
 //$route['Form']='/Welcome/forgot_pass';
 // $route['Get'] = '/Login/get';

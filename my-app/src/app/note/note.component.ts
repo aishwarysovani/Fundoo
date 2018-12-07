@@ -8,6 +8,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { EditnoteComponent } from '../editnote/editnote/editnote.component';
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
 import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
+import { Notes } from '../core/model/note';
+import { Collaborators } from '../core/model/collaborator';
 
 
 export interface DialogData {
@@ -27,8 +29,8 @@ export interface DialogData {
 export class NoteComponent implements OnInit {
 
   model: any = {};
-  test: any;
-  testT: any;
+  test: Notes[] = [];
+  testT: Collaborators[] = [];
   panelOpenState = false;
   dialogCard: boolean = false;
   mainCard: boolean = true;
@@ -54,6 +56,7 @@ export class NoteComponent implements OnInit {
   obsV:any;
   base64textString: string;
   url: string;
+  observable: any;
 
   constructor(private noteService: NoteService, private loginService: LoginService,
     private listviewService: ListviewService, public dialog: MatDialog) {
@@ -145,34 +148,30 @@ export class NoteComponent implements OnInit {
   //     });
   // }
 
-  onFileChanged(event)  {
-    debugger;
-    var files = event.target.files;
-    var file = files[0];
+  onFileChanged(event) {
+    const files = event.target.files;
+    const file = files[0];
     if (files && file) {
-    var reader = new FileReader();
+    const reader = new FileReader();
     reader.onload = this._handleReaderLoaded.bind(this);
     reader.readAsBinaryString(file);
     }
     }
-    
+    /**
+    * _handleReaderLoaded() is used to set image into binary format
+    * @param readerEvt file type
+    */
     _handleReaderLoaded(readerEvt) {
-    var binaryString = readerEvt.target.result;
+    const binaryString = readerEvt.target.result;
     this.base64textString = btoa(binaryString);
-    console.log(btoa(binaryString));
-    debugger;
-    this.noteService.uploadNoteImage(this.base64textString, this.imageId)
-    .subscribe(
-    (status: any) => {
-    console.log("darshuuuu");
-    
-    
-    console.log(status);
-    
-    this.url = "data:image/jpeg;base64," + status;
-    }, error => {
-    console.log(error);
-    alert(error.error.text)
+    this.test.forEach(element => {
+    if (element.id === this.imageId) {
+    element.image = 'data:image/jpeg;base64,' + this.base64textString;
+    }
+    });
+    this.observable = this.noteService.uploadNoteImage(this.imageId, this.base64textString);
+    this.observable.subscribe(
+    (res: any) => {
     });
     }
 
@@ -393,7 +392,7 @@ export class NoteComponent implements OnInit {
     debugger;
     this.obs = this.noteService.dragnotes(
       email,
-      this.test[event.currentIndex].DragAndDropID,
+      this.test[event.currentIndex].DragAndDropId,
       diff,
       direction
     );

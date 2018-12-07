@@ -4,6 +4,7 @@ import { LoginService } from '../service/loginservice/login.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { EditlabelComponent } from '../editlabel/editlabel.component';
 import { NoteService } from '../service/note/note.service';
+import { Labels } from '../core/model/label';
 
 
 export interface DialogData {
@@ -18,26 +19,30 @@ export interface DialogData {
 
 /**
  * @var email,@var listicon,@var gridicon
- * @var test,@var test1,@var image
+ * @var test,@var image
  * @var selectedFile
  */
 export class FundoonoteComponent implements OnInit {
   email: string = null;
   listIcon: boolean = true;
   gridIcon: boolean = false;
-  test: any;
-  testT: any;
+  test: Labels[] = [];
   selectedFile: File;
   image: any;
   obs:any;
   base64textString: string;
   url: string;
+  useremail: any;
 
   constructor(private listviewService: ListviewService, private loginService: LoginService,
     public dialog: MatDialog, private noteservice: NoteService) {
     debugger;
-    var email1 = localStorage.getItem('email');
-    this.email = email1;
+    var emailE = localStorage.getItem('email');
+    this.email = emailE;
+    this.obs = this.noteservice.fetchUserData();
+    this.obs.subscribe((res: any) => {
+    this.useremail = res.email;
+    });
 
     /**
      * service to show profile pic
@@ -47,7 +52,7 @@ export class FundoonoteComponent implements OnInit {
     this.obs.subscribe(
       (status: any) => {
         debugger;
-        this.testT = status;
+        this.url = "data:image/jpeg;base64," + status;
         console.log(status);
       });
   }
@@ -88,22 +93,6 @@ export class FundoonoteComponent implements OnInit {
    * event call to access file
    * @param event 
    */
-  // onFileChanged(event) {
-  //   debugger;
-  //   this.selectedFile = event.target.files[0];
-
-  //   /**
-  //    * service call to update profile pic
-  //    * @param email,@param selectedFile
-  //    */
-  //   this.obs = this.noteservice.addProfile(this.email, this.selectedFile);
-  //   this.obs.subscribe(
-  //     (status: any) => {
-  //       this.testT = status;
-  //       console.log(status);
-  //     });
-  // }
-
   onFileChanged(event)  {
     debugger;
     var files = event.target.files;
@@ -122,9 +111,7 @@ export class FundoonoteComponent implements OnInit {
     debugger;
     this.noteservice.uploadImage(this.base64textString, this.email )
     .subscribe(
-    (status: any) => {
-    console.log("darshuuuu");
-    
+    (status: any) => {   
     
     console.log(status);
     
@@ -155,6 +142,6 @@ export class FundoonoteComponent implements OnInit {
       this.test = result;
       console.log('The dialog was closed');
     });
-    dialogRef.afterClosed().unsubscribe();
+    // dialogRef.afterClosed().unsubscribe();
   }
 }

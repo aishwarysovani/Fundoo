@@ -1,4 +1,6 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: Authorization");
 include "/var/www/html/codeigniter/application/static/Constant.php";
 defined('BASEPATH') or exit('No direct script access allowed');
 

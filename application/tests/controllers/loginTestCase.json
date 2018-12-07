@@ -1,0 +1,21 @@
+[{
+        "testEmail": "vidya@gmail.com",
+        "password": "222df2sdf",
+        "expected": "404"
+    },
+    {
+        "testEmail": "vidyapvdp@gmail.com",
+        "password": "11cd11sdf",
+        "expected": "400"
+    },
+    {
+        "testEmail": "vidyapvdp@gmail.com",
+        "password": "111111",
+        "expected": "401"
+    },
+    {
+        "testEmail": "vidyapvdp@gmail.com",
+        "password": "vidya123",
+        "expected": "200"
+    }
+]

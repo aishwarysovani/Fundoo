@@ -1,4 +1,6 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: Authorization");
 include "/var/www/html/codeigniter/application/controllers/phpmailer/mail.php";
 include_once '/var/www/html/codeigniter/application/controllers/jwt.php';
 include "/var/www/html/codeigniter/application/static/Constant.php";
@@ -9,7 +11,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 /**
  * @var string $connect
  */
-class FundooAccountService
+class FundooAccountService extends CI_Controller
 {
     protected $connect;
 
@@ -18,6 +20,7 @@ class FundooAccountService
         /**
          * Database conncetion using PDO
          */
+        parent::__construct();
         $data = new Constant();
         $this->connect = new PDO("$data->database:host=$data->host;dbname=$data->dbname", "$data->user", "$data->password");
         $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -70,6 +73,9 @@ class FundooAccountService
             }
 
             if ($flag == true) {
+                $this->load->library('Redis');
+                $redis = $this->redis->config();
+                $set = $redis->set('email', $email);
                 $msg = array(
                     "message" => "Successful login.",
                     "jwt" => $jwt,
@@ -101,14 +107,14 @@ class FundooAccountService
                     $name = $result['uname'];
                     $flag = 1;
                     // $ref = new MailClass();
-                    $ref=new SendMail();
+                    $ref = new SendMail();
                     $token = md5($email);
                     $query = "UPDATE register SET token='$token' WHERE email='$email'";
                     $statement = $this->connect->prepare($query);
                     $statement->execute();
-                    $subject="Forgot Password Recovery";
-                    $body="Click this link to recover your password http://localhost:4200/resetpassword?token=" . $token;
-                    $ref->sendEmail($email,$subject,$body);
+                    $subject = "Forgot Password Recovery";
+                    $body = "Click this link to recover your password http://localhost:4200/resetpassword?token=" . $token;
+                    $ref->sendEmail($email, $subject, $body);
                     break;
                 }
             }
@@ -177,23 +183,23 @@ class FundooAccountService
     public function addProfile($email, $filePath)
     {
         try {
-            
+
             $stmt = $this->connect->prepare("UPDATE register SET `profilepic` = :filePath where `email`= :email ");
 
             $stmt->execute(array(
-            ':filePath' => $filePath,
-            ':email' => $email
+                ':filePath' => $filePath,
+                ':email' => $email,
             ));
-            $stmt = $this->connect->prepare("SELECT profilepic From register where email='$email'");
-            $stmt->execute();
+            // $stmt = $this->connect->prepare("SELECT profilepic From register where email='$email'");
+            // $stmt->execute();
 
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            // $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            $res = $row['profilepic'];
+            // $res = $row['profilepic'];
 
-            $ref=json_encode(base64_encode($res));
-            print $ref;
-        
+            // $ref=json_encode(base64_encode($res));
+            // print $ref;
+
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
@@ -207,15 +213,79 @@ class FundooAccountService
     public function showProfile($email)
     {
         try {
-            $stmt = $this->connect->prepare("SELECT * From register where email='$email'");
+            $stmt = $this->connect->prepare("SELECT profilepic From register where email='$email'");
             $stmt->execute();
 
-            $myArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $myjson = json_encode($myArray);
-            print($myjson);
+            $arr = $stmt->fetch(PDO::FETCH_ASSOC);
+            $res = $arr['profilepic'];
+            $ref = json_encode(base64_encode($res));
+            print $ref;
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
+        }
+    }
+
+    public function socialLogin($email, $username, $profilepic)
+    {
+        $flag = 0;
+        $query = "SELECT uname,email FROM register";
+        $statement = $this->connect->prepare($query);
+        $statement->execute();
+        while ($array = $statement->fetch(PDO::FETCH_ASSOC)) {
+        /**
+        *compared with user entered email and fethed email from database
+        */
+            if (($email == ($array['email']))) {
+                $flag = 1;
+                $username = $array['uname'];
+                $this->load->library('Redis');
+                $redis = $this->redis->config();
+                $set = $redis->set('email', $email);
+                $set = $redis->set('name', $username);
+                $get = $redis->get('email');
+
+                // $this->load->driver('cache', array('adapter' => 'apc', 'backup' => 'file'));
+                // $this->cache->save('email', $get);
+
+                $jwt1 = new JWT();
+                $jwt = $jwt1->createJwtToken($email);
+                $data = array(
+                    "jwt" =>  $jwt,
+                    "status" => "200",
+                    "emailId" => $email,
+                );
+                print json_encode($data);
+                break;
+            }
+        }
+        if ($flag == 0) {
+            $password = $username;
+            $query = "INSERT INTO register(uname,email,pswd) VALUES ('$username','$email','$password')";
+            $statement = $this->connect->prepare($query);
+            if ($statement->execute()) {
+                $this->load->library('Redis');
+                $redis = $this->redis->config();
+                $set = $redis->set('email', $email);
+                $get = $redis->get('email');
+
+                // $this->load->driver('cache', array('adapter' => 'apc', 'backup' => 'file'));
+                // $this->cache->save('email', $get);
+                $jwt1 = new JWT();
+                $jwt = $jwt1->createJwtToken($email);
+                $data = array(
+                    "jwt" =>  $jwt,
+                    "status" => "200",
+                    "emailId" => $email
+                );
+                print json_encode($data);
+            } else {
+                $msg = array(
+                    "status" => "400",
+                );
+                print json_encode($msg);
+
+            }
         }
     }
 

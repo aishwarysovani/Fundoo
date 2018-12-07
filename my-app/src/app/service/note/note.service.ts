@@ -320,7 +320,7 @@ export class NoteService {
   //   return this.http.post(this.serviceurl.host + this.serviceurl.Addimage, newdata, otheroption);
   // }
 
-  uploadNoteImage(base64string, id) {
+  uploadNoteImage(id,base64string) {
     let otheroption: any = {
       'Content-Type': 'application/x-www-form-urlencoded'
     }
@@ -436,4 +436,8 @@ export class NoteService {
     data.append("direction", direction);
     return this.http.post(this.serviceurl.host + this.serviceurl.DragDrop_url, data);
   }
+
+  fetchUserData() {
+    return this.http.get(this.serviceurl.host + this.serviceurl.fetchUserData);
+    }
 }

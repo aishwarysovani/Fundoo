@@ -136,8 +136,8 @@ with provide drag n drop facility to note -->
             </div>
         </div>
 
-        <div *ngIf="item.image!=NULL">
-            <div><img src="{{url}}" class="image-div"></div>
+        <div *ngIf="item.image != 'data:image/jpeg;base64,'">
+            <img src={{item.image}} class="image-div" alt="">
         </div>
         
         <!-- all option like reminder,color,archive etc. -->

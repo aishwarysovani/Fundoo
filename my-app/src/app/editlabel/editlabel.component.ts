@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogData } from '../fundoonote/fundoonote.component';
 import { NoteService } from '../service/note/note.service';
+import { Labels } from '../core/model/label';
 
 
 @Component({
@@ -11,12 +12,12 @@ import { NoteService } from '../service/note/note.service';
 })
 
 /**
- * @var Label1
+ * @var Label
  * @var test
  */
 export class EditlabelComponent implements OnInit {
   Label: any;
-  test: any;
+  test: Labels[] = [];
   obs:any;
 
   constructor(public dialogRef: MatDialogRef<EditlabelComponent>,
