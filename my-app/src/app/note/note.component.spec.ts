@@ -24,21 +24,32 @@ describe('NoteComponent', () => {
   });
   it('should note', async(()=>{
     expect(component.archive['archive']).toEqual(0);
-    expect(component.deletenote['deleted']).toEqual(0)
+    expect(component.deletenote['deleted']).toEqual(0);
     expect(component.archive['archive']).toBeTruthy();
     expect(component.deletenote['deleted']).toBeTruthy();
   }));
   it('should not note', async(()=>{
     expect(component.archive['archive']).toEqual(1);
-    expect(component.deletenote['deleted']).toEqual(1)
+    expect(component.deletenote['deleted']).toEqual(1);
     expect(component.archive['archive']).toBeFalsy();
     expect(component.deletenote['deleted']).toBeFalsy();
   }));
 
   it('should note', async(()=>{
     expect(component.takenote['title']).toEqual('yghss');
-    expect(component.takenote['note']).toEqual('hszxna')
+    expect(component.takenote['title']).toEqual('yghss');
+    expect(component.takenote['note']).toEqual('63563');
+    expect(component.takenote['note']).toEqual('5663336');
     expect(component.takenote['title']).toBeTruthy();
     expect(component.takenote['note']).toBeTruthy();
   }));
+
+  it('should not note', async(()=>{
+    expect(component.takenote['title']).toEqual('');
+    expect(component.takenote['note']).toEqual('');
+    expect(component.archive['title']).toBeFalsy();
+    expect(component.deletenote['note']).toBeFalsy();
+  }));
+
+
 });
