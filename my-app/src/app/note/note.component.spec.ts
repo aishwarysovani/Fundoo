@@ -34,4 +34,11 @@ describe('NoteComponent', () => {
     expect(component.archive['archive']).toBeFalsy();
     expect(component.deletenote['deleted']).toBeFalsy();
   }));
+
+  it('should note', async(()=>{
+    expect(component.takenote['title']).toEqual('yghss');
+    expect(component.takenote['note']).toEqual('hszxna')
+    expect(component.takenote['title']).toBeTruthy();
+    expect(component.takenote['note']).toBeTruthy();
+  }));
 });
