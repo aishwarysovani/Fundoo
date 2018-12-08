@@ -1,6 +1,11 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Authorization");
+require '/var/www/html/codeigniter/application/cloud/vendor/cloudinary/cloudinary_php/src/Cloudinary.php';
+require '/var/www/html/codeigniter/application/cloud/vendor/cloudinary/cloudinary_php/src/Uploader.php';
+require '/var/www/html/codeigniter/application/cloud/vendor/cloudinary/cloudinary_php/src/Helpers.php';
+require '/var/www/html/codeigniter/application/cloud/vendor/cloudinary/cloudinary_php/src/Api.php';
+require '/var/www/html/codeigniter/application/cloud/settings.php';
 include "/var/www/html/codeigniter/application/controllers/phpmailer/mail.php";
 include_once '/var/www/html/codeigniter/application/controllers/jwt.php';
 include "/var/www/html/codeigniter/application/static/Constant.php";
@@ -180,30 +185,57 @@ class FundooAccountService extends CI_Controller
      * @method addprofile() function to add profile pic to user
      * @return void
      */
-    public function addProfile($email, $filePath)
+    public function addProfile($email, $url)
     {
-        try {
-
-            $stmt = $this->connect->prepare("UPDATE register SET `profilepic` = :filePath where `email`= :email ");
-
-            $stmt->execute(array(
-                ':filePath' => $filePath,
-                ':email' => $email,
-            ));
-            // $stmt = $this->connect->prepare("SELECT profilepic From register where email='$email'");
-            // $stmt->execute();
-
-            // $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            // $res = $row['profilepic'];
-
-            // $ref=json_encode(base64_encode($res));
-            // print $ref;
-
-        } catch (PDOException $e) {
-            print "Error!: " . $e->getMessage() . "<br/>";
-            die();
+        if ($url != null) {
+            /**
+             * adding image to the cloudinary using uploader method
+             */
+            // $return        = \Cloudinary\Uploader::upload($url);
+            $return        = \Cloudinary\Uploader::upload($url);
+            /**
+             * @var imageUrl the cloudinary url 
+             */
+            $imageUrl      = $return['url'];
+            
+          
+            /**
+             * @var string $query has query to update the user profile pic to the data base
+             */
+        
+            $stmt = $this->connect->prepare("UPDATE register  SET imageCloud = '$imageUrl'  where email= '$email'");
+            if ($stmt->execute()) {
+            
+                   /**
+         * @var string $query has query to select the profile stored in the cloudinary of the user
+         */
+        $stmt = $this->connect->prepare("SELECT imageCloud FROM register where email='$email'");
+        if ($stmt->execute()) {
+            $arr = $stmt->fetch(PDO::FETCH_ASSOC);
+            /**
+             * returns json array response
+             */
+            print json_encode($arr['imageCloud']);
         }
+            } else {
+                $data = array(
+                    "message" => "404",
+                );
+                /**
+                 * return thye json response
+                 */
+                print json_encode($data);
+            }
+        } else {
+            $data = array(
+                "message" => "404",
+            );
+            /**
+             * return the json response
+             */
+            print json_encode($data);
+        }
+
     }
 
     /**

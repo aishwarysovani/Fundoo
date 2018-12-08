@@ -1,0 +1,19 @@
+[{
+    "id": "5",
+    "email":"aishsovani1234@gmail.com",
+    "sharemail": "vidyapvdp@gmail.com",
+    "expected": "400"
+},
+{
+    "id": "5",
+    "email":"aishsovani1234@gmail.com",
+    "sharemail": "",
+    "expected": "404"
+},
+{
+    "id": "8",
+    "email":"",
+    "sharemail": "vidyapvdp@gmail.com",
+    "expected": "401"
+}
+]

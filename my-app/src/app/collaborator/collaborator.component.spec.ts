@@ -22,4 +22,12 @@ describe('CollaboratorComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should collaborated', async(()=>{
+    expect(component.addcollaborator['collaborate']).toEqual('aishsovani1234@gmail.com')
+    expect(component.addcollaborator['collaborate']).toBeTruthy();
+  }));
+  it('should not collaborated', async(()=>{
+    expect(component.addcollaborator['collaborate']).toEqual('')
+    expect(component.addcollaborator['collaborate']).toBeFalsy();
+  }));
 });

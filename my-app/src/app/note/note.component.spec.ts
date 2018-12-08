@@ -22,4 +22,16 @@ describe('NoteComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should note', async(()=>{
+    expect(component.archive['archive']).toEqual(0);
+    expect(component.deletenote['deleted']).toEqual(0)
+    expect(component.archive['archive']).toBeTruthy();
+    expect(component.deletenote['deleted']).toBeTruthy();
+  }));
+  it('should not note', async(()=>{
+    expect(component.archive['archive']).toEqual(1);
+    expect(component.deletenote['deleted']).toEqual(1)
+    expect(component.archive['archive']).toBeFalsy();
+    expect(component.deletenote['deleted']).toBeFalsy();
+  }));
 });

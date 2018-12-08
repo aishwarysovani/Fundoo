@@ -22,4 +22,12 @@ describe('BinComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should deleted', async(() => {
+    expect(component.deleteforever['isDeleted']).toEqual(1)
+    expect(component.deleteforever['isDeleted']).toBeTruthy();
+  }));
+  it('should not deleted', async(() => {
+    expect(component.deleteforever['isDeleted']).toEqual(0)
+    expect(component.deleteforever['isDeleted']).toBeFalsy();
+  }));
 });

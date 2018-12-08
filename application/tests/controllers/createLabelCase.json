@@ -1,0 +1,16 @@
+[{
+    "email": "aishsovani1234@gmail.com",
+    "label": "aishwarya",
+    "expected": "404"
+},
+{
+    "email": "vidyapvdp@gmail.com",
+    "label": "287651",
+    "expected": "400"
+},
+{
+    "testEmail": "vidyapvdp@gmail.com",
+    "password": "",
+    "expected": "401"
+}
+]

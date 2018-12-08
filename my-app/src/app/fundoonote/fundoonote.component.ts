@@ -11,6 +11,8 @@ export interface DialogData {
   label: any;
 }
 
+
+
 @Component({
   selector: 'app-fundoonote',
   templateUrl: './fundoonote.component.html',
@@ -33,6 +35,8 @@ export class FundoonoteComponent implements OnInit {
   base64textString: string;
   url: string;
   useremail: any;
+  ispresent: boolean;
+  myurl: any;
 
   constructor(private listviewService: ListviewService, private loginService: LoginService,
     public dialog: MatDialog, private noteservice: NoteService) {
@@ -93,33 +97,32 @@ export class FundoonoteComponent implements OnInit {
    * event call to access file
    * @param event 
    */
-  onFileChanged(event)  {
-    debugger;
-    var files = event.target.files;
-    var file = files[0];
-    if (files && file) {
+  onFileChanged(event) {
+
+    if (event.target.files && event.target.files[0]) {
     var reader = new FileReader();
-    reader.onload = this._handleReaderLoaded.bind(this);
-    reader.readAsBinaryString(file);
-    }
-    }
     
-    _handleReaderLoaded(readerEvt) {
-    var binaryString = readerEvt.target.result;
-    this.base64textString = btoa(binaryString);
-    console.log(btoa(binaryString));
+    reader.readAsDataURL(event.target.files[0]); // read file as data url
+    
+    reader.onload = (event) => { // called once readAsDataURL is completed
     debugger;
-    this.noteservice.uploadImage(this.base64textString, this.email )
-    .subscribe(
-    (status: any) => {   
+    this.url = event.target.result;
+    console.log(this.url);
     
-    console.log(status);
+    let obs = this.noteservice.uploadImage(this.url, this.email);
+    obs.subscribe(
+    (res: any) => {
+    if (res != "") {
+    this.ispresent = true;
+    this.myurl = res;
     
-    this.url = "data:image/jpeg;base64," + status;
-    }, error => {
-    console.log(error);
-    alert(error.error.text)
+    }
+    else {
+    this.ispresent = false;
+    }
     });
+    }
+    }
     }
 
   /**

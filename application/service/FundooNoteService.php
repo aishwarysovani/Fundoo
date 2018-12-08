@@ -1,6 +1,11 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Authorization");
+require '/var/www/html/codeigniter/application/cloud/vendor/cloudinary/cloudinary_php/src/Cloudinary.php';
+require '/var/www/html/codeigniter/application/cloud/vendor/cloudinary/cloudinary_php/src/Uploader.php';
+require '/var/www/html/codeigniter/application/cloud/vendor/cloudinary/cloudinary_php/src/Helpers.php';
+require '/var/www/html/codeigniter/application/cloud/vendor/cloudinary/cloudinary_php/src/Api.php';
+require '/var/www/html/codeigniter/application/cloud/settings.php';
 include "/var/www/html/codeigniter/application/controllers/phpmailer/mail.php";
 include_once '/var/www/html/codeigniter/application/controllers/jwt.php';
 include "/var/www/html/codeigniter/application/static/Constant.php";

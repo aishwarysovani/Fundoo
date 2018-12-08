@@ -1,0 +1,9 @@
+[{
+    "deleted": "1",
+    "expected": "400"
+},
+{
+    "deleted":"NULL",
+    "expected":"404"
+}
+]
