@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /var/www/html/codeigniter/application/libraries/lib_redis/src/Connection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../../../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../../../css/nv.d3.min.css" rel="stylesheet">
+  <link href="../../../../css/style.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="../../../../js/html5shiv.min.js"></script>
+  <script src="../../../../js/respond.min.js"></script>
+  <![endif]-->
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <div class="row">
+     <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li><a href="../../../../index.html">/var/www/html/codeigniter/application</a></li>
+        <li><a href="../../../index.html">libraries</a></li>
+        <li><a href="../../index.html">lib_redis</a></li>
+        <li><a href="../index.html">src</a></li>
+        <li><a href="index.html">Connection</a></li>
+        <li class="active">(Dashboard)</li>
+
+      </ol>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="AbstractConnection.php.html#24">AbstractConnection</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#30">MasterSlaveReplication</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#28">PredisCluster</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#47">RedisCluster</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#30">SentinelReplication</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CompositeStreamConnection.php.html#24">CompositeStreamConnection</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Factory.php.html#21">Factory</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Parameters.php.html#21">Parameters</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#47">PhpiredisSocketConnection</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#49">PhpiredisStreamConnection</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="StreamConnection.php.html#36">StreamConnection</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#46">WebdisConnection</a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#30">SentinelReplication</a></td><td class="text-right">7832</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#47">RedisCluster</a></td><td class="text-right">6806</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#30">MasterSlaveReplication</a></td><td class="text-right">5852</td></tr>
+       <tr><td><a href="StreamConnection.php.html#36">StreamConnection</a></td><td class="text-right">5256</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#47">PhpiredisSocketConnection</a></td><td class="text-right">3782</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#46">WebdisConnection</a></td><td class="text-right">1980</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#49">PhpiredisStreamConnection</a></td><td class="text-right">930</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#28">PredisCluster</a></td><td class="text-right">870</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#24">AbstractConnection</a></td><td class="text-right">600</td></tr>
+       <tr><td><a href="Parameters.php.html#21">Parameters</a></td><td class="text-right">600</td></tr>
+       <tr><td><a href="Factory.php.html#21">Factory</a></td><td class="text-right">506</td></tr>
+       <tr><td><a href="CompositeStreamConnection.php.html#24">CompositeStreamConnection</a></td><td class="text-right">272</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="AbstractConnection.php.html#35"><abbr title="AbstractConnection::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#67"><abbr title="PhpiredisSocketConnection::__destruct">__destruct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Factory.php.html#172"><abbr title="Factory::prepareConnection">prepareConnection</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Parameters.php.html#34"><abbr title="Parameters::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Parameters.php.html#44"><abbr title="Parameters::getDefaults">getDefaults</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Parameters.php.html#57"><abbr title="Parameters::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Parameters.php.html#84"><abbr title="Parameters::parse">parse</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Parameters.php.html#138"><abbr title="Parameters::filter">filter</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Parameters.php.html#146"><abbr title="Parameters::__get">__get</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Parameters.php.html#156"><abbr title="Parameters::__isset">__isset</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Parameters.php.html#164"><abbr title="Parameters::toArray">toArray</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Parameters.php.html#172"><abbr title="Parameters::__sleep">__sleep</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#54"><abbr title="PhpiredisSocketConnection::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#77"><abbr title="PhpiredisSocketConnection::assertExtensions">assertExtensions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Factory.php.html#140"><abbr title="Factory::getDefaultParameters">getDefaultParameters</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#95"><abbr title="PhpiredisSocketConnection::assertParameters">assertParameters</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#121"><abbr title="PhpiredisSocketConnection::createReader">createReader</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#136"><abbr title="PhpiredisSocketConnection::getReader">getReader</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#146"><abbr title="PhpiredisSocketConnection::getStatusHandler">getStatusHandler</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#151"><abbr title="PhpiredisSocketConnection::anonymousFunction:151#427">anonymousFunction:151#427</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#164"><abbr title="PhpiredisSocketConnection::getErrorHandler">getErrorHandler</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#169"><abbr title="PhpiredisSocketConnection::anonymousFunction:169#487">anonymousFunction:169#487</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#180"><abbr title="PhpiredisSocketConnection::emitSocketError">emitSocketError</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#197"><abbr title="PhpiredisSocketConnection::getAddress">getAddress</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#213"><abbr title="PhpiredisSocketConnection::createResource">createResource</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#248"><abbr title="PhpiredisSocketConnection::setSocketOptions">setSocketOptions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Factory.php.html#152"><abbr title="Factory::createParameters">createParameters</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Factory.php.html#130"><abbr title="Factory::setDefaultParameters">setDefaultParameters</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#328"><abbr title="PhpiredisSocketConnection::connect">connect</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#708"><abbr title="SentinelReplication::getReplicationStrategy">getReplicationStrategy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#553"><abbr title="SentinelReplication::getConnectionById">getConnectionById</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#569"><abbr title="SentinelReplication::switchTo">switchTo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#595"><abbr title="SentinelReplication::switchToMaster">switchToMaster</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#603"><abbr title="SentinelReplication::switchToSlave">switchToSlave</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#612"><abbr title="SentinelReplication::isConnected">isConnected</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#620"><abbr title="SentinelReplication::connect">connect</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#634"><abbr title="SentinelReplication::disconnect">disconnect</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#654"><abbr title="SentinelReplication::retryCommandOnFailure">retryCommandOnFailure</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#682"><abbr title="SentinelReplication::writeRequest">writeRequest</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#690"><abbr title="SentinelReplication::readResponse">readResponse</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#698"><abbr title="SentinelReplication::executeCommand">executeCommand</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#716"><abbr title="SentinelReplication::__sleep">__sleep</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Factory.php.html#115"><abbr title="Factory::aggregate">aggregate</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CompositeStreamConnection.php.html#32"><abbr title="CompositeStreamConnection::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CompositeStreamConnection.php.html#43"><abbr title="CompositeStreamConnection::getProtocol">getProtocol</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CompositeStreamConnection.php.html#51"><abbr title="CompositeStreamConnection::writeBuffer">writeBuffer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CompositeStreamConnection.php.html#59"><abbr title="CompositeStreamConnection::readBuffer">readBuffer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CompositeStreamConnection.php.html#84"><abbr title="CompositeStreamConnection::readLine">readLine</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CompositeStreamConnection.php.html#105"><abbr title="CompositeStreamConnection::writeRequest">writeRequest</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CompositeStreamConnection.php.html#113"><abbr title="CompositeStreamConnection::read">read</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CompositeStreamConnection.php.html#121"><abbr title="CompositeStreamConnection::__sleep">__sleep</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Factory.php.html#45"><abbr title="Factory::checkInitializer">checkInitializer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Factory.php.html#65"><abbr title="Factory::define">define</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Factory.php.html#73"><abbr title="Factory::undefine">undefine</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Factory.php.html#81"><abbr title="Factory::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#289"><abbr title="PhpiredisSocketConnection::connectWithTimeout">connectWithTimeout</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#344"><abbr title="PhpiredisSocketConnection::disconnect">disconnect</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#523"><abbr title="SentinelReplication::assertConnectionRole">assertConnectionRole</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#203"><abbr title="WebdisConnection::feedReader">feedReader</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="StreamConnection.php.html#379"><abbr title="StreamConnection::writeRequest">writeRequest</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#57"><abbr title="WebdisConnection::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#75"><abbr title="WebdisConnection::__destruct">__destruct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#88"><abbr title="WebdisConnection::throwNotSupportedException">throwNotSupportedException</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#97"><abbr title="WebdisConnection::assertExtensions">assertExtensions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#117"><abbr title="WebdisConnection::createCurl">createCurl</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#149"><abbr title="WebdisConnection::createReader">createReader</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#164"><abbr title="WebdisConnection::getStatusHandler">getStatusHandler</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#169"><abbr title="WebdisConnection::anonymousFunction:169#619">anonymousFunction:169#619</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#182"><abbr title="WebdisConnection::getErrorHandler">getErrorHandler</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#187"><abbr title="WebdisConnection::anonymousFunction:187#679">anonymousFunction:187#679</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#213"><abbr title="WebdisConnection::connect">connect</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="StreamConnection.php.html#286"><abbr title="StreamConnection::write">write</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#221"><abbr title="WebdisConnection::disconnect">disconnect</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#229"><abbr title="WebdisConnection::isConnected">isConnected</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#243"><abbr title="WebdisConnection::getCommandId">getCommandId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#264"><abbr title="WebdisConnection::writeRequest">writeRequest</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#272"><abbr title="WebdisConnection::readResponse">readResponse</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#280"><abbr title="WebdisConnection::executeCommand">executeCommand</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#311"><abbr title="WebdisConnection::getResource">getResource</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#319"><abbr title="WebdisConnection::getParameters">getParameters</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#327"><abbr title="WebdisConnection::addConnectCommand">addConnectCommand</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#335"><abbr title="WebdisConnection::read">read</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#343"><abbr title="WebdisConnection::__toString">__toString</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#351"><abbr title="WebdisConnection::__sleep">__sleep</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="StreamConnection.php.html#308"><abbr title="StreamConnection::read">read</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="StreamConnection.php.html#272"><abbr title="StreamConnection::disconnect">disconnect</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#355"><abbr title="PhpiredisSocketConnection::write">write</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#166"><abbr title="PhpiredisStreamConnection::anonymousFunction:166#630">anonymousFunction:166#630</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#377"><abbr title="PhpiredisSocketConnection::read">read</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#402"><abbr title="PhpiredisSocketConnection::writeRequest">writeRequest</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#413"><abbr title="PhpiredisSocketConnection::__wakeup">__wakeup</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#56"><abbr title="PhpiredisStreamConnection::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#68"><abbr title="PhpiredisStreamConnection::__destruct">__destruct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#78"><abbr title="PhpiredisStreamConnection::assertExtensions">assertExtensions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#90"><abbr title="PhpiredisStreamConnection::assertSslSupport">assertSslSupport</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#98"><abbr title="PhpiredisStreamConnection::createStreamSocket">createStreamSocket</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#136"><abbr title="PhpiredisStreamConnection::createReader">createReader</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#151"><abbr title="PhpiredisStreamConnection::getReader">getReader</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#161"><abbr title="PhpiredisStreamConnection::getStatusHandler">getStatusHandler</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#179"><abbr title="PhpiredisStreamConnection::getErrorHandler">getErrorHandler</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="StreamConnection.php.html#256"><abbr title="StreamConnection::connect">connect</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#184"><abbr title="PhpiredisStreamConnection::anonymousFunction:184#690">anonymousFunction:184#690</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#195"><abbr title="PhpiredisStreamConnection::read">read</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#222"><abbr title="PhpiredisStreamConnection::writeRequest">writeRequest</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#233"><abbr title="PhpiredisStreamConnection::__wakeup">__wakeup</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="StreamConnection.php.html#43"><abbr title="StreamConnection::__destruct">__destruct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="StreamConnection.php.html#55"><abbr title="StreamConnection::assertParameters">assertParameters</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="StreamConnection.php.html#82"><abbr title="StreamConnection::assertSslSupport">assertSslSupport</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="StreamConnection.php.html#95"><abbr title="StreamConnection::createResource">createResource</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="StreamConnection.php.html#123"><abbr title="StreamConnection::createStreamSocket">createStreamSocket</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="StreamConnection.php.html#154"><abbr title="StreamConnection::tcpStreamInitializer">tcpStreamInitializer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="StreamConnection.php.html#190"><abbr title="StreamConnection::unixStreamInitializer">unixStreamInitializer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="StreamConnection.php.html#222"><abbr title="StreamConnection::tlsStreamInitializer">tlsStreamInitializer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#536"><abbr title="SentinelReplication::getConnection">getConnection</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#492"><abbr title="SentinelReplication::getConnectionInternal">getConnectionInternal</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#44"><abbr title="AbstractConnection::__destruct">__destruct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#489"><abbr title="MasterSlaveReplication::readResponse">readResponse</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#263"><abbr title="MasterSlaveReplication::getReplicationStrategy">getReplicationStrategy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#273"><abbr title="MasterSlaveReplication::pickSlave">pickSlave</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#283"><abbr title="MasterSlaveReplication::isConnected">isConnected</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#291"><abbr title="MasterSlaveReplication::connect">connect</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#307"><abbr title="MasterSlaveReplication::disconnect">disconnect</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#325"><abbr title="MasterSlaveReplication::handleInfoResponse">handleInfoResponse</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#344"><abbr title="MasterSlaveReplication::discover">discover</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#372"><abbr title="MasterSlaveReplication::discoverFromMaster">discoverFromMaster</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#403"><abbr title="MasterSlaveReplication::discoverFromSlave">discoverFromSlave</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#431"><abbr title="MasterSlaveReplication::retryCommandOnFailure">retryCommandOnFailure</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#481"><abbr title="MasterSlaveReplication::writeRequest">writeRequest</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#497"><abbr title="MasterSlaveReplication::executeCommand">executeCommand</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#241"><abbr title="MasterSlaveReplication::getMasterOrDie">getMasterOrDie</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#505"><abbr title="MasterSlaveReplication::__sleep">__sleep</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#37"><abbr title="PredisCluster::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#47"><abbr title="PredisCluster::isConnected">isConnected</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#61"><abbr title="PredisCluster::connect">connect</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#71"><abbr title="PredisCluster::disconnect">disconnect</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#81"><abbr title="PredisCluster::add">add</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#98"><abbr title="PredisCluster::remove">remove</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#117"><abbr title="PredisCluster::removeById">removeById</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#129"><abbr title="PredisCluster::getConnection">getConnection</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#147"><abbr title="PredisCluster::getConnectionById">getConnectionById</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#159"><abbr title="PredisCluster::getConnectionByKey">getConnectionByKey</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#173"><abbr title="PredisCluster::getClusterStrategy">getClusterStrategy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#253"><abbr title="MasterSlaveReplication::getSlaves">getSlaves</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#231"><abbr title="MasterSlaveReplication::getMaster">getMaster</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#189"><abbr title="PredisCluster::getIterator">getIterator</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#198"><abbr title="AbstractConnection::getIdentifier">getIdentifier</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#70"><abbr title="AbstractConnection::isConnected">isConnected</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#78"><abbr title="AbstractConnection::connect">connect</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#92"><abbr title="AbstractConnection::disconnect">disconnect</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#100"><abbr title="AbstractConnection::addConnectCommand">addConnectCommand</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#108"><abbr title="AbstractConnection::executeCommand">executeCommand</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#118"><abbr title="AbstractConnection::readResponse">readResponse</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#131"><abbr title="AbstractConnection::createExceptionMessage">createExceptionMessage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#152"><abbr title="AbstractConnection::onConnectionError">onConnectionError</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#164"><abbr title="AbstractConnection::onProtocolError">onProtocolError</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#174"><abbr title="AbstractConnection::getResource">getResource</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#188"><abbr title="AbstractConnection::getParameters">getParameters</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#210"><abbr title="AbstractConnection::__toString">__toString</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#223"><abbr title="MasterSlaveReplication::getCurrent">getCurrent</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#222"><abbr title="AbstractConnection::__sleep">__sleep</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#65"><abbr title="MasterSlaveReplication::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#75"><abbr title="MasterSlaveReplication::setAutoDiscovery">setAutoDiscovery</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#90"><abbr title="MasterSlaveReplication::setConnectionFactory">setConnectionFactory</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#98"><abbr title="MasterSlaveReplication::reset">reset</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#106"><abbr title="MasterSlaveReplication::add">add</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#122"><abbr title="MasterSlaveReplication::remove">remove</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#144"><abbr title="MasterSlaveReplication::getConnection">getConnection</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#170"><abbr title="MasterSlaveReplication::getConnectionById">getConnectionById</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#186"><abbr title="MasterSlaveReplication::switchTo">switchTo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#206"><abbr title="MasterSlaveReplication::switchToMaster">switchToMaster</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#214"><abbr title="MasterSlaveReplication::switchToSlave">switchToSlave</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#181"><abbr title="PredisCluster::count">count</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#197"><abbr title="PredisCluster::writeRequest">writeRequest</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#478"><abbr title="SentinelReplication::pickSlave">pickSlave</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#172"><abbr title="SentinelReplication::reset">reset</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#591"><abbr title="RedisCluster::executeCommand">executeCommand</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#605"><abbr title="RedisCluster::count">count</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#613"><abbr title="RedisCluster::getIterator">getIterator</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#640"><abbr title="RedisCluster::getClusterStrategy">getClusterStrategy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#651"><abbr title="RedisCluster::getConnectionFactory">getConnectionFactory</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#669"><abbr title="RedisCluster::useClusterSlots">useClusterSlots</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#109"><abbr title="SentinelReplication::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#129"><abbr title="SentinelReplication::setSentinelTimeout">setSentinelTimeout</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#143"><abbr title="SentinelReplication::setRetryLimit">setRetryLimit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#154"><abbr title="SentinelReplication::setRetryWait">setRetryWait</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#164"><abbr title="SentinelReplication::setUpdateSentinels">setUpdateSentinels</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#180"><abbr title="SentinelReplication::wipeServerList">wipeServerList</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#575"><abbr title="RedisCluster::writeRequest">writeRequest</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#191"><abbr title="SentinelReplication::add">add</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#207"><abbr title="SentinelReplication::remove">remove</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#231"><abbr title="SentinelReplication::createSentinelConnection">createSentinelConnection</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#264"><abbr title="SentinelReplication::getSentinelConnection">getSentinelConnection</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#281"><abbr title="SentinelReplication::updateSentinels">updateSentinels</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#312"><abbr title="SentinelReplication::querySentinel">querySentinel</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#327"><abbr title="SentinelReplication::handleSentinelErrorResponse">handleSentinelErrorResponse</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#344"><abbr title="SentinelReplication::querySentinelForMaster">querySentinelForMaster</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#373"><abbr title="SentinelReplication::querySentinelForSlaves">querySentinelForSlaves</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#405"><abbr title="SentinelReplication::getCurrent">getCurrent</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#413"><abbr title="SentinelReplication::getMaster">getMaster</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#444"><abbr title="SentinelReplication::getSlaves">getSlaves</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#583"><abbr title="RedisCluster::readResponse">readResponse</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#544"><abbr title="RedisCluster::retryCommandOnFailure">retryCommandOnFailure</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#205"><abbr title="PredisCluster::readResponse">readResponse</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#213"><abbr title="RedisCluster::queryClusterNodeForSlotsMap">queryClusterNodeForSlotsMap</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#213"><abbr title="PredisCluster::executeCommand">executeCommand</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#225"><abbr title="PredisCluster::executeCommandOnNodes">executeCommandOnNodes</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#61"><abbr title="RedisCluster::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#78"><abbr title="RedisCluster::setRetryLimit">setRetryLimit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#86"><abbr title="RedisCluster::isConnected">isConnected</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#100"><abbr title="RedisCluster::connect">connect</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#110"><abbr title="RedisCluster::disconnect">disconnect</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#120"><abbr title="RedisCluster::add">add</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#129"><abbr title="RedisCluster::remove">remove</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#152"><abbr title="RedisCluster::removeById">removeById</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#177"><abbr title="RedisCluster::buildSlotsMap">buildSlotsMap</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#252"><abbr title="RedisCluster::askSlotsMap">askSlotsMap</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#516"><abbr title="RedisCluster::onAskResponse">onAskResponse</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#280"><abbr title="RedisCluster::resetSlotsMap">resetSlotsMap</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#292"><abbr title="RedisCluster::getSlotsMap">getSlotsMap</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#310"><abbr title="RedisCluster::setSlots">setSlots</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#334"><abbr title="RedisCluster::guessNode">guessNode</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#362"><abbr title="RedisCluster::createConnection">createConnection</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#375"><abbr title="RedisCluster::getConnection">getConnection</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#401"><abbr title="RedisCluster::getConnectionBySlot">getConnectionBySlot</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#424"><abbr title="RedisCluster::getConnectionById">getConnectionById</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#436"><abbr title="RedisCluster::getRandomConnection">getRandomConnection</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#450"><abbr title="RedisCluster::move">move</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#464"><abbr title="RedisCluster::onErrorResponse">onErrorResponse</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#489"><abbr title="RedisCluster::onMovedResponse">onMovedResponse</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#359"><abbr title="WebdisConnection::__wakeup">__wakeup</abbr></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="StreamConnection.php.html#308"><abbr title="StreamConnection::read">read</abbr></a></td><td class="text-right">240</td></tr>
+       <tr><td><a href="Parameters.php.html#84"><abbr title="Parameters::parse">parse</abbr></a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#431"><abbr title="MasterSlaveReplication::retryCommandOnFailure">retryCommandOnFailure</abbr></a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#98"><abbr title="PhpiredisStreamConnection::createStreamSocket">createStreamSocket</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#243"><abbr title="WebdisConnection::getCommandId">getCommandId</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#289"><abbr title="PhpiredisSocketConnection::connectWithTimeout">connectWithTimeout</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#569"><abbr title="SentinelReplication::switchTo">switchTo</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#144"><abbr title="MasterSlaveReplication::getConnection">getConnection</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="StreamConnection.php.html#154"><abbr title="StreamConnection::tcpStreamInitializer">tcpStreamInitializer</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#248"><abbr title="PhpiredisSocketConnection::setSocketOptions">setSocketOptions</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="StreamConnection.php.html#123"><abbr title="StreamConnection::createStreamSocket">createStreamSocket</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#613"><abbr title="RedisCluster::getIterator">getIterator</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#444"><abbr title="SentinelReplication::getSlaves">getSlaves</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#492"><abbr title="SentinelReplication::getConnectionInternal">getConnectionInternal</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#377"><abbr title="PhpiredisSocketConnection::read">read</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#310"><abbr title="RedisCluster::setSlots">setSlots</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="StreamConnection.php.html#55"><abbr title="StreamConnection::assertParameters">assertParameters</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="StreamConnection.php.html#95"><abbr title="StreamConnection::createResource">createResource</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="StreamConnection.php.html#222"><abbr title="StreamConnection::tlsStreamInitializer">tlsStreamInitializer</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#195"><abbr title="PhpiredisStreamConnection::read">read</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#252"><abbr title="RedisCluster::askSlotsMap">askSlotsMap</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#177"><abbr title="RedisCluster::buildSlotsMap">buildSlotsMap</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#231"><abbr title="SentinelReplication::createSentinelConnection">createSentinelConnection</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="StreamConnection.php.html#286"><abbr title="StreamConnection::write">write</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="StreamConnection.php.html#256"><abbr title="StreamConnection::connect">connect</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="CompositeStreamConnection.php.html#59"><abbr title="CompositeStreamConnection::readBuffer">readBuffer</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Factory.php.html#81"><abbr title="Factory::create">create</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="StreamConnection.php.html#190"><abbr title="StreamConnection::unixStreamInitializer">unixStreamInitializer</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#95"><abbr title="PhpiredisSocketConnection::assertParameters">assertParameters</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#213"><abbr title="PhpiredisSocketConnection::createResource">createResource</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#186"><abbr title="MasterSlaveReplication::switchTo">switchTo</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#328"><abbr title="PhpiredisSocketConnection::connect">connect</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#401"><abbr title="RedisCluster::getConnectionBySlot">getConnectionBySlot</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#372"><abbr title="MasterSlaveReplication::discoverFromMaster">discoverFromMaster</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#344"><abbr title="MasterSlaveReplication::discover">discover</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Factory.php.html#152"><abbr title="Factory::createParameters">createParameters</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="CompositeStreamConnection.php.html#84"><abbr title="CompositeStreamConnection::readLine">readLine</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#536"><abbr title="SentinelReplication::getConnection">getConnection</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#413"><abbr title="SentinelReplication::getMaster">getMaster</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#355"><abbr title="PhpiredisSocketConnection::write">write</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#117"><abbr title="WebdisConnection::createCurl">createCurl</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#544"><abbr title="RedisCluster::retryCommandOnFailure">retryCommandOnFailure</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#280"><abbr title="WebdisConnection::executeCommand">executeCommand</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#373"><abbr title="SentinelReplication::querySentinelForSlaves">querySentinelForSlaves</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#291"><abbr title="MasterSlaveReplication::connect">connect</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#334"><abbr title="RedisCluster::guessNode">guessNode</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#213"><abbr title="RedisCluster::queryClusterNodeForSlotsMap">queryClusterNodeForSlotsMap</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#375"><abbr title="RedisCluster::getConnection">getConnection</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#170"><abbr title="MasterSlaveReplication::getConnectionById">getConnectionById</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#620"><abbr title="SentinelReplication::connect">connect</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#634"><abbr title="SentinelReplication::disconnect">disconnect</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#654"><abbr title="SentinelReplication::retryCommandOnFailure">retryCommandOnFailure</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="StreamConnection.php.html#82"><abbr title="StreamConnection::assertSslSupport">assertSslSupport</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Factory.php.html#45"><abbr title="Factory::checkInitializer">checkInitializer</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="StreamConnection.php.html#43"><abbr title="StreamConnection::__destruct">__destruct</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Factory.php.html#172"><abbr title="Factory::prepareConnection">prepareConnection</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Factory.php.html#115"><abbr title="Factory::aggregate">aggregate</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#122"><abbr title="MasterSlaveReplication::remove">remove</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Parameters.php.html#57"><abbr title="Parameters::create">create</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#77"><abbr title="PhpiredisSocketConnection::assertExtensions">assertExtensions</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#81"><abbr title="PredisCluster::add">add</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#307"><abbr title="MasterSlaveReplication::disconnect">disconnect</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#197"><abbr title="PhpiredisSocketConnection::getAddress">getAddress</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#325"><abbr title="MasterSlaveReplication::handleInfoResponse">handleInfoResponse</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#86"><abbr title="RedisCluster::isConnected">isConnected</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#553"><abbr title="SentinelReplication::getConnectionById">getConnectionById</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#106"><abbr title="MasterSlaveReplication::add">add</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#281"><abbr title="SentinelReplication::updateSentinels">updateSentinels</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#464"><abbr title="RedisCluster::onErrorResponse">onErrorResponse</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#489"><abbr title="RedisCluster::onMovedResponse">onMovedResponse</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#97"><abbr title="WebdisConnection::assertExtensions">assertExtensions</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#191"><abbr title="SentinelReplication::add">add</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#264"><abbr title="SentinelReplication::getSentinelConnection">getSentinelConnection</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#207"><abbr title="SentinelReplication::remove">remove</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#47"><abbr title="PredisCluster::isConnected">isConnected</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#344"><abbr title="SentinelReplication::querySentinelForMaster">querySentinelForMaster</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#131"><abbr title="AbstractConnection::createExceptionMessage">createExceptionMessage</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#161"><abbr title="PhpiredisStreamConnection::getStatusHandler">getStatusHandler</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#403"><abbr title="MasterSlaveReplication::discoverFromSlave">discoverFromSlave</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#174"><abbr title="AbstractConnection::getResource">getResource</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#182"><abbr title="WebdisConnection::getErrorHandler">getErrorHandler</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#78"><abbr title="PhpiredisStreamConnection::assertExtensions">assertExtensions</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="StreamConnection.php.html#272"><abbr title="StreamConnection::disconnect">disconnect</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#344"><abbr title="PhpiredisSocketConnection::disconnect">disconnect</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#164"><abbr title="WebdisConnection::getStatusHandler">getStatusHandler</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#210"><abbr title="AbstractConnection::__toString">__toString</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="PhpiredisStreamConnection.php.html#179"><abbr title="PhpiredisStreamConnection::getErrorHandler">getErrorHandler</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#273"><abbr title="MasterSlaveReplication::pickSlave">pickSlave</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#65"><abbr title="MasterSlaveReplication::__construct">__construct</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="WebdisConnection.php.html#57"><abbr title="WebdisConnection::__construct">__construct</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#241"><abbr title="MasterSlaveReplication::getMasterOrDie">getMasterOrDie</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#75"><abbr title="MasterSlaveReplication::setAutoDiscovery">setAutoDiscovery</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="StreamConnection.php.html#379"><abbr title="StreamConnection::writeRequest">writeRequest</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/MasterSlaveReplication.php.html#283"><abbr title="MasterSlaveReplication::isConnected">isConnected</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#198"><abbr title="AbstractConnection::getIdentifier">getIdentifier</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#98"><abbr title="PredisCluster::remove">remove</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#37"><abbr title="PredisCluster::__construct">__construct</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#100"><abbr title="RedisCluster::connect">connect</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#424"><abbr title="RedisCluster::getConnectionById">getConnectionById</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#436"><abbr title="RedisCluster::getRandomConnection">getRandomConnection</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#516"><abbr title="RedisCluster::onAskResponse">onAskResponse</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#292"><abbr title="RedisCluster::getSlotsMap">getSlotsMap</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#591"><abbr title="RedisCluster::executeCommand">executeCommand</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#109"><abbr title="SentinelReplication::__construct">__construct</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#152"><abbr title="RedisCluster::removeById">removeById</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#327"><abbr title="SentinelReplication::handleSentinelErrorResponse">handleSentinelErrorResponse</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#129"><abbr title="RedisCluster::remove">remove</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#110"><abbr title="RedisCluster::disconnect">disconnect</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#478"><abbr title="SentinelReplication::pickSlave">pickSlave</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#523"><abbr title="SentinelReplication::assertConnectionRole">assertConnectionRole</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#61"><abbr title="PredisCluster::connect">connect</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/RedisCluster.php.html#61"><abbr title="RedisCluster::__construct">__construct</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/SentinelReplication.php.html#612"><abbr title="SentinelReplication::isConnected">isConnected</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="CompositeStreamConnection.php.html#32"><abbr title="CompositeStreamConnection::__construct">__construct</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#225"><abbr title="PredisCluster::executeCommandOnNodes">executeCommandOnNodes</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#147"><abbr title="PredisCluster::getConnectionById">getConnectionById</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#129"><abbr title="PredisCluster::getConnection">getConnection</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#117"><abbr title="PredisCluster::removeById">removeById</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Parameters.php.html#138"><abbr title="Parameters::filter">filter</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Parameters.php.html#146"><abbr title="Parameters::__get">__get</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#146"><abbr title="PhpiredisSocketConnection::getStatusHandler">getStatusHandler</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="PhpiredisSocketConnection.php.html#164"><abbr title="PhpiredisSocketConnection::getErrorHandler">getErrorHandler</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Aggregate/PredisCluster.php.html#71"><abbr title="PredisCluster::disconnect">disconnect</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="AbstractConnection.php.html#78"><abbr title="AbstractConnection::connect">connect</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 3.2.1</a> using <a href="https://secure.php.net/" target="_top">PHP 7.0.32-0ubuntu0.16.04.1</a> and <a href="https://phpunit.de/">PHPUnit 5.1.3</a> at Sat Dec 8 4:33:21 UTC 2018.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../../../../js/jquery.min.js" type="text/javascript"></script>
+  <script src="../../../../js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="../../../../js/holder.min.js" type="text/javascript"></script>
+  <script src="../../../../js/d3.min.js" type="text/javascript"></script>
+  <script src="../../../../js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([12,0,0,0,0,0,0,0,0,0,0,1], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([230,0,0,0,0,0,0,0,0,0,0,2], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(key, y, e, graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,24,"<a href=\"AbstractConnection.php.html#24\">AbstractConnection<\/a>"],[0,76,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#30\">MasterSlaveReplication<\/a>"],[0,29,"<a href=\"Aggregate\/PredisCluster.php.html#28\">PredisCluster<\/a>"],[0,82,"<a href=\"Aggregate\/RedisCluster.php.html#47\">RedisCluster<\/a>"],[0,88,"<a href=\"Aggregate\/SentinelReplication.php.html#30\">SentinelReplication<\/a>"],[0,16,"<a href=\"CompositeStreamConnection.php.html#24\">CompositeStreamConnection<\/a>"],[100,0,"<a href=\"ConnectionException.php.html#21\">ConnectionException<\/a>"],[0,22,"<a href=\"Factory.php.html#21\">Factory<\/a>"],[0,24,"<a href=\"Parameters.php.html#21\">Parameters<\/a>"],[0,61,"<a href=\"PhpiredisSocketConnection.php.html#47\">PhpiredisSocketConnection<\/a>"],[0,30,"<a href=\"PhpiredisStreamConnection.php.html#49\">PhpiredisStreamConnection<\/a>"],[0,72,"<a href=\"StreamConnection.php.html#36\">StreamConnection<\/a>"],[0,44,"<a href=\"WebdisConnection.php.html#46\">WebdisConnection<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(key, y, e, graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"AbstractConnection.php.html#35\">AbstractConnection::__construct<\/a>"],[0,1,"<a href=\"AbstractConnection.php.html#44\">AbstractConnection::__destruct<\/a>"],[100,1,"<a href=\"AbstractConnection.php.html#58\">AbstractConnection::assertParameters<\/a>"],[100,1,"<a href=\"AbstractConnection.php.html#65\">AbstractConnection::createResource<\/a>"],[0,1,"<a href=\"AbstractConnection.php.html#70\">AbstractConnection::isConnected<\/a>"],[0,2,"<a href=\"AbstractConnection.php.html#78\">AbstractConnection::connect<\/a>"],[0,1,"<a href=\"AbstractConnection.php.html#92\">AbstractConnection::disconnect<\/a>"],[0,1,"<a href=\"AbstractConnection.php.html#100\">AbstractConnection::addConnectCommand<\/a>"],[0,1,"<a href=\"AbstractConnection.php.html#108\">AbstractConnection::executeCommand<\/a>"],[0,1,"<a href=\"AbstractConnection.php.html#118\">AbstractConnection::readResponse<\/a>"],[0,3,"<a href=\"AbstractConnection.php.html#131\">AbstractConnection::createExceptionMessage<\/a>"],[0,1,"<a href=\"AbstractConnection.php.html#152\">AbstractConnection::onConnectionError<\/a>"],[0,1,"<a href=\"AbstractConnection.php.html#164\">AbstractConnection::onProtocolError<\/a>"],[0,2,"<a href=\"AbstractConnection.php.html#174\">AbstractConnection::getResource<\/a>"],[0,1,"<a href=\"AbstractConnection.php.html#188\">AbstractConnection::getParameters<\/a>"],[0,2,"<a href=\"AbstractConnection.php.html#198\">AbstractConnection::getIdentifier<\/a>"],[0,2,"<a href=\"AbstractConnection.php.html#210\">AbstractConnection::__toString<\/a>"],[0,1,"<a href=\"AbstractConnection.php.html#222\">AbstractConnection::__sleep<\/a>"],[0,2,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#65\">MasterSlaveReplication::__construct<\/a>"],[0,2,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#75\">MasterSlaveReplication::setAutoDiscovery<\/a>"],[0,1,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#90\">MasterSlaveReplication::setConnectionFactory<\/a>"],[0,1,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#98\">MasterSlaveReplication::reset<\/a>"],[0,3,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#106\">MasterSlaveReplication::add<\/a>"],[0,3,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#122\">MasterSlaveReplication::remove<\/a>"],[0,7,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#144\">MasterSlaveReplication::getConnection<\/a>"],[0,3,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#170\">MasterSlaveReplication::getConnectionById<\/a>"],[0,5,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#186\">MasterSlaveReplication::switchTo<\/a>"],[0,1,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#206\">MasterSlaveReplication::switchToMaster<\/a>"],[0,1,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#214\">MasterSlaveReplication::switchToSlave<\/a>"],[0,1,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#223\">MasterSlaveReplication::getCurrent<\/a>"],[0,1,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#231\">MasterSlaveReplication::getMaster<\/a>"],[0,2,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#241\">MasterSlaveReplication::getMasterOrDie<\/a>"],[0,1,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#253\">MasterSlaveReplication::getSlaves<\/a>"],[0,1,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#263\">MasterSlaveReplication::getReplicationStrategy<\/a>"],[0,2,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#273\">MasterSlaveReplication::pickSlave<\/a>"],[0,2,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#283\">MasterSlaveReplication::isConnected<\/a>"],[0,4,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#291\">MasterSlaveReplication::connect<\/a>"],[0,3,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#307\">MasterSlaveReplication::disconnect<\/a>"],[0,3,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#325\">MasterSlaveReplication::handleInfoResponse<\/a>"],[0,5,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#344\">MasterSlaveReplication::discover<\/a>"],[0,5,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#372\">MasterSlaveReplication::discoverFromMaster<\/a>"],[0,2,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#403\">MasterSlaveReplication::discoverFromSlave<\/a>"],[0,11,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#431\">MasterSlaveReplication::retryCommandOnFailure<\/a>"],[0,1,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#481\">MasterSlaveReplication::writeRequest<\/a>"],[0,1,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#489\">MasterSlaveReplication::readResponse<\/a>"],[0,1,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#497\">MasterSlaveReplication::executeCommand<\/a>"],[0,1,"<a href=\"Aggregate\/MasterSlaveReplication.php.html#505\">MasterSlaveReplication::__sleep<\/a>"],[0,2,"<a href=\"Aggregate\/PredisCluster.php.html#37\">PredisCluster::__construct<\/a>"],[0,3,"<a href=\"Aggregate\/PredisCluster.php.html#47\">PredisCluster::isConnected<\/a>"],[0,2,"<a href=\"Aggregate\/PredisCluster.php.html#61\">PredisCluster::connect<\/a>"],[0,2,"<a href=\"Aggregate\/PredisCluster.php.html#71\">PredisCluster::disconnect<\/a>"],[0,3,"<a href=\"Aggregate\/PredisCluster.php.html#81\">PredisCluster::add<\/a>"],[0,2,"<a href=\"Aggregate\/PredisCluster.php.html#98\">PredisCluster::remove<\/a>"],[0,2,"<a href=\"Aggregate\/PredisCluster.php.html#117\">PredisCluster::removeById<\/a>"],[0,2,"<a href=\"Aggregate\/PredisCluster.php.html#129\">PredisCluster::getConnection<\/a>"],[0,2,"<a href=\"Aggregate\/PredisCluster.php.html#147\">PredisCluster::getConnectionById<\/a>"],[0,1,"<a href=\"Aggregate\/PredisCluster.php.html#159\">PredisCluster::getConnectionByKey<\/a>"],[0,1,"<a href=\"Aggregate\/PredisCluster.php.html#173\">PredisCluster::getClusterStrategy<\/a>"],[0,1,"<a href=\"Aggregate\/PredisCluster.php.html#181\">PredisCluster::count<\/a>"],[0,1,"<a href=\"Aggregate\/PredisCluster.php.html#189\">PredisCluster::getIterator<\/a>"],[0,1,"<a href=\"Aggregate\/PredisCluster.php.html#197\">PredisCluster::writeRequest<\/a>"],[0,1,"<a href=\"Aggregate\/PredisCluster.php.html#205\">PredisCluster::readResponse<\/a>"],[0,1,"<a href=\"Aggregate\/PredisCluster.php.html#213\">PredisCluster::executeCommand<\/a>"],[0,2,"<a href=\"Aggregate\/PredisCluster.php.html#225\">PredisCluster::executeCommandOnNodes<\/a>"],[0,2,"<a href=\"Aggregate\/RedisCluster.php.html#61\">RedisCluster::__construct<\/a>"],[0,1,"<a href=\"Aggregate\/RedisCluster.php.html#78\">RedisCluster::setRetryLimit<\/a>"],[0,3,"<a href=\"Aggregate\/RedisCluster.php.html#86\">RedisCluster::isConnected<\/a>"],[0,2,"<a href=\"Aggregate\/RedisCluster.php.html#100\">RedisCluster::connect<\/a>"],[0,2,"<a href=\"Aggregate\/RedisCluster.php.html#110\">RedisCluster::disconnect<\/a>"],[0,1,"<a href=\"Aggregate\/RedisCluster.php.html#120\">RedisCluster::add<\/a>"],[0,2,"<a href=\"Aggregate\/RedisCluster.php.html#129\">RedisCluster::remove<\/a>"],[0,2,"<a href=\"Aggregate\/RedisCluster.php.html#152\">RedisCluster::removeById<\/a>"],[0,5,"<a href=\"Aggregate\/RedisCluster.php.html#177\">RedisCluster::buildSlotsMap<\/a>"],[0,4,"<a href=\"Aggregate\/RedisCluster.php.html#213\">RedisCluster::queryClusterNodeForSlotsMap<\/a>"],[0,5,"<a href=\"Aggregate\/RedisCluster.php.html#252\">RedisCluster::askSlotsMap<\/a>"],[0,1,"<a href=\"Aggregate\/RedisCluster.php.html#280\">RedisCluster::resetSlotsMap<\/a>"],[0,2,"<a href=\"Aggregate\/RedisCluster.php.html#292\">RedisCluster::getSlotsMap<\/a>"],[0,6,"<a href=\"Aggregate\/RedisCluster.php.html#310\">RedisCluster::setSlots<\/a>"],[0,4,"<a href=\"Aggregate\/RedisCluster.php.html#334\">RedisCluster::guessNode<\/a>"],[0,1,"<a href=\"Aggregate\/RedisCluster.php.html#362\">RedisCluster::createConnection<\/a>"],[0,3,"<a href=\"Aggregate\/RedisCluster.php.html#375\">RedisCluster::getConnection<\/a>"],[0,5,"<a href=\"Aggregate\/RedisCluster.php.html#401\">RedisCluster::getConnectionBySlot<\/a>"],[0,2,"<a href=\"Aggregate\/RedisCluster.php.html#424\">RedisCluster::getConnectionById<\/a>"],[0,2,"<a href=\"Aggregate\/RedisCluster.php.html#436\">RedisCluster::getRandomConnection<\/a>"],[0,1,"<a href=\"Aggregate\/RedisCluster.php.html#450\">RedisCluster::move<\/a>"],[0,3,"<a href=\"Aggregate\/RedisCluster.php.html#464\">RedisCluster::onErrorResponse<\/a>"],[0,3,"<a href=\"Aggregate\/RedisCluster.php.html#489\">RedisCluster::onMovedResponse<\/a>"],[0,2,"<a href=\"Aggregate\/RedisCluster.php.html#516\">RedisCluster::onAskResponse<\/a>"],[0,4,"<a href=\"Aggregate\/RedisCluster.php.html#544\">RedisCluster::retryCommandOnFailure<\/a>"],[0,1,"<a href=\"Aggregate\/RedisCluster.php.html#575\">RedisCluster::writeRequest<\/a>"],[0,1,"<a href=\"Aggregate\/RedisCluster.php.html#583\">RedisCluster::readResponse<\/a>"],[0,2,"<a href=\"Aggregate\/RedisCluster.php.html#591\">RedisCluster::executeCommand<\/a>"],[0,1,"<a href=\"Aggregate\/RedisCluster.php.html#605\">RedisCluster::count<\/a>"],[0,6,"<a href=\"Aggregate\/RedisCluster.php.html#613\">RedisCluster::getIterator<\/a>"],[0,1,"<a href=\"Aggregate\/RedisCluster.php.html#640\">RedisCluster::getClusterStrategy<\/a>"],[0,1,"<a href=\"Aggregate\/RedisCluster.php.html#651\">RedisCluster::getConnectionFactory<\/a>"],[0,1,"<a href=\"Aggregate\/RedisCluster.php.html#669\">RedisCluster::useClusterSlots<\/a>"],[0,2,"<a href=\"Aggregate\/SentinelReplication.php.html#109\">SentinelReplication::__construct<\/a>"],[0,1,"<a href=\"Aggregate\/SentinelReplication.php.html#129\">SentinelReplication::setSentinelTimeout<\/a>"],[0,1,"<a href=\"Aggregate\/SentinelReplication.php.html#143\">SentinelReplication::setRetryLimit<\/a>"],[0,1,"<a href=\"Aggregate\/SentinelReplication.php.html#154\">SentinelReplication::setRetryWait<\/a>"],[0,1,"<a href=\"Aggregate\/SentinelReplication.php.html#164\">SentinelReplication::setUpdateSentinels<\/a>"],[0,1,"<a href=\"Aggregate\/SentinelReplication.php.html#172\">SentinelReplication::reset<\/a>"],[0,1,"<a href=\"Aggregate\/SentinelReplication.php.html#180\">SentinelReplication::wipeServerList<\/a>"],[0,3,"<a href=\"Aggregate\/SentinelReplication.php.html#191\">SentinelReplication::add<\/a>"],[0,3,"<a href=\"Aggregate\/SentinelReplication.php.html#207\">SentinelReplication::remove<\/a>"],[0,5,"<a href=\"Aggregate\/SentinelReplication.php.html#231\">SentinelReplication::createSentinelConnection<\/a>"],[0,3,"<a href=\"Aggregate\/SentinelReplication.php.html#264\">SentinelReplication::getSentinelConnection<\/a>"],[0,3,"<a href=\"Aggregate\/SentinelReplication.php.html#281\">SentinelReplication::updateSentinels<\/a>"],[0,1,"<a href=\"Aggregate\/SentinelReplication.php.html#312\">SentinelReplication::querySentinel<\/a>"],[0,2,"<a href=\"Aggregate\/SentinelReplication.php.html#327\">SentinelReplication::handleSentinelErrorResponse<\/a>"],[0,3,"<a href=\"Aggregate\/SentinelReplication.php.html#344\">SentinelReplication::querySentinelForMaster<\/a>"],[0,4,"<a href=\"Aggregate\/SentinelReplication.php.html#373\">SentinelReplication::querySentinelForSlaves<\/a>"],[0,1,"<a href=\"Aggregate\/SentinelReplication.php.html#405\">SentinelReplication::getCurrent<\/a>"],[0,4,"<a href=\"Aggregate\/SentinelReplication.php.html#413\">SentinelReplication::getMaster<\/a>"],[0,6,"<a href=\"Aggregate\/SentinelReplication.php.html#444\">SentinelReplication::getSlaves<\/a>"],[0,2,"<a href=\"Aggregate\/SentinelReplication.php.html#478\">SentinelReplication::pickSlave<\/a>"],[0,6,"<a href=\"Aggregate\/SentinelReplication.php.html#492\">SentinelReplication::getConnectionInternal<\/a>"],[0,2,"<a href=\"Aggregate\/SentinelReplication.php.html#523\">SentinelReplication::assertConnectionRole<\/a>"],[0,4,"<a href=\"Aggregate\/SentinelReplication.php.html#536\">SentinelReplication::getConnection<\/a>"],[0,3,"<a href=\"Aggregate\/SentinelReplication.php.html#553\">SentinelReplication::getConnectionById<\/a>"],[0,7,"<a href=\"Aggregate\/SentinelReplication.php.html#569\">SentinelReplication::switchTo<\/a>"],[0,1,"<a href=\"Aggregate\/SentinelReplication.php.html#595\">SentinelReplication::switchToMaster<\/a>"],[0,1,"<a href=\"Aggregate\/SentinelReplication.php.html#603\">SentinelReplication::switchToSlave<\/a>"],[0,2,"<a href=\"Aggregate\/SentinelReplication.php.html#612\">SentinelReplication::isConnected<\/a>"],[0,3,"<a href=\"Aggregate\/SentinelReplication.php.html#620\">SentinelReplication::connect<\/a>"],[0,3,"<a href=\"Aggregate\/SentinelReplication.php.html#634\">SentinelReplication::disconnect<\/a>"],[0,3,"<a href=\"Aggregate\/SentinelReplication.php.html#654\">SentinelReplication::retryCommandOnFailure<\/a>"],[0,1,"<a href=\"Aggregate\/SentinelReplication.php.html#682\">SentinelReplication::writeRequest<\/a>"],[0,1,"<a href=\"Aggregate\/SentinelReplication.php.html#690\">SentinelReplication::readResponse<\/a>"],[0,1,"<a href=\"Aggregate\/SentinelReplication.php.html#698\">SentinelReplication::executeCommand<\/a>"],[0,1,"<a href=\"Aggregate\/SentinelReplication.php.html#708\">SentinelReplication::getReplicationStrategy<\/a>"],[0,1,"<a href=\"Aggregate\/SentinelReplication.php.html#716\">SentinelReplication::__sleep<\/a>"],[0,2,"<a href=\"CompositeStreamConnection.php.html#32\">CompositeStreamConnection::__construct<\/a>"],[0,1,"<a href=\"CompositeStreamConnection.php.html#43\">CompositeStreamConnection::getProtocol<\/a>"],[0,1,"<a href=\"CompositeStreamConnection.php.html#51\">CompositeStreamConnection::writeBuffer<\/a>"],[0,5,"<a href=\"CompositeStreamConnection.php.html#59\">CompositeStreamConnection::readBuffer<\/a>"],[0,4,"<a href=\"CompositeStreamConnection.php.html#84\">CompositeStreamConnection::readLine<\/a>"],[0,1,"<a href=\"CompositeStreamConnection.php.html#105\">CompositeStreamConnection::writeRequest<\/a>"],[0,1,"<a href=\"CompositeStreamConnection.php.html#113\">CompositeStreamConnection::read<\/a>"],[0,1,"<a href=\"CompositeStreamConnection.php.html#121\">CompositeStreamConnection::__sleep<\/a>"],[0,3,"<a href=\"Factory.php.html#45\">Factory::checkInitializer<\/a>"],[0,1,"<a href=\"Factory.php.html#65\">Factory::define<\/a>"],[0,1,"<a href=\"Factory.php.html#73\">Factory::undefine<\/a>"],[0,5,"<a href=\"Factory.php.html#81\">Factory::create<\/a>"],[0,3,"<a href=\"Factory.php.html#115\">Factory::aggregate<\/a>"],[0,1,"<a href=\"Factory.php.html#130\">Factory::setDefaultParameters<\/a>"],[0,1,"<a href=\"Factory.php.html#140\">Factory::getDefaultParameters<\/a>"],[0,4,"<a href=\"Factory.php.html#152\">Factory::createParameters<\/a>"],[0,3,"<a href=\"Factory.php.html#172\">Factory::prepareConnection<\/a>"],[0,1,"<a href=\"Parameters.php.html#34\">Parameters::__construct<\/a>"],[0,1,"<a href=\"Parameters.php.html#44\">Parameters::getDefaults<\/a>"],[0,3,"<a href=\"Parameters.php.html#57\">Parameters::create<\/a>"],[0,12,"<a href=\"Parameters.php.html#84\">Parameters::parse<\/a>"],[0,2,"<a href=\"Parameters.php.html#138\">Parameters::filter<\/a>"],[0,2,"<a href=\"Parameters.php.html#146\">Parameters::__get<\/a>"],[0,1,"<a href=\"Parameters.php.html#156\">Parameters::__isset<\/a>"],[0,1,"<a href=\"Parameters.php.html#164\">Parameters::toArray<\/a>"],[0,1,"<a href=\"Parameters.php.html#172\">Parameters::__sleep<\/a>"],[0,1,"<a href=\"PhpiredisSocketConnection.php.html#54\">PhpiredisSocketConnection::__construct<\/a>"],[0,1,"<a href=\"PhpiredisSocketConnection.php.html#67\">PhpiredisSocketConnection::__destruct<\/a>"],[0,3,"<a href=\"PhpiredisSocketConnection.php.html#77\">PhpiredisSocketConnection::assertExtensions<\/a>"],[0,5,"<a href=\"PhpiredisSocketConnection.php.html#95\">PhpiredisSocketConnection::assertParameters<\/a>"],[0,1,"<a href=\"PhpiredisSocketConnection.php.html#121\">PhpiredisSocketConnection::createReader<\/a>"],[0,1,"<a href=\"PhpiredisSocketConnection.php.html#136\">PhpiredisSocketConnection::getReader<\/a>"],[0,2,"<a href=\"PhpiredisSocketConnection.php.html#146\">PhpiredisSocketConnection::getStatusHandler<\/a>"],[0,1,"<a href=\"PhpiredisSocketConnection.php.html#151\">PhpiredisSocketConnection::anonymousFunction:151#427<\/a>"],[0,2,"<a href=\"PhpiredisSocketConnection.php.html#164\">PhpiredisSocketConnection::getErrorHandler<\/a>"],[0,1,"<a href=\"PhpiredisSocketConnection.php.html#169\">PhpiredisSocketConnection::anonymousFunction:169#487<\/a>"],[0,1,"<a href=\"PhpiredisSocketConnection.php.html#180\">PhpiredisSocketConnection::emitSocketError<\/a>"],[0,3,"<a href=\"PhpiredisSocketConnection.php.html#197\">PhpiredisSocketConnection::getAddress<\/a>"],[0,5,"<a href=\"PhpiredisSocketConnection.php.html#213\">PhpiredisSocketConnection::createResource<\/a>"],[0,7,"<a href=\"PhpiredisSocketConnection.php.html#248\">PhpiredisSocketConnection::setSocketOptions<\/a>"],[0,8,"<a href=\"PhpiredisSocketConnection.php.html#289\">PhpiredisSocketConnection::connectWithTimeout<\/a>"],[0,5,"<a href=\"PhpiredisSocketConnection.php.html#328\">PhpiredisSocketConnection::connect<\/a>"],[0,2,"<a href=\"PhpiredisSocketConnection.php.html#344\">PhpiredisSocketConnection::disconnect<\/a>"],[0,4,"<a href=\"PhpiredisSocketConnection.php.html#355\">PhpiredisSocketConnection::write<\/a>"],[0,6,"<a href=\"PhpiredisSocketConnection.php.html#377\">PhpiredisSocketConnection::read<\/a>"],[0,1,"<a href=\"PhpiredisSocketConnection.php.html#402\">PhpiredisSocketConnection::writeRequest<\/a>"],[0,1,"<a href=\"PhpiredisSocketConnection.php.html#413\">PhpiredisSocketConnection::__wakeup<\/a>"],[0,1,"<a href=\"PhpiredisStreamConnection.php.html#56\">PhpiredisStreamConnection::__construct<\/a>"],[0,1,"<a href=\"PhpiredisStreamConnection.php.html#68\">PhpiredisStreamConnection::__destruct<\/a>"],[0,2,"<a href=\"PhpiredisStreamConnection.php.html#78\">PhpiredisStreamConnection::assertExtensions<\/a>"],[0,1,"<a href=\"PhpiredisStreamConnection.php.html#90\">PhpiredisStreamConnection::assertSslSupport<\/a>"],[0,10,"<a href=\"PhpiredisStreamConnection.php.html#98\">PhpiredisStreamConnection::createStreamSocket<\/a>"],[0,1,"<a href=\"PhpiredisStreamConnection.php.html#136\">PhpiredisStreamConnection::createReader<\/a>"],[0,1,"<a href=\"PhpiredisStreamConnection.php.html#151\">PhpiredisStreamConnection::getReader<\/a>"],[0,2,"<a href=\"PhpiredisStreamConnection.php.html#161\">PhpiredisStreamConnection::getStatusHandler<\/a>"],[0,1,"<a href=\"PhpiredisStreamConnection.php.html#166\">PhpiredisStreamConnection::anonymousFunction:166#630<\/a>"],[0,2,"<a href=\"PhpiredisStreamConnection.php.html#179\">PhpiredisStreamConnection::getErrorHandler<\/a>"],[0,1,"<a href=\"PhpiredisStreamConnection.php.html#184\">PhpiredisStreamConnection::anonymousFunction:184#690<\/a>"],[0,5,"<a href=\"PhpiredisStreamConnection.php.html#195\">PhpiredisStreamConnection::read<\/a>"],[0,1,"<a href=\"PhpiredisStreamConnection.php.html#222\">PhpiredisStreamConnection::writeRequest<\/a>"],[0,1,"<a href=\"PhpiredisStreamConnection.php.html#233\">PhpiredisStreamConnection::__wakeup<\/a>"],[0,3,"<a href=\"StreamConnection.php.html#43\">StreamConnection::__destruct<\/a>"],[0,6,"<a href=\"StreamConnection.php.html#55\">StreamConnection::assertParameters<\/a>"],[0,3,"<a href=\"StreamConnection.php.html#82\">StreamConnection::assertSslSupport<\/a>"],[0,6,"<a href=\"StreamConnection.php.html#95\">StreamConnection::createResource<\/a>"],[0,7,"<a href=\"StreamConnection.php.html#123\">StreamConnection::createStreamSocket<\/a>"],[0,7,"<a href=\"StreamConnection.php.html#154\">StreamConnection::tcpStreamInitializer<\/a>"],[0,5,"<a href=\"StreamConnection.php.html#190\">StreamConnection::unixStreamInitializer<\/a>"],[0,6,"<a href=\"StreamConnection.php.html#222\">StreamConnection::tlsStreamInitializer<\/a>"],[0,5,"<a href=\"StreamConnection.php.html#256\">StreamConnection::connect<\/a>"],[0,2,"<a href=\"StreamConnection.php.html#272\">StreamConnection::disconnect<\/a>"],[0,5,"<a href=\"StreamConnection.php.html#286\">StreamConnection::write<\/a>"],[0,15,"<a href=\"StreamConnection.php.html#308\">StreamConnection::read<\/a>"],[0,2,"<a href=\"StreamConnection.php.html#379\">StreamConnection::writeRequest<\/a>"],[0,2,"<a href=\"WebdisConnection.php.html#57\">WebdisConnection::__construct<\/a>"],[0,1,"<a href=\"WebdisConnection.php.html#75\">WebdisConnection::__destruct<\/a>"],[0,1,"<a href=\"WebdisConnection.php.html#88\">WebdisConnection::throwNotSupportedException<\/a>"],[0,3,"<a href=\"WebdisConnection.php.html#97\">WebdisConnection::assertExtensions<\/a>"],[0,4,"<a href=\"WebdisConnection.php.html#117\">WebdisConnection::createCurl<\/a>"],[0,1,"<a href=\"WebdisConnection.php.html#149\">WebdisConnection::createReader<\/a>"],[0,2,"<a href=\"WebdisConnection.php.html#164\">WebdisConnection::getStatusHandler<\/a>"],[0,1,"<a href=\"WebdisConnection.php.html#169\">WebdisConnection::anonymousFunction:169#619<\/a>"],[0,2,"<a href=\"WebdisConnection.php.html#182\">WebdisConnection::getErrorHandler<\/a>"],[0,1,"<a href=\"WebdisConnection.php.html#187\">WebdisConnection::anonymousFunction:187#679<\/a>"],[0,1,"<a href=\"WebdisConnection.php.html#203\">WebdisConnection::feedReader<\/a>"],[0,1,"<a href=\"WebdisConnection.php.html#213\">WebdisConnection::connect<\/a>"],[0,1,"<a href=\"WebdisConnection.php.html#221\">WebdisConnection::disconnect<\/a>"],[0,1,"<a href=\"WebdisConnection.php.html#229\">WebdisConnection::isConnected<\/a>"],[0,9,"<a href=\"WebdisConnection.php.html#243\">WebdisConnection::getCommandId<\/a>"],[0,1,"<a href=\"WebdisConnection.php.html#264\">WebdisConnection::writeRequest<\/a>"],[0,1,"<a href=\"WebdisConnection.php.html#272\">WebdisConnection::readResponse<\/a>"],[0,4,"<a href=\"WebdisConnection.php.html#280\">WebdisConnection::executeCommand<\/a>"],[0,1,"<a href=\"WebdisConnection.php.html#311\">WebdisConnection::getResource<\/a>"],[0,1,"<a href=\"WebdisConnection.php.html#319\">WebdisConnection::getParameters<\/a>"],[0,1,"<a href=\"WebdisConnection.php.html#327\">WebdisConnection::addConnectCommand<\/a>"],[0,1,"<a href=\"WebdisConnection.php.html#335\">WebdisConnection::read<\/a>"],[0,1,"<a href=\"WebdisConnection.php.html#343\">WebdisConnection::__toString<\/a>"],[0,1,"<a href=\"WebdisConnection.php.html#351\">WebdisConnection::__sleep<\/a>"],[0,1,"<a href=\"WebdisConnection.php.html#359\">WebdisConnection::__wakeup<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

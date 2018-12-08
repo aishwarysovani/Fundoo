@@ -1,11 +1,11 @@
 [{
-        "testEmail": "vidya@gmail.com",
-        "password": "222df2sdf",
+        "testEmail": "aishsovani1234@gmail.com",
+        "password": "aishwarya",
         "expected": "404"
     },
     {
         "testEmail": "vidyapvdp@gmail.com",
-        "password": "11cd11sdf",
+        "password": "vidya1",
         "expected": "400"
     },
     {

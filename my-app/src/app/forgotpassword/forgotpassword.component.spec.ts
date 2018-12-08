@@ -22,4 +22,15 @@ describe('ForgotpasswordComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('form should be invalid', async(() => {
+    expect(component.form.controls['email'].setValue('@asd.dzf.asd'));
+    expect(component.form.controls['email'].setValue('123456789'));
+    expect(component.form.controls['email'].setValue('avdfreikfj'));
+
+  }))
+
+  it('valid Form'), async(() => {
+    expect(component.form.controls['email'].setValue('aishsovani1234@gmail.com'));
+
+  });
 });

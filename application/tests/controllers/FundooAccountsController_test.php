@@ -1,5 +1,5 @@
 <?php
-require_once "/var/www/html/codeigniter/application/controllers/FundooAccountsController.php";
+require_once "/var/www/html/codeigniter/application/controllers/FundooAccountController.php";
 include "/var/www/html/codeigniter/application/tests/controllers/TeastCaseConstants.php";
 class FundooAccountsController_test extends TestCase
 {
@@ -21,8 +21,8 @@ class FundooAccountsController_test extends TestCase
         $testCaseExampleArray = $testCaseExampleArray[0]['email'];
         foreach ($testCaseExampleArray as $key => $value) {
             $_POST["email"] = $value['email'];
-            $ref            = new FundooAccountsController();
-            $result         = $ref->getForgotPassword();
+            $ref            = new FundooAccountController();
+            $result         = $ref->getForgotValue();
             $res            = $this->assertEquals("404", $result);
         }
     }
