@@ -78,9 +78,12 @@ class FundooAccountService extends CI_Controller
             }
 
             if ($flag == true) {
+                $key = explode("@", $email);
+                $key = $key[0];
                 $this->load->library('Redis');
                 $redis = $this->redis->config();
-                $set = $redis->set('email', $email);
+                $set = $redis->set($key, $email);
+               
                 $msg = array(
                     "message" => "Successful login.",
                     "jwt" => $jwt,

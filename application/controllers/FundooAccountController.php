@@ -119,7 +119,7 @@ class FundooAccountController extends \PHPUnit_Framework_TestCase
     {
 
         $email = $_POST['email'];
-        $filePath = base64_decode($_POST['fileKey']);
+        $filePath = $_POST['fileKey'];
 
         $this->ref->addProfile($email, $filePath);
         
