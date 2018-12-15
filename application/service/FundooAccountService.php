@@ -83,7 +83,7 @@ class FundooAccountService extends CI_Controller
                 $this->load->library('Redis');
                 $redis = $this->redis->config();
                 $set = $redis->set($key, $email);
-               
+
                 $msg = array(
                     "message" => "Successful login.",
                     "jwt" => $jwt,
@@ -195,31 +195,30 @@ class FundooAccountService extends CI_Controller
              * adding image to the cloudinary using uploader method
              */
             // $return        = \Cloudinary\Uploader::upload($url);
-            $return        = \Cloudinary\Uploader::upload($url);
+            $return = \Cloudinary\Uploader::upload($url);
             /**
-             * @var imageUrl the cloudinary url 
+             * @var imageUrl the cloudinary url
              */
-            $imageUrl      = $return['url'];
-            
-          
+            $imageUrl = $return['url'];
+
             /**
              * @var string $query has query to update the user profile pic to the data base
              */
-        
+
             $stmt = $this->connect->prepare("UPDATE register  SET imageCloud = '$imageUrl'  where email= '$email'");
             if ($stmt->execute()) {
-            
-                   /**
-         * @var string $query has query to select the profile stored in the cloudinary of the user
-         */
-        $stmt = $this->connect->prepare("SELECT imageCloud FROM register where email='$email'");
-        if ($stmt->execute()) {
-            $arr = $stmt->fetch(PDO::FETCH_ASSOC);
-            /**
-             * returns json array response
-             */
-            print json_encode($arr['imageCloud']);
-        }
+
+                /**
+                 * @var string $query has query to select the profile stored in the cloudinary of the user
+                 */
+                $stmt = $this->connect->prepare("SELECT imageCloud FROM register where email='$email'");
+                if ($stmt->execute()) {
+                    $arr = $stmt->fetch(PDO::FETCH_ASSOC);
+                    /**
+                     * returns json array response
+                     */
+                    print json_encode($arr['imageCloud']);
+                }
             } else {
                 $data = array(
                     "message" => "404",
@@ -268,9 +267,9 @@ class FundooAccountService extends CI_Controller
         $statement = $this->connect->prepare($query);
         $statement->execute();
         while ($array = $statement->fetch(PDO::FETCH_ASSOC)) {
-        /**
-        *compared with user entered email and fethed email from database
-        */
+            /**
+             *compared with user entered email and fethed email from database
+             */
             if (($email == ($array['email']))) {
                 $flag = 1;
                 $username = $array['uname'];
@@ -286,7 +285,7 @@ class FundooAccountService extends CI_Controller
                 $jwt1 = new JWT();
                 $jwt = $jwt1->createJwtToken($email);
                 $data = array(
-                    "jwt" =>  $jwt,
+                    "jwt" => $jwt,
                     "status" => "200",
                     "emailId" => $email,
                 );
@@ -309,9 +308,9 @@ class FundooAccountService extends CI_Controller
                 $jwt1 = new JWT();
                 $jwt = $jwt1->createJwtToken($email);
                 $data = array(
-                    "jwt" =>  $jwt,
+                    "jwt" => $jwt,
                     "status" => "200",
-                    "emailId" => $email
+                    "emailId" => $email,
                 );
                 print json_encode($data);
             } else {
